@@ -8,13 +8,13 @@
   "itens": [
     {
       "id": "oxford-asteca",
-      "status": "pendente",
+      "status": "postado",
       "video": "videos/oxford-asteca.mp4",
       "capa": "videos/oxford-asteca-capa.jpg",
       "legenda": "Isso parece fora de ordem... mas é real 🎓🦅\nAssiste até o fim e comenta se você sabia 👀\nSegue @palitolandia.ia\n#oxford #astecas #historia #curiosidades #vocesabia",
       "comentario": "Você sabia dessa? Comenta aqui 👇",
-      "postado_em": null,
-      "media_id": null
+      "postado_em": "2026-11-11 17:32 (America/Fortaleza)",
+      "media_id": "18126811171917187"
     }
   ]
 }
