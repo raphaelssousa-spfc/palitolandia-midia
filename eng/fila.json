@@ -1,7 +1,10 @@
 {
   "perfil": "eng.raphaelserra",
   "conta_windsor": "17841404396456793",
-  "horarios": "seg, qua e sex 18:39",
+  "horarios": [
+    "10:52",
+    "19:37"
+  ],
   "fuso": "America/Fortaleza",
   "itens": [
     {
@@ -12,5 +15,6 @@
       "legenda": "Por que o asfalto do Brasil tem tanto buraco? 🕳️\nComo está a pista na sua cidade?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #buraco #estradas #rodovias #infraestrutura #engenhariadetransportes",
       "comentario": "Qual rua ou estrada da sua cidade tem o pior buraco? 👇"
     }
-  ]
+  ],
+  "frequencia": "todos os dias, 2 postagens"
 }

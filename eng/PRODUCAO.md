@@ -32,6 +32,7 @@ ATENÇÃO: a conta `17841460341094597` é a da Palitolândia; nunca postar engen
 | Construção (PATOLOGIAS, CUSTOS DE OBRA, ERROS DE OBRA, FUNDAÇÕES...) | Minimalista premium: fundo creme #F6F3EE, preto #1A1A1A, laranja #D9480F, casas isométricas | `src/Erros.tsx` (mais completo), `src/Custo.tsx`; capas em `src/Capas.tsx` |
 | Pavimentação (PAVIMENTAÇÃO) | Asfalto: fundo escuro com textura, faixa amarela correndo na lateral, amarelo #FFC20E, medidor "Condição da pista" | `src/Pave.tsx` (também tem a capa `CapaPave01`) |
 Alternar as séries (ver a última linha de `temas.md`). Episódios numerados por série.
+Produção: 2 vídeos por dia (tarefas 02:47 e 07:13), parando quando houver 4 ou mais pendentes na fila.
 
 ## Como produzir um vídeo
 1. Ler `eng/temas.md` e `eng/fila.json`. Escolher um tema NÃO usado (preferir a lista de ideias). Pesquisar os fatos.
@@ -56,7 +57,7 @@ Alternar as séries (ver a última linha de `temas.md`). Episódios numerados po
 - Áudio: sempre passar pelo limitador (`render.sh video` já aplica `alimiter=0.89`).
 - Não usar fundo creme na série de pavimentação nem fundo escuro na de construção.
 
-## Como postar (tarefa seg/qua/sex 18:39)
+## Como postar (tarefa diária 10:52 e 19:37 — 2 Reels por dia)
 1. `git pull`; abrir `eng/fila.json`; pegar o PRIMEIRO item com status "pendente".
 2. URLs públicas: `https://raw.githubusercontent.com/raphaelssousa-spfc/palitolandia-midia/main/eng/<campo video>` e `.../eng/<campo capa>`; conferir 200 com curl.
 3. Windsor `execute_action`, conector `instagram`, conta `17841404396456793`, ação `create_video_post` com video_url, cover_url, caption = legenda, share_to_feed = true.
