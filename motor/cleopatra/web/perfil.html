@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><body style="margin:0;background:#000"><canvas id="c" width="1080" height="1080"></canvas>
+<script type="module">
+import * as T from './toon.js';
+const c = document.getElementById('c'), g = c.getContext('2d');
+// fundo: raios + gradiente
+const bg = g.createRadialGradient(540, 470, 60, 540, 540, 780); bg.addColorStop(0, '#ffe27a'); bg.addColorStop(1, '#ff9a3c');
+g.fillStyle = bg; g.fillRect(0, 0, 1080, 1080);
+g.save(); g.translate(540, 470);
+for (let i = 0; i < 20; i++) { g.rotate(Math.PI / 10); g.fillStyle = 'rgba(255,255,255,.16)'; g.beginPath(); g.moveTo(0, 0); g.lineTo(-90, -900); g.lineTo(90, -900); g.closePath(); g.fill(); }
+g.restore();
+for (const [x, y, r] of [[120, 150, 34], [960, 190, 26], [90, 760, 22], [990, 700, 38], [220, 960, 16], [880, 980, 20]]) { g.fillStyle = 'rgba(255,255,255,.5)'; g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); g.strokeStyle = '#3a1d0a'; g.lineWidth = 6; g.stroke(); }
+// personagem (cabeça grande, braço palitinho acenando)
+const hc = T.headCenter(3), s = 2.55;
+g.save(); g.translate(540 - 300 * s, 420 - hc * s); g.scale(s, s);
+const p = new T.Pen(g);
+T.romanFront(p, { tunic: '#2fa3b8', skin: '#f5c9a0', hair: '#3b2a20' }, { expr: 'grin', facing: 0, look: 0.2, seed: 3, L: 'hip', R: 'wave', wv: 0.6, blink: 0 });
+g.restore();
+// nome
+g.font = '900 68px DejaVu Sans, Arial Black, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
+g.strokeStyle = '#3a1d0a'; g.lineWidth = 22; g.strokeText('PALITOLÂNDIA.IA', 540, 905); g.fillStyle = '#ffffff'; g.fillText('PALITOLÂNDIA.IA', 540, 905);
+window.ready = true;
+</script>
