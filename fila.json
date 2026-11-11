@@ -1,0 +1,20 @@
+{
+  "perfil": "palitolandia.ia",
+  "horarios": [
+    "12:10",
+    "18:10"
+  ],
+  "fuso": "America/Fortaleza",
+  "itens": [
+    {
+      "id": "oxford-asteca",
+      "status": "pendente",
+      "video": "videos/oxford-asteca.mp4",
+      "capa": "videos/oxford-asteca-capa.jpg",
+      "legenda": "Isso parece fora de ordem... mas é real 🎓🦅\nAssiste até o fim e comenta se você sabia 👀\nSegue @palitolandia.ia\n#oxford #astecas #historia #curiosidades #vocesabia",
+      "comentario": "Você sabia dessa? Comenta aqui 👇",
+      "postado_em": null,
+      "media_id": null
+    }
+  ]
+}
