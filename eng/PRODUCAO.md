@@ -32,7 +32,7 @@ ATENÇÃO: a conta `17841460341094597` é a da Palitolândia; nunca postar engen
 | Construção (PATOLOGIAS, CUSTOS DE OBRA, ERROS DE OBRA, FUNDAÇÕES...) | Minimalista premium: fundo creme #F6F3EE, preto #1A1A1A, laranja #D9480F, casas isométricas | `src/Erros.tsx` (mais completo), `src/Custo.tsx`; capas em `src/Capas.tsx` |
 | Pavimentação (PAVIMENTAÇÃO) | Asfalto: fundo escuro com textura, faixa amarela correndo na lateral, amarelo #FFC20E, medidor "Condição da pista" | `src/Pave.tsx` (também tem a capa `CapaPave01`) |
 Alternar as séries (ver a última linha de `temas.md`). Episódios numerados por série.
-Produção: 2 vídeos por dia (tarefas 02:47 e 07:13), parando quando houver 4 ou mais pendentes na fila.
+Produção: 2 vídeos por dia (tarefa diária 02:47), parando quando houver 4 ou mais pendentes na fila.
 
 ## Como produzir um vídeo
 1. Ler `eng/temas.md` e `eng/fila.json`. Escolher um tema NÃO usado (preferir a lista de ideias). Pesquisar os fatos.
