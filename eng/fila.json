@@ -1,0 +1,16 @@
+{
+  "perfil": "eng.raphaelserra",
+  "conta_windsor": "17841404396456793",
+  "horarios": "seg, qua e sex 18:39",
+  "fuso": "America/Fortaleza",
+  "itens": [
+    {
+      "id": "pavimentacao-01-buracos",
+      "status": "pendente",
+      "video": "videos/pavimentacao-01-buracos.mp4",
+      "capa": "videos/pavimentacao-01-buracos-capa.jpg",
+      "legenda": "Por que o asfalto do Brasil tem tanto buraco? 🕳️\nComo está a pista na sua cidade?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #buraco #estradas #rodovias #infraestrutura #engenhariadetransportes",
+      "comentario": "Qual rua ou estrada da sua cidade tem o pior buraco? 👇"
+    }
+  ]
+}
