@@ -6,6 +6,7 @@ cd "$(dirname "$0")/.."
 [ -d node_modules ] || npm install --silent >/dev/null
 SPEC="$1"; ID=$(basename "$SPEC" .json); OUT=../carrosseis/$ID
 CH=$(node -e "require('@sparticuz/chromium').default.executablePath().then(p=>console.log(p))")
+mkdir -p public/fotos ../fotos; cp -r ../fotos/. public/fotos/ 2>/dev/null || true
 rm -rf build_carrossel; npx remotion bundle src/carrossel-index.ts --out-dir=build_carrossel >/dev/null
 mkdir -p "$OUT" out/car_$ID; rm -f "$OUT"/*.jpg
 N=$(python3 -c "import json,sys;print(len(json.load(open('$SPEC'))['slides']))")

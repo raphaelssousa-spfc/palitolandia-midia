@@ -93,3 +93,10 @@ Antes de cada carrossel novo:
    `"cores"` (bg, card, text, grey, acc, ring, pill, pillText) e `"capa_estilo"` ("padrao" ou "centro") no JSON. Se a referência usar um layout
    marcante, pode criar uma variação nova em `src/Carrossel.tsx`, mantendo sempre a identidade do perfil (avatar, @, "arraste →", slide final).
 4. Registrar o link da referência no campo `"referencia"` do JSON e em temas.md.
+
+### Fotos reais (preferência do dono)
+- Sempre que existir foto real do assunto em `eng/fotos/` (ver `eng/fotos/LEIAME.md`), USE: `"foto": "fotos/<arquivo>.jpg"` na capa
+  (vira capa de foto em tela cheia) e nos itens/passos (a foto entra no lugar do ícone).
+- O ambiente automático NÃO consegue baixar imagens da internet (bancos de fotos são bloqueados pela rede). Então só use fotos do banco
+  `eng/fotos/`. Sem foto adequada, use as ilustrações do kit e, na mensagem ao dono, diga quais 2–3 fotos ajudariam (nome sugerido do arquivo).
+- Nunca use foto de outro perfil, nem imagem sem licença livre.

@@ -1,7 +1,7 @@
 // Carrossel do @eng.raphaelserra — slides 1080x1350 gerados a partir de um JSON (props).
 // Uso: tools/carrossel.sh carrosseis/<id>.json  → eng/carrosseis/<id>/01.jpg ...
 import React from 'react';
-import {AbsoluteFill, Composition, staticFile, random} from 'remotion';
+import {AbsoluteFill, Composition, staticFile, random, Img} from 'remotion';
 import {loadFont} from '@remotion/fonts';
 import {Raphael} from './Raphael';
 
@@ -10,9 +10,9 @@ loadFont({family: 'InterD', url: staticFile('InterDisplay-ExtraBold.otf'), weigh
 loadFont({family: 'InterD', url: staticFile('Inter-SemiBold.otf'), weight: '600'});
 
 export type Slide =
-  | {tipo: 'capa'; titulo: string; destaque?: string; subtitulo?: string; ilustracao?: string}
-  | {tipo: 'item'; numero?: number; titulo: string; texto: string; icone?: string; alerta?: 'ok' | 'atencao' | 'perigo'}
-  | {tipo: 'passo'; numero: number; titulo: string; texto: string; icone?: string}
+  | {tipo: 'capa'; titulo: string; destaque?: string; subtitulo?: string; ilustracao?: string; foto?: string}
+  | {tipo: 'item'; numero?: number; titulo: string; texto: string; icone?: string; alerta?: 'ok' | 'atencao' | 'perigo'; foto?: string}
+  | {tipo: 'passo'; numero: number; titulo: string; texto: string; icone?: string; foto?: string}
   | {tipo: 'resumo'; titulo: string; pontos: string[]}
   | {tipo: 'final'; pergunta: string};
 export type Cores = Partial<{bg: string; card: string; text: string; grey: string; acc: string; ring: string; pill: string; pillText: string}>;
@@ -97,6 +97,24 @@ const SlideView: React.FC<{spec: Spec; i: number}> = ({spec, i}) => {
   const T = theme(spec);
   const s = spec.slides[i];
   const n = spec.slides.length;
+  if (s.tipo === 'capa' && s.foto) {
+    return (
+      <AbsoluteFill style={{background: T.bg}}>
+        <Img src={staticFile(s.foto)} style={{position: 'absolute', top: 0, left: 0, width: 1080, height: 1350, objectFit: 'cover'}} />
+        <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 35%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.88) 100%)'}} />
+        <div style={{position: 'absolute', top: 60, left: 80, right: 80, display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          <div style={{background: T.acc, color: spec.serie === 'pavimentacao' ? '#111' : '#fff', fontFamily: 'InterD', fontWeight: 800, fontSize: 26, letterSpacing: 4, padding: '10px 22px', borderRadius: 999}}>{spec.categoria}</div>
+          <div style={{fontFamily: 'InterD', fontWeight: 700, fontSize: 28, color: '#FFFFFF'}}>{HANDLE}</div>
+        </div>
+        <div style={{position: 'absolute', bottom: 260, left: 80, right: 70, fontFamily: 'InterD', fontWeight: 900, fontSize: 104, color: '#FFFFFF', letterSpacing: -4, lineHeight: 0.98, textShadow: '0 4px 24px rgba(0,0,0,0.5)'}}>{titleParts(s.titulo, s.destaque, T.acc)}</div>
+        {s.subtitulo && <div style={{position: 'absolute', bottom: 170, left: 80, right: 80, fontFamily: 'InterD', fontWeight: 700, fontSize: 38, color: 'rgba(255,255,255,0.85)'}}>{s.subtitulo}</div>}
+        <div style={{position: 'absolute', bottom: 56, left: 80, right: 80, display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          <div style={{display: 'flex', alignItems: 'center', gap: 14}}><AvatarBadge size={74} ring={T.acc} bg={T.card} /><div style={{fontFamily: 'InterD', fontWeight: 900, fontSize: 30, color: '#fff'}}>{HANDLE}</div></div>
+          <div style={{fontFamily: 'InterD', fontWeight: 900, fontSize: 32, color: T.acc}}>arraste →</div>
+        </div>
+      </AbsoluteFill>
+    );
+  }
   if (s.tipo === 'capa' && spec.capa_estilo === 'centro') {
     return (
       <Frame spec={spec} i={i} n={n}>
@@ -133,7 +151,7 @@ const SlideView: React.FC<{spec: Spec; i: number}> = ({spec, i}) => {
         </div>
         <div style={{position: 'absolute', top: 290, left: 80, right: 80, fontFamily: 'InterD', fontWeight: 900, fontSize: 84, color: T.text, letterSpacing: -3, lineHeight: 1.02}}>{s.titulo}</div>
         <div style={{position: 'absolute', top: 560, left: 80, right: 80, height: 620, display: 'flex', flexDirection: 'column', gap: 34, alignItems: 'center', justifyContent: 'center', background: T.card, borderRadius: 40, padding: '40px 56px', borderTop: `16px solid ${col}`, boxShadow: spec.serie === 'construcao' ? '0 20px 50px rgba(0,0,0,0.08)' : 'none'}}>
-          <Icon k={s.icone} size={300} />
+          {s.foto ? <Img src={staticFile(s.foto)} style={{width: '100%', height: 340, objectFit: 'cover', borderRadius: 26}} /> : <Icon k={s.icone} size={300} />}
           <div style={{fontFamily: 'InterD', fontWeight: 700, fontSize: 46, color: T.text, lineHeight: 1.25, textAlign: 'center'}}>{s.texto}</div>
         </div>
       </Frame>
