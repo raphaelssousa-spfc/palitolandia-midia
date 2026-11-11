@@ -1,0 +1,16 @@
+{
+  "serie": "construcao",
+  "categoria": "UMIDADE",
+  "episodio": "CARROSSEL #01",
+  "slides": [
+    {"tipo": "capa", "titulo": "6 sinais de infiltração na sua casa", "destaque": "infiltração", "subtitulo": "O nº 4 quase ninguém percebe até ser tarde.", "ilustracao": "mofo"},
+    {"tipo": "item", "numero": 1, "titulo": "Manchas escuras na parede ou no teto", "texto": "Geralmente aparecem perto do piso, de janelas ou embaixo de banheiros.", "icone": "gota", "alerta": "atencao"},
+    {"tipo": "item", "numero": 2, "titulo": "Mofo que volta mesmo depois de limpar", "texto": "Sinal de umidade constante vindo de dentro da parede, não só do ar.", "icone": "mofo", "alerta": "atencao"},
+    {"tipo": "item", "numero": 3, "titulo": "Pintura com bolhas ou descascando", "texto": "A água empurra a tinta de dentro para fora e ela solta da parede.", "icone": "bolha", "alerta": "atencao"},
+    {"tipo": "item", "numero": 4, "titulo": "Pó branco brotando no reboco", "texto": "É o salitre (eflorescência): sais que a água traz de dentro da alvenaria.", "icone": "salitre", "alerta": "perigo"},
+    {"tipo": "item", "numero": 5, "titulo": "Rodapé e piso de madeira estufando", "texto": "Típico da umidade que sobe do solo pela base das paredes.", "icone": "rodape", "alerta": "perigo"},
+    {"tipo": "item", "numero": 6, "titulo": "Cheiro de mofo em ambiente fechado", "texto": "Mesmo sem mancha visível, o cheiro já denuncia umidade escondida.", "icone": "nariz", "alerta": "atencao"},
+    {"tipo": "resumo", "titulo": "O que fazer?", "pontos": ["Descobrir a origem: cano, telhado ou solo", "Não só pintar por cima", "Tratar com impermeabilização certa", "Na dúvida, chamar um engenheiro"]},
+    {"tipo": "final", "pergunta": "Qual desses sinais tem aí na sua casa?"}
+  ]
+}

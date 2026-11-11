@@ -64,3 +64,21 @@ Produção: 2 vídeos por dia (tarefa diária 02:47), parando quando houver 4 ou
 4. `create_comment` no media_id com o texto de `comentario`.
 5. Marcar "postado", `postado_em` (America/Fortaleza) e `media_id`; commit e push.
 6. Fila vazia: não postar e avisar o dono. Falha: tentar 1 vez de novo; depois registrar `erro`, manter "pendente" e avisar.
+
+## Carrosséis (1 por dia, postagem 09:10)
+Formato 1080x1350 (4:5), 7 a 10 slides, gerados a partir de um JSON — NÃO precisa escrever código:
+`eng/motor/carrosseis/<id>.json` → `cd eng/motor && tools/carrossel.sh carrosseis/<id>.json` → `eng/carrosseis/<id>/01.jpg ...`
+e a folha de prévia `eng/motor/out/<id>_previa.jpg` (OLHAR antes de publicar: texto estourando, ícone errado).
+- `<id>` = `<serie>-cNN-<slug>` (ex.: `pavimentacao-c02-sinais-estrada-ruim`). Exemplo completo: `motor/carrosseis/construcao-c01-sinais-infiltracao.json`.
+- `serie`: "construcao" (creme/laranja) ou "pavimentacao" (asfalto/amarelo). `categoria`: etiqueta curta em MAIÚSCULAS. `episodio`: "CARROSSEL #NN".
+- Alternar os formatos: CHECKLIST/DICAS (slides "item" numerados, `alerta` ok/atencao/perigo) e PASSO A PASSO (slides "passo").
+- Estrutura: 1) "capa" (titulo + destaque = palavra-chave colorida, subtitulo que gera curiosidade, ilustracao)
+  2) 5–7 "item" ou "passo" (titulo ≤ 45 caracteres, texto ≤ 110 caracteres, icone) 3) "resumo" (3–4 pontos curtos) 4) "final" (pergunta ao público).
+- Ícones disponíveis: casa, rachadura, gota, mofo, bolha, rodape, nariz, salitre, laje, fundacao, tijolo, planta, dinheiro, calendario, regua,
+  martelo, capacete, check, alerta, x, estrada, buraco, cone, caminhao, chuva, rolo, sol, lupa. (Para um ícone novo, acrescente em `src/Carrossel.tsx`.)
+- Fatos conferidos com WebSearch, igual aos vídeos. Legenda do post curta: título + gancho + pergunta + "Comenta aqui 👇" + hashtags.
+- Fila: `eng/fila_carrossel.json` (campos: id, status, pasta, imagens [lista de caminhos relativos a eng/], legenda, comentario).
+### Como postar carrossel
+URLs: `https://raw.githubusercontent.com/raphaelssousa-spfc/palitolandia-midia/main/eng/<imagem>` (conferir 200 em todas).
+Windsor `execute_action`, conector `instagram`, conta `17841404396456793`, ação `create_carousel_post`, `image_urls` na ordem, `caption` = legenda.
+Depois `create_comment` com `comentario`; marcar "postado", `postado_em`, `media_id`; commit e push.

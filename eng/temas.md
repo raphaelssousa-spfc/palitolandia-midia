@@ -25,3 +25,6 @@
 - Os sinais de que a estrada vai afundar (couro de jacaré, trilha de roda)
 - Como é feita uma pista de aeroporto que aguenta um avião de 500 toneladas?
 - Por que as pontes têm "fendas" no asfalto? (juntas de dilatação)
+
+# Carrosséis já usados (não repetir)
+- construção · UMIDADE · CARROSSEL #01 · 6 sinais de infiltração na sua casa (checklist)
