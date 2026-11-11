@@ -15,7 +15,9 @@ export type Slide =
   | {tipo: 'passo'; numero: number; titulo: string; texto: string; icone?: string}
   | {tipo: 'resumo'; titulo: string; pontos: string[]}
   | {tipo: 'final'; pergunta: string};
-export type Spec = {serie: 'construcao' | 'pavimentacao'; categoria: string; episodio?: string; slides: Slide[]};
+export type Cores = Partial<{bg: string; card: string; text: string; grey: string; acc: string; ring: string; pill: string; pillText: string}>;
+export type Spec = {serie: 'construcao' | 'pavimentacao'; categoria: string; episodio?: string; cores?: Cores; capa_estilo?: 'padrao' | 'centro'; referencia?: string; slides: Slide[]};
+const theme = (spec: Spec) => ({...THEMES[spec.serie], ...(spec.cores ?? {})});
 
 const HANDLE = '@eng.raphaelserra';
 const THEMES = {
@@ -61,7 +63,7 @@ const Icon: React.FC<{k?: string; size: number}> = ({k, size}) => <svg width={si
 
 // ---------- peças ----------
 const Frame: React.FC<{spec: Spec; i: number; n: number; children: React.ReactNode}> = ({spec, i, n, children}) => {
-  const T = THEMES[spec.serie];
+  const T = theme(spec);
   return (
     <AbsoluteFill style={{background: T.bg}}>
       <svg width={1080} height={1350} style={{position: 'absolute'}}>
@@ -92,9 +94,21 @@ const titleParts = (t: string, d: string | undefined, acc: string) => {
 };
 
 const SlideView: React.FC<{spec: Spec; i: number}> = ({spec, i}) => {
-  const T = THEMES[spec.serie];
+  const T = theme(spec);
   const s = spec.slides[i];
   const n = spec.slides.length;
+  if (s.tipo === 'capa' && spec.capa_estilo === 'centro') {
+    return (
+      <Frame spec={spec} i={i} n={n}>
+        <div style={{position: 'absolute', top: 150, left: 0, right: 0, display: 'flex', justifyContent: 'center'}}><svg width={460} height={460} viewBox="0 0 200 200"><circle cx={100} cy={100} r={96} fill={T.card} />{I[s.ilustracao ?? 'casa'] ?? I.casa}</svg></div>
+        <div style={{position: 'absolute', top: 650, left: 70, right: 70, textAlign: 'center', fontFamily: 'InterD', fontWeight: 900, fontSize: 100, color: T.text, letterSpacing: -4, lineHeight: 1}}>{titleParts(s.titulo, s.destaque, T.acc)}</div>
+        {s.subtitulo && <div style={{position: 'absolute', top: 1010, left: 100, right: 100, textAlign: 'center', fontFamily: 'InterD', fontWeight: 700, fontSize: 38, color: T.grey, lineHeight: 1.2}}>{s.subtitulo}</div>}
+        <div style={{position: 'absolute', top: 1140, left: 0, right: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 16}}>
+          <AvatarBadge size={80} ring={T.ring} bg={T.card} /><div style={{fontFamily: 'InterD', fontWeight: 900, fontSize: 32, color: T.text}}>{HANDLE}</div>
+        </div>
+      </Frame>
+    );
+  }
   if (s.tipo === 'capa') {
     return (
       <Frame spec={spec} i={i} n={n}>

@@ -82,3 +82,14 @@ e a folha de prévia `eng/motor/out/<id>_previa.jpg` (OLHAR antes de publicar: t
 URLs: `https://raw.githubusercontent.com/raphaelssousa-spfc/palitolandia-midia/main/eng/<imagem>` (conferir 200 em todas).
 Windsor `execute_action`, conector `instagram`, conta `17841404396456793`, ação `create_carousel_post`, `image_urls` na ordem, `caption` = legenda.
 Depois `create_comment` com `comentario`; marcar "postado", `postado_em`, `media_id`; commit e push.
+
+### Referências virais (regra do dono, a partir de 13/11)
+Antes de cada carrossel novo:
+1. Pesquisar (WebSearch/WebFetch: Instagram, TikTok, Pinterest, Google) os carrosséis MAIS VIRAIS do nicho
+   (engenharia civil, construção, reforma, obra, pavimentação, arquitetura) — priorizar os com mais curtidas, salvamentos e compartilhamentos.
+2. Escolher um tema que já viralizou e que ainda NÃO está em "Carrosséis já usados" (temas.md). Fazer o MESMO TEMA com conteúdo próprio:
+   texto escrito do zero, fatos conferidos, ícones do nosso kit. Nunca copiar frases, imagens, marca ou @ de outro perfil.
+3. Design INSPIRADO na referência, não igual: copiar só a ideia (paleta, tipo de capa, ritmo dos slides), ajustando com
+   `"cores"` (bg, card, text, grey, acc, ring, pill, pillText) e `"capa_estilo"` ("padrao" ou "centro") no JSON. Se a referência usar um layout
+   marcante, pode criar uma variação nova em `src/Carrossel.tsx`, mantendo sempre a identidade do perfil (avatar, @, "arraste →", slide final).
+4. Registrar o link da referência no campo `"referencia"` do JSON e em temas.md.
