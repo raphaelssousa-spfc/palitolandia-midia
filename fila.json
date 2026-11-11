@@ -18,13 +18,14 @@
     },
     {
       "id": "fax-telefone",
-      "status": "pendente",
+      "status": "refazer",
       "video": "videos/fax-telefone.mp4",
       "capa": "videos/fax-telefone-capa.jpg",
       "legenda": "Isso aqui veio ANTES do telefone 📠☎️\nAssiste até o fim e comenta se você sabia 👀\nSegue @palitolandia.ia\n#fax #telefone #historia #curiosidades #vocesabia",
       "comentario": "Você sabia dessa? Comenta aqui 👇",
       "postado_em": null,
-      "media_id": null
+      "media_id": null,
+      "nota": "Refazer o gancho começando com pergunta: \"O que veio primeiro: o fax ou o telefone?\""
     }
   ]
 }

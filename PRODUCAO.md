@@ -5,7 +5,8 @@ Instagram: @palitolandia.ia (conectado via Windsor.ai, conector `instagram`, con
 
 ## Regras do canal (do dono — obrigatórias)
 1. Narração SEMPRE com a voz `pm_santa` (`voz.py ... --voz pm_santa --vel 1.08`).
-2. Gancho nos 3 primeiros segundos: **duas datas ou fatos que parecem fora de ordem** (formato do Reel da Cleópatra, o campeão: 4x o alcance).
+2. O vídeo SEMPRE começa com uma PERGUNTA na primeira frase (ex.: "O que veio primeiro: o fax ou o telefone?"), e a pergunta já traz as duas datas ou fatos que parecem fora de ordem.
+   Gancho nos 3 primeiros segundos: **duas datas ou fatos que parecem fora de ordem** (formato do Reel da Cleópatra, o campeão: 4x o alcance).
    Estrutura: gancho → a conta simples que prova → uma imagem engraçada → a virada → pedido de interação → CTA.
 3. Final de verdade: depois da última fala, ~2,5 s de cena final com o logo "PALITOLÂNDIA.IA / curiosidades animadas", brilhos, acorde final na música e fade-out (nunca terminar seco).
 4. Pedir interação no fim: "Comenta aí se você sabia" e/ou "manda pra quem vai duvidar", em placas na tela também.
