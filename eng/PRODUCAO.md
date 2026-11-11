@@ -57,7 +57,7 @@ Produção: 2 vídeos por dia (tarefas 02:47 e 07:13), parando quando houver 4 o
 - Áudio: sempre passar pelo limitador (`render.sh video` já aplica `alimiter=0.89`).
 - Não usar fundo creme na série de pavimentação nem fundo escuro na de construção.
 
-## Como postar (tarefa diária 10:52 e 19:37 — 2 Reels por dia)
+## Como postar (tarefa diária 13:10 e 19:10 — 2 Reels por dia)
 1. `git pull`; abrir `eng/fila.json`; pegar o PRIMEIRO item com status "pendente".
 2. URLs públicas: `https://raw.githubusercontent.com/raphaelssousa-spfc/palitolandia-midia/main/eng/<campo video>` e `.../eng/<campo capa>`; conferir 200 com curl.
 3. Windsor `execute_action`, conector `instagram`, conta `17841404396456793`, ação `create_video_post` com video_url, cover_url, caption = legenda, share_to_feed = true.
