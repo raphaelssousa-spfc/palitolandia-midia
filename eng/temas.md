@@ -3,12 +3,12 @@
 - construção · CUSTOS DE OBRA #02 · Quanto custa construir uma casa de 60 m² hoje? (postado manualmente)
 - construção · ERROS DE OBRA #03 · 5 erros que encarecem a sua obra (postado manualmente)
 - pavimentação · PAVIMENTAÇÃO #01 · Por que o asfalto do Brasil tem tanto buraco? (postado manualmente)
+- construção · CONCRETO #04 · Por que molham o concreto depois de pronto? (cura)
 
 # Ideias de temas (pegar daqui; riscar ao usar)
 ## Construção
 - Sapata, radier ou estaca: qual fundação usar?
 - Laje maciça x laje pré-moldada: qual é melhor?
-- Por que o concreto é molhado depois de pronto? (cura)
 - Por que aparece mofo na parede? (umidade ascendente)
 - Por que a Torre de Pisa tortou e não cai?
 - Como o Burj Khalifa não afunda na areia?
