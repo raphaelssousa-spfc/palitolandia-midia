@@ -17,6 +17,14 @@ Instagram: @palitolandia.ia (conectado via Windsor.ai, conector `instagram`, con
 9. Conferir fatos (datas, números) com WebSearch antes de narrar. Na dúvida, escolher outro tema.
 10. Pronúncia: testar nomes estrangeiros com `from kokoro_onnx.tokenizer import Tokenizer; Tokenizer().phonemize(texto,'pt-br')` e reescrever foneticamente só no texto da voz (ex.: Oxford → "Óquisfór"); a legenda mantém a grafia certa.
 
+## Arquivos baixados no notebook do dono (regra do dono, a partir de 12/11)
+Vale para QUALQUER fluxo que baixe arquivo no notebook dele (ex.: cenas do TAAFT pelo navegador, imagens, testes, Reel montado):
+- O nome do arquivo baixado SEMPRE começa com `robo-ia_<id>_`, onde `<id>` é o id do item na fila (`fila.json` ou `eng/fila.json`).
+  Ex.: `robo-ia_dozero-02-tunel_cena1.mp4`, `robo-ia_dozero-02-tunel_teste_calmo.mp4`. No download pelo navegador, definir o nome no `a.download`.
+- Se o fluxo puder escolher a pasta, salvar em `Downloads\robo-ia\<id>\`; senão, direto em `Downloads` com o prefixo acima.
+- Nunca salvar arquivo do robô sem esse prefixo: a limpeza semanal (domingo 21:23) só apaga `robo-ia_*` com 7+ dias cujo item já está "postado".
+  Arquivo sem o prefixo fica para sempre no notebook.
+
 ## Armadilhas técnicas já resolvidas (não repetir)
 - Dois planos de chão sobrepostos causam "piscadas" (z-fighting). Nunca sobrepor chão de cenários diferentes.
 - Não usar KICKS de câmera (tranco de 1 quadro parece falha): `const KICKS = []`.

@@ -26,6 +26,14 @@ ATENÇÃO: a conta `17841460341094597` é a da Palitolândia; nunca postar engen
 13. Capa 1080x1920 no padrão da série (etiqueta da série, número do episódio, título grande com a palavra-chave destacada,
     ilustração do tema, rodapé com o avatar + "@eng.raphaelserra" + "Engenheiro civil explica"). Conteúdo na faixa central (grade 3:4 do perfil).
 
+## Arquivos baixados no notebook do dono (regra do dono, a partir de 12/11)
+Vale para QUALQUER fluxo que baixe arquivo no notebook dele (ex.: cenas do TAAFT pelo navegador, imagens, testes, Reel montado):
+- O nome do arquivo baixado SEMPRE começa com `robo-ia_<id>_`, onde `<id>` é o id do item na fila (`fila.json` ou `eng/fila.json`).
+  Ex.: `robo-ia_dozero-02-tunel_cena1.mp4`, `robo-ia_dozero-02-tunel_teste_calmo.mp4`. No download pelo navegador, definir o nome no `a.download`.
+- Se o fluxo puder escolher a pasta, salvar em `Downloads\robo-ia\<id>\`; senão, direto em `Downloads` com o prefixo acima.
+- Nunca salvar arquivo do robô sem esse prefixo: a limpeza semanal (domingo 21:23) só apaga `robo-ia_*` com 7+ dias cujo item já está "postado".
+  Arquivo sem o prefixo fica para sempre no notebook.
+
 ## Séries e estilos (não misturar)
 | Série | Estilo | Base para copiar |
 |---|---|---|
