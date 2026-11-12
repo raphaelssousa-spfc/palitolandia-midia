@@ -19,6 +19,14 @@
 - Por que o Japão não desaba nos terremotos? (isolamento sísmico)
 - Por que não se pode tirar uma parede qualquer? (alvenaria estrutural)
 - PRÓXIMO CARROSSEL (checklist): 10 coisas pra conferir antes de pegar a chave do apartamento novo (vistoria de entrega) · ref.: https://www.youtube.com/watch?v=d_Sf13Iu640 (Studio Dotti Arquitetura, 202 mil views)
+
+## Fila de carrosséis (nessa ordem; não postar 2 parecidos seguidos)
+1. Vistoria do apê novo (acima)
+2. ERROS BIZARROS DE OBRA · Parte 1/4 · 10 erros (checklist) · ref.: https://www.youtube.com/watch?v=PLQD3IQ8d1Y (Faça Sua Obra, "40 erros bizarros da construção", 1,36 mi views)
+3. 10 dicas pra economizar na obra (checklist) · ref.: https://www.youtube.com/results?search_query=20+dicas+para+economizar+na+obra+planarq (PLANARQ Campos, 827 mil views)
+4. (outro assunto antes da próxima parte)
+5. ERROS BIZARROS DE OBRA · Parte 2/4 · mais 10 erros
+- Depois, espaçadas com outros temas: Parte 3/4 e Parte 4/4 (10 erros cada, sem repetir erro das partes anteriores)
 ## Pavimentação
 - Por que a estrada é mais alta no meio? (abaulamento)
 - O que tem embaixo do asfalto? (camadas)
