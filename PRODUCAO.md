@@ -27,7 +27,7 @@ Vale para QUALQUER fluxo que baixe arquivo no notebook dele (ex.: cenas do TAAFT
 
 ## Regras de crescimento (12/11 — o dono pediu)
 11. **Série numerada "PARECE MENTIRA #N".** N = número do episódio (o próximo número está em `proximo.md`). Aparece no começo do vídeo (placa pequena no canto nos primeiros 3 s), na capa (faixa acima do título) e na legenda do post ("Parece mentira #N").
-    Episódios já publicados: #1 Cleópatra, #2 Chocolate/micro-ondas, #3 Sol, #4 Torre Eiffel, #5 Oxford. O fax (refazer) será o #6.
+    Episódios: #1 Cleópatra, #2 Chocolate/micro-ondas, #3 Sol, #4 Torre Eiffel, #5 Oxford, #6 lata x abridor, #7 isqueiro x fósforo (estes dois feitos antes da regra). O fax (refazer) será o #8.
 12. **Anúncio do próximo episódio antes do CTA.** Ao produzir o episódio N, escolha JÁ o tema do N+1 (conferido), escreva em `proximo.md` e feche o vídeo com uma pergunta-teaser falada e em placa:
     "No próximo: <pergunta curta do tema N+1>". Ex.: "No próximo: o que é mais velho, o tubarão ou as árvores?". A execução seguinte DEVE produzir exatamente o tema de `proximo.md`.
 13. **Comentário com escolha.** Em vez de só "comenta se você sabia", peça uma escolha: "Qual veio primeiro: A ou B? Comenta antes de ver o final!" (placa no meio do vídeo, logo depois da pergunta inicial) e no fim "manda pra quem vai duvidar". O comentário automático do post também deve ser uma escolha ("Fax ou telefone: em quem você apostou? 👇").
