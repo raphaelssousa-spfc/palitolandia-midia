@@ -113,3 +113,21 @@ Para vídeos fora da fila fixa (ex.: série DO ZERO), SEMPRE:
 3. Marcar o item em eng/fila.json com status "agendado" e "agendado_para" (não "pendente", para não entrar na fila fixa)
    e criar uma tarefa agendada única (create_trigger com run_once_at) que posta só esse item.
 4. Avisar o dono do horário escolhido e o porquê em uma linha.
+
+## Motor 3D (DO ZERO): erros do #01 que NÃO podem se repetir
+Problemas vistos no DO ZERO #01 (subsolo): partes piscando e coisas narradas que não apareceram. Regras:
+1. Nada de clarão branco de tela cheia (corte com flash, raio piscando duas vezes). No máximo um clarão suave (≤ 0,25) e único.
+2. Nunca alternar `material.transparent` (ou outra propriedade que muda o shader) entre quadros: o render em sequência ignora e a parede
+   fica opaca (foi o que escondeu a armadura). Deixe o material sempre transparent e mude só a opacidade, ou use outro material + needsUpdate.
+3. Sem superfícies coplanares (z-fighting = chão "chuviscando"): separar ≥ 3 cm. Câmera com near ≥ 0,2.
+4. Luz/sombra FIXA (não seguir o alvo da câmera), senão a sombra "treme".
+5. Animações rápidas (pá cavando, vibração de bomba, "VRRRR") com amplitude pequena e frequência ≤ 3 Hz: oscilação rápida vira pisca-pisca.
+6. Tudo que a narração CITA tem que estar na tela, grande e em foco DURANTE a frase: entrar ~0,2 s antes da palavra e ficar até o fim da frase,
+   dentro da faixa y 300–1150 (abaixo disso ficam legenda, @ e avatar e o objeto some atrás deles — foi o caso da bomba/boia).
+   Se o objeto é pequeno (lâmpada, brita, boia), a câmera aproxima nele naquela frase.
+7. Os tempos de cada palavra são estimados por sílaba dentro da frase; para eventos visuais importantes use o INÍCIO DA FRASE (exato)
+   ou a palavra-chave com folga de 0,3 s para antes.
+8. QA obrigatório antes de entregar (ferramentas em `motor3d/`):
+   - `python3 qa_palavras.py <mp4> work/timing.json "1:desmor,6:racha,..." folha.jpg` → OLHAR: cada palavra-chave mostra o objeto citado?
+   - `python3 qa_piscadas.py <mp4>` → lista trechos suspeitos (confete e texto pulando também aparecem; olhe os quadros seguidos de cada trecho).
+   - Corrigir, re-renderizar só os trechos afetados e repetir.

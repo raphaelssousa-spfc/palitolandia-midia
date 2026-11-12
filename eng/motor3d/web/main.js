@@ -25,10 +25,10 @@ R.outputColorSpace = THREE.SRGBColorSpace; R.toneMapping = THREE.ACESFilmicToneM
 const scene = new THREE.Scene();
 const SKY = new THREE.Color('#cfe3ef');
 scene.background = SKY; scene.fog = new THREE.Fog('#d9e6ea', 22, 60);
-const cam = new THREE.PerspectiveCamera(40, W / H, 0.05, 200);
+const cam = new THREE.PerspectiveCamera(40, W / H, 0.2, 200);
 const hemi = new THREE.HemisphereLight('#eaf4ff', '#8a5a3a', 1.25); scene.add(hemi);
 const sun = new THREE.DirectionalLight('#fff3df', 2.4); sun.position.set(6, 12, 8); sun.castShadow = true;
-sun.shadow.mapSize.set(2048, 2048); const sc = sun.shadow.camera; sc.left = -9; sc.right = 9; sc.top = 9; sc.bottom = -9; sc.near = 1; sc.far = 40;
+sun.shadow.mapSize.set(2048, 2048); const sc = sun.shadow.camera; sc.left = -14; sc.right = 14; sc.top = 14; sc.bottom = -14; sc.near = 1; sc.far = 40;
 sun.shadow.bias = -0.0006; sun.shadow.normalBias = 0.02; scene.add(sun); scene.add(sun.target);
 const fill = new THREE.PointLight('#ffd9a8', 0, 6, 1.6); scene.add(fill); // luz no fundo do poço (vista em corte)
 // ---------- texturas pintadas ----------
@@ -209,13 +209,13 @@ const full = new THREE.Group(); scene.add(full);
 mats.grass2 = M('#7fae4f'); mats.conc = M('#b9b5ad'); mats.concNew = M('#cfcac0'); mats.gravel = M('#8d8a86');
 mats.waterIn = new THREE.MeshStandardMaterial({ color: '#3d86c6', roughness: 0.15, transparent: true, opacity: 0.75, depthWrite: false });
 mats.waterSoil = new THREE.MeshBasicMaterial({ color: '#1f7bff', transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide });
-mats.manta = M('#1c1c1e', { roughness: 0.5 }); mats.wallT = M('#bdb8ae', { transparent: true, opacity: 1 }); mats.steel2 = M('#d0612c', { roughness: 0.5, metalness: 0.2, emissive: '#5a2008', emissiveIntensity: 0.4 });
+mats.manta = M('#1c1c1e', { roughness: 0.5 }); mats.wallT = M('#bdb8ae', { transparent: true, opacity: 1 }); // NUNCA alternar .transparent entre quadros (pisca) mats.steel2 = M('#d0612c', { roughness: 0.5, metalness: 0.2, emissive: '#5a2008', emissiveIntensity: 0.4 });
 // chão de cima (metade de trás, com o buraco)
 { const s = new THREE.Shape(); s.moveTo(-40, 0); s.lineTo(-PW, 0); s.lineTo(-PW, -PZ); s.lineTo(PW, -PZ); s.lineTo(PW, 0); s.lineTo(40, 0); s.lineTo(40, 40); s.lineTo(-40, 40);
   const g = new THREE.ShapeGeometry(s); g.rotateX(-Math.PI / 2); const uv = g.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) / 3, uv.getY(i) / 3);
   mesh(g, M('#ffffff', { map: dirtTex, side: THREE.DoubleSide, color: '#b9d68a' }), full, 0, 0, 0, false); }
 // grama em faixa por cima (verde) — fica no chão
-const lawn = new THREE.Mesh(new THREE.PlaneGeometry(80, 40).rotateX(-Math.PI / 2), mats.grass2); lawn.position.set(0, -0.005, -24); lawn.receiveShadow = true; scene.add(lawn);
+const lawn = new THREE.Mesh(new THREE.PlaneGeometry(80, 40).rotateX(-Math.PI / 2), mats.grass2); lawn.position.set(0, -0.04, -24); lawn.receiveShadow = true; scene.add(lawn);
 // face do corte com o buraco e o poço de drenagem
 { const s = new THREE.Shape(); s.moveTo(-40, -12); s.lineTo(40, -12); s.lineTo(40, 0); s.lineTo(PW, 0); s.lineTo(PW, PB); s.lineTo(1.5, PB); s.lineTo(1.5, -3.5); s.lineTo(0.8, -3.5); s.lineTo(0.8, PB); s.lineTo(-PW, PB); s.lineTo(-PW, 0); s.lineTo(-40, 0);
   const g = new THREE.ShapeGeometry(s); strataTex.repeat.set(1 / 4, 1 / 12); mesh(g, mats.strata, full, 0, 0, 0, false); }
@@ -379,7 +379,7 @@ function world(t) {
     for (const [j, sx] of [[0, -1], [1, 1]]) { placeArrow(loadArrows[j * 3], V(sx * WX, 0.9, -0.2), V(0, -1, 0), 2.4 * eo(r(t, tf + 0.6, tf + 1.2)) + 0.01);
       placeArrow(loadArrows[j * 3 + 1], V(sx * WX, -3.0, -0.2), V(-0.7, -1, 0), 1.1 * eo(r(t, te, te + 0.5)) + 0.01); placeArrow(loadArrows[j * 3 + 2], V(sx * WX, -3.0, -0.2), V(0.7, -1, 0), 1.1 * eo(r(t, te, te + 0.5)) + 0.01); }
     K = camKeys([[T.C, ...CAM_B], [T.D, V(0.2, -1.8, 13.5), V(0, -2.3, 0), 40]], t);
-    st.flash = 1 - r(t, T.C, T.C + 0.25);
+    st.flash = 0;
     st.html += pill(t, S(3) + 0.05, 'SAPATA CORRIDA', V2(540, 1120), 'green', V(-WX, -2.75, -0.1));
   } else if (sh === 'D') { // paredes sobem
     walls.children.forEach((m, i) => { const k = eo(r(t, S(4) + 0.4 + i * 0.12, S(4) + 1.5 + i * 0.12)); m.scale.y = Math.max(0.01, k); m.position.y = -2.6 + WH * k / 2; });
@@ -426,7 +426,7 @@ function world(t) {
     house.visible = true; house.position.set(0, 0, 0); house.rotation.set(0, 0, 0);
     scene.background = STORM; hemi.intensity = 0.6; sun.intensity = 0.7; setRain(t, true);
     const tl = wt(14, 'tempest'), tg = wt(14, 'gerador'); const lightning = t > tl && t < tl + 0.12 || t > tl + 0.25 && t < tl + 0.32;
-    st.flash = lightning ? 0.8 : 0; const off = t > wt(14, 'acaba') && t < tg + 0.1; st.dark = off ? 0.35 : 0.1;
+    st.flash = (t > tl && t < tl + 0.2) ? 0.22 * (1 - r(t, tl, tl + 0.2)) : 0; const off = t > wt(14, 'acaba') && t < tg + 0.1; st.dark = off ? 0.35 : 0.1;
     gen.visible = t > tg - 0.15; gen.scale.setScalar(Math.max(0.01, xB(t, tg - 0.15, 0.35)));
     sumpWater.visible = true; sumpWater.scale.y = 0.45; sumpWater.position.y = -3.45 + 0.225;
     setWaterIn(off ? 0.3 * r(t, wt(14, 'acaba'), tg) : (t > tg ? 0.3 * (1 - r(t, tg + 0.3, E(14))) : 0)); pump.position.x = !off && t > tg ? 1.15 + Math.sin(t * 60) * 0.006 : 1.15; setJet(t, t > tg + 0.3);
@@ -493,7 +493,7 @@ window.renderFrame = f => {
   if (st.shake > 0) { const a = st.shake * 0.08; p.add(V(noise(t * 30) * a, noise(t * 37, 1.3) * a, 0)); }
   p.add(V(Math.sin(t * 0.7) * 0.04, Math.sin(t * 0.9) * 0.03, 0));
   cam.position.copy(p); cam.fov = K[3]; cam.up.set(0, 1, 0); cam.lookAt(q); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
-  sun.target.position.set(q.x, Math.max(q.y, -3), q.z); sun.position.copy(sun.target.position).add(V(5, 12, 9));
+  sun.target.position.set(0, -1, -1.5); sun.position.set(5, 11, 7.5);
   R.render(scene, cam);
   canvas.style.filter = st.blur ? `blur(${st.blur}px)` : 'none';
   fxd.innerHTML = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 50%, rgba(0,0,0,${st.vig}) 100%)"></div>`
