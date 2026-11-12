@@ -4,14 +4,14 @@ const WX = 1.75, WT = 0.2, WTOP = 0.1, SLAB = -2.5;  // paredes
 const full = new THREE.Group(); scene.add(full);
 mats.grass2 = M('#7fae4f'); mats.conc = M('#b9b5ad'); mats.concNew = M('#cfcac0'); mats.gravel = M('#8d8a86');
 mats.waterIn = new THREE.MeshStandardMaterial({ color: '#3d86c6', roughness: 0.15, transparent: true, opacity: 0.75, depthWrite: false });
-mats.waterSoil = new THREE.MeshBasicMaterial({ color: '#2f7fd0', transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide });
-mats.manta = M('#1c1c1e', { roughness: 0.5 }); mats.wallT = M('#bdb8ae', { transparent: true, opacity: 1 }); mats.steel2 = M('#9a4a2a', { roughness: 0.6, metalness: 0.3 });
+mats.waterSoil = new THREE.MeshBasicMaterial({ color: '#1f7bff', transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide });
+mats.manta = M('#1c1c1e', { roughness: 0.5 }); mats.wallT = M('#bdb8ae', { transparent: true, opacity: 1 }); // NUNCA alternar .transparent entre quadros (pisca) mats.steel2 = M('#d0612c', { roughness: 0.5, metalness: 0.2, emissive: '#5a2008', emissiveIntensity: 0.4 });
 // chão de cima (metade de trás, com o buraco)
 { const s = new THREE.Shape(); s.moveTo(-40, 0); s.lineTo(-PW, 0); s.lineTo(-PW, -PZ); s.lineTo(PW, -PZ); s.lineTo(PW, 0); s.lineTo(40, 0); s.lineTo(40, 40); s.lineTo(-40, 40);
   const g = new THREE.ShapeGeometry(s); g.rotateX(-Math.PI / 2); const uv = g.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) / 3, uv.getY(i) / 3);
   mesh(g, M('#ffffff', { map: dirtTex, side: THREE.DoubleSide, color: '#b9d68a' }), full, 0, 0, 0, false); }
 // grama em faixa por cima (verde) — fica no chão
-const lawn = new THREE.Mesh(new THREE.PlaneGeometry(80, 40).rotateX(-Math.PI / 2), mats.grass2); lawn.position.set(0, -0.005, -24); lawn.receiveShadow = true; scene.add(lawn);
+const lawn = new THREE.Mesh(new THREE.PlaneGeometry(80, 40).rotateX(-Math.PI / 2), mats.grass2); lawn.position.set(0, -0.04, -24); lawn.receiveShadow = true; scene.add(lawn);
 // face do corte com o buraco e o poço de drenagem
 { const s = new THREE.Shape(); s.moveTo(-40, -12); s.lineTo(40, -12); s.lineTo(40, 0); s.lineTo(PW, 0); s.lineTo(PW, PB); s.lineTo(1.5, PB); s.lineTo(1.5, -3.5); s.lineTo(0.8, -3.5); s.lineTo(0.8, PB); s.lineTo(-PW, PB); s.lineTo(-PW, 0); s.lineTo(-40, 0);
   const g = new THREE.ShapeGeometry(s); strataTex.repeat.set(1 / 4, 1 / 12); mesh(g, mats.strata, full, 0, 0, 0, false); }
@@ -21,6 +21,7 @@ for (const sx of [-1, 1]) { const p = mesh(new THREE.PlaneGeometry(-PZ, -PB), M(
 mesh(new THREE.PlaneGeometry(2 * PW, -PZ).rotateX(-Math.PI / 2), M('#7a4a2c'), full, 0, PB, PZ / 2, false);
 // terra que vai saindo (buraco sendo cavado)
 const fillBox = mesh(new THREE.BoxGeometry(2 * PW - 0.02, 1, -PZ - 0.02), M('#ffffff', { map: dirtTex }), full, 0, 0, PZ / 2, false);
+const notchFill = mesh(new THREE.PlaneGeometry(0.72, 0.62), M('#ffffff', { map: strataTex, side: THREE.DoubleSide }), full, 1.15, -3.2, 0.0, false);
 // água no solo (lençol), duas faixas na face do corte
 const wsL = mesh(new THREE.PlaneGeometry(1, 1), mats.waterSoil, full, 0, 0, 0.02, false), wsR = mesh(new THREE.PlaneGeometry(1, 1), mats.waterSoil, full, 0, 0, 0.02, false);
 const wsB = mesh(new THREE.PlaneGeometry(1, 1), mats.waterSoil, full, 0, 0, PZ - 0.01, false);
@@ -39,10 +40,10 @@ const slab = mesh(new THREE.BoxGeometry(2 * WX - WT, 0.12, -PZ - 0.5), mats.conc
 // armadura
 const rebar = new THREE.Group(); struct.add(rebar);
 for (const sx of [-1, 1]) {
-  for (let z = -0.15; z > PZ + 0.4; z -= 0.35) mesh(new THREE.CylinderGeometry(0.018, 0.018, WH - 0.1, 6), mats.steel2, rebar, sx * WX, -2.6 + WH / 2, z, false);
-  for (let y = -2.45; y < 0; y += 0.3) mesh(new THREE.CylinderGeometry(0.016, 0.016, -PZ - 0.45, 6).rotateX(Math.PI / 2), mats.steel2, rebar, sx * WX, y, (PZ + 0.3) / 2, false); }
-for (let x = -WX + 0.2; x < WX; x += 0.35) mesh(new THREE.CylinderGeometry(0.018, 0.018, WH - 0.1, 6), mats.steel2, rebar, x, -2.6 + WH / 2, PZ + 0.4, false);
-for (let y = -2.45; y < 0; y += 0.3) mesh(new THREE.CylinderGeometry(0.016, 0.016, 2 * WX, 6).rotateZ(Math.PI / 2), mats.steel2, rebar, 0, y, PZ + 0.4, false);
+  for (let z = -0.15; z > PZ + 0.4; z -= 0.35) mesh(new THREE.CylinderGeometry(0.035, 0.035, WH - 0.1, 6), mats.steel2, rebar, sx * WX, -2.6 + WH / 2, z, false);
+  for (let y = -2.45; y < 0; y += 0.3) mesh(new THREE.CylinderGeometry(0.03, 0.03, -PZ - 0.45, 6).rotateX(Math.PI / 2), mats.steel2, rebar, sx * WX, y, (PZ + 0.3) / 2, false); }
+for (let x = -WX + 0.2; x < WX; x += 0.35) mesh(new THREE.CylinderGeometry(0.035, 0.035, WH - 0.1, 6), mats.steel2, rebar, x, -2.6 + WH / 2, PZ + 0.4, false);
+for (let y = -2.45; y < 0; y += 0.3) mesh(new THREE.CylinderGeometry(0.03, 0.03, 2 * WX, 6).rotateZ(Math.PI / 2), mats.steel2, rebar, 0, y, PZ + 0.4, false);
 // rachadura na parede do fundo
 const crack = new THREE.Group(); struct.add(crack);
 { let x = -0.6, y = -0.3; const pts = [[-0.6, -0.3]]; for (let i = 0; i < 9; i++) { x += 0.12 + Math.sin(i * 2.3) * 0.08; y -= 0.22 + Math.cos(i * 1.7) * 0.06; pts.push([x, y]); }

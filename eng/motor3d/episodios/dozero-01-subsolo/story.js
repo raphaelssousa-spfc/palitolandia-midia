@@ -16,13 +16,13 @@ function world(t) {
   scene.background = SKYC; hemi.intensity = 1.25; sun.intensity = 2.4;
   struct.visible = after('C'); footings.visible = after('C'); walls.visible = after('D'); slab.visible = after('D');
   rebar.visible = sh === 'F'; crack.visible = sh === 'E' && t > S(6); drain.visible = after('H'); sump.visible = after('J'); outPipe.visible = after('J');
-  stairs.visible = after('N'); setManta(after('L') ? (sh === 'L' ? sm(r(t, wt(15, 'cobre'), wt(15, 'cobre') + 1.6)) : 1) : 0);
-  mats.wallT.opacity = 1; mats.wallT.transparent = false; mats.wallT.color.set('#bdb8ae'); mats.wallT.depthWrite = true;
+  stairs.visible = after('N'); notchFill.visible = !after('J') || (sh === 'J' && t < wt(13, 'poço') - 0.2); setManta(after('L') ? (sh === 'L' ? sm(r(t, wt(15, 'cobre'), wt(15, 'cobre') + 1.6)) : 1) : 0);
+  mats.wallT.opacity = 1; mats.wallT.transparent = true; mats.wallT.color.set('#bdb8ae'); mats.wallT.depthWrite = true;
   waterTable(-12, 0); setWaterIn(0); sumpWater.visible = false; floatBall.position.y = -3.15; pump.position.x = 1.15;
   footings.children.forEach(m => { m.scale.y = 1; m.position.y = -2.75; });
   walls.children.forEach(m => { m.scale.y = 1; m.position.y = -2.6 + WH / 2; });
   const wtab = after('G') ? (sh === 'G' ? lerp(-12, -1.4, sm(r(t, S(9) + 0.3, S(9) + 2.2))) : -1.4) : -12;
-  if (after('G')) waterTable(wtab, 0.38);
+  if (after('G')) waterTable(wtab, 0.5);
   let K;
   if (sh === 'A') { // cava o buraco, casa em cima
     const tc = wt(0, 'constr'); const dig = sm(r(t, 0.2, tc - 0.2)); const top = lerp(-0.02, PB, dig);
@@ -45,7 +45,7 @@ function world(t) {
     for (const [j, sx] of [[0, -1], [1, 1]]) { placeArrow(loadArrows[j * 3], V(sx * WX, 0.9, -0.2), V(0, -1, 0), 2.4 * eo(r(t, tf + 0.6, tf + 1.2)) + 0.01);
       placeArrow(loadArrows[j * 3 + 1], V(sx * WX, -3.0, -0.2), V(-0.7, -1, 0), 1.1 * eo(r(t, te, te + 0.5)) + 0.01); placeArrow(loadArrows[j * 3 + 2], V(sx * WX, -3.0, -0.2), V(0.7, -1, 0), 1.1 * eo(r(t, te, te + 0.5)) + 0.01); }
     K = camKeys([[T.C, ...CAM_B], [T.D, V(0.2, -1.8, 13.5), V(0, -2.3, 0), 40]], t);
-    st.flash = 1 - r(t, T.C, T.C + 0.25);
+    st.flash = 0;
     st.html += pill(t, S(3) + 0.05, 'SAPATA CORRIDA', V2(540, 1120), 'green', V(-WX, -2.75, -0.1));
   } else if (sh === 'D') { // paredes sobem
     walls.children.forEach((m, i) => { const k = eo(r(t, S(4) + 0.4 + i * 0.12, S(4) + 1.5 + i * 0.12)); m.scale.y = Math.max(0.01, k); m.position.y = -2.6 + WH * k / 2; });
@@ -61,7 +61,7 @@ function world(t) {
     st.html += carsCard(t, wt(5, '15') - 0.3, S(6) + 0.3);
     st.html += pill(t, S(6) + 0.75, 'RACHOU!', V2(300, 520), 'red', V(-0.2, -1.0, PZ + 0.5));
   } else if (sh === 'F') { // concreto armado
-    mats.wallT.transparent = true; mats.wallT.opacity = lerp(1, 0.28, r(t, S(7) + 0.3, S(7) + 0.8)); mats.wallT.depthWrite = false;
+    mats.wallT.opacity = lerp(1, 0.28, r(t, S(7) + 0.3, S(7) + 0.8)); mats.wallT.depthWrite = false;
     const g = eo(r(t, wt(7, 'barras'), wt(7, 'barras') + 1.0)); rebar.children.forEach((m, i) => { m.scale.y = Math.max(0.01, g); });
     K = camKeys([[T.F, V(0.2, -1.5, 11.5), V(0, -1.4, -1.5), 40], [T.G, V(2.2, -1.2, 10.5), V(0.4, -1.6, -1.3), 40]], t);
     st.html += pill(t, S(8) + 0.05, 'CONCRETO ARMADO', V2(540, 380), 'green', V(-WX, -0.6, -0.6));
@@ -92,7 +92,7 @@ function world(t) {
     house.visible = true; house.position.set(0, 0, 0); house.rotation.set(0, 0, 0);
     scene.background = STORM; hemi.intensity = 0.6; sun.intensity = 0.7; setRain(t, true);
     const tl = wt(14, 'tempest'), tg = wt(14, 'gerador'); const lightning = t > tl && t < tl + 0.12 || t > tl + 0.25 && t < tl + 0.32;
-    st.flash = lightning ? 0.8 : 0; const off = t > wt(14, 'acaba') && t < tg + 0.1; st.dark = off ? 0.35 : 0.1;
+    st.flash = (t > tl && t < tl + 0.2) ? 0.22 * (1 - r(t, tl, tl + 0.2)) : 0; const off = t > wt(14, 'acaba') && t < tg + 0.1; st.dark = off ? 0.35 : 0.1;
     gen.visible = t > tg - 0.15; gen.scale.setScalar(Math.max(0.01, xB(t, tg - 0.15, 0.35)));
     sumpWater.visible = true; sumpWater.scale.y = 0.45; sumpWater.position.y = -3.45 + 0.225;
     setWaterIn(off ? 0.3 * r(t, wt(14, 'acaba'), tg) : (t > tg ? 0.3 * (1 - r(t, tg + 0.3, E(14))) : 0)); pump.position.x = !off && t > tg ? 1.15 + Math.sin(t * 60) * 0.006 : 1.15; setJet(t, t > tg + 0.3);
@@ -104,7 +104,7 @@ function world(t) {
     mats.wallT.color.set('#bdb8ae').lerp(new THREE.Color('#5d7f9e'), wet * 0.7);
     for (let i = 0; i < 6; i++) { const sx = i % 2 ? 1 : -1; const k = ((t * 0.9 + i * 0.2) % 1); placeArrow(flowArrows[i], V(sx * (3.3 - k * 0.9), -0.8 - (i >> 1) * 0.6, 0.12), V(-sx, 0, 0), 0.45, wet > 0.05); }
     K = camKeys([[T.L, V(0.3, -1.5, 12.5), V(0, -1.6, -1), 40], [wt(15, 'cobre'), V(-2.2, -1.3, 10.5), V(-0.6, -1.5, -1.2), 40], [T.M, V(-2.6, -1.2, 10.0), V(-0.8, -1.5, -1.2), 40]], t);
-    st.html += pill(t, wt(15, 'manta') + 0.05, 'MANTA ASFÁLTICA', V2(330, 420), '', V(-WX - 0.13, -1.2, -0.05));
+    st.html += pill(t, wt(15, 'manta') + 0.05, 'MANTA ASFÁLTICA', V2(330, 520), '', V(-WX - 0.13, -1.2, -0.05), S(16) - 0.1);
     st.html += big(t, S(16) + 0.05, 'IMPERMEABILIZAÇÃO', 330, '#7dffa8', 84);
   } else if (sh === 'M') { // bomba que liga sozinha no prédio
     building.visible = true; carN.visible = true; carN.position.set(0.25, SLAB + 0.02, -1.75); carN.rotation.set(0, 0, 0); carN.scale.setScalar(0.92);
@@ -159,7 +159,7 @@ window.renderFrame = f => {
   if (st.shake > 0) { const a = st.shake * 0.08; p.add(V(noise(t * 30) * a, noise(t * 37, 1.3) * a, 0)); }
   p.add(V(Math.sin(t * 0.7) * 0.04, Math.sin(t * 0.9) * 0.03, 0));
   cam.position.copy(p); cam.fov = K[3]; cam.up.set(0, 1, 0); cam.lookAt(q); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
-  sun.target.position.set(q.x, Math.max(q.y, -3), q.z); sun.position.copy(sun.target.position).add(V(5, 12, 9));
+  sun.target.position.set(0, -1, -1.5); sun.position.set(5, 11, 7.5);
   R.render(scene, cam);
   canvas.style.filter = st.blur ? `blur(${st.blur}px)` : 'none';
   fxd.innerHTML = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 50%, rgba(0,0,0,${st.vig}) 100%)"></div>`
@@ -170,5 +170,19 @@ window.renderFrame = f => {
     + `<div style="position:absolute;inset:0;background:#000;opacity:${cl((f - (F_TOT - 18)) / 18)}"></div>`;
 };
 await document.fonts.load('900 40px InterD'); await document.fonts.load('800 40px InterD'); await document.fonts.load('800 40px P'); await document.fonts.load('900 40px P'); await document.fonts.load('700 40px P'); await document.fonts.load('600 40px P');
+
+window.renderCover = (cy = 3.2, dist = 21) => {
+  const t = S(20) + 0.3; world(t);
+  cam.position.set(1.2, cy - 0.6, dist); cam.fov = 40; cam.up.set(0, 1, 0); cam.lookAt(V(0, cy, -1)); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+  sun.target.position.set(0, -1, 0); sun.position.set(5, 11, 9); R.render(scene, cam); canvas.style.filter = 'none';
+  fxd.innerHTML = `<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,22,34,.92) 0%,rgba(14,22,34,.78) 34%,rgba(14,22,34,0) 52%,rgba(14,22,34,0) 74%,rgba(14,22,34,.9) 86%)"></div>`;
+  const av = window.AV.svg(0, 0, 0);
+  ov.innerHTML = `<div style="position:absolute;left:110px;top:290px;background:#FFC20E;color:#111;font-family:InterD;font-weight:900;font-size:36px;letter-spacing:5px;padding:12px 30px;border-radius:40px">DO ZERO</div>
+   <div style="position:absolute;right:110px;top:300px;color:#FFC20E;font-family:InterD;font-weight:900;font-size:44px">#01</div>
+   <div style="position:absolute;left:110px;right:80px;top:390px;font-family:InterD;font-weight:900;font-size:112px;line-height:1.0;letter-spacing:-4px;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.5)">Como um<br><span style="color:#8fd0ff">buraco</span> vira<br>um <span style="display:inline-block;background:#FFC20E;color:#111;padding:0 18px 8px;border-radius:18px;transform:rotate(-2deg)">subsolo</span>?</div>
+   <div style="position:absolute;left:110px;top:1560px;display:flex;align-items:center;gap:26px">
+    <div style="width:150px;height:150px;box-sizing:border-box;border-radius:75px;overflow:hidden;background:#30343A;border:7px solid #FFC20E">${av}</div>
+    <div><div style="font-family:InterD;font-weight:900;font-size:50px;color:#fff">@eng.raphaelserra</div><div style="font-family:InterD;font-weight:600;font-size:34px;color:#c9d2dc">Engenheiro civil explica</div></div></div>`;
+};
 window.renderFrame(0); window.ready = true;
 } catch (e) { console.log('ERR ' + e.stack); window.err = String(e); }
