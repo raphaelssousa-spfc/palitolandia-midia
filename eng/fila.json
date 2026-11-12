@@ -40,11 +40,13 @@
     },
     {
       "id": "pavimentacao-02-tapa-buraco",
-      "status": "pendente",
+      "status": "postado",
       "video": "videos/pavimentacao-02-tapa-buraco.mp4",
       "capa": "videos/pavimentacao-02-tapa-buraco-capa.jpg",
       "legenda": "Por que o tapa-buraco não dura? 🕳️🚧\nNa sua rua ele dura quanto tempo?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #tapaburaco #buraco #estradas #infraestrutura #obra",
-      "comentario": "Quanto tempo durou o último tapa-buraco da sua rua? 👇"
+      "comentario": "Quanto tempo durou o último tapa-buraco da sua rua? 👇",
+      "postado_em": "2026-11-12 13:15",
+      "media_id": "18647362705036801"
     },
     {
       "id": "construcao-05-verga",
