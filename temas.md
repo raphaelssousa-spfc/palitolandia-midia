@@ -5,3 +5,5 @@
 - A Torre Eiffel cresce no verão
 - Oxford é mais velha que o Império Asteca
 - O fax é mais velho que o telefone (1843 x 1876; Paris–Lyon 1865) — inspirado no formato 'como funciona' do Zack D. Films
+
+- A lata é mais velha que o abridor (1810 x 1858; martelo e talhadeira, baioneta; ferro grosso → lata fina)
