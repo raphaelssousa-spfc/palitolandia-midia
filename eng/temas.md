@@ -18,10 +18,10 @@
 - Como o Burj Khalifa não afunda na areia?
 - Por que o Japão não desaba nos terremotos? (isolamento sísmico)
 - Por que não se pode tirar uma parede qualquer? (alvenaria estrutural)
-- PRÓXIMO CARROSSEL (checklist): 10 coisas pra conferir antes de pegar a chave do apartamento novo (vistoria de entrega) · ref.: https://www.youtube.com/watch?v=d_Sf13Iu640 (Studio Dotti Arquitetura, 202 mil views)
+- PRÓXIMO CARROSSEL (checklist): 10 coisas pra conferir na vistoria da casa do Minha Casa Minha Vida antes de pegar a chave · ref.: https://www.youtube.com/watch?v=x8mcJBb712Q (Casal ponto com, vistoria MRV reprovada, 180 mil views) e https://www.youtube.com/watch?v=N77Rmkg8mlQ (Cantinho da Tathi, vistoria MCMV, 147 mil views)
 
 ## Fila de carrosséis (nessa ordem; não postar 2 parecidos seguidos)
-1. Vistoria do apê novo (acima)
+1. Vistoria da casa do Minha Casa Minha Vida (acima)
 2. ERROS BIZARROS DE OBRA · Parte 1/4 · 10 erros (checklist) · ref.: https://www.youtube.com/watch?v=PLQD3IQ8d1Y (Faça Sua Obra, "40 erros bizarros da construção", 1,36 mi views)
 3. 10 dicas pra economizar na obra (checklist) · ref.: https://www.youtube.com/results?search_query=20+dicas+para+economizar+na+obra+planarq (PLANARQ Campos, 827 mil views)
 4. (outro assunto antes da próxima parte)
