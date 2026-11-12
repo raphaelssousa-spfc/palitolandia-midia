@@ -6,7 +6,7 @@
   "itens": [
     {
       "id": "construcao-c01-sinais-infiltracao",
-      "status": "pendente",
+      "status": "postado",
       "pasta": "carrosseis/construcao-c01-sinais-infiltracao",
       "imagens": [
         "carrosseis/construcao-c01-sinais-infiltracao/01.jpg",
@@ -20,7 +20,9 @@
         "carrosseis/construcao-c01-sinais-infiltracao/09.jpg"
       ],
       "legenda": "6 sinais de infiltração na sua casa 💧\nO nº 4 quase ninguém percebe.\nQual desses tem aí? Comenta aqui 👇\n\n#engenhariacivil #infiltracao #umidade #mofo #reforma #construcaocivil #casapropria #dicasdeobra",
-      "comentario": "Salva pra conferir aí na sua casa depois 🔖"
+      "comentario": "Salva pra conferir aí na sua casa depois 🔖",
+      "postado_em": "2026-11-12 09:16",
+      "media_id": "17977908762154376"
     },
     {
       "id": "pavimentacao-c02-como-asfaltar-rua",
