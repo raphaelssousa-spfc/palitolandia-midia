@@ -1,0 +1,20 @@
+{
+  "serie": "pavimentacao",
+  "categoria": "PAVIMENTAÇÃO",
+  "episodio": "CARROSSEL #02",
+  "capa_estilo": "centro",
+  "cores": {"bg": "#1E2228", "card": "#2C3138", "acc": "#FF8A00", "ring": "#FF8A00", "pill": "#FF8A00", "pillText": "#111111"},
+  "referencia": "https://materiais.britagemvogelsanger.com.br/infografico-todos-os-passos-para-uma-pavimentacao-asfaltica-perfeita",
+  "slides": [
+    {"tipo": "capa", "titulo": "Como a sua rua ganha asfalto", "destaque": "asfalto", "subtitulo": "O asfalto é só a última camada. O segredo está embaixo.", "ilustracao": "camadas"},
+    {"tipo": "passo", "numero": 1, "titulo": "Limpar e acertar o terreno", "texto": "A topografia marca os níveis e as máquinas cortam ou aterram até a rua ficar no traçado certo.", "icone": "caminhao"},
+    {"tipo": "passo", "numero": 2, "titulo": "Drenagem antes de tudo", "texto": "Guias, sarjetas e bocas de lobo vêm primeiro. Água parada embaixo do asfalto vira buraco.", "icone": "bueiro"},
+    {"tipo": "passo", "numero": 3, "titulo": "Compactar o subleito", "texto": "O solo natural é nivelado e compactado com rolo. É ele que recebe toda a carga no final.", "icone": "compactador"},
+    {"tipo": "passo", "numero": 4, "titulo": "Sub-base e base de brita", "texto": "Camadas de pedra britada ou solo escolhido, compactadas uma a uma. Elas espalham o peso.", "icone": "camadas"},
+    {"tipo": "passo", "numero": 5, "titulo": "Imprimação: a \"cola\" da base", "texto": "Um asfalto líquido é borrifado na base para impermeabilizar e ajudar o revestimento a grudar.", "icone": "gota"},
+    {"tipo": "passo", "numero": 6, "titulo": "Espalhar o asfalto quente", "texto": "A massa asfáltica chega da usina a mais de 100 °C e a vibroacabadora espalha tudo por igual.", "icone": "termometro"},
+    {"tipo": "passo", "numero": 7, "titulo": "Compactar e liberar", "texto": "Rolos de pneu e de chapa apertam a massa ainda quente. Depois de esfriar, sinaliza e libera.", "icone": "cone"},
+    {"tipo": "resumo", "titulo": "Por que dá tanto buraco?", "pontos": ["Drenagem mal feita", "Base fina ou mal compactada", "Asfalto aplicado já frio", "Asfalto bom começa embaixo"]},
+    {"tipo": "final", "pergunta": "Na sua rua, o asfalto dura ou vive com buraco?"}
+  ]
+}

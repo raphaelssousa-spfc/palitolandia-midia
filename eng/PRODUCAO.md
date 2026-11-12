@@ -86,7 +86,7 @@ e a folha de prévia `eng/motor/out/<id>_previa.jpg` (OLHAR antes de publicar: t
 - Estrutura: 1) "capa" (titulo + destaque = palavra-chave colorida, subtitulo que gera curiosidade, ilustracao)
   2) 5–7 "item" ou "passo" (titulo ≤ 45 caracteres, texto ≤ 110 caracteres, icone) 3) "resumo" (3–4 pontos curtos) 4) "final" (pergunta ao público).
 - Ícones disponíveis: casa, rachadura, gota, mofo, bolha, rodape, nariz, salitre, laje, fundacao, tijolo, planta, dinheiro, calendario, regua,
-  martelo, capacete, check, alerta, x, estrada, buraco, cone, caminhao, chuva, rolo, sol, lupa. (Para um ícone novo, acrescente em `src/Carrossel.tsx`.)
+  martelo, capacete, check, alerta, x, estrada, buraco, cone, caminhao, chuva, rolo, sol, lupa, camadas, bueiro, compactador, termometro. (Para um ícone novo, acrescente em `src/Carrossel.tsx`.)
 - Fatos conferidos com WebSearch, igual aos vídeos. Legenda do post curta: título + gancho + pergunta + "Comenta aqui 👇" + hashtags.
 - Fila: `eng/fila_carrossel.json` (campos: id, status, pasta, imagens [lista de caminhos relativos a eng/], legenda, comentario).
 ### Como postar carrossel

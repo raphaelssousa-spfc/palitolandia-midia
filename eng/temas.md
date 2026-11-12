@@ -30,3 +30,4 @@
 
 # Carrosséis já usados (não repetir)
 - construção · UMIDADE · CARROSSEL #01 · 6 sinais de infiltração na sua casa (checklist)
+- pavimentação · PAVIMENTAÇÃO · CARROSSEL #02 · Como a sua rua ganha asfalto (passo a passo) · ref.: https://materiais.britagemvogelsanger.com.br/infografico-todos-os-passos-para-uma-pavimentacao-asfaltica-perfeita
