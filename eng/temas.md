@@ -18,6 +18,7 @@
 - Como o Burj Khalifa não afunda na areia?
 - Por que o Japão não desaba nos terremotos? (isolamento sísmico)
 - Por que não se pode tirar uma parede qualquer? (alvenaria estrutural)
+- PRÓXIMO CARROSSEL (checklist): 10 coisas pra conferir antes de pegar a chave do apartamento novo (vistoria de entrega) · ref.: https://www.youtube.com/watch?v=d_Sf13Iu640 (Studio Dotti Arquitetura, 202 mil views)
 ## Pavimentação
 - Por que a estrada é mais alta no meio? (abaulamento)
 - O que tem embaixo do asfalto? (camadas)
