@@ -5,7 +5,7 @@
 - pavimentação · PAVIMENTAÇÃO #01 · Por que o asfalto do Brasil tem tanto buraco? (postado manualmente)
 - construção · CONCRETO #04 · Por que molham o concreto depois de pronto? (cura)
 
-- DO ZERO (3D, "Se você...") · #01 · Como um buraco no quintal vira um subsolo? (agendado 12/11 21:10)
+- DO ZERO (3D, "Se você...") · #01 · Como um buraco no quintal vira um subsolo? (agendado 12/11 07:10)
 
 # Ideias de temas (pegar daqui; riscar ao usar)
 ## Construção

@@ -103,3 +103,13 @@ Antes de cada carrossel novo:
 - O ambiente automático NÃO consegue baixar imagens da internet (bancos de fotos são bloqueados pela rede). Então só use fotos do banco
   `eng/fotos/`. Sem foto adequada, use as ilustrações do kit e, na mensagem ao dono, diga quais 2–3 fotos ajudariam (nome sugerido do arquivo).
 - Nunca use foto de outro perfil, nem imagem sem licença livre.
+
+## Horário de postagens avulsas (regra do dono, a partir de 12/11)
+Para vídeos fora da fila fixa (ex.: série DO ZERO), SEMPRE:
+1. Analisar o melhor horário para AQUELE dia da semana (dados recentes de Buffer/Metricool/mLabs para Reels no Brasil e, quando houver
+   histórico suficiente, o alcance por horário do próprio @eng.raphaelserra no Windsor.ai).
+2. Conferir a grade já ocupada (list_triggers): @eng.raphaelserra 09:10 (carrossel), 13:10 e 19:10 (Reels); Palitolândia é outra conta.
+   Se o melhor horário chocar ou ficar a menos de ~2 h de outra postagem do mesmo perfil, escolher o próximo horário bom do dia.
+3. Marcar o item em eng/fila.json com status "agendado" e "agendado_para" (não "pendente", para não entrar na fila fixa)
+   e criar uma tarefa agendada única (create_trigger com run_once_at) que posta só esse item.
+4. Avisar o dono do horário escolhido e o porquê em uma linha.
