@@ -31,7 +31,10 @@ ATENÇÃO: a conta `17841460341094597` é a da Palitolândia; nunca postar engen
 |---|---|---|
 | Construção (PATOLOGIAS, CUSTOS DE OBRA, ERROS DE OBRA, FUNDAÇÕES...) | Minimalista premium: fundo creme #F6F3EE, preto #1A1A1A, laranja #D9480F, casas isométricas | `src/Erros.tsx` (mais completo), `src/Custo.tsx`; capas em `src/Capas.tsx` |
 | Pavimentação (PAVIMENTAÇÃO) | Asfalto: fundo escuro com textura, faixa amarela correndo na lateral, amarelo #FFC20E, medidor "Condição da pista" | `src/Pave.tsx` (também tem a capa `CapaPave01`) |
-Alternar as séries (ver a última linha de `temas.md`). Episódios numerados por série.
+| DO ZERO ("Se você...", inspirada no You Made It) | 3D low-poly em corte (three.js), 60–75 s, voz pm_santa 1.15, legenda palavra a palavra, avatar no canto e tela final | `motor3d/` (scene.js + story.js do subsolo) |
+Alternar as séries (ver a última linha de `temas.md`). A série DO ZERO é produzida sob pedido do dono (não entra na produção automática diária).
+Fórmula DO ZERO: "Se você [faz do jeito mais simples], você tem um [coisa]" → "Mas…" (problema) → "Então você…" (solução) → "Isso é um [nome técnico]" (6–8 vezes) → revelação ("aquilo que você vê… não é defeito") → 3 itens finais com piada → "Parabéns. Você construiu um ___." → tela final.
+Palavras sensíveis: evitar "morte", "morreu", "tragédia" etc. (usar "casos fatais", "vítimas"). Episódios numerados por série.
 Produção: 2 vídeos por dia (tarefa diária 02:47), parando quando houver 4 ou mais pendentes na fila.
 
 ## Como produzir um vídeo

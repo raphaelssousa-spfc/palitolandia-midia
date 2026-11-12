@@ -25,6 +25,16 @@
       "comentario": "Na sua obra molharam a laje quantos dias? 👇",
       "postado_em": "2026-11-11 19:12",
       "media_id": "18197476795400711"
+    },
+    {
+      "id": "dozero-01-subsolo",
+      "status": "agendado",
+      "agendado_para": "2026-11-12 21:10",
+      "obs": "Postagem avulsa por tarefa agendada única (série DO ZERO). NÃO entra na fila das 13:10/19:10.",
+      "video": "videos/dozero-01-subsolo.mp4",
+      "capa": "videos/dozero-01-subsolo-capa.jpg",
+      "legenda": "Como um buraco no quintal vira um subsolo? 🕳️🏠\nVocê teria um subsolo na sua casa?\nComenta aqui 👇\n\n#engenhariacivil #construcaocivil #subsolo #obra #fundacao #impermeabilizacao #concretoarmado #engenharia",
+      "comentario": "Qual dessas etapas você não sabia que existia? 👇"
     }
   ],
   "frequencia": "todos os dias, 2 postagens"

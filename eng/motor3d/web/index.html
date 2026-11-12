@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:P;font-weight:500;src:url(fonts/poppins-latin-500-normal.woff2)}
+@font-face{font-family:P;font-weight:600;src:url(fonts/poppins-latin-600-normal.woff2)}
+@font-face{font-family:P;font-weight:700;src:url(fonts/poppins-latin-700-normal.woff2)}
+@font-face{font-family:P;font-weight:800;src:url(fonts/poppins-latin-800-normal.woff2)}
+@font-face{font-family:P;font-weight:900;src:url(fonts/poppins-latin-900-normal.woff2)}
+@font-face{font-family:InterD;font-weight:900;src:url(fonts/InterDisplay-Black.otf)}
+@font-face{font-family:InterD;font-weight:800;src:url(fonts/InterDisplay-ExtraBold.otf)}
+@font-face{font-family:InterD;font-weight:600;src:url(fonts/Inter-SemiBold.otf)}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000;font-family:P,sans-serif}
+#c{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#ov,#fx{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+.pill{position:absolute;transform:translate(-50%,-50%);background:#14171d;color:#fff;font-weight:800;font-size:34px;letter-spacing:.5px;
+  padding:8px 26px;border-radius:40px;border:3px solid rgba(255,255,255,.85);white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.pill.red{background:#d32424;border-color:#fff}
+.pill.green{background:#1f9d55;border-color:#fff}
+.pill.orange{background:#e8780c;border-color:#fff}
+.card{position:absolute;background:rgba(20,23,29,.93);border-radius:30px;border:3px solid #2f3540;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.big{position:absolute;left:0;width:1080px;text-align:center;font-weight:900;font-size:104px;line-height:1.05;letter-spacing:-1px;
+  color:#fff;-webkit-text-stroke:0;text-shadow:0 0 2px #000,0 6px 0 rgba(0,0,0,.55),0 10px 30px rgba(0,0,0,.5)}
+.cap{position:absolute;left:60px;width:960px;top:1290px;text-align:center;font-weight:800;font-size:58px;line-height:1.2;color:#fff;
+  text-shadow:0 0 3px #000,0 0 3px #000,0 4px 0 #000,0 6px 14px rgba(0,0,0,.6)}
+.cap b{color:#FFD21F;font-weight:800}
+.wm{position:absolute;left:0;width:1080px;top:1232px;text-align:center;font-weight:600;font-size:34px;color:rgba(255,255,255,.62);text-shadow:0 2px 6px rgba(0,0,0,.5)}
+</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><div id="fx"></div><div id="ov"></div>
+<script src="avatar.js"></script><script type="module" src="main.js"></script></body></html>
