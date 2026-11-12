@@ -4,6 +4,7 @@
 - construção · ERROS DE OBRA #03 · 5 erros que encarecem a sua obra (postado manualmente)
 - pavimentação · PAVIMENTAÇÃO #01 · Por que o asfalto do Brasil tem tanto buraco? (postado manualmente)
 - construção · CONCRETO #04 · Por que molham o concreto depois de pronto? (cura)
+- pavimentação · PAVIMENTAÇÃO #02 · Por que o tapa-buraco não dura? (jeito errado x remendo certo)
 
 - DO ZERO (3D, "Se você...") · #01 · Como um buraco no quintal vira um subsolo? (agendado 12/11 07:10)
 
@@ -18,7 +19,6 @@
 - Verga e contraverga: a peça que evita rachadura na janela
 - Por que não se pode tirar uma parede qualquer? (alvenaria estrutural)
 ## Pavimentação
-- Por que tapa-buraco não dura?
 - Por que a estrada é mais alta no meio? (abaulamento)
 - O que tem embaixo do asfalto? (camadas)
 - Asfalto x concreto: por que algumas rodovias usam concreto?
