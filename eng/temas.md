@@ -5,6 +5,7 @@
 - pavimentação · PAVIMENTAÇÃO #01 · Por que o asfalto do Brasil tem tanto buraco? (postado manualmente)
 - construção · CONCRETO #04 · Por que molham o concreto depois de pronto? (cura)
 - pavimentação · PAVIMENTAÇÃO #02 · Por que o tapa-buraco não dura? (jeito errado x remendo certo)
+- construção · ALVENARIA #05 · A trinca no canto da janela (verga e contraverga)
 
 - DO ZERO (3D, "Se você...") · #01 · Como um buraco no quintal vira um subsolo? (agendado 12/11 07:10)
 
@@ -16,7 +17,6 @@
 - Por que a Torre de Pisa tortou e não cai?
 - Como o Burj Khalifa não afunda na areia?
 - Por que o Japão não desaba nos terremotos? (isolamento sísmico)
-- Verga e contraverga: a peça que evita rachadura na janela
 - Por que não se pode tirar uma parede qualquer? (alvenaria estrutural)
 ## Pavimentação
 - Por que a estrada é mais alta no meio? (abaulamento)
