@@ -12,8 +12,9 @@ ATENÇÃO: a conta `17841460341094597` é a da Palitolândia; nunca postar engen
 3. Gancho forte no primeiro segundo: pergunta ou frase que desperte curiosidade (ex.: "Por que o asfalto do Brasil tem tanto buraco?").
 4. A imagem muda A CADA FRASE (corte, novo enquadramento ou nova ilustração). Nada de imagem parada por mais de uma frase.
 5. Muitas figuras, efeitos e sons (whoosh, pop, impacto, caixa registradora, chuva, caminhão: `motor/public/*.wav`).
-6. Final de verdade (regra do dono, 13/11): a solução/resumo, depois um pedido de SALVAR e MANDAR PRA ALGUÉM
-   (ex.: "Salva esse vídeo e manda pra quem tá construindo." / "Manda pra quem vive reclamando de buraco."), e então uma tela final com o avatar grande, "@eng.raphaelserra", botão "Seguir" virando "Seguindo ✓",
+6. Final de verdade (regra do dono, 13/11): a solução/resumo, depois o pedido completo: CURTE, COMENTA, SALVA/MANDA PRA ALGUÉM e SEGUE
+   (ex.: "Curte, salva e manda pra quem tá construindo. Comenta aqui como tá a sua obra, e segue pra ver o próximo." /
+   "Curte e manda pra quem vive reclamando de buraco. Comenta a sua cidade e segue o perfil."), e então uma tela final com o avatar grande, "@eng.raphaelserra", botão "Seguir" virando "Seguindo ✓",
    "Até o próximo!" e fade para preto (~3 s depois da última fala). Nunca terminar seco.
 7. Legenda queimada palavra por palavra (componente `Captions`) — entregar só a versão COM legenda.
 8. Avatar ilustrado do Raphael (`src/Raphael.tsx`) narrando no canto inferior esquerdo, boca sincronizada (`mouth_<id>.json`),
@@ -43,11 +44,8 @@ Vale para QUALQUER fluxo que baixe arquivo no notebook dele (ex.: cenas do TAAFT
 | DO ZERO ("Se você...", inspirada no You Made It) | 3D low-poly em corte (three.js), 60–75 s, voz pm_santa 1.15, legenda palavra a palavra, avatar no canto e tela final | `motor3d/` (scene.js + story.js do subsolo) |
 Proporção dos Reels animados (regra do dono, 13/11 — ele é pós-graduado em pavimentação): de cada 3 vídeos, 2 são de PAVIMENTAÇÃO
 e 1 de construção (creme). Ver as últimas linhas de `temas.md` para decidir. Nunca 2 de construção seguidos.
-ABERTURA NOVA da série creme (regra do dono, 13/11 — a série creme perdia 60–70% das pessoas nos 3 primeiros segundos, a de asfalto ~36%):
-- A cena 0 (gancho) da série creme NÃO usa fundo creme: fundo escuro grafite #1A1A1A, título branco enorme com a palavra-chave em laranja #D9480F,
-  entrando com zoom + tremor + som de impacto já no quadro 0 (nada de tela parada ou entrando devagar).
-- Já no 1º segundo aparece o problema em movimento (rachadura abrindo, água vazando, dinheiro voando...), grande e no centro.
-- O creme entra só a partir da cena 1, com corte rápido (flash). A série DO ZERO é produzida sob pedido do dono (não entra na produção automática diária).
+Série creme: fica COMO ESTÁ (regra do dono, 13/11 — o creme diferencia da série escura: dois assuntos diferentes). Só capriche no gancho.
+A série DO ZERO é produzida sob pedido do dono (não entra na produção automática diária).
 Fórmula DO ZERO: "Se você [faz do jeito mais simples], você tem um [coisa]" → "Mas…" (problema) → "Então você…" (solução) → "Isso é um [nome técnico]" (6–8 vezes) → revelação ("aquilo que você vê… não é defeito") → 3 itens finais com piada → "Parabéns. Você construiu um ___." → tela final.
 Palavras sensíveis: evitar "morte", "morreu", "tragédia" etc. (usar "casos fatais", "vítimas"). Episódios numerados por série.
 Produção: 2 vídeos por dia (tarefa diária 02:47), parando quando houver 4 ou mais pendentes na fila.
