@@ -41,3 +41,15 @@
 # Carrosséis já usados (não repetir)
 - construção · UMIDADE · CARROSSEL #01 · 6 sinais de infiltração na sua casa (checklist)
 - pavimentação · PAVIMENTAÇÃO · CARROSSEL #02 · Como a sua rua ganha asfalto (passo a passo) · ref.: https://materiais.britagemvogelsanger.com.br/infografico-todos-os-passos-para-uma-pavimentacao-asfaltica-perfeita
+
+## Próximos temas DO ZERO (escolha do dono — usar SEMPRE o primeiro da lista e depois apagá-lo daqui)
+1. Poço artesiano — gancho: "Se você cavar até achar água, você tem um poço." Revelação: em muito poço artesiano a água sobe sozinha (pressão do aquífero confinado). Conferir fatos.
+2. Laje — revelação: as barras de ferro saindo do teto são "espera" pro próximo andar.
+3. Caixa d'água — revelação: fica no alto porque a gravidade empurra a água (sem bomba).
+4. Fossa — revelação: o cano que sai do telhado é o respiro do esgoto.
+5. Telhado — revelação: inclinação certa senão a água volta.
+6. Muro de arrimo — revelação: os furinhos no muro são drenos.
+7. Prédio sobre estacas — revelação: muita estrutura fica embaixo da terra.
+8. Estrada — revelação: é mais alta no meio pra água escorrer.
+9. Ponte — revelação: a fresta de metal é junta de dilatação.
+10. Piscina — revelação: piscina vazia pode "boiar" e subir do chão.
