@@ -8,3 +8,4 @@
 
 - A lata é mais velha que o abridor (1810 x 1858; martelo e talhadeira, baioneta; ferro grosso → lata fina)
 - O isqueiro é mais velho que o fósforo (1823 x 1826; lâmpada de Döbereiner com ácido, do tamanho de uma garrafa; fósforo de fricção de John Walker, por acaso)
+- gps-da-novela · O GPS da novela (sátira: novela x Nordeste moderno) · avulso 13/11 17:00

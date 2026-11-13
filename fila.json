@@ -46,6 +46,16 @@
       "comentario": "Você sabia dessa? Comenta aqui 👇",
       "postado_em": "2026-11-12T18:33:47-03:00",
       "media_id": "17977439103172539"
+    },
+    {
+      "id": "gps-da-novela",
+      "status": "agendado",
+      "agendado_para": "2026-11-13 17:00",
+      "obs": "Postagem avulsa (tema do momento: novela x Nordeste) por tarefa agendada única às 17:00. NÃO é da fila das 18:10.",
+      "video": "videos/gps-da-novela.mp4",
+      "capa": "videos/gps-da-novela-capa.jpg",
+      "legenda": "O GPS da novela chegou em Fortaleza… e travou 🤯📍\nEle só queria achar UMA coisa.\nAté o fim tu entende 👀\nSegue @palitolandia.ia\n#novela #nordeste #fortaleza #humor #desenhoanimado #palitolandia",
+      "comentario": "O que a novela esqueceu de mostrar da tua cidade? Comenta aqui 👇"
     }
   ]
 }
