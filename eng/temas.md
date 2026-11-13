@@ -6,6 +6,7 @@
 - construção · CONCRETO #04 · Por que molham o concreto depois de pronto? (cura)
 - pavimentação · PAVIMENTAÇÃO #02 · Por que o tapa-buraco não dura? (jeito errado x remendo certo)
 - construção · ALVENARIA #05 · A trinca no canto da janela (verga e contraverga)
+- pavimentação · PAVIMENTAÇÃO #03 · Por que a estrada é mais alta no meio? (abaulamento ~2%, drenagem, aquaplanagem)
 
 - DO ZERO (3D, "Se você...") · #01 · Como um buraco no quintal vira um subsolo? (agendado 12/11 07:10)
 
@@ -28,7 +29,7 @@
 5. ERROS BIZARROS DE OBRA · Parte 2/4 · mais 10 erros
 - Depois, espaçadas com outros temas: Parte 3/4 e Parte 4/4 (10 erros cada, sem repetir erro das partes anteriores)
 ## Pavimentação
-- Por que a estrada é mais alta no meio? (abaulamento)
+- ~~Por que a estrada é mais alta no meio? (abaulamento)~~ (usado: PAVIMENTAÇÃO #03)
 - O que tem embaixo do asfalto? (camadas)
 - Asfalto x concreto: por que algumas rodovias usam concreto?
 - Bloquete, paralelepípedo ou asfalto: qual é melhor pra sua rua?
