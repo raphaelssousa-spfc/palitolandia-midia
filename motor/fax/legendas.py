@@ -1,11 +1,11 @@
 """Legendas estilo Shorts (ASS): 2-3 palavras por vez, MAIÚSCULAS, palavra falada em amarelo, números/palavras-chave em destaque."""
 import re
-SEGS = [(0.13, 1.95, 'O fax é mais velho que o telefone'), (2.38, 5.07, 'O fax nasceu em 1843'), (5.5, 8.32, 'O telefone só em 1876'), (8.74, 10.37, '33 anos antes'), (10.8, 16.53, 'O truque dois pêndulos balançando juntos em duas cidades copiando a imagem linha por linha pelo fio'), (16.97, 18.93, 'Dava pra mandar um desenho pra longe'), (19.43, 21.79, 'mas não dava pra ligar perguntando se chegou'), (22.21, 26.15, 'E em 1865 já tinha fax entre Paris e Lyon'), (26.58, 27.85, 'Antes do primeiro alô'), (28.3, 31.11, 'Comenta se você sabia e manda pra quem vai duvidar'), (31.55, 33.28, 'Segue @palitolandia.ia')]
-KEY = {"fax", "telefone", "1843", "1876", "1865", "33", "anos", "pêndulos", "linha", "desenho", "chegou", "paris", "lyon", "alô", "comenta", "duvidar", "@palitolandia.ia"}
+SEGS = [(0.13, 2.49, 'O que veio primeiro: o fax ou o telefone?'), (2.75, 4.32, 'Comenta antes do final!'), (4.57, 6.82, 'Fax: 1843.'), (7.08, 9.58, 'Telefone: 1876.'), (9.84, 11.52, '33 anos antes!'), (11.78, 14.99, 'Dois pêndulos copiavam a imagem, linha por linha, pelo fio.'), (15.26, 16.12, 'Mandava desenho,'), (16.28, 18.59, 'mas não dava pra ligar perguntando se chegou!'), (18.86, 22.88, 'Em 1865, já tinha fax de Paris a Lyon.'), (23.16, 25.65, 'No próximo: tubarão ou árvore, quem é mais velho?'), (25.94, 27.67, 'Manda pra quem vai duvidar!'), (27.93, 29.68, 'Segue @palitolandia.ia')]
+KEY = {"tubarão", "árvore", "primeiro", "fax", "telefone", "1843", "1876", "1865", "33", "anos", "pêndulos", "linha", "desenho", "chegou", "paris", "lyon", "alô", "comenta", "duvidar", "@palitolandia.ia"}
 def ts(t): h = int(t // 3600); m = int(t % 3600 // 60); s = t % 60; return f"{h}:{m:02d}:{s:05.2f}"
 words = []  # (t0, t1, palavra)
 for a, b, txt in SEGS:
-    ws = txt.split(); w = [max(len(x.strip(",.")), 2) for x in ws]; tot = sum(w); t = a
+    ws = txt.split(); w = [max(len(x.strip(",.!?:")), 2) for x in ws]; tot = sum(w); t = a
     for x, l in zip(ws, w):
         d = (b - a) * l / tot; words.append((t, t + d, x)); t += d
 # agrupa em blocos de até 3 palavras (quebra em vírgula/segmento longo)
@@ -35,7 +35,7 @@ for bi, blk in enumerate(blocks):
         end = blk[k + 1][0] if k + 1 < len(blk) else (blocks[bi + 1][0][0] if bi + 1 < len(blocks) and blocks[bi + 1][0][0] - t1 < 0.15 else t1 + 0.12)
         parts = []
         for j, (_, _, x) in enumerate(blk):
-            u = x.upper(); key = x.strip(",.").lower() in KEY
+            u = x.upper(); key = x.strip(",.!?:").lower() in KEY
             col = Y if j == k else (K if key else W)
             parts.append("{\\c" + col + "}" + u)
         pop = "{\\fscx88\\fscy88\\t(0,90,\\fscx108\\fscy108)\\t(90,160,\\fscx100\\fscy100)}" if k == 0 else ""

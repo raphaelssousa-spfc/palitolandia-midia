@@ -1,4 +1,5 @@
 # Próximo episódio
-numero: 8
-tema: O fax é mais velho que o telefone (REFAZER com pergunta no começo; vídeo base em motor/fax)
-teaser_do_9: escolher ao refazer o #6 e anotar aqui
+numero: 9
+tema: O tubarão é mais velho que as árvores (tubarões ~450 milhões de anos x primeiras árvores ~385 milhões; conferido: Live Science "Are sharks really older than trees?", Discover Wildlife)
+pergunta_inicial: "O que é mais velho: o tubarão ou as árvores?"
+teaser_do_10: escolher ao produzir o #9 e anotar aqui

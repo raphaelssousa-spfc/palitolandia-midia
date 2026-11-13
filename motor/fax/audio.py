@@ -1,7 +1,7 @@
 """Stems for "O cheiro do pão": music.wav + sfx.wav (no mixing here; mix.py does the level lock)."""
 import numpy as np, subprocess, wave
 SR = 48000
-DUR = 1078 / 30
+DUR = 960 / 30
 N = int(DUR * SR)
 rng = np.random.default_rng(7)
 def load_voice():
@@ -60,7 +60,7 @@ music = np.zeros(N, np.float32)
 BPM = 116; beat = 60 / BPM
 prog = [(48, [60, 64, 67]), (53, [57, 60, 65]), (55, [59, 62, 67]), (48, [60, 64, 67])]  # C F G C
 mel = [72, 74, 76, 72, 77, 76, 74, 71, 72, 76, 79, 77, 76, 74, 72, 67]
-MUSIC_END = 34.4
+MUSIC_END = 30.3
 bar = 0; tt = 0.0; k = 0
 while tt < MUSIC_END:
     root, ch = prog[bar % 4]
@@ -180,17 +180,17 @@ def tick(d):
 def bell():
     n = int(1.6 * SR); t = np.arange(n) / SR
     return (sum(np.sin(2*np.pi*f*t) * np.exp(-t*k) for f, k in [(880,2.5),(1320,3),(2200,5)]) * 0.35).astype(np.float32)
-for f in (65, 159, 256, 319, 503, 661, 846, 999): place(sfx, whoosh(0.4), F(f), 0.45)
-place(sfx, ting(), F(8), 0.45); place(sfx, thunk(110, 0.3), F(34), 0.5)
-place(sfx, ting(), F(120), 0.5); place(sfx, thunk(100, 0.25), F(122), 0.5)
-place(sfx, thunk(90, 0.3), F(162), 0.4); place(sfx, ting(), F(222), 0.5)
-for f in (262, 276, 290): place(sfx, ting(), F(f), 0.45)
-for k in range(11): place(sfx, clink(1800 + 120 * (k % 3)), F(340 + k * 14), 0.25)
-place(sfx, ting(), F(510), 0.4); place(sfx, sting(), F(600), 0.45); place(sfx, laugh(1.0), F(612), 0.2)
-place(sfx, whoosh(1.4), F(690), 0.3); place(sfx, ting(), F(760), 0.5); place(sfx, thunk(90, 0.3), F(800), 0.5)
-for f in (852, 897, 948): place(sfx, ting(), F(f), 0.5)
-place(sfx, whoosh(0.5), F(1004), 0.4)
-for k, f in enumerate((1008, 1016, 1024, 1032)): place(sfx, clink(1500 + 300 * k), F(f), 0.5)
+for f in (134, 209, 292, 351, 453, 561, 691, 891): place(sfx, whoosh(0.4), F(f), 0.45)
+place(sfx, ting(), F(8), 0.45); place(sfx, thunk(110, 0.3), F(34), 0.5); place(sfx, ting(), F(84), 0.5)
+place(sfx, ting(), F(170), 0.5); place(sfx, thunk(100, 0.25), F(172), 0.5)
+place(sfx, thunk(90, 0.3), F(212), 0.4); place(sfx, ting(), F(255), 0.5)
+for f in (297, 310, 323): place(sfx, ting(), F(f), 0.45)
+for k in range(6): place(sfx, clink(1800 + 120 * (k % 3)), F(362 + k * 14), 0.25)
+place(sfx, ting(), F(456), 0.4); place(sfx, sting(), F(540), 0.45); place(sfx, laugh(1.0), F(550), 0.2)
+place(sfx, whoosh(1.4), F(600), 0.3); place(sfx, ting(), F(575), 0.5); place(sfx, thunk(90, 0.3), F(655), 0.5)
+for f in (694, 778, 837): place(sfx, ting(), F(f), 0.5)
+place(sfx, whoosh(0.5), F(895), 0.4)
+for k, f in enumerate((899, 907, 915, 923)): place(sfx, clink(1500 + 300 * k), F(f), 0.5)
 
 def wav(name, x):
     pcm = (np.clip(x, -1, 1) * 32767).astype(np.int16)

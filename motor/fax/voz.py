@@ -64,7 +64,7 @@ def main():
         nz = np.where(np.abs(y) > 0.01)[0]
         clips.append((y[max(0, nz[0] - 240): nz[-1] + 480] if len(nz) else y).astype(np.float32))
     if not F:
-        gap = np.zeros(int(sr * 0.38), np.float32); parts = [np.zeros(int(sr * 0.12), np.float32)]
+        gap = np.zeros(int(sr * 0.22), np.float32); parts = [np.zeros(int(sr * 0.12), np.float32)]
         for i, c in enumerate(clips): parts += [c] + ([gap] if i < len(clips) - 1 else [])
         y = np.concatenate(parts + [np.zeros(int(sr * 0.3), np.float32)])
     else:
