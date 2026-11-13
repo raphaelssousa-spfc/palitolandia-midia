@@ -68,7 +68,7 @@ Produção: 2 vídeos por dia (tarefa diária 02:47), parando quando houver 4 ou
 - Áudio: sempre passar pelo limitador (`render.sh video` já aplica `alimiter=0.89`).
 - Não usar fundo creme na série de pavimentação nem fundo escuro na de construção.
 
-## Como postar (tarefa diária 13:10 e 19:10 — 2 Reels por dia)
+## Como postar (tarefa diária 11:30 — 1 Reel animado por dia)
 1. `git pull`; abrir `eng/fila.json`; pegar o PRIMEIRO item com status "pendente".
 2. URLs públicas: `https://raw.githubusercontent.com/raphaelssousa-spfc/palitolandia-midia/main/eng/<campo video>` e `.../eng/<campo capa>`; conferir 200 com curl.
 3. Windsor `execute_action`, conector `instagram`, conta `17841404396456793`, ação `create_video_post` com video_url, cover_url, caption = legenda, share_to_feed = true.
@@ -76,7 +76,7 @@ Produção: 2 vídeos por dia (tarefa diária 02:47), parando quando houver 4 ou
 5. Marcar "postado", `postado_em` (America/Fortaleza) e `media_id`; commit e push.
 6. Fila vazia: não postar e avisar o dono. Falha: tentar 1 vez de novo; depois registrar `erro`, manter "pendente" e avisar.
 
-## Carrosséis (1 por dia, postagem 09:10)
+## Carrosséis (3 por semana: seg, qua, sex às 09:10)
 Formato 1080x1350 (4:5), 7 a 10 slides, gerados a partir de um JSON — NÃO precisa escrever código:
 `eng/motor/carrosseis/<id>.json` → `cd eng/motor && tools/carrossel.sh carrosseis/<id>.json` → `eng/carrosseis/<id>/01.jpg ...`
 e a folha de prévia `eng/motor/out/<id>_previa.jpg` (OLHAR antes de publicar: texto estourando, ícone errado).
