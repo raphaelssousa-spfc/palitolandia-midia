@@ -20,3 +20,9 @@ Regras de conteúdo e erros a evitar: ver eng/PRODUCAO.md (seções "DO ZERO", "
 8. QA obrigatório: `python3 qa_palavras.py <mp4> work/timing.json "<frase>:<palavra>,..." qa.jpg` (OLHAR) e `python3 qa_piscadas.py <mp4>`.
    Corrigir e re-renderizar só os trechos afetados.
 9. Capa: `node cover.mjs videos/<id>-capa.jpg <cy> <dist>` (renderCover no story.js: etiqueta DO ZERO, #NN, título com palavra destacada, rodapé com avatar).
+
+## Dicas do #02 (rodovia de concreto)
+- O som de cada episódio fica em `episodios/<id>/audio.py` (rodar de dentro de motor3d: `python3 episodios/<id>/audio.py`).
+- `cam.setViewOffset(W, H, 0, 260, W, H)` no renderFrame sobe o centro do quadro 260 px: o assunto fica acima da legenda sem mexer em cada câmera.
+- Objeto com `visible=false` numa tomada precisa voltar a `true` no "estado base" do world(t), senão some nas tomadas seguintes.
+- Render em paralelo (3 processos): ver `work/run.sh` gerado no #02 (`xargs -P3` sobre a lista de trechos) e rodar com `setsid nohup`.

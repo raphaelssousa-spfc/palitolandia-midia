@@ -9,7 +9,7 @@ exec(src)  # MODEL, br()
 k = Kokoro(MODEL, os.path.join(HERE, "vozes_ptbr.npz")); SR = 24000
 VOICE, SPEED = "pm_santa", float(os.environ.get("VEL", "1.08"))
 S = json.load(open(os.path.join(HERE, "script.json")))
-NUM = {"15": 3, "@eng.raphaelserra": 9}
+NUM = {"15": 3, "10": 2, "20": 2, "5": 2, "@eng.raphaelserra": 9}
 def syl(w):
     if w in NUM: return NUM[w]
     return max(1, len(re.findall(r"[aeiouáéíóúâêôãõà]+", w.lower())))

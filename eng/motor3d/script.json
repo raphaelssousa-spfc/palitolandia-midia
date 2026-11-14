@@ -1,87 +1,95 @@
 [
  {
-  "say": "Se você cavar um buraco no quintal e construir a casa em cima, você tem um subsolo.",
-  "show": "Se você cavar um buraco no quintal e construir a casa em cima, você tem um subsolo."
+  "say": "Se você jogar concreto na terra, você tem uma estrada de concreto.",
+  "show": "Se você jogar concreto na terra, você tem uma estrada de concreto."
  },
  {
-  "say": "Mas a casa afunda na terra fofa, e as paredes do buraco desmoronam.",
-  "show": "Mas a casa afunda na terra fofa, e as paredes do buraco desmoronam."
+  "say": "Mas o caminhão passa, a terra afunda, e o concreto quebra.",
+  "show": "Mas o caminhão passa, a terra afunda, e o concreto quebra."
  },
  {
-  "say": "Então você faz uma faixa de concreto embaixo das paredes, pra espalhar o peso.",
-  "show": "Então você faz uma faixa de concreto embaixo das paredes, pra espalhar o peso."
+  "say": "Então você compacta o chão e põe uma camada firme por baixo.",
+  "show": "Então você compacta o chão e põe uma camada firme por baixo."
  },
  {
-  "say": "Isso é uma sapata corrida.",
-  "show": "Isso é uma sapata corrida."
+  "say": "Isso é a sub-base.",
+  "show": "Isso é a sub-base."
  },
  {
-  "say": "Em cima dela, você levanta as paredes.",
-  "show": "Em cima dela, você levanta as paredes."
+  "say": "Mas o concreto encolhe quando seca, e racha onde quiser.",
+  "show": "Mas o concreto encolhe quando seca, e racha onde quiser."
  },
  {
-  "say": "Mas a terra molhada pode empurrar a parede com o peso de uns quinze carros.",
-  "show": "Mas a terra molhada pode empurrar a parede com o peso de uns 15 carros."
+  "say": "Então, horas depois, você serra ele em placas.",
+  "show": "Então, horas depois, você serra ele em placas."
  },
  {
-  "say": "E um dia, ela racha.",
-  "show": "E um dia, ela racha."
+  "say": "Isso é uma junta serrada.",
+  "show": "Isso é uma junta serrada."
  },
  {
-  "say": "Então você esconde barras de aço dentro do concreto.",
-  "show": "Então você esconde barras de aço dentro do concreto."
+  "say": "Mas cada placa afunda de um jeito, e vira um degrau.",
+  "show": "Mas cada placa afunda de um jeito, e vira um degrau."
  },
  {
-  "say": "Isso é concreto armado.",
-  "show": "Isso é concreto armado."
+  "say": "Então você põe barras de aço lisas entre uma placa e outra.",
+  "show": "Então você põe barras de aço lisas entre uma placa e outra."
  },
  {
-  "say": "Mas o inimigo de verdade não é a terra. É a água que tem nela.",
-  "show": "Mas o inimigo de verdade não é a terra. É a água que tem nela."
+  "say": "Isso é uma barra de transferência.",
+  "show": "Isso é uma barra de transferência."
  },
  {
-  "say": "Então você enterra um cano furado na brita, em volta das paredes.",
-  "show": "Então você enterra um cano furado na brita, em volta das paredes."
+  "say": "Mas as faixas se afastam.",
+  "show": "Mas as faixas se afastam."
  },
  {
-  "say": "Isso é um dreno.",
-  "show": "Isso é um dreno."
+  "say": "Então você costura uma na outra com aço.",
+  "show": "Então você costura uma na outra com aço."
  },
  {
-  "say": "Mas o subsolo é o ponto mais baixo, e a água não tem pra onde ir.",
-  "show": "Mas o subsolo é o ponto mais baixo, e a água não tem pra onde ir."
+  "say": "Isso é uma barra de ligação.",
+  "show": "Isso é uma barra de ligação."
  },
  {
-  "say": "Então você cava um poço no canto, e uma bomba com boia joga a água pra fora.",
-  "show": "Então você cava um poço no canto, e uma bomba com boia joga a água pra fora."
+  "say": "Mas a chuva entra na junta e lava a terra de baixo.",
+  "show": "Mas a chuva entra na junta e lava a terra de baixo."
  },
  {
-  "say": "E a luz sempre acaba na tempestade. Então você liga a bomba num gerador.",
-  "show": "E a luz sempre acaba na tempestade. Então você liga a bomba num gerador."
+  "say": "Então você fecha cada junta com borracha. Isso é o selante.",
+  "show": "Então você fecha cada junta com borracha. Isso é o selante."
  },
  {
-  "say": "Mas concreto bebe água igual esponja. Então você cobre as paredes por fora com manta asfáltica.",
-  "show": "Mas concreto bebe água igual esponja. Então você cobre as paredes por fora com manta asfáltica."
+  "say": "Mas concreto liso molhado vira sabão.",
+  "show": "Mas concreto liso molhado vira sabão."
  },
  {
-  "say": "Isso é impermeabilização.",
-  "show": "Isso é impermeabilização."
+  "say": "Então você risca ele com um pente de aço. Isso é a texturização.",
+  "show": "Então você risca ele com um pente de aço. Isso é a texturização."
  },
  {
-  "say": "E a bomba que liga sozinha na garagem do prédio, mesmo sem chuva, não é defeito.",
-  "show": "E a bomba que liga sozinha na garagem do prédio, mesmo sem chuva, não é defeito."
+  "say": "Cada placa pesa umas dez toneladas, e é feita pra durar vinte anos ou mais.",
+  "show": "Cada placa pesa umas 10 toneladas, e é feita pra durar 20 anos ou mais."
  },
  {
-  "say": "Ela tira a água que brota do chão.",
-  "show": "Ela tira a água que brota do chão."
+  "say": "E aquele tum, tum, tum na estrada de concreto não é defeito.",
+  "show": "E aquele tum, tum, tum na estrada de concreto não é defeito."
  },
  {
-  "say": "Coloca uma escada, umas lâmpadas, e a vaga que o vizinho vive ocupando.",
-  "show": "Coloca uma escada, umas lâmpadas, e a vaga que o vizinho vive ocupando."
+  "say": "É o pneu passando nas juntas, a cada uns cinco metros.",
+  "show": "É o pneu passando nas juntas, a cada uns 5 metros."
  },
  {
-  "say": "Parabéns. Você construiu um subsolo.",
-  "show": "Parabéns. Você construiu um subsolo."
+  "say": "Pinta as faixas, põe as placas e um radar atrás da árvore.",
+  "show": "Pinta as faixas, põe as placas e um radar atrás da árvore."
+ },
+ {
+  "say": "Parabéns. Você construiu uma rodovia de concreto.",
+  "show": "Parabéns. Você construiu uma rodovia de concreto."
+ },
+ {
+  "say": "Curte, salva e manda pra quem vive na estrada. Comenta o que quer ver construído.",
+  "show": "Curte, salva e manda pra quem vive na estrada. Comenta o que quer ver construído."
  },
  {
   "say": "Segue o éngi ponto Rafael Serra pra mais. Até o próximo!",

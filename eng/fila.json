@@ -67,6 +67,16 @@
       "comentario": "Na sua cidade a água fica parada na pista quando chove? 👇",
       "postado_em": "2026-11-13 12:26",
       "media_id": "18078468713594339"
+    },
+    {
+      "id": "dozero-02-rodovia-concreto",
+      "status": "agendado",
+      "agendado_para": "2026-11-14 12:40",
+      "obs": "Postagem avulsa por tarefa agendada única (série DO ZERO #02). NÃO entra na fila diária (Reel 21:10 de sábado).",
+      "video": "videos/dozero-02-rodovia-concreto.mp4",
+      "capa": "videos/dozero-02-rodovia-concreto-capa.jpg",
+      "legenda": "Por que a estrada de concreto faz \"tum, tum, tum\"? 🛣️\nVocê já passou numa estrada assim?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #concreto #rodovia #estradas #pavimentorigido #infraestrutura #obra",
+      "comentario": "Em qual estrada de concreto você já ouviu esse tum-tum? 👇"
     }
   ],
   "frequencia": "todos os dias, 2 postagens"

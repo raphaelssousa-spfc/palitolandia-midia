@@ -9,6 +9,7 @@
 - pavimentação · PAVIMENTAÇÃO #03 · Por que a estrada é mais alta no meio? (abaulamento ~2%, drenagem, aquaplanagem)
 
 - DO ZERO (3D, "Se você...") · #01 · Como um buraco no quintal vira um subsolo? (agendado 12/11 07:10)
+- DO ZERO (3D, "Se você...") · #02 · pavimentação · Por que a estrada de concreto faz tum-tum? (rodovia de concreto: sub-base, junta serrada, barra de transferência, barra de ligação, selante, texturização; agendado 14/11 12:40)
 
 # Ideias de temas (pegar daqui; riscar ao usar)
 ## Construção
@@ -31,7 +32,7 @@
 ## Pavimentação
 - ~~Por que a estrada é mais alta no meio? (abaulamento)~~ (usado: PAVIMENTAÇÃO #03)
 - O que tem embaixo do asfalto? (camadas)
-- Asfalto x concreto: por que algumas rodovias usam concreto?
+- ~~Asfalto x concreto: por que algumas rodovias usam concreto?~~ (usado em parte: DO ZERO #02)
 - Bloquete, paralelepípedo ou asfalto: qual é melhor pra sua rua?
 - Por que asfalto novo é preto e o velho fica cinza?
 - Os sinais de que a estrada vai afundar (couro de jacaré, trilha de roda)

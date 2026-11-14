@@ -179,7 +179,8 @@ function xmark(t, t0, p, t1 = 1e9) { if (t < t0 || t > t1 + 0.2) return ''; cons
   return `<div style="position:absolute;left:${a.x}px;top:${a.y}px;width:96px;height:96px;margin:-48px;border-radius:50%;background:#e03131;border:5px solid #fff;transform:scale(${k});display:flex;align-items:center;justify-content:center"><svg width="46" height="46"><path d="M8 8L38 38M38 8L8 38" stroke="#fff" stroke-width="9" stroke-linecap="round"/></svg></div>`; }
 // ---------- tela final (mesmo modelo do vídeo de pavimentação) ----------
 function springSim(fr, damping, stiffness, mass = 1) { if (fr <= 0) return 0; let x = 0, v = 0; const dt = 1 / 30 / 8; for (let i = 0; i < fr * 8; i++) { const a = (-stiffness * (x - 1) - damping * v) / mass; v += a * dt; x += v * dt; } return x; }
-const WSEG = TM.words.find(w => w.p === 21 && w.w.toLowerCase() === 'segue'), WATE = TM.words.find(w => w.p === 21 && w.w === 'Até');
+const LASTP = TM.phrases.length - 1; // última frase = "Segue ... Até o próximo!"
+const WSEG = TM.words.find(w => w.p === LASTP && w.w.toLowerCase() === 'segue'), WATE = TM.words.find(w => w.p === LASTP && w.w === 'Até');
 const F_SEG = Math.round(WSEG.s * FPS), F_ATE = Math.round(WATE.s * FPS), F_TOT = TM.frames;
 window.F_END = F_SEG - 4;
 const cone = x => `<svg style="position:absolute;left:${x - 55}px;top:880px" width="110" height="150" viewBox="0 0 110 150"><path d="M42 10 L68 10 L96 128 L14 128 Z" fill="#FF6B1A"/><path d="M34 44 L76 44 L82 68 L28 68 Z" fill="#fff"/><path d="M24 86 L86 86 L91 106 L19 106 Z" fill="#fff"/><rect x="2" y="126" width="106" height="14" rx="4" fill="#E2551A"/></svg>`;
@@ -202,285 +203,311 @@ function telaFinal(f) {
   if (f >= F_ATE - 2) h += `<div style="position:absolute;top:960px;left:0;right:0;text-align:center;font-family:InterD;font-weight:900;font-size:96px;color:#FFC20E;letter-spacing:-3px;transform:scale(${springSim(f - F_ATE + 2, 9, 170, 0.8)})">Até o próximo!</div>`;
   return h + `</div>`;
 }
-// ================= SUBSOLO: cenário =================
-const PW = 2.0, PB = -2.9, PZ = -3.5;              // meia largura do buraco, fundo, fundo em z
-const WX = 1.75, WT = 0.2, WTOP = 0.1, SLAB = -2.5;  // paredes
-const full = new THREE.Group(); scene.add(full);
-mats.grass2 = M('#7fae4f'); mats.conc = M('#b9b5ad'); mats.concNew = M('#cfcac0'); mats.gravel = M('#8d8a86');
-mats.waterIn = new THREE.MeshStandardMaterial({ color: '#3d86c6', roughness: 0.15, transparent: true, opacity: 0.75, depthWrite: false });
-mats.waterSoil = new THREE.MeshBasicMaterial({ color: '#1f7bff', transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide });
-mats.manta = M('#1c1c1e', { roughness: 0.5 }); mats.wallT = M('#bdb8ae', { transparent: true, opacity: 1 }); // NUNCA alternar .transparent entre quadros (pisca) mats.steel2 = M('#d0612c', { roughness: 0.5, metalness: 0.2, emissive: '#5a2008', emissiveIntensity: 0.4 });
-// chão de cima (metade de trás, com o buraco)
-{ const s = new THREE.Shape(); s.moveTo(-40, 0); s.lineTo(-PW, 0); s.lineTo(-PW, -PZ); s.lineTo(PW, -PZ); s.lineTo(PW, 0); s.lineTo(40, 0); s.lineTo(40, 40); s.lineTo(-40, 40);
-  const g = new THREE.ShapeGeometry(s); g.rotateX(-Math.PI / 2); const uv = g.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) / 3, uv.getY(i) / 3);
-  mesh(g, M('#ffffff', { map: dirtTex, side: THREE.DoubleSide, color: '#b9d68a' }), full, 0, 0, 0, false); }
-// grama em faixa por cima (verde) — fica no chão
-const lawn = new THREE.Mesh(new THREE.PlaneGeometry(80, 40).rotateX(-Math.PI / 2), mats.grass2); lawn.position.set(0, -0.04, -24); lawn.receiveShadow = true; scene.add(lawn);
-// face do corte com o buraco e o poço de drenagem
-{ const s = new THREE.Shape(); s.moveTo(-40, -12); s.lineTo(40, -12); s.lineTo(40, 0); s.lineTo(PW, 0); s.lineTo(PW, PB); s.lineTo(1.5, PB); s.lineTo(1.5, -3.5); s.lineTo(0.8, -3.5); s.lineTo(0.8, PB); s.lineTo(-PW, PB); s.lineTo(-PW, 0); s.lineTo(-40, 0);
-  const g = new THREE.ShapeGeometry(s); strataTex.repeat.set(1 / 4, 1 / 12); mesh(g, mats.strata, full, 0, 0, 0, false); }
-// paredes de terra do buraco (fundo, laterais, piso)
-const pitBack = mesh(new THREE.PlaneGeometry(2 * PW, -PB), M('#ffffff', { map: strataTex, side: THREE.DoubleSide }), full, 0, PB / 2, PZ, false);
-for (const sx of [-1, 1]) { const p = mesh(new THREE.PlaneGeometry(-PZ, -PB), M('#9c5a34', { side: THREE.DoubleSide }), full, sx * PW, PB / 2, PZ / 2, false); p.rotation.y = Math.PI / 2; }
-mesh(new THREE.PlaneGeometry(2 * PW, -PZ).rotateX(-Math.PI / 2), M('#7a4a2c'), full, 0, PB, PZ / 2, false);
-// terra que vai saindo (buraco sendo cavado)
-const fillBox = mesh(new THREE.BoxGeometry(2 * PW - 0.02, 1, -PZ - 0.02), M('#ffffff', { map: dirtTex }), full, 0, 0, PZ / 2, false);
-const notchFill = mesh(new THREE.PlaneGeometry(0.72, 0.62), M('#ffffff', { map: strataTex, side: THREE.DoubleSide }), full, 1.15, -3.2, 0.0, false);
-// água no solo (lençol), duas faixas na face do corte
-const wsL = mesh(new THREE.PlaneGeometry(1, 1), mats.waterSoil, full, 0, 0, 0.02, false), wsR = mesh(new THREE.PlaneGeometry(1, 1), mats.waterSoil, full, 0, 0, 0.02, false);
-const wsB = mesh(new THREE.PlaneGeometry(1, 1), mats.waterSoil, full, 0, 0, PZ - 0.01, false);
-function waterTable(y, op) { mats.waterSoil.opacity = op; const h = y + 12; for (const [m, x0, x1] of [[wsL, -40, -PW], [wsR, PW, 40]]) { m.scale.set(x1 - x0, h, 1); m.position.set((x0 + x1) / 2, -12 + h / 2, 0.02); m.visible = op > 0; } wsB.visible = false; }
-// ---- estrutura do subsolo ----
-const struct = new THREE.Group(); full.add(struct);
-const footings = new THREE.Group(); struct.add(footings);
-for (const sx of [-1, 1]) mesh(new THREE.BoxGeometry(0.62, 0.3, -PZ - 0.25), mats.concNew, footings, sx * WX, -2.75, (PZ + 0.25) / 2 - 0.0);
-mesh(new THREE.BoxGeometry(2 * WX + 0.62, 0.3, 0.62), mats.concNew, footings, 0, -2.75, PZ + 0.31);
-footings.children.forEach(m => { m.userData.base = m.position.clone(); });
-const walls = new THREE.Group(); struct.add(walls);
-const WH = WTOP - (-2.6);
-for (const sx of [-1, 1]) mesh(new THREE.BoxGeometry(WT, WH, -PZ - 0.3), mats.wallT, walls, sx * WX, -2.6 + WH / 2, (PZ + 0.3) / 2);
-const backWall = mesh(new THREE.BoxGeometry(2 * WX + WT, WH, WT), mats.wallT, walls, 0, -2.6 + WH / 2, PZ + 0.4);
-const slab = mesh(new THREE.BoxGeometry(2 * WX - WT, 0.12, -PZ - 0.5), mats.conc, struct, 0, SLAB - 0.04, (PZ + 0.5) / 2);
-// armadura
-const rebar = new THREE.Group(); struct.add(rebar);
-for (const sx of [-1, 1]) {
-  for (let z = -0.15; z > PZ + 0.4; z -= 0.35) mesh(new THREE.CylinderGeometry(0.035, 0.035, WH - 0.1, 6), mats.steel2, rebar, sx * WX, -2.6 + WH / 2, z, false);
-  for (let y = -2.45; y < 0; y += 0.3) mesh(new THREE.CylinderGeometry(0.03, 0.03, -PZ - 0.45, 6).rotateX(Math.PI / 2), mats.steel2, rebar, sx * WX, y, (PZ + 0.3) / 2, false); }
-for (let x = -WX + 0.2; x < WX; x += 0.35) mesh(new THREE.CylinderGeometry(0.035, 0.035, WH - 0.1, 6), mats.steel2, rebar, x, -2.6 + WH / 2, PZ + 0.4, false);
-for (let y = -2.45; y < 0; y += 0.3) mesh(new THREE.CylinderGeometry(0.03, 0.03, 2 * WX, 6).rotateZ(Math.PI / 2), mats.steel2, rebar, 0, y, PZ + 0.4, false);
-// rachadura na parede do fundo
-const crack = new THREE.Group(); struct.add(crack);
-{ let x = -0.6, y = -0.3; const pts = [[-0.6, -0.3]]; for (let i = 0; i < 9; i++) { x += 0.12 + Math.sin(i * 2.3) * 0.08; y -= 0.22 + Math.cos(i * 1.7) * 0.06; pts.push([x, y]); }
-  for (let i = 0; i < pts.length - 1; i++) { const [x0, y0] = pts[i], [x1, y1] = pts[i + 1]; const len = Math.hypot(x1 - x0, y1 - y0); const m = mesh(new THREE.BoxGeometry(len, 0.035, 0.02), mats.black, crack, (x0 + x1) / 2, (y0 + y1) / 2, PZ + 0.4 + WT / 2 + 0.012, false); m.rotation.z = Math.atan2(y1 - y0, x1 - x0); m.userData.i = i; } }
-// dreno: brita + cano furado
-const drain = new THREE.Group(); struct.add(drain);
-for (const sx of [-1, 1]) {
-  mesh(new THREE.CylinderGeometry(0.07, 0.07, -PZ - 0.2, 12).rotateX(Math.PI / 2), M('#e8e6e0'), drain, sx * 1.93, -2.72, PZ / 2, false);
-  for (let i = 0; i < 40; i++) { const z = -0.1 + (PZ + 0.2) * ((i * 37) % 40) / 40; mesh(new THREE.IcosahedronGeometry(0.035 + ((i * 13) % 5) * 0.006, 0), mats.gravel, drain, sx * (1.87 + ((i * 7) % 5) * 0.025), -2.84 + ((i * 11) % 7) * 0.035, z, false); }
-  for (let k = 0; k < 6; k++) mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.02, 6), mats.black, drain, sx * 1.93, -2.66, -0.25 - k * 0.5, false); }
-// manta asfáltica (cresce de baixo pra cima)
-const manta = new THREE.Group(); struct.add(manta);
-for (const sx of [-1, 1]) mesh(new THREE.BoxGeometry(0.035, 1, -PZ - 0.3), mats.manta, manta, sx * (WX + WT / 2 + 0.02), 0, (PZ + 0.3) / 2, false);
-mesh(new THREE.BoxGeometry(2 * WX + WT + 0.08, 1, 0.035), mats.manta, manta, 0, 0, PZ + 0.4 - WT / 2 - 0.02, false);
-function setManta(u) { manta.visible = u > 0; const h = Math.max(0.001, u * WH); manta.children.forEach(m => { m.scale.y = h; m.position.y = -2.6 + h / 2; }); }
-// água dentro do subsolo
-const waterIn = mesh(new THREE.BoxGeometry(2 * WX - WT - 0.02, 1, -PZ - 0.52), mats.waterIn, struct, 0, 0, (PZ + 0.5) / 2, false); waterIn.castShadow = false;
-function setWaterIn(h) { waterIn.visible = h > 0.005; waterIn.scale.y = Math.max(0.001, h); waterIn.position.y = SLAB + 0.02 + h / 2; }
-// poço de drenagem com bomba e boia
-const sump = new THREE.Group(); struct.add(sump);
-{ mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.95, 20, 1, true), M('#8f8a82', { side: THREE.DoubleSide }), sump, 1.15, -3.0, -0.35, false);
-  mesh(new THREE.CircleGeometry(0.3, 20).rotateX(-Math.PI / 2), M('#4c3a2c'), sump, 1.15, -3.46, -0.35, false); }
-const pump = new THREE.Group(); pump.position.set(1.15, -3.3, -0.4); sump.add(pump);
-{ mesh(new THREE.CylinderGeometry(0.12, 0.13, 0.26, 14), M('#2f6fb3'), pump, 0, 0, 0); mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.3, 8), M('#2a5e99'), pump, 0, 0.25, 0); }
-const floatBall = mesh(new THREE.SphereGeometry(0.07, 12, 10), M('#f2c21b'), sump, 1.28, -3.15, -0.3);
-const outPipe = new THREE.Group(); struct.add(outPipe);
-{ const c = new THREE.CatmullRomCurve3([V(1.15, -3.05, -0.4), V(1.45, -2.4, -0.4), V(1.5, -0.4, -0.4), V(1.5, 0.35, -0.4), V(2.2, 0.55, -0.4), V(2.7, 0.3, -0.4)]); mesh(new THREE.TubeGeometry(c, 40, 0.035, 8), M('#e8e6e0'), outPipe, 0, 0, 0, false); }
-const sumpWater = mesh(new THREE.CylinderGeometry(0.28, 0.28, 1, 20), mats.waterIn, sump, 1.15, -3.2, -0.35, false);
-// escada e lâmpadas (final)
-const stairs = new THREE.Group(); struct.add(stairs);
-for (let i = 0; i < 9; i++) mesh(new THREE.BoxGeometry(0.3, 0.27 * (i + 1), 0.8), mats.conc, stairs, -1.45 + i * 0.3, SLAB + 0.135 * (i + 1), PZ + 0.9, false);
-const lamps = new THREE.Group(); struct.add(lamps);
-for (const x of [-0.8, 0.8]) { mesh(new THREE.SphereGeometry(0.09, 12, 10), new THREE.MeshStandardMaterial({ color: '#fff6d0', emissive: '#ffe9a0', emissiveIntensity: 2 }), lamps, x, -0.1, -1.6, false); }
-const lampLight = new THREE.PointLight('#ffe6b0', 0, 6, 1.5); lampLight.position.set(0, -0.4, -1.2); scene.add(lampLight);
-// carros
+// ================= RODOVIA DE CONCRETO: cenário =================
+// Estrada corre no eixo x. Corte na frente (z = 0). Faixa A: z de 0 a -3 · faixa B: z de -3 a -6.
+const PL = 4, LW = 3, ST = 0.45, NPL = 12, X0 = -24;      // placa: comprimento, largura da faixa, espessura
+const SBT = -0.48, SBB = -0.88;                          // sub-base: topo e fundo (3 cm abaixo da placa)
+const JX = []; for (let i = 0; i <= NPL; i++) JX.push(X0 + i * PL);  // juntas transversais
+mats.slab = M('#d3cec4', { transparent: true, opacity: 1 }); // NUNCA alternar .transparent (pisca)
+mats.slabB = M('#d3cec4', { transparent: true, opacity: 1 });
+mats.subbase = M('#ffffff', { map: canvasTex(256, 128, (g, w, h) => speckle(g, w, h, '#8f8c88', ['#7d7a76', '#a29f9a', '#6e6b67', '#b5b2ad'], 900, 1.5, 4.5), 8, 1) });
+mats.loose = M('#ffffff', { map: canvasTex(256, 128, (g, w, h) => speckle(g, w, h, '#b07a4c', ['#9c6a40', '#c08a5c', '#8a5a34'], 700, 2, 6), 8, 1) });
+mats.groove = M('#4a4743'); mats.seal = M('#121214', { roughness: 0.35 }); mats.dowel = M('#d0612c', { roughness: 0.5, metalness: 0.2, emissive: '#5a2008', emissiveIntensity: 0.4 });
+mats.tie = M('#2f8fd8', { roughness: 0.5, metalness: 0.2, emissive: '#0a2a48', emissiveIntensity: 0.4 });
+mats.paintW = M('#f7f7f2', { roughness: 0.6 }); mats.paintY = M('#f2c21b', { roughness: 0.6 });
+// terreno (bloco com face em corte)
+strataTex.repeat.set(1 / 4, 1 / 4);
+const terrain = mesh(new THREE.BoxGeometry(80, 16, 40), [mats.strata, mats.strata, mats.dirt, mats.dirt, mats.strata, mats.strata], scene, 0, SBB - 8, -20, false);
+// acostamento/grama atrás da pista
+const shoulder = new THREE.Group(); scene.add(shoulder);
+mesh(new THREE.BoxGeometry(80, -SBB - 0.05, 33.6), [mats.strata, mats.strata, M('#86a957'), mats.dirt, mats.strata, mats.strata], shoulder, 0, (SBB - 0.05) / 2, -6.4 - 16.8, false);
+mesh(new THREE.BoxGeometry(80, 0.08, 0.4), M('#9a948a'), shoulder, 0, -0.04 - 0.02, -6.2, false);
+// camada de terra solta (vira sub-base) — as duas nunca se sobrepõem
+// frente recuada 5 cm: a placa que afunda não fica coplanar com a sub-base (z-fighting)
+const loose = mesh(new THREE.BoxGeometry(1, SBT - SBB, 6.15), mats.loose, scene, 0, (SBT + SBB) / 2, -3.125, false);
+const subbase = mesh(new THREE.BoxGeometry(1, SBT - SBB, 6.15), mats.subbase, scene, 0, (SBT + SBB) / 2, -3.125, false);
+const RX0 = -26, RX1 = 26;
+function setSub(xs) { // de RX0 até xs = sub-base; de xs até RX1 = terra solta
+  xs = cl(xs, RX0, RX1); subbase.visible = xs > RX0 + 0.01; loose.visible = xs < RX1 - 0.01;
+  subbase.scale.x = Math.max(0.01, xs - RX0); subbase.position.x = (RX0 + xs) / 2; loose.scale.x = Math.max(0.01, RX1 - xs); loose.position.x = (xs + RX1) / 2; }
+// placas
+const laneA = new THREE.Group(), laneB = new THREE.Group(); scene.add(laneA, laneB);
+const platesA = [], platesB = [];
+for (let i = 0; i < NPL; i++) {
+  const cx = X0 + i * PL + PL / 2;
+  const a = mesh(new THREE.BoxGeometry(PL, ST, LW), mats.slab, laneA, cx, -ST / 2, -LW / 2); a.userData = { cx, i }; platesA.push(a);
+  const b = mesh(new THREE.BoxGeometry(PL, ST, LW), mats.slabB, laneB, cx, -ST / 2, -LW * 1.5); b.userData = { cx, i }; platesB.push(b); }
+// juntas serradas (linhas escuras em cima) — transversais e a longitudinal
+const grooves = new THREE.Group(); scene.add(grooves);
+for (const x of JX) { const g = mesh(new THREE.BoxGeometry(0.07, 0.02, 2 * LW), mats.groove, grooves, x, 0.01, -LW, false); g.userData = { x }; }
+const grooveL = mesh(new THREE.BoxGeometry(NPL * PL, 0.02, 0.07), mats.groove, grooves, 0, 0.01, -LW, false); grooveL.userData = { x: 999 };
+// selante (preto, por cima da junta)
+const seals = new THREE.Group(); scene.add(seals);
+for (const x of JX) { const g = mesh(new THREE.BoxGeometry(0.12, 0.035, 2 * LW), mats.seal, seals, x, 0.026, -LW, false); g.userData = { x }; }
+mesh(new THREE.BoxGeometry(NPL * PL, 0.034, 0.12), mats.seal, seals, 0, 0.025, -LW, false).userData = { x: 999 };
+// rachaduras aleatórias (retração)
+const cracks = new THREE.Group(); scene.add(cracks);
+{ const starts = [[-9.3, -0.4, 1], [-6.1, -1.0, 1], [-2.6, -0.2, 1], [1.4, -0.5, 1], [5.2, -0.3, 1], [8.7, -0.9, 1], [-7.5, -3.4, 1], [-0.9, -3.2, 1], [3.3, -3.6, 1], [7.1, -3.3, 1]];
+  starts.forEach(([x, z], k) => { let px = x, pz = z; for (let i = 0; i < 7; i++) { const nx = px + Math.sin(k * 3.1 + i * 2.3) * 0.28, nz = pz - 0.38;
+      const len = Math.hypot(nx - px, nz - pz); const m = mesh(new THREE.BoxGeometry(0.05, 0.02, len), mats.black, cracks, (px + nx) / 2, 0.012, (pz + nz) / 2, false); m.rotation.y = Math.atan2(nx - px, nz - pz); m.userData = { i, k }; px = nx; pz = nz; } }); }
+// barras de transferência (lisas, ao longo de x, cruzando cada junta transversal)
+const dowels = new THREE.Group(); scene.add(dowels);
+for (const x of JX) for (let z = -0.35; z > -2 * LW; z -= 0.6) { const d = mesh(new THREE.CylinderGeometry(0.035, 0.035, 1.1, 8).rotateZ(Math.PI / 2), mats.dowel, dowels, x, -ST / 2, z, false); d.userData = { x }; }
+// barras de ligação (ao longo de z, cruzando a junta longitudinal)
+const ties = new THREE.Group(); scene.add(ties);
+for (let x = X0 + 0.5; x < X0 + NPL * PL; x += 1.0) { const d = mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.3, 8).rotateX(Math.PI / 2), mats.tie, ties, x, -ST / 2 + 0.04, -LW, false); d.userData = { x }; }
+// ranhuras (texturização) — linhas finas ao longo de z
+const NGR = 180; const grv = new THREE.InstancedMesh(new THREE.BoxGeometry(0.03, 0.012, 2 * LW - 0.3), M('#c2bcb2'), NGR); scene.add(grv); grv.frustumCulled = false; // contraste baixo: linhas finas + câmera andando = efeito estroboscópico
+const grvX = [...Array(NGR)].map((_, i) => -13.5 + i * 0.15);
+function setGrooves(xMax) { let n = 0; grvX.forEach(x => { if (x < xMax && JX.every(j => Math.abs(x - j) > 0.12)) { dm.makeTranslation(x, 0.006, -LW); grv.setMatrixAt(n++, dm); } }); grv.count = n; grv.instanceMatrix.needsUpdate = true; grv.visible = n > 0; }
+// pintura (faixas)
+const paint = new THREE.Group(); scene.add(paint);
+for (const z of [-0.3, -2 * LW + 0.3]) mesh(new THREE.BoxGeometry(NPL * PL, 0.02, 0.14), mats.paintW, paint, 0, 0.045, z, false).userData = { kind: 'edge' };
+for (let x = X0 + 1; x < X0 + NPL * PL; x += 3) mesh(new THREE.BoxGeometry(1.6, 0.02, 0.14), mats.paintY, paint, x + 0.8, 0.045, -LW - 0.18, false).userData = { kind: 'dash', x };
+// ---------- veículos e máquinas ----------
 function car(color) { const g = new THREE.Group(); scene.add(g);
-  mesh(new THREE.BoxGeometry(1.35, 0.45, 2.6), M(color, { roughness: 0.35 }), g, 0, 0.42, 0); mesh(new THREE.BoxGeometry(1.15, 0.38, 1.3), M(color, { roughness: 0.35 }), g, 0, 0.82, -0.15);
-  mesh(new THREE.BoxGeometry(1.17, 0.28, 1.1), M('#2c3a46', { roughness: 0.1 }), g, 0, 0.84, -0.15);
-  for (const [x, z] of [[-0.66, 0.8], [0.66, 0.8], [-0.66, -0.85], [0.66, -0.85]]) mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.18, 14).rotateZ(Math.PI / 2), mats.black, g, x, 0.24, z);
+  mesh(new THREE.BoxGeometry(2.6, 0.45, 1.35), M(color, { roughness: 0.35 }), g, 0, 0.42, 0); mesh(new THREE.BoxGeometry(1.3, 0.38, 1.15), M(color, { roughness: 0.35 }), g, -0.15, 0.82, 0);
+  mesh(new THREE.BoxGeometry(1.1, 0.28, 1.17), M('#2c3a46', { roughness: 0.1 }), g, -0.15, 0.84, 0);
+  for (const [x, z] of [[0.8, -0.66], [0.8, 0.66], [-0.85, -0.66], [-0.85, 0.66]]) mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.18, 14).rotateX(Math.PI / 2), mats.black, g, x, 0.24, z);
   return g; }
-const carN = car('#d63b3b');
-// casa (casa de bonecas: aberta na frente)
-const house = new THREE.Group(); scene.add(house);
-{ const wm = M('#efe6d8'), rf = M('#c0563a'); const hw = 2.3, hd = 3.6, hh = 2.5;
-  mesh(new THREE.BoxGeometry(2 * hw, 0.15, hd), M('#cdbfa9'), house, 0, 0.075, -hd / 2);
-  mesh(new THREE.BoxGeometry(2 * hw, hh, 0.15), wm, house, 0, hh / 2, -hd + 0.075);
-  for (const sx of [-1, 1]) mesh(new THREE.BoxGeometry(0.15, hh, hd), wm, house, sx * (hw - 0.075), hh / 2, -hd / 2);
-  mesh(new THREE.BoxGeometry(0.9, 0.9, 0.05), M('#8fc3e6', { roughness: 0.1 }), house, 0.8, 1.4, -hd + 0.16);
-  mesh(new THREE.BoxGeometry(0.8, 1.6, 0.05), mats.door, house, -0.9, 0.8, -hd + 0.16);
-  const roof = new THREE.Shape(); roof.moveTo(-hw - 0.3, 0); roof.lineTo(hw + 0.3, 0); roof.lineTo(0, 1.5); roof.lineTo(-hw - 0.3, 0);
-  const rg = new THREE.ExtrudeGeometry(roof, { depth: hd + 0.3, bevelEnabled: false }); const rm = mesh(rg, rf, house, 0, hh, -hd - 0.15); }
-const building = new THREE.Group(); scene.add(building);
-{ const bm = M('#d9d4cc'), gl = M('#7fa9c9', { roughness: 0.1 });
-  mesh(new THREE.BoxGeometry(4.6, 9, 3.6), bm, building, 0, 4.5, -1.8);
-  for (let y = 1; y < 9; y += 1.2) for (const x of [-1.4, 0, 1.4]) mesh(new THREE.BoxGeometry(0.8, 0.7, 0.05), gl, building, x, y, 0.03); }
+function truck(color, drum = false) { const g = new THREE.Group(); scene.add(g);
+  mesh(new THREE.BoxGeometry(1.4, 1.4, 1.7), M(color, { roughness: 0.4 }), g, 1.9, 0.95, 0); mesh(new THREE.BoxGeometry(0.1, 0.55, 1.4), M('#2c3a46', { roughness: 0.1 }), g, 2.62, 1.25, 0);
+  mesh(new THREE.BoxGeometry(4.0, 0.25, 1.6), mats.black, g, -0.2, 0.42, 0);
+  if (drum) { const d = new THREE.Group(); d.position.set(-0.4, 1.35, 0); g.add(d); const c = mesh(new THREE.CylinderGeometry(0.85, 0.6, 2.6, 16, 1).rotateZ(Math.PI / 2 + 0.18), M('#e8e6e0'), d, 0, 0, 0);
+    for (let k = 0; k < 3; k++) mesh(new THREE.TorusGeometry(0.78 - k * 0.08, 0.05, 6, 20).rotateY(Math.PI / 2), M('#d63b3b'), d, -0.7 + k * 0.7, 0.12 - k * 0.12, 0); g.userData.drum = d;
+    const chute = mesh(new THREE.BoxGeometry(1.2, 0.08, 0.35), M('#9aa3ab'), g, -2.6, 0.75, 0); chute.rotation.z = 0.5; }
+  else mesh(new THREE.BoxGeometry(3.2, 1.2, 1.7), M('#c8ced3'), g, -0.5, 1.15, 0);
+  for (const x of [1.9, -0.6, -1.6]) for (const z of [-0.8, 0.8]) mesh(new THREE.CylinderGeometry(0.36, 0.36, 0.3, 14).rotateX(Math.PI / 2), mats.black, g, x, 0.36, z);
+  return g; }
+const mixer = truck('#f07c1e', true), lorry = truck('#2f6fb3');
+const roller = new THREE.Group(); scene.add(roller);
+{ mesh(new THREE.CylinderGeometry(0.7, 0.7, 2.2, 22).rotateX(Math.PI / 2), M('#5d6268', { metalness: 0.3, roughness: 0.5 }), roller, 1.2, 0.7, 0);
+  mesh(new THREE.BoxGeometry(2.0, 0.9, 1.8), mats.yellow, roller, -0.4, 1.0, 0); mesh(new THREE.BoxGeometry(1.0, 0.9, 1.2), M('#2c3a46', { roughness: 0.1 }), roller, -0.6, 1.9, 0);
+  mesh(new THREE.BoxGeometry(1.2, 0.08, 1.4), mats.yellow, roller, -0.6, 2.38, 0);
+  for (const z of [-0.85, 0.85]) mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.35, 16).rotateX(Math.PI / 2), mats.black, roller, -1.0, 0.5, z); }
+const saw = new THREE.Group(); scene.add(saw);
+{ mesh(new THREE.BoxGeometry(0.9, 0.55, 0.7), M('#e0a21a'), saw, 0, 0.55, 0.3); mesh(new THREE.BoxGeometry(0.16, 0.16, 1.1), mats.black, saw, 0, 0.35, 0.9);
+  mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.04, 26).rotateX(Math.PI / 2).rotateY(Math.PI / 2), M('#c8ced3', { metalness: 0.6, roughness: 0.3 }), saw, 0, 0.3, -0.25);
+  for (const z of [0.0, 0.6]) for (const x of [-0.35, 0.35]) mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.08, 10).rotateZ(Math.PI / 2), mats.black, saw, x, 0.12, z);
+  mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.3, 6), mats.black, saw, 0, 0.95, 1.3).rotation.x = -0.6; }
+const comb = new THREE.Group(); scene.add(comb); // ponte com pente de aço
+{ mesh(new THREE.BoxGeometry(0.25, 0.25, 7.2), mats.yellow, comb, 0, 1.6, -LW); for (const z of [0.5, -6.5]) mesh(new THREE.BoxGeometry(0.25, 1.6, 0.25), mats.yellow, comb, 0, 0.8, z);
+  mesh(new THREE.BoxGeometry(0.12, 0.12, 6.0), mats.steel, comb, -0.1, 0.12, -LW); for (let z = -0.1; z > -5.95; z -= 0.12) mesh(new THREE.BoxGeometry(0.02, 0.14, 0.03), mats.steel, comb, -0.1, 0.03, z - LW + 3); }
+const hook = new THREE.Group(); scene.add(hook); // cabos do guindaste
+{ for (const [x, z] of [[-1.6, -0.3], [1.6, -0.3], [-1.6, -2.7], [1.6, -2.7]]) { const c = mesh(new THREE.CylinderGeometry(0.02, 0.02, 1, 6), mats.black, hook, 0, 0, 0, false); c.userData = { x, z }; }
+  mesh(new THREE.SphereGeometry(0.16, 12, 10), mats.yellow, hook, 0, 0, 0).userData = { hk: 1 }; }
+const carA = car('#d63b3b'), carB = car('#2f6fb3'), carC = car('#f2c21b');
 // entorno
-function tree2(x, z, s) { const g = new THREE.Group(); g.position.set(x, 0, z); g.scale.setScalar(s); scene.add(g); mesh(new THREE.CylinderGeometry(0.15, 0.2, 1.6, 8), mats.trunk, g, 0, 0.8, 0); mesh(new THREE.IcosahedronGeometry(1.1, 1), mats.leaf, g, 0, 2.2, 0); mesh(new THREE.IcosahedronGeometry(0.8, 1), mats.leaf2, g, 0.6, 1.9, 0.3); }
-[[-6, -9, 1.3], [6.5, -10, 1.5], [-9, -16, 1.4], [9, -17, 1.3], [0, -20, 1.6]].forEach(a => tree2(...a));
-function bgHouse(x, z, w, c) { const g = new THREE.Group(); g.position.set(x, 0, z); scene.add(g); mesh(new THREE.BoxGeometry(w, 2.4, 4), M(c), g, 0, 1.2, 0); const r = new THREE.ConeGeometry(w * 0.78, 1.3, 4); r.rotateY(Math.PI / 4); mesh(r, mats.roof, g, 0, 3.05, 0).scale.set(1, 1, 4 / w); }
-bgHouse(-7.5, -14, 5, '#e3d7c4'); bgHouse(8, -14, 5, '#efe6d8'); bgHouse(0, -26, 6, '#e3d7c4');
-// gerador
-const gen = new THREE.Group(); scene.add(gen); gen.position.set(-3.0, 0, -1.5);
-{ mesh(new THREE.BoxGeometry(0.9, 0.6, 0.6), M('#e0a21a'), gen, 0, 0.35, 0); mesh(new THREE.BoxGeometry(0.95, 0.08, 0.65), mats.black, gen, 0, 0.04, 0); mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.25, 8), mats.black, gen, 0.3, 0.75, 0); }
-// pá do trabalhador
-const shovel = new THREE.Group(); { mesh(new THREE.CylinderGeometry(0.025, 0.025, 1.1, 6), mats.wood, shovel, 0, 0, 0); mesh(new THREE.BoxGeometry(0.22, 0.28, 0.03), mats.steel, shovel, 0, -0.62, 0.02); }
-// pedaços de terra caindo
-const chunksG = new THREE.Group(); scene.add(chunksG);
-for (let i = 0; i < 26; i++) { const m = mesh(new THREE.IcosahedronGeometry(0.12 + (i % 4) * 0.05, 0), M('#9c5a34'), chunksG, 0, 0, 0); m.userData = { sx: i % 2 ? 1 : -1, z: -0.3 - (i * 0.37) % 3, d: (i * 0.13) % 0.9, y0: -0.1 - (i * 0.29) % 1.6, sp: 0.5 + (i % 5) * 0.12 }; }
+function tree2(x, z, s) { const g = new THREE.Group(); g.position.set(x, 0, z); g.scale.setScalar(s); scene.add(g); mesh(new THREE.CylinderGeometry(0.15, 0.2, 1.6, 8), mats.trunk, g, 0, 0.8, 0); mesh(new THREE.IcosahedronGeometry(1.1, 1), mats.leaf, g, 0, 2.2, 0); mesh(new THREE.IcosahedronGeometry(0.8, 1), mats.leaf2, g, 0.6, 1.9, 0.3); return g; }
+[[-9, -10, 1.4], [-3, -14, 1.6], [6, -12, 1.5], [12, -9, 1.3], [-14, -12, 1.5], [17, -14, 1.6]].forEach(a => tree2(...a));
+const radarTree = tree2(4.2, -8.0, 1.5);
+const radar = new THREE.Group(); scene.add(radar); radar.position.set(6.6, 0, -9.2);
+{ mesh(new THREE.CylinderGeometry(0.08, 0.08, 2.6, 8), M('#8a9097'), radar, 0, 1.3, 0); mesh(new THREE.BoxGeometry(0.7, 0.5, 0.55), M('#3a3f46'), radar, 0, 2.6, 0.15);
+  mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.08, 14).rotateX(Math.PI / 2), M('#111', { roughness: 0.1 }), radar, 0, 2.6, 0.45); }
+const sign = new THREE.Group(); scene.add(sign); sign.position.set(1.2, 0, -7.0);
+{ mesh(new THREE.CylinderGeometry(0.06, 0.06, 2.4, 8), M('#8a9097'), sign, 0, 1.2, 0);
+  const st = canvasTex(256, 256, (g, w, h) => { g.fillStyle = '#fff'; g.beginPath(); g.arc(128, 128, 124, 0, 7); g.fill(); g.fillStyle = '#d62a2a'; g.beginPath(); g.arc(128, 128, 120, 0, 7); g.fill(); g.fillStyle = '#fff'; g.beginPath(); g.arc(128, 128, 92, 0, 7); g.fill(); g.fillStyle = '#111'; g.font = '900 110px sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('80', 128, 136); }); st.center.set(0.5, 0.5); st.rotation = Math.PI / 2;
+  mesh(new THREE.CylinderGeometry(0.55, 0.55, 0.05, 28).rotateX(Math.PI / 2), [M('#ccc'), M('#ffffff', { map: st }), M('#ccc')], sign, 0, 2.4, 0.04); }
 // chuva
 const rain = new THREE.InstancedMesh(new THREE.BoxGeometry(0.012, 0.35, 0.012), new THREE.MeshBasicMaterial({ color: '#cfe3ff', transparent: true, opacity: 0.55 }), 500); scene.add(rain); rain.frustumCulled = false;
-const rainSeeds = [...Array(500)].map((_, i) => [((i * 97) % 1000) / 1000 * 14 - 7, ((i * 61) % 1000) / 1000, ((i * 31) % 1000) / 1000 * 8 - 6]);
+const rainSeeds = [...Array(500)].map((_, i) => [((i * 97) % 1000) / 1000 * 14 - 7, ((i * 61) % 1000) / 1000, ((i * 31) % 1000) / 1000 * 8 - 7]);
 const dm = new THREE.Matrix4();
-function setRain(t, on) { rain.visible = on; if (!on) return; rainSeeds.forEach(([x, ph, z], i) => { const y = 8 - ((t * 9 + ph * 9) % 9); dm.makeTranslation(x, y, z + 1.5); rain.setMatrixAt(i, dm); }); rain.instanceMatrix.needsUpdate = true; }
-// setas (empuxo / peso)
+function setRain(t, on, cx = 0) { rain.visible = on; if (!on) return; rainSeeds.forEach(([x, ph, z], i) => { const y = 7 - ((t * 9 + ph * 9) % 9); dm.makeTranslation(x + cx, y, z + 1.0); rain.setMatrixAt(i, dm); }); rain.instanceMatrix.needsUpdate = true; }
+// respingos de lama saindo da junta (bombeamento)
+const spray = new THREE.Group(); scene.add(spray); for (let i = 0; i < 16; i++) mesh(new THREE.SphereGeometry(0.07, 8, 6), M('#7a4a29'), spray, 0, 0, 0, false);
+function setSpray(t, on, x) { spray.visible = on; if (!on) return; spray.children.forEach((m, i) => { const u = ((t * 1.4 + i / 16) % 1); const z = -0.4 - (i % 8) * 0.65; m.position.set(x + (i % 2 ? 1 : -1) * u * 0.35, u * 0.9 - u * u * 0.9, z); }); }
+// poeira da serra
+const dust = new THREE.Group(); scene.add(dust); for (let i = 0; i < 12; i++) mesh(new THREE.SphereGeometry(0.08, 8, 6), M('#e6e2da', { transparent: true, opacity: 0.8 }), dust, 0, 0, 0, false);
+function setDust(t, on, p) { dust.visible = on; if (!on) return; dust.children.forEach((m, i) => { const u = ((t * 1.2 + i / 12) % 1); m.position.set(p.x + (i % 3 - 1) * 0.25 * u, p.y + u * 0.8, p.z + 0.2 + u * 0.3); m.scale.setScalar(0.6 + u); }); }
+// setas
 function arrow(color) { const g = new THREE.Group(); const m = M(color, { emissive: color, emissiveIntensity: 0.25 }); mesh(new THREE.CylinderGeometry(0.05, 0.05, 1, 10), m, g, 0, 0.5, 0, false); mesh(new THREE.ConeGeometry(0.13, 0.28, 14), m, g, 0, 1.12, 0, false); scene.add(g); return g; }
-const pushArrows = []; for (let i = 0; i < 8; i++) pushArrows.push(arrow('#ff7a1a'));
-const loadArrows = []; for (let i = 0; i < 6; i++) loadArrows.push(arrow('#ffd21f'));
-const flowArrows = []; for (let i = 0; i < 8; i++) flowArrows.push(arrow('#3d9bff'));
+const redArrows = []; for (let i = 0; i < 8; i++) redArrows.push(arrow('#ff5a1a'));
+const blueArrows = []; for (let i = 0; i < 8; i++) blueArrows.push(arrow('#3d9bff'));
 function placeArrow(a, from, dir, len, vis = true) { a.visible = vis && len > 0.02; if (!a.visible) return; a.position.copy(from); a.quaternion.setFromUnitVectors(V(0, 1, 0), dir.clone().normalize()); a.scale.set(1, len, 1); a.children[1].scale.set(1, 1 / len, 1); a.children[1].position.y = 1 + 0.14 / len; }
-// personagens
-const you = person({ shirt: '#f07c1e' });
-// ---- jato de água na saída ----
-const jet = new THREE.Group(); scene.add(jet); for (let i = 0; i < 14; i++) mesh(new THREE.SphereGeometry(0.05, 8, 6), mats.waterIn, jet, 0, 0, 0, false);
-function setJet(t, on) { jet.visible = on; if (!on) return; jet.children.forEach((m, i) => { const u = ((t * 1.6 + i / 14) % 1); m.position.set(2.7 + u * 0.9, 0.3 + u * 0.35 - u * u * 0.9, -0.4); }); }
-// ================= SUBSOLO: história =================
+// ================= RODOVIA DE CONCRETO: história =================
 const wt = (i, pre) => { const w = TM.words.find(w => w.p === i && w.w.toLowerCase().replace(/[^a-zà-ú0-9@]/g, '').startsWith(pre)); return w ? w.s : S(i); };
-const T = { A: 0, B: S(1) - 0.1, C: S(2) - 0.1, D: S(4) - 0.1, E: S(5) - 0.1, F: S(7) - 0.1, G: S(9) - 0.1, H: S(10) - 0.1, I: S(12) - 0.1, J: S(13) - 0.1, K: S(14) - 0.1, L: S(15) - 0.1, M: S(17) - 0.1, N: S(19) - 0.1, O: S(20) - 0.1 };
-const shotOf = t => { let k = 'A'; for (const [n, v] of Object.entries(T)) if (t >= v) k = n; return k; };
-const CAM_B = [V(0.4, -1.5, 14.5), V(0, -2.2, 0), 40], CAM_H = [V(0.6, 0.4, 19.5), V(0, -0.8, 0), 40];
-const SKYC = new THREE.Color('#cfe3ef'), STORM = new THREE.Color('#4a5560');
-function placeP(P, x, y, z, ry = 0) { P.g.position.set(x, y, z); P.g.rotation.set(0, ry, 0); P.g.visible = true; }
+const NP = TM.phrases.length;
+const shotOf = t => { let k = 0; for (let i = 1; i < NP; i++) if (t >= S(i) - 0.1) k = i; return k; };
+const TS = i => S(i) - 0.1;                 // início da tomada i
+const SKYC = new THREE.Color('#cfe3ef'), STORM = new THREE.Color('#5a6670');
+const SLABC = new THREE.Color('#d3cec4'), WETC = new THREE.Color('#8f979c');
+function V2(x, y) { return { x, y }; }
 const xB = (t, a, b) => back(r(t, a, a + b));
+function rotAbout(m, px, py, ang, cx, cy) { const dx = cx - px, dy = cy - py; m.position.x = px + dx * Math.cos(ang) - dy * Math.sin(ang); m.position.y = py + dx * Math.sin(ang) + dy * Math.cos(ang); m.rotation.set(0, 0, ang); }
+function placeCar(c, x, z, ry = 0, y = 0) { c.visible = true; c.position.set(x, y, z); c.rotation.set(0, ry, 0); }
 function world(t) {
-  const sh = shotOf(t); const st = { cam: null, roll: 0, blur: 0, red: 0, dark: 0, flash: 0, vig: 0.3, shake: 0, html: '' };
-  const after = k => t >= T[k];
+  const sh = shotOf(t); const st = { cam: null, blur: 0, red: 0, dark: 0, flash: 0, vig: 0.3, shake: 0, html: '' };
+  const after = k => t >= TS(k);
   // ---- estado base ----
-  you.g.visible = false; shovel.visible = false; house.visible = false; building.visible = false; carN.visible = false; gen.visible = false;
-  chunksG.visible = false; fillBox.visible = false; setRain(t, false); setJet(t, false); lamps.visible = false; lampLight.intensity = 0;
-  [...pushArrows, ...loadArrows, ...flowArrows].forEach(a => a.visible = false);
+  [mixer, lorry, roller, saw, comb, hook, carA, carB, carC, sign, radar].forEach(o => o.visible = false);
+  setRain(t, false); setSpray(t, false, 0); setDust(t, false, V(0, 0, 0)); [...redArrows, ...blueArrows].forEach(a => a.visible = false);
   scene.background = SKYC; hemi.intensity = 1.25; sun.intensity = 2.4;
-  struct.visible = after('C'); footings.visible = after('C'); walls.visible = after('D'); slab.visible = after('D');
-  rebar.visible = sh === 'F'; crack.visible = sh === 'E' && t > S(6); drain.visible = after('H'); sump.visible = after('J'); outPipe.visible = after('J');
-  stairs.visible = after('N'); notchFill.visible = !after('J') || (sh === 'J' && t < wt(13, 'poço') - 0.2); setManta(after('L') ? (sh === 'L' ? sm(r(t, wt(15, 'cobre'), wt(15, 'cobre') + 1.6)) : 1) : 0);
-  mats.wallT.opacity = 1; mats.wallT.transparent = true; mats.wallT.color.set('#bdb8ae'); mats.wallT.depthWrite = true;
-  waterTable(-12, 0); setWaterIn(0); sumpWater.visible = false; floatBall.position.y = -3.15; pump.position.x = 1.15;
-  footings.children.forEach(m => { m.scale.y = 1; m.position.y = -2.75; });
-  walls.children.forEach(m => { m.scale.y = 1; m.position.y = -2.6 + WH / 2; });
-  const wtab = after('G') ? (sh === 'G' ? lerp(-12, -1.4, sm(r(t, S(9) + 0.3, S(9) + 2.2))) : -1.4) : -12;
-  if (after('G')) waterTable(wtab, 0.5);
+  mats.slab.opacity = 1; mats.slabB.opacity = 1; mats.slab.depthWrite = true; mats.slabB.depthWrite = true;
+  mats.slab.color.copy(SLABC); mats.slabB.color.copy(SLABC); mats.slab.roughness = 0.82; mats.slabB.roughness = 0.82;
+  laneA.visible = laneB.visible = !(sh === 2 || sh === 3);
+  laneB.position.set(0, 0, 0);
+  for (const p of [...platesA, ...platesB]) { p.position.set(p.userData.cx, -ST / 2, p.parent === laneA ? -LW / 2 : -LW * 1.5); p.rotation.set(0, 0, 0); p.scale.set(1, 1, 1); p.visible = true; }
+  setSub(after(2) ? (sh === 2 ? -99 : RX1) : RX0);
+  grooves.visible = after(5); grooves.children.forEach(g => { g.scale.set(1, 1, 1); g.position.z = g.userData.x === 999 ? -LW : -LW; });
+  cracks.visible = sh === 4; seals.visible = after(14); seals.children.forEach(g => g.scale.set(1, 1, 1));
+  dowels.visible = sh === 8 || sh === 9; dowels.children.forEach(d => d.scale.set(1, 1, 1));
+  ties.visible = sh === 11 || sh === 12; ties.children.forEach(d => d.scale.set(1, 1, 1));
+  setGrooves(after(16) ? (sh === 16 ? -99 : 99) : -99); grv.material.color.set(sh === 16 ? '#8f897f' : '#c2bcb2'); // escuras só na tomada do pente (câmera lenta)
+  paint.visible = after(20); paint.children.forEach(m => { m.scale.set(1, 1, 1); });
+  sign.visible = after(20) && t > wt(20, 'placas') - 0.15; radar.visible = after(20) && t > wt(20, 'radar') - 0.15;
   let K;
-  if (sh === 'A') { // cava o buraco, casa em cima
-    const tc = wt(0, 'constr'); const dig = sm(r(t, 0.2, tc - 0.2)); const top = lerp(-0.02, PB, dig);
-    fillBox.visible = top > PB + 0.02; fillBox.scale.y = Math.max(0.01, top - PB); fillBox.position.y = PB + (top - PB) / 2;
-    if (t < tc + 0.1) { placeP(you, 0.6, top, -1.6, -0.5); const s = Math.sin(t * 7); pose(you, { lean: 0.45 + s * 0.2, armL: [-1.2 + s * 0.5, 0.2], armR: [-1.0 + s * 0.5, -0.2], head: [0.3, 0, 0], legL: -0.2 }); if (shovel.parent !== you.armR) you.armR.add(shovel); shovel.position.set(0, -0.6, 0.15); shovel.rotation.set(1.2, 0, 0); shovel.visible = true; }
-    house.visible = t > tc - 0.05; const hu = r(t, tc - 0.05, tc + 0.45); house.position.set(0, lerp(7, 0, ei(hu)), 0); house.rotation.set(0, 0, 0);
-    if (t > tc + 0.4) st.shake = 1 - r(t, tc + 0.42, tc + 0.8);
-    K = camKeys([[0, V(2.4, 1.6, 6.2), V(0.3, -0.4, -1.6), 42], [tc - 0.4, V(1.2, 0.4, 13), V(0, -1.2, -1), 40], [T.B, ...CAM_H]], t);
-    st.html += pill(t, wt(0, 'subsolo'), 'SUBSOLO?', V2(800, 760), '', V(0.6, -1.4, -1.5));
-  } else if (sh === 'B') { // afunda e desmorona
-    house.visible = true; const u = sm(r(t, S(1) + 0.4, S(1) + 2.0)); house.position.set(0, -1.25 * u, 0); house.rotation.set(0.04 * u, 0, 0.1 * u);
-    chunksG.visible = true; chunksG.children.forEach(m => { const d = m.userData; const k = r(t, wt(1, 'desmor') - 0.3 + d.d, wt(1, 'desmor') + 0.4 + d.d); const y = lerp(d.y0, PB + 0.12, ei(k) * d.sp > 1 ? 1 : ei(k)); m.position.set(d.sx * lerp(PW + 0.05, PW - 0.4 - d.d * 0.6, k), y, d.z); m.visible = k > 0; m.rotation.set(t * 3 + d.d * 9, t * 2, 0); });
-    st.shake = 0.6 * r(t, S(1) + 0.4, S(1) + 0.7) * (1 - r(t, S(1) + 1.8, S(1) + 2.3)) + 0.8 * r(t, wt(1, 'desmor'), wt(1, 'desmor') + 0.2) * (1 - r(t, wt(1, 'desmor') + 0.6, wt(1, 'desmor') + 1.1));
-    K = camKeys([[T.B, ...CAM_H], [T.C, V(0.9, -0.2, 17.5), V(0, -1.1, 0), 40]], t);
-    st.html += pill(t, S(1) + 0.8, 'AFUNDOU!', V2(780, 420), 'red', V(1.5, 0.8, -1.5));
-    st.red = 0.18 * r(t, S(1) + 0.6, S(1) + 1.2);
-  } else if (sh === 'C') { // sapata corrida
-    const tf = wt(2, 'faixa') - 0.1; footings.children.forEach((m, i) => { const k = back(r(t, tf + i * 0.15, tf + 0.5 + i * 0.15)); m.scale.y = Math.max(0.01, k); m.position.y = -2.9 + 0.15 * k; });
-    const te = wt(2, 'espalh') - 0.2;
-    for (const [j, sx] of [[0, -1], [1, 1]]) { placeArrow(loadArrows[j * 3], V(sx * WX, 0.9, -0.2), V(0, -1, 0), 2.4 * eo(r(t, tf + 0.6, tf + 1.2)) + 0.01);
-      placeArrow(loadArrows[j * 3 + 1], V(sx * WX, -3.0, -0.2), V(-0.7, -1, 0), 1.1 * eo(r(t, te, te + 0.5)) + 0.01); placeArrow(loadArrows[j * 3 + 2], V(sx * WX, -3.0, -0.2), V(0.7, -1, 0), 1.1 * eo(r(t, te, te + 0.5)) + 0.01); }
-    K = camKeys([[T.C, ...CAM_B], [T.D, V(0.2, -1.8, 13.5), V(0, -2.3, 0), 40]], t);
-    st.flash = 0;
-    st.html += pill(t, S(3) + 0.05, 'SAPATA CORRIDA', V2(540, 1120), 'green', V(-WX, -2.75, -0.1));
-  } else if (sh === 'D') { // paredes sobem
-    walls.children.forEach((m, i) => { const k = eo(r(t, S(4) + 0.4 + i * 0.12, S(4) + 1.5 + i * 0.12)); m.scale.y = Math.max(0.01, k); m.position.y = -2.6 + WH * k / 2; });
-    slab.visible = t > S(4) + 1.2;
-    K = camKeys([[T.D, V(0.2, -1.8, 13.5), V(0, -2.3, 0), 40], [T.E, V(-1.2, -1.4, 13.6), V(0, -2.0, 0), 40]], t);
-    placeP(you, -0.6, SLAB, -1.8, 0.4); pose(you, { armL: [-2.6, 0.3], armR: [-0.3, -0.1] }); idle(you, t);
-  } else if (sh === 'E') { // empuxo + racha
-    const ys = [-0.5, -1.2, -1.9, -2.4];
-    ys.forEach((y, i) => { for (const [j, sx] of [[0, -1], [1, 1]]) { const len = (0.7 + i * 0.32) * eo(r(t, S(5) + 0.6 + i * 0.12, S(5) + 1.1 + i * 0.12)); placeArrow(pushArrows[i * 2 + j], V(sx * (WX + 0.25 + len + 0.3), y, 0.1), V(-sx, 0, 0), len + 0.01); } });
-    const cr = r(t, S(6) + 0.55, S(6) + 1.0); crack.children.forEach(m => m.visible = m.userData.i / 9 < cr);
-    if (t > S(6) + 0.5) { st.red = 0.2 * r(t, S(6) + 0.5, S(6) + 0.8); st.shake = 0.7 * (1 - r(t, S(6) + 0.6, S(6) + 1.0)) * (t > S(6) + 0.55 ? 1 : 0); }
-    K = camKeys([[T.E, V(-1.2, -1.4, 13.6), V(0, -2.0, 0), 40], [S(6) + 0.3, V(0.3, -1.5, 12.5), V(0, -1.6, -1), 40], [T.F, V(0.2, -1.5, 11.5), V(0, -1.4, -1.5), 40]], t);
-    st.html += carsCard(t, wt(5, '15') - 0.3, S(6) + 0.3);
-    st.html += pill(t, S(6) + 0.75, 'RACHOU!', V2(300, 520), 'red', V(-0.2, -1.0, PZ + 0.5));
-  } else if (sh === 'F') { // concreto armado
-    mats.wallT.opacity = lerp(1, 0.28, r(t, S(7) + 0.3, S(7) + 0.8)); mats.wallT.depthWrite = false;
-    const g = eo(r(t, wt(7, 'barras'), wt(7, 'barras') + 1.0)); rebar.children.forEach((m, i) => { m.scale.y = Math.max(0.01, g); });
-    K = camKeys([[T.F, V(0.2, -1.5, 11.5), V(0, -1.4, -1.5), 40], [T.G, V(2.2, -1.2, 10.5), V(0.4, -1.6, -1.3), 40]], t);
-    st.html += pill(t, S(8) + 0.05, 'CONCRETO ARMADO', V2(540, 380), 'green', V(-WX, -0.6, -0.6));
-  } else if (sh === 'G') { // a água
-    for (let i = 0; i < 6; i++) { const sx = i % 2 ? 1 : -1; const y = -1.8 - (i >> 1) * 0.35; const len = 0.9 * eo(r(t, wt(9, 'água') - 0.3 + i * 0.06, wt(9, 'água') + 0.2 + i * 0.06)); placeArrow(flowArrows[i], V(sx * 3.6, y, 0.12), V(-sx, 0.15, 0), len + 0.01); }
-    K = camKeys([[T.G, ...CAM_B], [T.H, V(0.5, -2.2, 14.8), V(0, -2.6, 0), 40]], t);
-    st.html += big(t, wt(9, 'água') - 0.1, 'O INIMIGO<br>É A ÁGUA', 360, '#7cc4ff', 110);
-  } else if (sh === 'H') { // dreno
-    const td = wt(10, 'cano') - 0.15; drain.scale.setScalar(1); drain.children.forEach((m, i) => { m.visible = t > td + (i % 40) * 0.012; });
-    for (let i = 0; i < 6; i++) { const sx = i % 2 ? 1 : -1; const k = ((t * 0.8 + i * 0.17) % 1); placeArrow(flowArrows[i], V(sx * (2.9 - k * 0.6), -1.4 - k * 1.0, 0.12), V(-sx * 0.55, -1, 0), 0.55); }
-    K = camKeys([[T.H, V(0.5, -2.2, 14.8), V(0, -2.6, 0), 40], [S(11) - 0.4, V(3.0, -2.2, 6.6), V(1.8, -2.7, -0.4), 40], [T.I, V(3.0, -2.3, 6.2), V(1.8, -2.7, -0.4), 40]], t);
-    st.html += pill(t, S(11) + 0.05, 'DRENO', V2(330, 600), 'green', V(1.93, -2.72, -0.05));
-  } else if (sh === 'I') { // água sem saída
-    setWaterIn(0.42 * sm(r(t, S(12) + 0.4, E(12))));
-    for (let i = 0; i < 4; i++) { const k = ((t * 0.9 + i * 0.25) % 1); placeArrow(flowArrows[i], V((i % 2 ? 1 : -1) * 1.9, -2.7, -0.5 - i * 0.6), V(i % 2 ? -1 : 1, 0.6, 0), 0.4 + k * 0.2); }
-    K = camKeys([[T.I, V(0.3, -1.7, 11.5), V(0, -2.4, -1), 40], [T.J, V(0.6, -1.9, 10.5), V(0.3, -2.5, -1), 40]], t);
-    st.html += pill(t, wt(12, 'água') + 0.2, 'PRA ONDE VAI?', V2(540, 420), 'orange');
-  } else if (sh === 'J') { // poço + bomba com boia
-    const ts = wt(13, 'poço') - 0.2; sump.visible = t > ts; sump.scale.setScalar(Math.max(0.01, xB(t, ts, 0.35))); sump.position.set(1.15 * (1 - sump.scale.x), -3.0 * (1 - sump.scale.y), -0.35 * (1 - sump.scale.z));
-    const on = t > wt(13, 'bomba'); const lvl = on ? 0.42 * (1 - sm(r(t, wt(13, 'joga'), E(13)))) : 0.42; setWaterIn(lvl);
-    sumpWater.visible = t > ts + 0.3; sumpWater.scale.y = 0.45; sumpWater.position.y = -3.45 + 0.225;
-    floatBall.position.y = lerp(-3.25, -3.0, on ? 1 : r(t, ts + 0.3, ts + 0.8)); pump.position.x = on ? 1.15 + Math.sin(t * 60) * 0.006 : 1.15;
-    setJet(t, on && t > wt(13, 'joga'));
-    K = camKeys([[T.J, V(2.6, -2.2, 6.5), V(1.1, -2.9, -0.4), 40], [wt(13, 'joga') - 0.2, V(2.6, -2.0, 6.8), V(1.2, -2.8, -0.4), 40], [T.K, V(2.4, -0.6, 9.5), V(1.0, -1.2, -0.4), 40]], t);
-    st.html += pill(t, wt(13, 'bomba') + 0.05, 'BOMBA', V2(300, 1060), '', V(1.15, -3.3, -0.2));
-    st.html += pill(t, wt(13, 'boia') + 0.05, 'BOIA', V2(820, 1080), 'orange', V(1.28, -3.0, -0.25));
-  } else if (sh === 'K') { // tempestade, gerador
-    house.visible = true; house.position.set(0, 0, 0); house.rotation.set(0, 0, 0);
-    scene.background = STORM; hemi.intensity = 0.6; sun.intensity = 0.7; setRain(t, true);
-    const tl = wt(14, 'tempest'), tg = wt(14, 'gerador'); const lightning = t > tl && t < tl + 0.12 || t > tl + 0.25 && t < tl + 0.32;
-    st.flash = (t > tl && t < tl + 0.2) ? 0.22 * (1 - r(t, tl, tl + 0.2)) : 0; const off = t > wt(14, 'acaba') && t < tg + 0.1; st.dark = off ? 0.35 : 0.1;
-    gen.visible = t > tg - 0.15; gen.scale.setScalar(Math.max(0.01, xB(t, tg - 0.15, 0.35)));
-    sumpWater.visible = true; sumpWater.scale.y = 0.45; sumpWater.position.y = -3.45 + 0.225;
-    setWaterIn(off ? 0.3 * r(t, wt(14, 'acaba'), tg) : (t > tg ? 0.3 * (1 - r(t, tg + 0.3, E(14))) : 0)); pump.position.x = !off && t > tg ? 1.15 + Math.sin(t * 60) * 0.006 : 1.15; setJet(t, t > tg + 0.3);
-    K = camKeys([[T.K, ...CAM_H], [T.L, V(-0.6, 0.2, 18.5), V(-0.4, -0.9, 0), 40]], t);
-    st.html += pill(t, tg + 0.05, 'GERADOR', V2(250, 640), 'green', V(-3.0, 0.7, -1.5));
-    if (off) st.html += pill(t, wt(14, 'acaba') + 0.1, 'SEM LUZ', V2(760, 560), 'red', null, tg);
-  } else if (sh === 'L') { // esponja + manta
-    const te = wt(15, 'esponja'); const wet = r(t, te - 0.2, te + 0.4) * (1 - r(t, wt(15, 'cobre'), wt(15, 'cobre') + 1.2));
-    mats.wallT.color.set('#bdb8ae').lerp(new THREE.Color('#5d7f9e'), wet * 0.7);
-    for (let i = 0; i < 6; i++) { const sx = i % 2 ? 1 : -1; const k = ((t * 0.9 + i * 0.2) % 1); placeArrow(flowArrows[i], V(sx * (3.3 - k * 0.9), -0.8 - (i >> 1) * 0.6, 0.12), V(-sx, 0, 0), 0.45, wet > 0.05); }
-    K = camKeys([[T.L, V(0.3, -1.5, 12.5), V(0, -1.6, -1), 40], [wt(15, 'cobre'), V(-2.2, -1.3, 10.5), V(-0.6, -1.5, -1.2), 40], [T.M, V(-2.6, -1.2, 10.0), V(-0.8, -1.5, -1.2), 40]], t);
-    st.html += pill(t, wt(15, 'manta') + 0.05, 'MANTA ASFÁLTICA', V2(330, 520), '', V(-WX - 0.13, -1.2, -0.05), S(16) - 0.1);
-    st.html += big(t, S(16) + 0.05, 'IMPERMEABILIZAÇÃO', 330, '#7dffa8', 84);
-  } else if (sh === 'M') { // bomba que liga sozinha no prédio
-    building.visible = true; carN.visible = true; carN.position.set(0.25, SLAB + 0.02, -1.75); carN.rotation.set(0, 0, 0); carN.scale.setScalar(0.92);
-    lamps.visible = true; lampLight.intensity = 1.2; sumpWater.visible = true; sumpWater.scale.y = 0.45; sumpWater.position.y = -3.45 + 0.225;
-    const run = Math.floor(t * 2) % 3 !== 2 || t > S(18); pump.position.x = 1.15 + Math.sin(t * 60) * 0.006; setJet(t, true);
-    for (let i = 0; i < 6; i++) { const sx = i % 2 ? 1 : -1; const k = ((t * 0.8 + i * 0.17) % 1); placeArrow(flowArrows[i], V(sx * (2.9 - k * 0.6), -1.6 - k * 0.9, 0.12), V(-sx * 0.55, -1, 0), 0.5, t > S(18) - 0.1); }
-    K = camKeys([[T.M, V(0.4, 1.5, 24), V(0, 0.6, 0), 40], [S(17) + 1.8, V(0.5, -0.6, 15.5), V(0.2, -1.6, 0), 40], [T.N, V(1.6, -1.6, 9.5), V(0.8, -2.4, -0.5), 40]], t);
-    st.html += pill(t, S(17) + 0.5, 'GARAGEM DO PRÉDIO', V2(540, 300), '');
-    st.html += vrrr(t, wt(17, 'liga'), V(1.15, -3.0, -0.3));
-    st.html += pill(t, wt(17, 'defeito') - 0.05, 'NÃO É DEFEITO', V2(760, 560), 'green');
-    st.html += pill(t, S(18) + 0.4, 'ÁGUA DO CHÃO', V2(300, 820), '', V(-2.6, -2.0, 0.1));
-  } else if (sh === 'N') { // escada, lâmpadas, vizinho
-    house.visible = true; house.position.set(0, 0, 0); house.rotation.set(0, 0, 0);
-    stairs.children.forEach((m, i) => { const k = xB(t, wt(19, 'escada') - 0.1 + i * 0.05, 0.3); m.visible = k > 0.02; m.scale.set(1, Math.max(0.01, k), 1); });
-    const tl = wt(19, 'lâmp'); lamps.visible = t > tl; lampLight.intensity = t > tl ? 1.4 : 0;
-    const tv = wt(19, 'vaga') - 0.1; carN.visible = t > tv; const cu = eo(r(t, tv, tv + 0.9)); carN.position.set(0.55, SLAB + 0.02, lerp(4.5, -1.75, cu)); carN.rotation.set(0, 0, 0); carN.scale.setScalar(0.85);
-    K = camKeys([[T.N, V(0.5, -1.4, 12.5), V(0, -1.8, -1), 40], [T.O, V(0.9, -1.1, 13.2), V(0, -1.6, -1), 40]], t);
-    st.html += pill(t, wt(19, 'escada') + 0.1, 'ESCADA', V2(260, 470), '', V(-0.5, -1.4, PZ + 0.9));
-    st.html += pill(t, wt(19, 'vizinho') - 0.05, 'O CARRO DO VIZINHO', V2(720, 420), 'red', V(0.55, -1.6, -1.0));
-  } else if (sh === 'O') { // parabéns
-    house.visible = true; house.position.set(0, 0, 0); house.rotation.set(0, 0, 0); carN.visible = true; carN.position.set(0.55, SLAB + 0.02, -1.75); carN.scale.setScalar(0.85);
-    lamps.visible = true; lampLight.intensity = 1.4; stairs.visible = true;
-    const u = r(t, T.O, END); K = [0, V(Math.sin(u * 1.2) * 3, 0.6, 19.5 - u * 2), V(0, -0.8, -1), 40];
-    st.html += big(t, wt(20, 'parab') - 0.05, 'PARABÉNS!', 230, '#FFD21F', 120);
-    st.html += big(t, wt(20, 'constr') - 0.05, 'VOCÊ CONSTRUIU<br>UM SUBSOLO', 380, '#fff', 84);
-    st.html += confetti(t, wt(20, 'parab'));
+  if (sh === 0) { // concreto direto na terra
+    setSub(RX0);
+    const xm = lerp(-11, 9, sm(r(t, 0.1, wt(0, 'tem') + 0.4)));
+    placeCar(mixer, xm, -LW, 0); mixer.userData.drum.rotation.x = t * 1.2;
+    for (const p of [...platesA, ...platesB]) { const x0 = p.userData.cx - PL / 2; const L = cl(xm - 2.6 - x0, 0, PL); p.visible = L > 0.02; p.scale.x = Math.max(0.005, L / PL); p.position.x = x0 + L / 2; } // concreto avança junto com a bica
+    // o caminhão anda em cima do que já foi concretado? não: anda no acostamento de trás
+    mixer.position.z = -7.6; mixer.position.y = -0.05;
+    K = [0, V(xm - 1.5, 5.0, 11.5), V(xm - 1.8, -0.6, -4.2), 42];
+    st.html += pill(t, wt(0, 'estrada') - 0.1, 'ESTRADA DE CONCRETO?', V2(540, 380), '', V(0, 0, -1.5));
+  } else if (sh === 1) { // caminhão passa, afunda, quebra
+    const tb = wt(1, 'afunda') - 0.1, tq = wt(1, 'quebra') - 0.1;
+    const xl = lerp(-12, -0.2, eo(r(t, TS(1), tb + 0.2))); placeCar(lorry, xl, -LW / 2, 0);
+    const a = 0.07 * eo(r(t, tb, tb + 0.5)) + 0.06 * eo(r(t, tq, tq + 0.3)); const drop = 0.12 * eo(r(t, tb, tb + 0.6));
+    for (const P of [platesA, platesB]) { const L = P[5], Rr = P[6];
+      rotAbout(L, -4, -drop * 0.3, -a, -2, -ST / 2 - drop * 0.3); rotAbout(Rr, 4, -drop * 0.3, a, 2, -ST / 2 - drop * 0.3); }
+    lorry.position.y = -Math.sin(a) * 1.8 - drop * 0.3; lorry.rotation.z = a * 0.4;
+    st.shake = 0.7 * r(t, tq, tq + 0.1) * (1 - r(t, tq + 0.4, tq + 0.9));
+    if (t > tb) for (let i = 0; i < 4; i++) placeArrow(redArrows[i], V(-1.2 + i * 0.8, 3.6, -1.5), V(0, -1, 0), 0.9 * eo(r(t, tb + i * 0.06, tb + 0.4 + i * 0.06)) + 0.01);
+    K = camKeys([[TS(1), V(3.5, 5.8, 13.5), V(0, 0.2, -2), 42], [S(2) - 0.2, V(2.0, 5.0, 12.0), V(0, 0.0, -1.5), 42]], t);
+    st.html += pill(t, tq + 0.05, 'QUEBROU!', V2(760, 400), 'red', V(0, -0.1, 0));
+  } else if (sh === 2) { // rolo compacta e a sub-base aparece
+    const xr = lerp(-9, 9, sm(r(t, TS(2) + 0.2, E(2) + 0.1))); placeCar(roller, xr, -1.6, 0, SBT + 0.02);
+    setSub(lerp(-26, 26, 0) * 0 + xr - 1.4); // atrás do rolo = sub-base
+    st.shake = 0.12;
+    K = camKeys([[TS(2), V(-2.5, 1.6, 8.5), V(-1, -0.6, -1.5), 42], [S(3) - 0.2, V(2.5, 1.2, 8.0), V(1.2, -0.7, -1.5), 42]], t);
+    st.html += pill(t, wt(2, 'compacta') - 0.05, 'COMPACTA', V2(300, 420), 'orange', V(xr + 1.2, SBT + 0.4, -0.4));
+    st.html += pill(t, wt(2, 'camada') - 0.05, 'CAMADA FIRME', V2(760, 1080), '', V(Math.min(xr - 2.5, 1), (SBT + SBB) / 2, 0));
+  } else if (sh === 3) { // isso é a sub-base
+    setSub(RX1);
+    K = camKeys([[TS(3), V(1.0, 0.5, 6.5), V(0, -0.8, -1), 40], [S(4) - 0.2, V(0.4, 0.6, 6.0), V(0, -0.75, -1), 40]], t);
+    st.html += pill(t, S(3) + 0.25, 'SUB-BASE', V2(540, 1060), 'green', V(0, -0.68, 0));
+  } else if (sh === 4) { // retração: racha onde quiser
+    const tp = TS(4); for (const p of [...platesA, ...platesB]) { const k = xB(t, tp, 0.35); p.scale.y = Math.max(0.01, k); p.position.y = -ST + ST * k / 2; }
+    const te = wt(4, 'encolhe') - 0.1;
+    for (let i = 0; i < 4; i++) { const sx = i % 2 ? 1 : -1; const z = i < 2 ? -1.5 : -4.5; placeArrow(redArrows[i], V(sx * 4.2, 0.35, z), V(-sx, 0, 0), 1.4 * eo(r(t, te + i * 0.05, te + 0.5 + i * 0.05)) + 0.01); }
+    const tr = wt(4, 'racha') - 0.15; cracks.children.forEach(m => { m.visible = t > tr + m.userData.k * 0.06 + m.userData.i * 0.03; });
+    if (t > tr) st.shake = 0.35 * (1 - r(t, tr + 0.1, tr + 0.5));
+    K = camKeys([[TS(4), V(0, 12.5, 6.0), V(0, -0.2, -3.6), 44], [S(5) - 0.2, V(0.5, 13.0, 5.6), V(0, -0.2, -3.6), 44]], t);
+    st.html += pill(t, wt(4, 'racha') + 0.05, 'RACHOU!', V2(540, 360), 'red');
+  } else if (sh === 5) { // serra em placas
+    const ts0 = wt(5, 'serra') - 0.5; const u = sm(r(t, ts0, E(5) - 0.1)); const zs = lerp(0.8, -6.6, u);
+    saw.visible = true; saw.position.set(0, 0.0, zs); saw.rotation.set(0, 0, 0); setDust(t, t > ts0 && u < 1, V(0, 0.1, zs - 0.3));
+    grooves.children.forEach(g => { const x = g.userData.x; if (x === 0) { const L = cl((0.0 - zs) / (2 * LW)); g.visible = L > 0.01; g.scale.z = Math.max(0.01, L); g.position.z = -L * LW; }
+      else if (x === 999) { g.visible = t > E(5) - 0.4; }
+      else { const k = xB(t, ts0 + 0.5 + Math.abs(x) * 0.06, 0.3); g.visible = k > 0.02; g.scale.set(1, 1, Math.max(0.01, k)); } });
+    K = camKeys([[TS(5), V(3.6, 3.6, 6.4), V(0, -0.1, -2.6), 42], [S(6) - 0.2, V(4.2, 4.6, 7.4), V(0, -0.1, -2.8), 42]], t);
+    st.html += pill(t, wt(5, 'serra') + 0.05, 'SERRA', V2(800, 420), 'orange', V(0.3, 0.6, zs + 0.3));
+  } else if (sh === 6) { // isso é uma junta serrada
+    K = camKeys([[TS(6), V(4.2, 4.6, 7.4), V(0, -0.1, -2.8), 42], [S(7) - 0.2, V(2.6, 3.2, 6.0), V(0, -0.1, -2.2), 42]], t);
+    st.html += pill(t, S(6) + 0.25, 'JUNTA SERRADA', V2(540, 380), 'green', V(0, 0.02, -1.2));
+  } else if (sh === 7) { // degrau
+    const td = wt(7, 'afunda') - 0.2; const d = 0.16 * eo(r(t, td, td + 0.6));
+    for (const P of [platesA, platesB]) { P[6].position.y = -ST / 2 - d; P[5].position.y = -ST / 2 - d * 0.15; }
+    for (let i = 0; i < 2; i++) placeArrow(redArrows[i], V(i ? 1.6 : -1.6, 1.4, -0.6), V(0, -1, 0), (i ? 0.8 : 0.35) * eo(r(t, td, td + 0.4)) + 0.01);
+    K = camKeys([[TS(7), V(1.1, 0.9, 4.6), V(0, -0.25, -1), 40], [S(8) - 0.2, V(0.6, 0.6, 3.8), V(0, -0.25, -1), 40]], t);
+    st.html += pill(t, wt(7, 'degrau') + 0.05, 'DEGRAU!', V2(780, 460), 'red', V(0.02, -0.1, 0));
+  } else if (sh === 8 || sh === 9) { // barras de transferência
+    const op = sh === 8 ? lerp(1, 0.3, r(t, S(8) + 0.1, S(8) + 0.6)) : 0.3; mats.slab.opacity = op; mats.slabB.opacity = op; mats.slab.depthWrite = op > 0.95; mats.slabB.depthWrite = op > 0.95;
+    const tb = wt(8, 'barras') - 0.25; dowels.children.forEach((d, i) => { const k = sh === 8 ? eo(r(t, tb + (i % 10) * 0.03, tb + 0.5 + (i % 10) * 0.03)) : 1; d.scale.x = Math.max(0.01, k); });
+    K = sh === 8 ? camKeys([[TS(8), V(0.6, 0.6, 3.8), V(0, -0.25, -1), 40], [S(9) - 0.2, V(1.6, 1.3, 4.0), V(0, -0.3, -1.3), 40]], t)
+                 : camKeys([[TS(9), V(1.6, 1.3, 4.0), V(0, -0.3, -1.3), 40], [S(10) - 0.2, V(2.0, 1.5, 4.6), V(0, -0.3, -1.5), 40]], t);
+    st.html += pill(t, wt(8, 'lisas') - 0.05, 'AÇO LISO', V2(300, 420), 'orange', V(0.3, -0.22, -0.35), S(9) - 0.1);
+    st.html += pill(t, S(9) + 0.2, 'BARRA DE TRANSFERÊNCIA', V2(540, 400), 'green', V(0.3, -0.22, -0.35));
+  } else if (sh === 10) { // faixas se afastam
+    const ta = S(10) + 0.3; const g = 0.55 * eo(r(t, ta, ta + 0.8)); laneB.position.z = -g;
+    placeArrow(redArrows[0], V(0, 0.3, -2.5), V(0, 0, 1), 1.0 * eo(r(t, ta, ta + 0.5)) + 0.01); placeArrow(redArrows[1], V(0, 0.3, -3.5 - g), V(0, 0, -1), 1.0 * eo(r(t, ta, ta + 0.5)) + 0.01);
+    K = camKeys([[TS(10), V(0, 6.0, 3.2), V(0, -0.2, -3.0), 42], [S(11) - 0.2, V(0.3, 6.4, 3.0), V(0, -0.2, -3.1), 42]], t);
+    st.html += pill(t, wt(10, 'afast') + 0.05, 'SEPAROU!', V2(780, 420), 'red', V(1.2, 0.05, -3.2 - g / 2));
+  } else if (sh === 11 || sh === 12) { // barras de ligação
+    const tb = TS(11) + 0.1; laneB.position.z = sh === 11 ? -0.55 * (1 - eo(r(t, tb, tb + 0.6))) : 0;
+    const op = sh === 11 ? lerp(1, 0.3, r(t, tb + 0.4, tb + 0.9)) : 0.3; mats.slab.opacity = op; mats.slabB.opacity = op; mats.slab.depthWrite = op > 0.95; mats.slabB.depthWrite = op > 0.95;
+    const tc = wt(11, 'costura') - 0.1; ties.children.forEach((d, i) => { const k = sh === 11 ? eo(r(t, tc + (i % 12) * 0.05, tc + 0.5 + (i % 12) * 0.05)) : 1; d.scale.z = Math.max(0.01, k); });
+    K = camKeys([[TS(11), V(-1.8, 3.6, 2.6), V(0.3, -0.25, -3.0), 42], [S(13) - 0.2, V(-1.0, 3.0, 2.2), V(0.4, -0.25, -3.0), 42]], t);
+    st.html += pill(t, S(12) + 0.2, 'BARRA DE LIGAÇÃO', V2(540, 380), 'green', V(0.5, -0.18, -3.0));
+  } else if (sh === 13) { // chuva lava a terra
+    scene.background = STORM; hemi.intensity = 0.8; sun.intensity = 1.1; setRain(t, true, 0);
+    const tl = wt(13, 'lava') - 0.2;
+    for (let i = 0; i < 4; i++) { const k = ((t * 0.9 + i * 0.25) % 1); placeArrow(blueArrows[i], V(0, 1.4 - k * 0.9, -0.5 - i * 1.4), V(0, -1, 0), 0.55); }
+    setSpray(t, t > tl, 0);
+    for (const P of [platesA, platesB]) P[6].position.y = -ST / 2 - 0.08 * eo(r(t, tl + 0.3, E(13)));
+    K = camKeys([[TS(13), V(1.6, 1.8, 5.6), V(0, -0.2, -2.0), 42], [S(14) - 0.2, V(1.2, 1.5, 5.0), V(0, -0.25, -1.8), 42]], t);
+    st.html += pill(t, wt(13, 'lava') + 0.05, 'LAVA A TERRA', V2(760, 420), 'red', V(0.2, 0.3, -1.5));
+  } else if (sh === 14) { // selante
+    scene.background = STORM; hemi.intensity = 0.8; sun.intensity = 1.1; setRain(t, true, 0);
+    const tf = wt(14, 'fecha') - 0.1; seals.children.forEach(g => { const x = g.userData.x; const k = x === 999 ? eo(r(t, tf + 0.3, tf + 0.9)) : xB(t, tf + Math.abs(x) * 0.05, 0.3); g.visible = k > 0.02; if (x === 999) g.scale.x = Math.max(0.01, k); else g.scale.z = Math.max(0.01, k); });
+    setSpray(t, t < tf + 0.1, 0);
+    for (let i = 0; i < 4; i++) { const k = ((t * 0.9 + i * 0.25) % 1); placeArrow(blueArrows[i], V(0, 1.4 - k * 0.9, -0.5 - i * 1.4), V(0, -1, 0), 0.55, t < tf + 0.4); }
+    K = camKeys([[TS(14), V(1.0, 2.4, 4.2), V(0, -0.1, -1.8), 42], [S(15) - 0.2, V(2.0, 3.0, 5.2), V(0, -0.1, -2.2), 42]], t);
+    st.html += pill(t, wt(14, 'borracha') + 0.05, 'BORRACHA', V2(300, 430), 'orange', V(0, 0.05, -1.0), wt(14, 'selante') - 0.1);
+    st.html += pill(t, wt(14, 'selante') - 0.05, 'SELANTE', V2(540, 400), 'green', V(0, 0.05, -1.0));
+  } else if (sh === 15) { // liso e molhado = sabão
+    const w = r(t, TS(15), TS(15) + 0.4); mats.slab.color.copy(SLABC).lerp(WETC, w); mats.slabB.color.copy(SLABC).lerp(WETC, w); mats.slab.roughness = mats.slabB.roughness = 0.2;
+    scene.background = STORM; hemi.intensity = 0.9; sun.intensity = 1.3; setRain(t, true, 0);
+    const ts = S(15) + 0.3; const u = r(t, ts, E(15) + 0.1); placeCar(carA, lerp(-6, 1.5, eo(u)), -1.5 + Math.sin(u * 3) * 0.25, 2.6 * sm(r(t, ts + 0.4, E(15))));
+    K = camKeys([[TS(15), V(-1.0, 5.0, 10.5), V(-0.5, -0.1, -2.6), 42], [S(16) - 0.2, V(0.5, 5.2, 10.5), V(0.8, -0.1, -2.6), 42]], t);
+    st.html += pill(t, wt(15, 'sabão') - 0.05, 'VIRA SABÃO!', V2(540, 400), 'red', V(carA.position.x, 0.9, carA.position.z));
+  } else if (sh === 16) { // pente de aço: texturização
+    const xc = lerp(-3.0, 3.5, r(t, TS(16), E(16) + 0.1)); comb.visible = true; comb.position.set(xc, 0, 0); setGrooves(xc - 0.1);
+    K = [0, V(xc - 1.6, 3.4, 5.4), V(xc - 0.4, -0.1, -2.4), 42]; // segue o pente: ranhuras aparecem atrás dele
+    st.html += pill(t, wt(16, 'pente') + 0.05, 'PENTE DE AÇO', V2(780, 380), 'orange', V(xc - 0.1, 0.1, -0.6), wt(16, 'texturiz') - 0.1);
+    st.html += pill(t, wt(16, 'texturiz') - 0.05, 'TEXTURIZAÇÃO', V2(540, 400), 'green', V(xc - 1.2, 0.02, -1.0));
+  } else if (sh === 17) { // 10 toneladas, 20 anos
+    const tl = S(17) + 0.1; const h = 1.7 * sm(r(t, tl, tl + 1.3)); const P = platesA[6]; P.position.y = -ST / 2 + h;
+    hook.visible = true; const hy = h + 2.4; hook.children.forEach(c => { if (c.userData.hk) c.position.set(2, hy, -1.5); else { const a = V(2 + c.userData.x * 0.6, h, -1.5 + (c.userData.z + 1.5) * 0.6 - 0), b = V(2, hy, -1.5); c.position.copy(a.clone().add(b).multiplyScalar(0.5)); c.scale.y = a.distanceTo(b); c.quaternion.setFromUnitVectors(V(0, 1, 0), b.clone().sub(a).normalize()); } });
+    K = camKeys([[TS(17), V(4.0, 1.6, 8.5), V(2, 0.1, -1.5), 42], [S(18) - 0.2, V(3.0, 2.0, 7.5), V(2, 0.4, -1.5), 42]], t);
+    st.html += tonCard(t, wt(17, 'pesa') - 0.3, E(17));
+    st.html += big(t, wt(17, 'durar') - 0.1, 'DURA <span style="color:#FFD21F">20+ ANOS</span>', 1000, '#fff', 92);
+  } else if (sh === 18 || sh === 19) { // tum tum tum
+    const t0 = TS(18), t1 = E(19); const xc = lerp(-12, 12, (t - t0) / (t1 - t0)); placeCar(carA, xc, -1.5, 0);
+    for (const x of JX) { const tt = t0 + (x - 0.8 + 12) / 24 * (t1 - t0); if (t > tt && t < tt + 0.45 && Math.abs(x) < 12) { const a = scr(V(x, 0.2, -0.3)); const k = back(r(t, tt, tt + 0.2)) * (1 - r(t, tt + 0.3, tt + 0.45)); st.html += `<div style="position:absolute;left:${a.x - 120}px;top:${a.y - 230}px;width:240px;text-align:center;font-weight:900;font-size:76px;color:#FFD21F;transform:scale(${k});text-shadow:0 0 3px #000,0 5px 0 #000">TUM</div>`; } }
+    const bump = JX.some(x => { const d = xc + 0.8 - x; return d > 0 && d < 0.15; }) || JX.some(x => { const d = xc - 0.85 - x; return d > 0 && d < 0.15; }); carA.position.y = bump ? 0.03 : 0;
+    K = sh === 18 ? [0, V(xc + 2.0, 2.6, 7.2), V(xc + 0.6, 0.0, -1.8), 42] : [0, V(6.0 + (t - S(19)) * 0.15, 3.6, 11.0), V(6.0, 0.1, -2.2), 42]; // frase 19: câmera parada mostrando 2 juntas
+    st.html += pill(t, wt(18, 'defeito') - 0.05, 'NÃO É DEFEITO', V2(540, 360), 'green', null, E(18) + 0.1);
+    if (sh === 19) { const jn = 8; st.html += pill(t, S(19) + 0.2, 'JUNTA', V2(800, 420), '', V(jn, 0.03, -0.3));
+      st.html += dimH(t, wt(19, 'cada') - 0.1, V(jn - PL, 0.05, 0.2), V(jn, 0.05, 0.2), '≈ 5 m'); }
+  } else if (sh === 20) { // faixas, placas, radar
+    const tp = wt(20, 'pinta') - 0.15; paint.children.forEach(m => { if (m.userData.kind === 'edge') { m.scale.x = Math.max(0.01, eo(r(t, tp, tp + 1.0))); } else { const k = xB(t, tp + 0.2 + (m.userData.x + 24) * 0.02, 0.25); m.visible = k > 0.02; m.scale.set(Math.max(0.01, k), 1, 1); } });
+    sign.scale.setScalar(Math.max(0.01, xB(t, wt(20, 'placas') - 0.15, 0.35))); radar.scale.setScalar(Math.max(0.01, xB(t, wt(20, 'radar') - 0.15, 0.35)));
+    placeCar(carB, lerp(9, -7, r(t, TS(20), E(20) + 0.2)), -4.5, Math.PI);
+    K = camKeys([[TS(20), V(-2.0, 3.6, 8.5), V(-0.5, 0.3, -3.5), 44], [wt(20, 'radar') - 0.4, V(1.8, 2.8, 6.0), V(3.6, 1.5, -7.5), 44], [S(21) - 0.2, V(2.2, 2.8, 5.6), V(4.0, 1.6, -7.8), 44]], t);
+    st.html += pill(t, wt(20, 'faixas') + 0.05, 'FAIXAS', V2(300, 900), '', V(-1.5, 0.05, -LW - 0.2), wt(20, 'radar') - 0.5);
+    st.html += pill(t, wt(20, 'placas') + 0.05, 'PLACA', V2(250, 420), '', V(1.2, 2.4, -7.0), wt(20, 'radar') - 0.5);
+    st.html += pill(t, wt(20, 'radar') + 0.1, 'O RADAR ESCONDIDO', V2(540, 360), 'red', V(6.6, 2.6, -8.8));
+  } else { // parabéns + CTA (+ tela final por cima)
+    const u = r(t, TS(21), END);
+    placeCar(carA, -14 + ((t - TS(21)) * 5.5) % 30, -1.5, 0); placeCar(carB, 14 - ((t - TS(21)) * 5.0) % 30, -4.5, Math.PI); placeCar(carC, -24 + ((t - TS(21)) * 5.5) % 30, -1.5, 0);
+    K = [0, V(-3 + u * 6, 4.6 - u * 0.6, 12.5 - u * 1.5), V(0, 0.2, -3.5), 42];
+    if (sh === 21) { st.html += big(t, wt(21, 'parab') - 0.05, 'PARABÉNS!', 300, '#FFD21F', 120); st.html += big(t, wt(21, 'constr') - 0.05, 'VOCÊ CONSTRUIU UMA<br>RODOVIA DE CONCRETO', 450, '#fff', 74); st.html += confetti(t, wt(21, 'parab')); }
+    if (sh >= 22) st.html += ctaCard(t);
   }
   st.cam = K; return st;
 }
-function V2(x, y) { return { x, y }; }
-function carsCard(t, t0, t1) { if (t < t0 || t > t1 + 0.25) return ''; const k = pop(t, t0, 0.4) * (1 - r(t, t1, t1 + 0.25));
-  let ic = ''; for (let i = 0; i < 15; i++) { const s = back(r(t, t0 + 0.2 + i * 0.05, t0 + 0.45 + i * 0.05)); ic += `<svg width="96" height="56" viewBox="0 0 96 56" style="transform:scale(${s})"><path d="M10 34 L18 18 Q22 12 30 12 L62 12 Q70 12 76 18 L86 30 Q92 32 92 38 L92 44 L4 44 L4 38 Q4 34 10 34Z" fill="#ff7a1a"/><circle cx="24" cy="44" r="8" fill="#222"/><circle cx="72" cy="44" r="8" fill="#222"/><rect x="26" y="17" width="16" height="12" rx="2" fill="#bfe0ff"/><rect x="47" y="17" width="16" height="12" rx="2" fill="#bfe0ff"/></svg>`; }
-  return `<div class="card" style="left:110px;top:150px;width:860px;padding:26px 30px 24px;text-align:center;transform-origin:50% 0;transform:scale(${k})">
-   <div style="font-weight:800;font-size:38px;margin-bottom:12px">EMPURRÃO DA TERRA MOLHADA <span style="color:#ff7a1a">≈ 15 CARROS</span></div>
-   <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px 10px">${ic}</div></div>`; }
-function vrrr(t, t0, p) { if (t < t0) return ''; const a = scr(p); const k = back(r(t, t0, t0 + 0.3)); const w = Math.sin(t * 30) * 4;
-  return `<div style="position:absolute;left:${a.x + 60}px;top:${a.y - 150}px;font-weight:900;font-size:58px;color:#FFD21F;transform:scale(${k}) rotate(${-8 + w * 0.4}deg);text-shadow:0 0 3px #000,0 4px 0 #000">VRRRR</div>`; }
+function dimH(t, t0, a, b, txt) { if (t < t0) return ''; const u = eo(r(t, t0, t0 + 0.5)); const A = scr(a), B0 = scr(b); const B = { x: lerp(A.x, B0.x, u), y: lerp(A.y, B0.y, u) };
+  return `<svg style="position:absolute;left:0;top:0" width="${W}" height="${H}"><g stroke="#ffb020" stroke-width="7" stroke-linecap="round"><line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}"/><line x1="${A.x}" y1="${A.y - 24}" x2="${A.x}" y2="${A.y + 24}"/><line x1="${B.x}" y1="${B.y - 24}" x2="${B.x}" y2="${B.y + 24}"/></g></svg>
+  <div class="pill" style="left:${(A.x + B.x) / 2}px;top:${(A.y + B.y) / 2 - 70}px;border-color:#ffb020;font-size:52px;transform:translate(-50%,-50%) scale(${back(r(t, t0 + 0.2, t0 + 0.5))})">${txt}</div>`; }
+function tonCard(t, t0, t1) { if (t < t0 || t > t1 + 0.25) return ''; const k = pop(t, t0, 0.4) * (1 - r(t, t1, t1 + 0.25));
+  return `<div class="card" style="left:110px;top:200px;width:860px;padding:26px 30px 24px;text-align:center;transform-origin:50% 0;transform:scale(${k})">
+   <div style="font-weight:800;font-size:40px">1 PLACA DE CONCRETO</div><div style="font-weight:900;font-size:96px;color:#FFD21F;line-height:1.1">≈ 10 TONELADAS</div></div>`; }
+function ctaCard(t) { const t0 = TS(22); if (t < t0 || t > window.F_END / FPS + 0.2) return '';
+  const items = [['curte', '#ff4d6d', '<path d="M50 84 L18 52 Q6 38 16 24 Q28 10 44 22 L50 28 L56 22 Q72 10 84 24 Q94 38 82 52 Z" fill="#ff4d6d"/>', 'CURTE'],
+    ['salva', '#FFD21F', '<path d="M26 12 H74 V88 L50 70 L26 88 Z" fill="#FFD21F"/>', 'SALVA'],
+    ['manda', '#4aa3ff', '<path d="M10 46 L90 12 L62 88 L48 56 Z" fill="#4aa3ff"/>', 'MANDA'],
+    ['comenta', '#3dd17a', '<path d="M14 18 H86 V66 H46 L24 86 V66 H14 Z" fill="#3dd17a"/>', 'COMENTA']];
+  let h = '<div style="position:absolute;left:0;right:0;top:330px;display:flex;justify-content:center;gap:26px">';
+  for (const [w, c, svg, lab] of items) { const k = back(r(t, wt(22, w) - 0.15, wt(22, w) + 0.15));
+    h += `<div style="width:220px;text-align:center;transform:scale(${k});opacity:${cl(k)}"><div style="width:190px;height:190px;margin:0 auto;border-radius:40px;background:rgba(20,23,29,.92);border:5px solid ${c};display:flex;align-items:center;justify-content:center"><svg width="120" height="120" viewBox="0 0 100 100">${svg}</svg></div><div style="font-weight:900;font-size:40px;color:#fff;margin-top:10px;text-shadow:0 3px 0 #000">${lab}</div></div>`; }
+  return h + '</div>'; }
 function confetti(t, t0) { if (t < t0) return ''; let h = ''; const cols = ['#FFD21F', '#ff5a5a', '#3dd17a', '#4aa3ff', '#ff9a1f', '#fff'];
   for (let i = 0; i < 70; i++) { const u = t - t0; const x = (i * 157) % 1080 + Math.sin(u * 2 + i) * 30; const y = -40 + u * (260 + (i * 37) % 200) - 60 * ((i * 13) % 5); if (y < -40 || y > 1950) continue;
     h += `<div style="position:absolute;left:${x}px;top:${y}px;width:${12 + i % 3 * 4}px;height:${22 - i % 3 * 4}px;background:${cols[i % 6]};transform:rotate(${u * 300 + i * 40}deg)"></div>`; }
   return h; }
-// ---------- avatar no canto (igual ao vídeo de pavimentação) ----------
+// ---------- avatar no canto ----------
 function avatarCorner(f) {
   const out = cl(1 - (f - window.F_END) / 8); if (out <= 0) return ''; const inS = springSim(f - 4, 12, 140); const m = mouthAt(f);
   return `<div style="position:absolute;left:50px;top:1515px;width:270px;height:270px;opacity:${out};transform:translateY(${-m * 5}px) rotate(${Math.sin(f / 23) * 2 + m * 1.5}deg) scale(${inS * (0.9 + 0.1 * out)})">
@@ -490,30 +517,31 @@ function avatarCorner(f) {
 window.renderFrame = f => {
   const t = f / FPS; const st = world(t); const K = st.cam;
   let p = K[1].clone(), q = K[2].clone();
-  if (st.shake > 0) { const a = st.shake * 0.08; p.add(V(noise(t * 30) * a, noise(t * 37, 1.3) * a, 0)); }
+  if (st.shake > 0) { const a = st.shake * 0.06; p.add(V(noise(t * 2.5) * a, noise(t * 2.8, 1.3) * a, 0)); }
   p.add(V(Math.sin(t * 0.7) * 0.04, Math.sin(t * 0.9) * 0.03, 0));
-  cam.position.copy(p); cam.fov = K[3]; cam.up.set(0, 1, 0); cam.lookAt(q); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
-  sun.target.position.set(0, -1, -1.5); sun.position.set(5, 11, 7.5);
+  cam.position.copy(p); cam.fov = K[3]; cam.up.set(0, 1, 0); cam.setViewOffset(W, H, 0, 260, W, H); // centro do quadro sobe 260 px (fica acima da legenda)
+  cam.lookAt(q); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+  sun.target.position.set(0, -1, -3); sun.position.set(5, 11, 7.5);
   R.render(scene, cam);
   canvas.style.filter = st.blur ? `blur(${st.blur}px)` : 'none';
   fxd.innerHTML = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 50%, rgba(0,0,0,${st.vig}) 100%)"></div>`
     + (st.red ? `<div style="position:absolute;inset:0;background:#c41010;opacity:${st.red};mix-blend-mode:multiply"></div>` : '')
-    + (st.dark ? `<div style="position:absolute;inset:0;background:#000;opacity:${st.dark}"></div>` : '')
-    + (st.flash ? `<div style="position:absolute;inset:0;background:#fff;opacity:${st.flash}"></div>` : '');
+    + (st.dark ? `<div style="position:absolute;inset:0;background:#000;opacity:${st.dark}"></div>` : '');
   ov.innerHTML = st.html + telaFinal(f) + (f < window.F_END ? `<div class="wm">@eng.raphaelserra</div>` : '') + caption(t) + avatarCorner(f)
     + `<div style="position:absolute;inset:0;background:#000;opacity:${cl((f - (F_TOT - 18)) / 18)}"></div>`;
 };
 await document.fonts.load('900 40px InterD'); await document.fonts.load('800 40px InterD'); await document.fonts.load('800 40px P'); await document.fonts.load('900 40px P'); await document.fonts.load('700 40px P'); await document.fonts.load('600 40px P');
 
-window.renderCover = (cy = 3.2, dist = 21) => {
-  const t = S(20) + 0.3; world(t);
-  cam.position.set(1.2, cy - 0.6, dist); cam.fov = 40; cam.up.set(0, 1, 0); cam.lookAt(V(0, cy, -1)); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
-  sun.target.position.set(0, -1, 0); sun.position.set(5, 11, 9); R.render(scene, cam); canvas.style.filter = 'none';
+window.renderCover = (cy = 0.4, dist = 12) => {
+  const t = S(21) + 0.3; world(t);
+  placeCar(carA, 0.6, -1.5, 0); placeCar(carB, -4.5, -4.5, Math.PI); carC.visible = false;
+  cam.clearViewOffset(); cam.position.set(-3.0, 4.2, dist); cam.fov = 42; cam.up.set(0, 1, 0); cam.lookAt(V(0.3, cy, -3.5)); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+  sun.target.position.set(0, -1, -3); sun.position.set(5, 11, 9); R.render(scene, cam); canvas.style.filter = 'none';
   fxd.innerHTML = `<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,22,34,.92) 0%,rgba(14,22,34,.78) 34%,rgba(14,22,34,0) 52%,rgba(14,22,34,0) 74%,rgba(14,22,34,.9) 86%)"></div>`;
   const av = window.AV.svg(0, 0, 0);
   ov.innerHTML = `<div style="position:absolute;left:110px;top:290px;background:#FFC20E;color:#111;font-family:InterD;font-weight:900;font-size:36px;letter-spacing:5px;padding:12px 30px;border-radius:40px">DO ZERO</div>
-   <div style="position:absolute;right:110px;top:300px;color:#FFC20E;font-family:InterD;font-weight:900;font-size:44px">#01</div>
-   <div style="position:absolute;left:110px;right:80px;top:390px;font-family:InterD;font-weight:900;font-size:112px;line-height:1.0;letter-spacing:-4px;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.5)">Como um<br><span style="color:#8fd0ff">buraco</span> vira<br>um <span style="display:inline-block;background:#FFC20E;color:#111;padding:0 18px 8px;border-radius:18px;transform:rotate(-2deg)">subsolo</span>?</div>
+   <div style="position:absolute;right:110px;top:300px;color:#FFC20E;font-family:InterD;font-weight:900;font-size:44px">#02</div>
+   <div style="position:absolute;left:110px;right:80px;top:390px;font-family:InterD;font-weight:900;font-size:108px;line-height:1.0;letter-spacing:-4px;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.5)">Por que a<br>estrada de<br><span style="color:#8fd0ff">concreto</span> faz<br><span style="display:inline-block;background:#FFC20E;color:#111;padding:0 18px 8px;border-radius:18px;transform:rotate(-2deg)">tum-tum</span>?</div>
    <div style="position:absolute;left:110px;top:1560px;display:flex;align-items:center;gap:26px">
     <div style="width:150px;height:150px;box-sizing:border-box;border-radius:75px;overflow:hidden;background:#30343A;border:7px solid #FFC20E">${av}</div>
     <div><div style="font-family:InterD;font-weight:900;font-size:50px;color:#fff">@eng.raphaelserra</div><div style="font-family:InterD;font-weight:600;font-size:34px;color:#c9d2dc">Engenheiro civil explica</div></div></div>`;
