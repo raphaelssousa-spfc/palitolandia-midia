@@ -60,7 +60,7 @@ bad=[f for f in range(1,N-1) if np.abs(v[f]-v[f-1]).mean()>6 and np.abs(v[f+1]-v
 ```
 Quadros de corte de cena e placas surgindo são esperados; o resto é defeito.
 
-## Como postar (tarefa diária das 18:10 — 1 Reel por dia)
+## Como postar (1 Reel por dia: 19:10 de domingo a quinta, 20:40 sexta e sábado)
 1. `git pull`; abrir `fila.json`; pegar o PRIMEIRO item com status "pendente".
 2. URLs públicas: `https://raw.githubusercontent.com/raphaelssousa-spfc/palitolandia-midia/main/<caminho>`.
 3. Windsor `execute_action` conector `instagram`, conta `17841460341094597`, ação `create_video_post` com `video_url`, `cover_url` (a capa .jpg), `caption` = legenda, `share_to_feed: true`.
