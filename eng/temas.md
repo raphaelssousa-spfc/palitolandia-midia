@@ -7,6 +7,7 @@
 - pavimentação · PAVIMENTAÇÃO #02 · Por que o tapa-buraco não dura? (jeito errado x remendo certo)
 - construção · ALVENARIA #05 · A trinca no canto da janela (verga e contraverga)
 - pavimentação · PAVIMENTAÇÃO #03 · Por que a estrada é mais alta no meio? (abaulamento ~2%, drenagem, aquaplanagem)
+- pavimentação · PAVIMENTAÇÃO #04 · Por que o asfalto velho fica cinza? (~95% pedra, ligante oxida com sol/ar, película gasta, lama asfáltica sela)
 
 - DO ZERO (3D, "Se você...") · #01 · Como um buraco no quintal vira um subsolo? (agendado 12/11 07:10)
 - DO ZERO (3D, "Se você...") · #02 · pavimentação · Por que a estrada de concreto faz tum-tum? (rodovia de concreto: sub-base, junta serrada, barra de transferência, barra de ligação, selante, texturização; agendado 14/11 12:40)
@@ -34,7 +35,7 @@
 - O que tem embaixo do asfalto? (camadas)
 - ~~Asfalto x concreto: por que algumas rodovias usam concreto?~~ (usado em parte: DO ZERO #02)
 - Bloquete, paralelepípedo ou asfalto: qual é melhor pra sua rua?
-- Por que asfalto novo é preto e o velho fica cinza?
+- ~~Por que asfalto novo é preto e o velho fica cinza?~~ (usado: PAVIMENTAÇÃO #04)
 - Os sinais de que a estrada vai afundar (couro de jacaré, trilha de roda)
 - Como é feita uma pista de aeroporto que aguenta um avião de 500 toneladas?
 - Por que as pontes têm "fendas" no asfalto? (juntas de dilatação)
