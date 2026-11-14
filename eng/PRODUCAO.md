@@ -73,7 +73,7 @@ Produção: 2 vídeos por dia (tarefa diária 02:47), parando quando houver 4 ou
 - Áudio: sempre passar pelo limitador (`render.sh video` já aplica `alimiter=0.89`).
 - Não usar fundo creme na série de pavimentação nem fundo escuro na de construção.
 
-## Como postar (tarefa diária 11:30 — 1 Reel animado por dia)
+## Como postar (1 Reel animado por dia: 19:40 de domingo a quinta, 21:10 sexta e sábado — horários definidos em 13/11)
 1. `git pull`; abrir `eng/fila.json`; pegar o PRIMEIRO item com status "pendente".
 2. URLs públicas: `https://raw.githubusercontent.com/raphaelssousa-spfc/palitolandia-midia/main/eng/<campo video>` e `.../eng/<campo capa>`; conferir 200 com curl.
 3. Windsor `execute_action`, conector `instagram`, conta `17841404396456793`, ação `create_video_post` com video_url, cover_url, caption = legenda, share_to_feed = true.
@@ -81,7 +81,7 @@ Produção: 2 vídeos por dia (tarefa diária 02:47), parando quando houver 4 ou
 5. Marcar "postado", `postado_em` (America/Fortaleza) e `media_id`; commit e push.
 6. Fila vazia: não postar e avisar o dono. Falha: tentar 1 vez de novo; depois registrar `erro`, manter "pendente" e avisar.
 
-## Carrosséis (1 por semana: quarta às 09:10 — regra do dono, 13/11)
+## Carrosséis (1 por semana: quarta às 12:10 — horário ajustado em 13/11)
 Formato 1080x1350 (4:5), 7 a 10 slides, gerados a partir de um JSON — NÃO precisa escrever código:
 `eng/motor/carrosseis/<id>.json` → `cd eng/motor && tools/carrossel.sh carrosseis/<id>.json` → `eng/carrosseis/<id>/01.jpg ...`
 e a folha de prévia `eng/motor/out/<id>_previa.jpg` (OLHAR antes de publicar: texto estourando, ícone errado).
@@ -121,7 +121,7 @@ Antes de cada carrossel novo:
 Para vídeos fora da fila fixa (ex.: série DO ZERO), SEMPRE:
 1. Analisar o melhor horário para AQUELE dia da semana (dados recentes de Buffer/Metricool/mLabs para Reels no Brasil e, quando houver
    histórico suficiente, o alcance por horário do próprio @eng.raphaelserra no Windsor.ai).
-2. Conferir a grade já ocupada (list_triggers): @eng.raphaelserra 09:10 (carrossel), 13:10 e 19:10 (Reels); Palitolândia é outra conta.
+2. Conferir a grade já ocupada (list_triggers): @eng.raphaelserra: Reel animado 19:40 (dom–qui) / 21:10 (sex–sáb); carrossel quarta 12:10. Postagem avulsa: de preferência 12:10–13:10 (almoço), longe ~2 h das outras; Palitolândia é outra conta.
    Se o melhor horário chocar ou ficar a menos de ~2 h de outra postagem do mesmo perfil, escolher o próximo horário bom do dia.
 3. Marcar o item em eng/fila.json com status "agendado" e "agendado_para" (não "pendente", para não entrar na fila fixa)
    e criar uma tarefa agendada única (create_trigger com run_once_at) que posta só esse item.
