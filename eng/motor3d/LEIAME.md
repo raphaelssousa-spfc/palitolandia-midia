@@ -9,7 +9,8 @@ Regras de conteúdo e erros a evitar: ver eng/PRODUCAO.md (seções "DO ZERO", "
 2. Narração: `cp episodios/<id>/script.json script.json && VEL=1.15 python3 tts.py` → voice.wav + work/timing.json (60–75 s com a tela final).
    Se passar de 75 s, enxugar frases e repetir. Ajuste NUM em tts.py para palavras com números/siglas na legenda.
 3. Boca do avatar: `python3 boca_do_audio.py voice.wav web/mouth.json && cp work/timing.json web/`
-4. Cenas: copiar episodios/dozero-01-subsolo/scene.js e story.js como ponto de partida para episodios/<id>/, reescrever cenário (scene.js)
+4. Cenas: MONTE o cenário com as peças do KIT (ver KIT.md — chão com buracos, solo em corte, pavimento, ferragem, forma, máquinas, operários, poeira, setas).
+   Copie episodios/dozero-01-subsolo/story.js como ponto de partida e escreva episodios/<id>/scene.js usando KIT.* (peça nova só se o tema exigir; se servir para outros temas, acrescente ao kit.js)
    e história/câmeras (story.js: tabela T de tomadas por frase, world(t), renderCover). A última frase tem "Segue ... Até o próximo!" (tela final).
    `python3 build.py <id>`
 5. Prévia: `node render.mjs stills stills/a "f1,f2,..."` nos momentos mais cheios + `python3 sheet.py stills/a sheet.jpg` → OLHAR e corrigir.

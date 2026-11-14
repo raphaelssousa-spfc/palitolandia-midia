@@ -179,7 +179,8 @@ function xmark(t, t0, p, t1 = 1e9) { if (t < t0 || t > t1 + 0.2) return ''; cons
   return `<div style="position:absolute;left:${a.x}px;top:${a.y}px;width:96px;height:96px;margin:-48px;border-radius:50%;background:#e03131;border:5px solid #fff;transform:scale(${k});display:flex;align-items:center;justify-content:center"><svg width="46" height="46"><path d="M8 8L38 38M38 8L8 38" stroke="#fff" stroke-width="9" stroke-linecap="round"/></svg></div>`; }
 // ---------- tela final (mesmo modelo do vídeo de pavimentação) ----------
 function springSim(fr, damping, stiffness, mass = 1) { if (fr <= 0) return 0; let x = 0, v = 0; const dt = 1 / 30 / 8; for (let i = 0; i < fr * 8; i++) { const a = (-stiffness * (x - 1) - damping * v) / mass; v += a * dt; x += v * dt; } return x; }
-const WSEG = TM.words.find(w => w.p === 21 && w.w.toLowerCase() === 'segue'), WATE = TM.words.find(w => w.p === 21 && w.w === 'Até');
+const LASTP = TM.phrases.length - 1; // última frase = "Segue ... Até o próximo!"
+const WSEG = TM.words.find(w => w.p === LASTP && w.w.toLowerCase() === 'segue') || TM.words.find(w => w.p === LASTP), WATE = TM.words.find(w => w.p === LASTP && w.w === 'Até') || TM.words.filter(w => w.p === LASTP).slice(-3)[0];
 const F_SEG = Math.round(WSEG.s * FPS), F_ATE = Math.round(WATE.s * FPS), F_TOT = TM.frames;
 window.F_END = F_SEG - 4;
 const cone = x => `<svg style="position:absolute;left:${x - 55}px;top:880px" width="110" height="150" viewBox="0 0 110 150"><path d="M42 10 L68 10 L96 128 L14 128 Z" fill="#FF6B1A"/><path d="M34 44 L76 44 L82 68 L28 68 Z" fill="#fff"/><path d="M24 86 L86 86 L91 106 L19 106 Z" fill="#fff"/><rect x="2" y="126" width="106" height="14" rx="4" fill="#E2551A"/></svg>`;
