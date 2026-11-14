@@ -33,6 +33,11 @@ Vale para QUALQUER fluxo que baixe arquivo no notebook dele (ex.: cenas do TAAFT
 13. **Comentário com escolha.** Em vez de só "comenta se você sabia", peça uma escolha: "Qual veio primeiro: A ou B? Comenta antes de ver o final!" (placa no meio do vídeo, logo depois da pergunta inicial) e no fim "manda pra quem vai duvidar". O comentário automático do post também deve ser uma escolha ("Fax ou telefone: em quem você apostou? 👇").
 Ordem final do vídeo: virada → "No próximo: ..." → "manda pra quem vai duvidar" → "Segue Palitolândia ponto i a" → logo/acorde/fade.
 
+## KIT (montar, não construir do zero) — regra do dono, 14/11
+Todo vídeo parte do KIT em `motor/kit/` (ver `motor/kit/KIT.md`): cenário pronto da tabela, roupas de `kit/web/roman.js`,
+placas/efeitos de `kit/web/placas.js` (PL.plate, PL.sunCard, PL.map, PL.zzz...). Só crie o que o tema exige; se a peça nova
+servir para outros temas, acrescente ao kit e ao KIT.md (assim cada vídeo deixa o kit maior e o próximo sai mais rápido).
+
 ## Armadilhas técnicas já resolvidas (não repetir)
 - Dois planos de chão sobrepostos causam "piscadas" (z-fighting). Nunca sobrepor chão de cenários diferentes.
 - Não usar KICKS de câmera (tranco de 1 quadro parece falha): `const KICKS = []`.
