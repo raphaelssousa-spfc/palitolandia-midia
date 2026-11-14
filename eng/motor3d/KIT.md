@@ -5,7 +5,9 @@ O episódio **não modela mais do zero**: ele MONTA as peças (como Lego), muda 
 Só faça peça nova quando o tema exigir algo que não existe (ex.: sonda de poço, viga de ponte) — e, se servir para outros temas,
 **acrescente ao kit.js** (com parâmetros) em vez de deixar só no episódio.
 
-Vitrine: `episodios/kit-demo/` (`python3 build.py kit-demo` + `node render.mjs stills stills/k "0,1,2,3"`) → `episodios/kit-demo/vitrine.jpg`.
+Peças ENTERRADAS (galeria, tubo, poço de visita) dentro de um `KIT.corte` sólido não aparecem: use `KIT.vala` ou faça o corte em blocos ao redor da peça.
+
+Vitrine (8 estações): `episodios/kit-demo/` (`python3 build.py kit-demo` + `node render.mjs stills stills/k "0,1,2,3"`) → `episodios/kit-demo/vitrine.jpg`.
 (Para a vitrine rodar, copie `episodios/kit-demo/timing.json` e `mouth.json` para `web/`.)
 
 ## Regra de ouro do corte (não piscar)
@@ -37,6 +39,22 @@ Vitrine: `episodios/kit-demo/` (`python3 build.py kit-demo` + `node render.mjs s
 | Operário | `KIT.operario(i, opções)` | i escolhe camisa (6 cores) e capacete | `pose()` e `idle()` do base.js |
 | Poeira/fumaça/vapor | `KIT.nuvem` | n, cor, raio | `.update(u)` com u = r(t, t0, t1) |
 | Seta 3D | `KIT.seta` | L, cor, ry, rz | `KIT.popIn` |
+| Motoniveladora | `KIT.motoniveladora` | cor | `.set({roda, lamina})` |
+| Fresadora | `KIT.fresadora` | cor | `.set({giro})` (tambor) |
+| Caminhão-pipa | `KIT.caminhaoPipa` | cor, tanque | `.set({roda, agua 0..1})` (jato) |
+| Meio-fio + sarjeta | `KIT.meioFio` | comp, lado (+1/−1) | — |
+| Faixa pintada + tachão | `KIT.faixa` | comp, cor, tracejada, tachao | `KIT.grow(o,u,'x')` (pintando) |
+| Viga / pilar | `KIT.viga`, `KIT.pilar` | comp, h, b, eixo / h, a, redondo | `KIT.grow` |
+| Guarda-corpo | `KIT.guardaCorpo` | comp, h, eixo | `KIT.popIn` |
+| Guindaste (grua) | `KIT.guindaste` | alt, lanca, cor | `.set({giro, desce})` |
+| Galeria (aduela) | `KIT.galeria` | comp, w, h, t | `KIT.drop` (descendo na vala) |
+| Boca de lobo | `KIT.bocaDeLobo` | | — |
+| Poço de visita | `KIT.pocoDeVisita` | prof, r | `.tampa` |
+| Sonda de poço artesiano | `KIT.sonda` | alt, cor | `.set({desce, giro})` |
+| Escoramento de laje | `KIT.escoramento` | w, d, h, esp | `KIT.grow` |
+| Parede de blocos cerâmicos | `KIT.blocos` | w, h, d | `KIT.grow` |
+| Telhado de telha | `KIT.telhado` | w, d, alt, cor | `KIT.drop` |
+| Caixa d'água | `KIT.caixaDagua` | litros, cor | `KIT.drop` |
 | Animação | `KIT.grow(o,u,eixo)`, `KIT.drop(o,u,h)`, `KIT.slide(o,u,de,para)`, `KIT.popIn(o,u)` | | |
 
 ## Exemplos de montagem

@@ -196,11 +196,122 @@ const KIT = (() => {
   // seta 3D (fluxo de água, carga, empuxo). comprimento L ao longo de +x; gire com ry/rz
   function seta({ L = 1.2, cor = '#2f8cff', x = 0, y = 0, z = 0, ry = 0, rz = 0, parent = scene } = {}) { const g = grp(parent, x, y, z); g.rotation.set(0, ry, rz); const m = C(cor, { emissive: cor, emissiveIntensity: 0.35 });
     mesh(new THREE.CylinderGeometry(0.06, 0.06, L * 0.7, 10).rotateZ(-Math.PI / 2), m, g, L * 0.35, 0, 0); mesh(new THREE.ConeGeometry(0.16, L * 0.3, 14).rotateZ(-Math.PI / 2), m, g, L * 0.85, 0, 0); return g; }
+  // ---------- 8) PEÇAS EXTRAS (estrada, ponte, água/esgoto, casa) ----------
+  const Ycor = '#f2b51b', KK = () => C('#26262a');
+  function motoniveladora({ cor = Ycor, x = 0, y = 0, z = 0, ry = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z); g.rotation.y = ry; const Y = C(cor), S = C('#8f959b', { metalness: 0.5, roughness: 0.4 });
+    box(1.6, 0.9, 1.5, Y, g, -1.4, 0.45, 0); box(0.9, 1.0, 1.1, Y, g, -1.0, 1.35, 0); box(0.85, 0.75, 1.12, glass(), g, -1.0, 1.5, 0);
+    box(3.2, 0.25, 0.35, Y, g, 0.9, 0.95, 0); const blade = grp(g, 0.4, 0.25, 0); box(0.12, 0.45, 2.4, S, blade, 0, 0, 0); blade.rotation.y = 0.5;
+    const wheels = rodas(g, [2.3, -1.0, -1.9], [-0.8, 0.8], 0.45, 0.35, KK());
+    return { g, blade, wheels, set: ({ roda = 0, lamina = 0.5 } = {}) => { wheels.forEach(w => w.rotation.z = -roda); blade.rotation.y = lamina; } };
+  }
+  function fresadora({ cor = '#e8e8e4', x = 0, y = 0, z = 0, ry = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z); g.rotation.y = ry; const Wt = C(cor), K = KK();
+    for (const s of [-1, 1]) for (const xx of [-1.2, 1.2]) box(0.8, 0.5, 0.45, K, g, xx, 0, s * 0.85);
+    box(3.6, 0.9, 1.9, Wt, g, 0, 0.5, 0); const drum = grp(g, 0, 0.35, 0); mesh(new THREE.CylinderGeometry(0.4, 0.4, 1.8, 16).rotateX(Math.PI / 2), C('#555'), drum);
+    const belt = grp(g, 1.8, 1.0, 0); box(3.4, 0.12, 0.5, K, belt, 1.7, 0, 0); belt.rotation.z = 0.35;
+    box(0.9, 0.9, 0.9, Wt, g, -0.8, 1.4, 0.3); box(0.06, 0.8, 0.06, K, g, -1.2, 1.4, 0.7);
+    return { g, drum, belt, set: ({ giro = 0 } = {}) => { drum.rotation.z = -giro; } };
+  }
+  function caminhaoPipa({ cor = '#2f7fd6', tanque = '#e8e8e4', x = 0, y = 0, z = 0, ry = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z); g.rotation.y = ry; const K = KK();
+    box(4.2, 0.25, 1.3, K, g, 0, 0.45, 0); box(1.2, 1.3, 1.7, C(cor), g, 1.55, 0.6, 0); box(0.9, 0.5, 1.72, glass(), g, 1.5, 1.2, 0);
+    mesh(new THREE.CylinderGeometry(0.75, 0.75, 2.9, 20).rotateZ(Math.PI / 2), C(tanque, { metalness: 0.3, roughness: 0.4 }), g, -0.55, 1.45, 0);
+    box(0.12, 0.08, 1.6, C('#7d8288'), g, -2.1, 0.55, 0); const jato = nuvem({ n: 12, cor: '#9fd0ff', x: -2.2, y: 0.4, z: 0, raio: 0.7, parent: g });
+    const wheels = rodas(g, [1.5, -0.9, -1.6], [-0.75, 0.75], 0.42, 0.32, K);
+    return { g, jato, wheels, set: ({ roda = 0, agua = 0 } = {}) => { wheels.forEach(w => w.rotation.z = -roda); jato.update(agua); } };
+  }
+  // meio-fio + sarjeta ao longo de x (comprimento comp); topo da rua em y
+  function meioFio({ comp = 10, x = 0, y = 0, z = 0, lado = 1, parent = scene } = {}) {
+    const g = grp(parent, x, y, z); const c = matOf('concreto');
+    box(comp, 0.04, 0.4, c, g, 0, -0.02, 0); box(comp, 0.17, 0.15, c, g, 0, 0, lado * 0.27); box(comp, 0.15, 1.6, matOf('concreto', { color: '#d9d4ca' }), g, 0, 0.02, lado * (0.27 + 0.88));
+    for (let i = -comp / 2; i < comp / 2; i += 1) box(0.01, 0.18, 0.16, C('#8e8a84'), g, i, 0, lado * 0.27);
+    return g;
+  }
+  // faixa pintada (contínua ou tracejada) + tachões, ao longo de x
+  function faixa({ comp = 10, cor = '#ffffff', tracejada = true, tachao = true, x = 0, y = 0.006, z = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z); const m = C(cor, { roughness: 0.6 }), L = tracejada ? 1.0 : comp;
+    for (let i = -comp / 2; i < comp / 2 - 1e-6; i += tracejada ? 2 : comp) mesh(new THREE.PlaneGeometry(Math.min(L, comp / 2 - i), 0.12).rotateX(-Math.PI / 2), m, g, i + Math.min(L, comp / 2 - i) / 2, 0, 0, false);
+    if (tachao) for (let i = -comp / 2 + 1.5; i < comp / 2; i += 2) box(0.12, 0.03, 0.1, C('#f2c21b', { emissive: '#f2c21b', emissiveIntensity: 0.4 }), g, i, 0, 0.12);
+    return g;
+  }
+  const viga = ({ comp = 6, h = 0.6, b = 0.3, eixo = 'x', x = 0, y = 0, z = 0, parent = scene } = {}) => { const m = eixo === 'x' ? box(comp, h, b, matOf('concreto'), parent, x, y, z) : box(b, h, comp, matOf('concreto'), parent, x, y, z); return m; };
+  const pilar = ({ h = 6, a = 0.6, redondo = false, x = 0, y = 0, z = 0, parent = scene } = {}) => redondo ? cyl(a / 2, a / 2, h, 18, matOf('concreto'), parent, x, y, z) : box(a, h, a, matOf('concreto'), parent, x, y, z);
+  function guardaCorpo({ comp = 6, h = 0.9, eixo = 'x', cor = '#9aa3ab', x = 0, y = 0, z = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z); if (eixo === 'z') g.rotation.y = Math.PI / 2; const m = C(cor, { metalness: 0.5, roughness: 0.4 });
+    for (let i = -comp / 2; i <= comp / 2 + 1e-6; i += 1.5) box(0.08, h, 0.08, m, g, i, 0, 0);
+    for (const yy of [h * 0.5, h - 0.04]) box(comp, 0.06, 0.06, m, g, 0, yy, 0); return g;
+  }
+  function guindaste({ alt = 7, lanca = 6, cor = '#f2b51b', x = 0, y = 0, z = 0, ry = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z); g.rotation.y = ry; const Y = C(cor), K = KK();
+    box(3, 0.5, 2, K, g, 0, 0, 0); box(2.2, 0.8, 1.6, Y, g, 0, 0.5, 0);
+    const torre = grp(g, 0, 1.3, 0); for (const [a, b] of [[-0.2, -0.2], [0.2, -0.2], [0.2, 0.2], [-0.2, 0.2]]) box(0.06, alt, 0.06, Y, torre, a, 0, b);
+    for (let yy = 0.4; yy < alt; yy += 0.6) { box(0.46, 0.04, 0.04, Y, torre, 0, yy, 0.2); box(0.46, 0.04, 0.04, Y, torre, 0, yy, -0.2); }
+    const jib = grp(torre, 0, alt, 0); box(lanca, 0.3, 0.3, Y, jib, lanca / 2 - 0.5, 0, 0); box(1.4, 0.5, 0.5, C('#555'), jib, -1.0, -0.1, 0);
+    const cabo = grp(jib, lanca - 1, 0, 0); const fio = box(0.02, 1, 0.02, K, cabo, 0, -1, 0); const gancho = box(0.25, 0.25, 0.25, C('#d62a2a'), cabo, 0, -1.2, 0);
+    const set = ({ giro = 0, desce = 2 } = {}) => { jib.rotation.y = giro; fio.scale.y = desce; fio.position.y = -desce; gancho.position.y = -desce - 0.25; };
+    set(); return { g, jib, cabo, gancho, set };
+  }
+  // galeria (aduela) de concreto: caixa oca ao longo de x
+  function galeria({ comp = 4, w = 1.6, h = 1.4, t = 0.15, x = 0, y = 0, z = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z), c = matOf('concreto');
+    box(comp, t, w, c, g, 0, 0, 0); box(comp, t, w, c, g, 0, h - t, 0); box(comp, h, t, c, g, 0, 0, w / 2 - t / 2); box(comp, h, t, c, g, 0, 0, -w / 2 + t / 2);
+    for (let i = -comp / 2 + 1; i < comp / 2; i += 1) box(0.02, h + 0.01, w + 0.01, C('#9e9a92'), g, i, 0, 0);
+    return g;
+  }
+  function bocaDeLobo({ x = 0, y = 0, z = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z); const c = matOf('concreto');
+    box(1.2, 0.9, 0.9, c, g, 0, -0.9, 0); box(1.0, 0.75, 0.7, C('#2a2a2a'), g, 0, -0.8, 0);
+    const gr = grp(g, 0, 0.001, 0); for (let i = -0.45; i <= 0.46; i += 0.15) box(0.05, 0.03, 0.75, C('#3a3f45', { metalness: 0.5 }), gr, i, 0, 0);
+    box(1.2, 0.18, 0.12, c, g, 0, 0, 0.5); return g;
+  }
+  function pocoDeVisita({ prof = 2.5, r = 0.6, x = 0, y = 0, z = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z); mesh(new THREE.CylinderGeometry(r, r, prof, 20, 1, true), matOf('concreto', { side: THREE.DoubleSide }), g, 0, -prof / 2, 0);
+    const tampa = cyl(r * 0.75, r * 0.75, 0.05, 20, C('#3a3f45', { metalness: 0.6, roughness: 0.4 }), g, 0, 0, 0);
+    for (let yy = -0.4; yy > -prof + 0.2; yy -= 0.35) box(0.4, 0.04, 0.04, C('#9aa3ab', { metalness: 0.5 }), g, 0, yy, -r + 0.05);
+    return { g, tampa };
+  }
+  // sonda de perfuração (poço artesiano): torre + haste que desce
+  function sonda({ alt = 5, cor = '#d63b3b', x = 0, y = 0, z = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z), Rr = C(cor), S = C('#8f959b', { metalness: 0.5 });
+    box(3.2, 0.5, 1.8, KK(), g, -0.4, 0, 0); box(1.4, 1.0, 1.6, Rr, g, -1.2, 0.5, 0);
+    const mast = grp(g, 0.6, 0.5, 0); for (const s of [-0.25, 0.25]) box(0.08, alt, 0.08, Rr, mast, 0, 0, s); for (let yy = 0.5; yy < alt; yy += 0.7) box(0.06, 0.06, 0.5, Rr, mast, 0, yy, 0);
+    const cab = box(0.4, 0.4, 0.4, C('#555'), mast, 0, alt - 1, 0); const haste = grp(g, 0.6, 0, 0); const h = cyl(0.06, 0.06, 1, 10, S, haste, 0, 0, 0);
+    const set = ({ desce = 0, giro = 0 } = {}) => { h.scale.y = Math.max(0.01, alt - 1 + desce); h.position.y = -desce; haste.rotation.y = giro; cab.position.y = Math.max(0.6, alt - 1 - desce * 0.3); };
+    set(); return { g, mast, haste, set };
+  }
+  // escoramento de laje: pontaletes metálicos sob uma área w x d na altura h
+  function escoramento({ w = 3, d = 3, h = 2.6, esp = 0.8, x = 0, y = 0, z = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z), m = C('#e07b2a', { metalness: 0.3, roughness: 0.5 });
+    for (let i = -w / 2 + 0.2; i <= w / 2 - 0.2 + 1e-6; i += esp) for (let j = -d / 2 + 0.2; j <= d / 2 - 0.2 + 1e-6; j += esp) { cyl(0.03, 0.03, h - 0.1, 8, m, g, i, 0, j); box(0.25, 0.05, 0.25, m, g, i, h - 0.1, j); }
+    for (let j = -d / 2 + 0.2; j <= d / 2 - 0.2 + 1e-6; j += esp) box(w, 0.1, 0.08, matOf('madeira'), g, 0, h - 0.05, j);
+    return g;
+  }
+  // parede de blocos cerâmicos furados (vista de frente com furos)
+  function blocos({ w = 3, h = 2.4, d = 0.14, x = 0, y = 0, z = 0, parent = scene } = {}) {
+    const t = tex('blocoCer', 512, 512, g => { g.fillStyle = '#d9cfc0'; g.fillRect(0, 0, 512, 512); for (let yy = 0; yy < 8; yy++) for (let xx = -1; xx < 4; xx++) {
+      const x0 = xx * 128 + (yy % 2) * 64 + 4, y0 = yy * 64 + 4; g.fillStyle = '#c8673f'; g.fillRect(x0, y0, 120, 56); g.fillStyle = '#9a4a2c'; for (let k = 0; k < 3; k++) g.fillRect(x0 + 12 + k * 36, y0 + 16, 24, 24); } });
+    return box(w, h, d, M('#ffffff', { map: t }), parent, x, y, z);
+  }
+  function telhado({ w = 4, d = 4, alt = 1.2, cor = '#c0563a', x = 0, y = 0, z = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z); const t = tex('telha', 256, 256, c => { c.fillStyle = cor; c.fillRect(0, 0, 256, 256); for (let yy = 0; yy < 256; yy += 32) { c.fillStyle = '#00000033'; c.fillRect(0, yy + 26, 256, 6);
+      for (let xx = 0; xx < 256; xx += 32) { c.fillStyle = '#ffffff22'; c.fillRect(xx + 4, yy, 10, 26); } } });
+    const ang = Math.atan2(alt, d / 2), L = Math.hypot(alt, d / 2);
+    for (const s of [-1, 1]) { const p = mesh(new THREE.PlaneGeometry(w + 0.3, L + 0.2), M('#ffffff', { map: t, side: THREE.DoubleSide }), g, 0, alt / 2, s * d / 4); p.rotation.x = -Math.PI / 2 + s * ang; }
+    const tri = new THREE.Shape([V2s(-d / 2, 0), V2s(d / 2, 0), V2s(0, alt)]); for (const s of [-1, 1]) { const m2 = mesh(new THREE.ShapeGeometry(tri), C('#efe6d8', { side: THREE.DoubleSide }), g, s * w / 2, 0, 0); m2.rotation.y = Math.PI / 2; }
+    return g;
+  }
+  function caixaDagua({ litros = 1000, cor = '#2f6fb2', x = 0, y = 0, z = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z); const k = Math.cbrt(litros / 1000);
+    cyl(0.6 * k, 0.5 * k, 0.75 * k, 22, C(cor, { roughness: 0.5 }), g); cyl(0.66 * k, 0.66 * k, 0.1 * k, 22, C(cor, { roughness: 0.5 }), g, 0, 0.75 * k, 0);
+    return g;
+  }
   // ---------- 7) ANIMAÇÃO ----------
   const grow = (o, u, eixo = 'y') => { u = cl(u); o.visible = u > 0.001; o.scale[eixo] = Math.max(0.001, u); return o; };  // peça nasce do chão (origem na base)
   const drop = (o, u, h = 4, y0 = 0) => { o.visible = u > 0; o.position.y = y0 + h * (1 - eo(u)); return o; };          // cai do céu e assenta
   const slide = (o, u, from, to) => { o.position.copy(lv(from, to, sm(u))); return o; };
   const popIn = (o, u) => { const k = back(u); o.visible = u > 0; o.scale.setScalar(Math.max(0.001, k)); return o; };
   return { matOf, SOIL, uvScale, box, cyl, grp, chao, corte, pavimento, vala, ferragem, armadura, forma, concreto, parede, tubo,
-    escavadeira, caminhao, rolo, betoneira, acabadora, cone, barreira, placa, poste, arvore, casa, carro, operario, CAMISAS, nuvem, seta, grow, drop, slide, popIn };
+    escavadeira, caminhao, rolo, betoneira, acabadora, cone, barreira, placa, poste, arvore, casa, carro, operario, CAMISAS, nuvem, seta, grow, drop, slide, popIn,
+    motoniveladora, fresadora, caminhaoPipa, meioFio, faixa, viga, pilar, guardaCorpo, guindaste, galeria, bocaDeLobo, pocoDeVisita, sonda, escoramento, blocos, telhado, caixaDagua };
 })();
