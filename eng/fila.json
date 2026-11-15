@@ -84,11 +84,14 @@
     },
     {
       "id": "pavimentacao-04-asfalto-cinza",
-      "status": "pendente",
+      "status": "postado",
       "video": "videos/pavimentacao-04-asfalto-cinza.mp4",
       "capa": "videos/pavimentacao-04-asfalto-cinza-capa.jpg",
       "legenda": "Por que o asfalto velho fica cinza? 🛣️\nE o da sua rua, tá preto ou cinza?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #buraco #estradas #rodovias #infraestrutura #manutencao",
-      "comentario": "O asfalto da sua rua tá preto ou cinza? Comenta a cidade 👇"
+      "comentario": "O asfalto da sua rua tá preto ou cinza? Comenta a cidade 👇",
+      "postado_em": "2026-11-14T21:13:10-03:00",
+      "media_id": "18117265622275208",
+      "tiktok_post_id": "6af8f90676c23bf1c74b1a48"
     }
   ],
   "frequencia": "todos os dias, 2 postagens"
