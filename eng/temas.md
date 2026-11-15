@@ -57,7 +57,7 @@
 9. Ponte — revelação: a fresta de metal é junta de dilatação.
 10. Piscina — revelação: piscina vazia pode "boiar" e subir do chão.
 
-# OBRAS FAMOSAS (60–75 s, domingo 12:40) — fila de temas (pegar na ordem; riscar ao usar)
+# OBRAS FAMOSAS (vez alternada da série creme, 60–75 s) — fila de temas (pegar na ordem; riscar ao usar)
 1. Torre de Pisa — versão completa (o curto FUNDAÇÕES #06 só deu o resumo): sino que não toca, pesos de chumbo, Galileu, obra de ~200 anos
 2. Coliseu — como 50 mil pessoas entravam e saíam rápido; concreto romano; por que metade caiu
 3. Burj Khalifa — como não afunda na areia (estacas)
