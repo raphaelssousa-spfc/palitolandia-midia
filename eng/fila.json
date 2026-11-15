@@ -95,11 +95,20 @@
     },
     {
       "id": "construcao-06-torre-pisa",
-      "status": "pendente",
+      "status": "descartado",
       "video": "videos/construcao-06-torre-pisa.mp4",
       "capa": "videos/construcao-06-torre-pisa-capa.jpg",
       "legenda": "Por que a Torre de Pisa não cai? 🏛️\nVocê sabe qual fundação tem a sua casa?\nComenta aqui 👇\n\n#engenhariacivil #fundacao #torredepisa #construcaocivil #obra #engenharia #solo #curiosidades",
-      "comentario": "Você já sabia por que ela não cai? Comenta aqui 👇"
+      "comentario": "Você já sabia por que ela não cai? Comenta aqui 👇",
+      "obs": "Descartado pelo dono em 15/11: trocado pela versão completa construcao-07-torre-pisa-completa."
+    },
+    {
+      "id": "construcao-07-torre-pisa-completa",
+      "status": "pendente",
+      "video": "videos/construcao-07-torre-pisa-completa.mp4",
+      "capa": "videos/construcao-07-torre-pisa-completa-capa.jpg",
+      "legenda": "Por que a Torre de Pisa não cai? 🏛️\nVocê sabia desse detalhe do final?\nComenta aqui 👇\n\n#engenhariacivil #torredepisa #fundacao #obrasfamosas #construcaocivil #engenharia #historia #curiosidades",
+      "comentario": "Qual obra famosa você quer ver aqui? 👇"
     }
   ],
   "frequencia": "todos os dias, 2 postagens"

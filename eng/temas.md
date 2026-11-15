@@ -8,7 +8,7 @@
 - construção · ALVENARIA #05 · A trinca no canto da janela (verga e contraverga)
 - pavimentação · PAVIMENTAÇÃO #03 · Por que a estrada é mais alta no meio? (abaulamento ~2%, drenagem, aquaplanagem)
 - pavimentação · PAVIMENTAÇÃO #04 · Por que o asfalto velho fica cinza? (~95% pedra, ligante oxida com sol/ar, película gasta, lama asfáltica sela)
-- construção · FUNDAÇÕES #06 · Por que a Torre de Pisa não cai? (argila mole, fundação ~3 m, obra parada ~100 anos, fechada em 1990, retirada de solo do lado norte, ~40 cm)
+- construção · OBRAS FAMOSAS #01 · Torre de Pisa: a história completa (74 s; argila mole, fundação ~3 m, ~15 mil t, pausa ~100 anos, andares curvados, ~200 anos de obra, 1990 fechada, chumbo, retirada de solo, ~40 cm, torta de propósito). Substituiu o curto FUNDAÇÕES #06 (descartado). Próximo creme = NORMAL.
 
 - DO ZERO (3D, "Se você...") · #01 · Como um buraco no quintal vira um subsolo? (agendado 12/11 07:10)
 - DO ZERO (3D, "Se você...") · #02 · pavimentação · Por que a estrada de concreto faz tum-tum? (rodovia de concreto: sub-base, junta serrada, barra de transferência, barra de ligação, selante, texturização; agendado 14/11 12:40)
@@ -58,7 +58,7 @@
 10. Piscina — revelação: piscina vazia pode "boiar" e subir do chão.
 
 # OBRAS FAMOSAS (vez alternada da série creme, 60–75 s) — fila de temas (pegar na ordem; riscar ao usar)
-1. Torre de Pisa — versão completa (o curto FUNDAÇÕES #06 só deu o resumo): sino que não toca, pesos de chumbo, Galileu, obra de ~200 anos
+1. ~~Torre de Pisa — versão completa~~ (usado: OBRAS FAMOSAS #01) (o curto FUNDAÇÕES #06 só deu o resumo): sino que não toca, pesos de chumbo, Galileu, obra de ~200 anos
 2. Coliseu — como 50 mil pessoas entravam e saíam rápido; concreto romano; por que metade caiu
 3. Burj Khalifa — como não afunda na areia (estacas)
 4. Canal do Panamá — como o navio "sobe" o morro (eclusas)
