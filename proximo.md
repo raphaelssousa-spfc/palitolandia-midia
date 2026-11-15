@@ -1,5 +1,5 @@
 # Próximo episódio
-numero: 9
-tema: O tubarão é mais velho que as árvores (tubarões ~450 milhões de anos x primeiras árvores ~385 milhões; conferido: Live Science "Are sharks really older than trees?", Discover Wildlife)
-pergunta_inicial: "O que é mais velho: o tubarão ou as árvores?"
-teaser_do_10: escolher ao produzir o #9 e anotar aqui
+numero: 10
+tema: Os mamutes viram as pirâmides prontas (Grande Pirâmide ~2560 a.C.; últimos mamutes na Ilha de Wrangel até ~2000 a.C., ~4.000 anos atrás; conferido: Business Insider/estudo 2019, WorldAtlas)
+pergunta_inicial: "Os mamutes viram as pirâmides prontas?"
+teaser_do_11: "No próximo: o tiranossauro conheceu o estegossauro?" (T. rex ~68–66 mi; estegossauro ~150 mi; conferido: Gizmodo, Smithsonian)
