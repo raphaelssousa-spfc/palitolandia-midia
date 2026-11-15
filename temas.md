@@ -10,3 +10,4 @@
 - O isqueiro é mais velho que o fósforo (1823 x 1826; lâmpada de Döbereiner com ácido, do tamanho de uma garrafa; fósforo de fricção de John Walker, por acaso)
 - gps-da-novela · O GPS da novela (sátira: novela x Nordeste moderno) · avulso 13/11 17:00
 - O tubarão é mais velho que as árvores (≈450 x ≈385 milhões de anos; antes só musgo rasteiro) — Parece Mentira #9, 15/11
+- Os mamutes viram as pirâmides prontas (Grande Pirâmide ~2560 a.C. x últimos mamutes ~2000 a.C., numa ilha do Ártico) — Parece Mentira #10, 15/11

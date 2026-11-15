@@ -1,0 +1,83 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Cap,DejaVu Sans,92,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,11,5,2,60,60,520,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.13,0:00:00.27,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}O {\c&H00FFFFFF&}QUE {\c&H00FFFFFF&}É
+Dialogue: 0,0:00:00.27,0:00:00.47,Cap,,0,0,0,,{\c&H00FFFFFF&}O {\c&H0000E6FF&}QUE {\c&H00FFFFFF&}É
+Dialogue: 0,0:00:00.47,0:00:00.61,Cap,,0,0,0,,{\c&H00FFFFFF&}O {\c&H00FFFFFF&}QUE {\c&H0000E6FF&}É
+Dialogue: 0,0:00:00.61,0:00:00.88,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}MAIS {\c&H0040D060&}VELHO: {\c&H00FFFFFF&}O
+Dialogue: 0,0:00:00.88,0:00:01.22,Cap,,0,0,0,,{\c&H00FFFFFF&}MAIS {\c&H0000E6FF&}VELHO: {\c&H00FFFFFF&}O
+Dialogue: 0,0:00:01.22,0:00:01.36,Cap,,0,0,0,,{\c&H00FFFFFF&}MAIS {\c&H0040D060&}VELHO: {\c&H0000E6FF&}O
+Dialogue: 0,0:00:01.36,0:00:01.84,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}TUBARÃO {\c&H00FFFFFF&}OU {\c&H00FFFFFF&}AS
+Dialogue: 0,0:00:01.84,0:00:01.98,Cap,,0,0,0,,{\c&H0040D060&}TUBARÃO {\c&H0000E6FF&}OU {\c&H00FFFFFF&}AS
+Dialogue: 0,0:00:01.98,0:00:02.11,Cap,,0,0,0,,{\c&H0040D060&}TUBARÃO {\c&H00FFFFFF&}OU {\c&H0000E6FF&}AS
+Dialogue: 0,0:00:02.11,0:00:02.71,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}ÁRVORES?
+Dialogue: 0,0:00:02.84,0:00:03.42,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}COMENTA {\c&H00FFFFFF&}ANTES
+Dialogue: 0,0:00:03.42,0:00:03.83,Cap,,0,0,0,,{\c&H0040D060&}COMENTA {\c&H0000E6FF&}ANTES
+Dialogue: 0,0:00:03.83,0:00:04.00,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}DO {\c&H00FFFFFF&}FINAL!
+Dialogue: 0,0:00:04.00,0:00:04.53,Cap,,0,0,0,,{\c&H00FFFFFF&}DO {\c&H0000E6FF&}FINAL!
+Dialogue: 0,0:00:04.66,0:00:05.52,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}TUBARÃO: {\c&H0040D060&}450
+Dialogue: 0,0:00:05.52,0:00:05.89,Cap,,0,0,0,,{\c&H0040D060&}TUBARÃO: {\c&H0000E6FF&}450
+Dialogue: 0,0:00:05.89,0:00:06.75,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}MILHÕES {\c&H00FFFFFF&}DE
+Dialogue: 0,0:00:06.75,0:00:07.00,Cap,,0,0,0,,{\c&H0040D060&}MILHÕES {\c&H0000E6FF&}DE
+Dialogue: 0,0:00:07.00,0:00:07.74,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}ANOS. {\c&H0040D060&}ÁRVORE:
+Dialogue: 0,0:00:07.74,0:00:09.05,Cap,,0,0,0,,{\c&H00FFFFFF&}ANOS. {\c&H0000E6FF&}ÁRVORE:
+Dialogue: 0,0:00:09.05,0:00:09.82,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}385.
+Dialogue: 0,0:00:10.15,0:00:10.38,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}65 {\c&H0040D060&}MILHÕES {\c&H00FFFFFF&}DE
+Dialogue: 0,0:00:10.38,0:00:11.18,Cap,,0,0,0,,{\c&H0040D060&}65 {\c&H0000E6FF&}MILHÕES {\c&H00FFFFFF&}DE
+Dialogue: 0,0:00:11.18,0:00:11.40,Cap,,0,0,0,,{\c&H0040D060&}65 {\c&H0040D060&}MILHÕES {\c&H0000E6FF&}DE
+Dialogue: 0,0:00:11.40,0:00:11.86,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}ANOS {\c&H00FFFFFF&}ANTES! {\c&H00FFFFFF&}O
+Dialogue: 0,0:00:11.86,0:00:12.71,Cap,,0,0,0,,{\c&H00FFFFFF&}ANOS {\c&H0000E6FF&}ANTES! {\c&H00FFFFFF&}O
+Dialogue: 0,0:00:12.71,0:00:12.84,Cap,,0,0,0,,{\c&H00FFFFFF&}ANOS {\c&H00FFFFFF&}ANTES! {\c&H0000E6FF&}O
+Dialogue: 0,0:00:12.84,0:00:13.31,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}TUBARÃO {\c&H00FFFFFF&}JÁ
+Dialogue: 0,0:00:13.31,0:00:13.45,Cap,,0,0,0,,{\c&H0040D060&}TUBARÃO {\c&H0000E6FF&}JÁ
+Dialogue: 0,0:00:13.45,0:00:13.85,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}NADAVA,
+Dialogue: 0,0:00:13.85,0:00:13.98,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}E {\c&H00FFFFFF&}EM {\c&H00FFFFFF&}TERRA
+Dialogue: 0,0:00:13.98,0:00:14.12,Cap,,0,0,0,,{\c&H00FFFFFF&}E {\c&H0000E6FF&}EM {\c&H00FFFFFF&}TERRA
+Dialogue: 0,0:00:14.12,0:00:14.45,Cap,,0,0,0,,{\c&H00FFFFFF&}E {\c&H00FFFFFF&}EM {\c&H0000E6FF&}TERRA
+Dialogue: 0,0:00:14.45,0:00:14.58,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}SÓ {\c&H00FFFFFF&}TINHA {\c&H00FFFFFF&}UM
+Dialogue: 0,0:00:14.58,0:00:14.92,Cap,,0,0,0,,{\c&H00FFFFFF&}SÓ {\c&H0000E6FF&}TINHA {\c&H00FFFFFF&}UM
+Dialogue: 0,0:00:14.92,0:00:15.05,Cap,,0,0,0,,{\c&H00FFFFFF&}SÓ {\c&H00FFFFFF&}TINHA {\c&H0000E6FF&}UM
+Dialogue: 0,0:00:15.05,0:00:15.65,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}MUSGUINHO
+Dialogue: 0,0:00:15.65,0:00:16.47,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}RASTEIRO. {\c&H00FFFFFF&}NEM
+Dialogue: 0,0:00:16.47,0:00:16.67,Cap,,0,0,0,,{\c&H00FFFFFF&}RASTEIRO. {\c&H0000E6FF&}NEM
+Dialogue: 0,0:00:16.67,0:00:16.87,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}UMA {\c&H0040D060&}SOMBRA
+Dialogue: 0,0:00:16.87,0:00:17.27,Cap,,0,0,0,,{\c&H00FFFFFF&}UMA {\c&H0000E6FF&}SOMBRA
+Dialogue: 0,0:00:17.27,0:00:17.47,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}PRA {\c&H00FFFFFF&}TIRAR {\c&H00FFFFFF&}UM
+Dialogue: 0,0:00:17.47,0:00:17.81,Cap,,0,0,0,,{\c&H00FFFFFF&}PRA {\c&H0000E6FF&}TIRAR {\c&H00FFFFFF&}UM
+Dialogue: 0,0:00:17.81,0:00:17.94,Cap,,0,0,0,,{\c&H00FFFFFF&}PRA {\c&H00FFFFFF&}TIRAR {\c&H0000E6FF&}UM
+Dialogue: 0,0:00:17.94,0:00:18.66,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}COCHILO! {\c&H00FFFFFF&}OU
+Dialogue: 0,0:00:18.66,0:00:18.84,Cap,,0,0,0,,{\c&H0040D060&}COCHILO! {\c&H0000E6FF&}OU
+Dialogue: 0,0:00:18.84,0:00:19.36,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}SEJA: {\c&H00FFFFFF&}O
+Dialogue: 0,0:00:19.36,0:00:19.47,Cap,,0,0,0,,{\c&H00FFFFFF&}SEJA: {\c&H0000E6FF&}O
+Dialogue: 0,0:00:19.47,0:00:19.84,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}TUBARÃO {\c&H00FFFFFF&}É
+Dialogue: 0,0:00:19.84,0:00:19.95,Cap,,0,0,0,,{\c&H0040D060&}TUBARÃO {\c&H0000E6FF&}É
+Dialogue: 0,0:00:19.95,0:00:20.17,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}MAIS {\c&H0040D060&}VELHO
+Dialogue: 0,0:00:20.17,0:00:20.44,Cap,,0,0,0,,{\c&H00FFFFFF&}MAIS {\c&H0000E6FF&}VELHO
+Dialogue: 0,0:00:20.44,0:00:20.60,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}QUE {\c&H00FFFFFF&}QUALQUER
+Dialogue: 0,0:00:20.60,0:00:21.03,Cap,,0,0,0,,{\c&H00FFFFFF&}QUE {\c&H0000E6FF&}QUALQUER
+Dialogue: 0,0:00:21.03,0:00:21.46,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}FLORESTA {\c&H00FFFFFF&}DO
+Dialogue: 0,0:00:21.46,0:00:21.56,Cap,,0,0,0,,{\c&H0040D060&}FLORESTA {\c&H0000E6FF&}DO
+Dialogue: 0,0:00:21.56,0:00:22.22,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}PLANETA. {\c&H00FFFFFF&}NO
+Dialogue: 0,0:00:22.22,0:00:22.38,Cap,,0,0,0,,{\c&H00FFFFFF&}PLANETA. {\c&H0000E6FF&}NO
+Dialogue: 0,0:00:22.38,0:00:22.93,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}PRÓXIMO: {\c&H00FFFFFF&}OS
+Dialogue: 0,0:00:22.93,0:00:23.08,Cap,,0,0,0,,{\c&H00FFFFFF&}PRÓXIMO: {\c&H0000E6FF&}OS
+Dialogue: 0,0:00:23.08,0:00:23.63,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}MAMUTES {\c&H00FFFFFF&}VIRAM
+Dialogue: 0,0:00:23.63,0:00:24.03,Cap,,0,0,0,,{\c&H0040D060&}MAMUTES {\c&H0000E6FF&}VIRAM
+Dialogue: 0,0:00:24.03,0:00:24.18,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}AS {\c&H0040D060&}PIRÂMIDES?
+Dialogue: 0,0:00:24.18,0:00:25.01,Cap,,0,0,0,,{\c&H00FFFFFF&}AS {\c&H0000E6FF&}PIRÂMIDES?
+Dialogue: 0,0:00:25.15,0:00:25.54,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}MANDA {\c&H00FFFFFF&}PRA
+Dialogue: 0,0:00:25.54,0:00:25.78,Cap,,0,0,0,,{\c&H00FFFFFF&}MANDA {\c&H0000E6FF&}PRA
+Dialogue: 0,0:00:25.78,0:00:26.09,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}QUEM {\c&H00FFFFFF&}VAI
+Dialogue: 0,0:00:26.09,0:00:26.33,Cap,,0,0,0,,{\c&H00FFFFFF&}QUEM {\c&H0000E6FF&}VAI
+Dialogue: 0,0:00:26.33,0:00:27.00,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}DUVIDAR!
+Dialogue: 0,0:00:27.13,0:00:27.55,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}SEGUE
+Dialogue: 0,0:00:27.55,0:00:29.00,Cap,,0,0,0,,{\fscx88\fscy88\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H0000E6FF&}@PALITOLANDIA.IA

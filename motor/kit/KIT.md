@@ -16,6 +16,7 @@ Vitrine dos cenários: `kit/vitrine/cenarios.jpg`.
 | Pirâmide asteca (Tenochtitlan) | `oxford` (x = 300) | pirâmide em degraus com templos, lago, palmeiras, andaime (pirâmide "em construção") |
 | Rua de Paris (prédio haussmanniano) | `fax` | calçada, prédio creme com telhado de ardósia, postes, toldos, mesa com máquina de fax de pêndulo |
 | Rua/loja antiga (lata, isqueiro) | `lata`, `isqueiro` | variações da rua de Paris com vitrine e balcão |
+| Praia (areia + mar, árvores, musgo) | `tubarao` | areia só em z > -3 e mar em z < -3 (sem sobrepor), espuma, pedras, grupo de árvores e grupo de musgo que ligam/desligam |
 | Laboratório/cozinha (chocolate) | `micro-ondas` | laboratório com lousa, bancada, magnetron |
 Para mudar de cidade/época basta trocar cores, placas e alguns objetos do mundo — não refaça o mundo inteiro.
 
@@ -35,6 +36,8 @@ Roupa nova = 1 linha em OUTFITS (+ bloco de desenho se tiver acessório novo). S
 | `PL.phone(p)` / `PL.diagram(p, t, balanço)` / `PL.doodle(p)` | telefone antigo / diagrama "como funciona" (2 máquinas + fio + imagem linha por linha) / desenho no papel |
 | `PL.map(p, t)` | mapa (França) com linha tracejada animada entre 2 cidades — troque `FR` e os pontos para outro país |
 | `PL.zzz(p, t)` / `PL.qm(p, n)` | "Zzz" de quem dorme / ponto de interrogação |
+| `PL.shark(p, t)` / `PL.treeC(p)` | tubarão de desenho de lado (t = balanço do rabo; meio corpo some sob o mar) / árvore de desenho |
+| `PL.mammoth(p, t, cachecol, gelo)` / `PL.pyrIcon(p)` | mamute de lado (tromba balança; cachecol opcional; bloco de gelo) / ícone de pirâmide |
 | `PL.gapCard(p, folga)` / `PL.snowCard(p, f)` | diagrama de folga entre peças / neve caindo |
 Texturas pintadas (web/paint.js): linha do tempo (`timeline`), placa (`plaque`), lousa, areia, arenito, Lua, Terra, bandeira, grama, xadrez, madeira, pedra, telhas etc.
 

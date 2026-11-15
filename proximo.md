@@ -1,5 +1,5 @@
 # Próximo episódio
-numero: 10
-tema: Os mamutes viram as pirâmides prontas (Grande Pirâmide ~2560 a.C.; últimos mamutes na Ilha de Wrangel até ~2000 a.C., ~4.000 anos atrás; conferido: Business Insider/estudo 2019, WorldAtlas)
-pergunta_inicial: "Os mamutes viram as pirâmides prontas?"
-teaser_do_11: "No próximo: o tiranossauro conheceu o estegossauro?" (T. rex ~68–66 mi; estegossauro ~150 mi; conferido: Gizmodo, Smithsonian)
+numero: 11
+tema: O tiranossauro viveu mais perto de nós do que do estegossauro (T. rex ~68–66 milhões de anos; estegossauro ~150 milhões; distância T. rex→estegossauro ~80 mi > T. rex→hoje ~66 mi; conferido: Gizmodo, Smithsonian, Discovery)
+pergunta_inicial: "O tiranossauro conheceu o estegossauro?"
+teaser_do_12: escolher ao produzir o #11 e anotar aqui
