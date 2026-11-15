@@ -2,6 +2,22 @@
 
 Histórico dos últimos 14 dias (mais novo no topo). Não repetir perfil 3 dias seguidos nem repetir comentário.
 
+## 2026-11-15
+
+1. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico (2º dia seguido: pular amanhã)
+   - Se for de asfalto: "Boa! Temperatura na hora de compactar faz toda diferença. Massa que chega fria na pista não atinge a densidade e o buraco aparece cedo."
+   - Se for de outra obra: "Concordo. Em qualquer obra, controle tecnológico é o que separa serviço bem feito de retrabalho."
+2. [@infra_urbana](https://www.instagram.com/infra_urbana/) – infraestrutura urbana e saneamento (2º dia seguido: pular amanhã)
+   - Se for de rua/asfalto: "Boca de lobo entupida também destrói asfalto. A água empoça, entra nas trincas e solta a capa rapidinho."
+   - Se for de outra obra: "Cidade boa é a que pensa primeiro no que vai embaixo do chão: drenagem, esgoto e água. O resto vem depois."
+3. [@matheusleoni_eng](https://www.instagram.com/matheusleoni_eng/) – dicas de obra e carreira
+   - "Bom ponto. Uma coisa que aprendi no campo: anotar tudo no diário de obra salva o engenheiro em muita discussão depois."
+4. [@leilabrito_eng](https://www.instagram.com/leilabrito_eng/) – patologias e manutenção predial
+   - Se for de infiltração/rachadura: "Excelente. E muita gente só pinta por cima da mancha. Sem achar a origem da água, o problema volta em poucos meses."
+   - Se for de outra obra: "Manutenção preventiva parece gasto, mas é a coisa mais barata que existe numa edificação."
+5. [@danilolorenceto](https://www.instagram.com/danilolorenceto/) – reforma e obra residencial
+   - "Ótima dica. Contrapiso e base bem feitos são como base de estrada: se estiverem ruins, o acabamento de cima trinca de qualquer jeito."
+
 ## 2026-11-14
 
 1. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico
