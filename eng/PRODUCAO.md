@@ -55,6 +55,20 @@ Fórmula DO ZERO: "Se você [faz do jeito mais simples], você tem um [coisa]" �
 Palavras sensíveis: evitar "morte", "morreu", "tragédia" etc. (usar "casos fatais", "vítimas"). Episódios numerados por série.
 Produção: 2 vídeos por dia (tarefa diária 02:47), parando quando houver 4 ou mais pendentes na fila.
 
+## Série OBRAS FAMOSAS (criada pelo dono em 15/11)
+Obras famosas do mundo contadas com mais detalhes: Torre de Pisa (versão completa), Coliseu, Burj Khalifa, Canal do Panamá, Itaipu,
+Ponte Golden Gate, Pirâmides de Gizé, Cristo Redentor, Ponte Rio–Niterói, Muralha da China, Panteão de Roma, Represa Hoover...
+- 1 episódio por semana: produção no sábado à tarde, postagem AVULSA no domingo 12:40 (item "agendado" + tarefa única, como a DO ZERO).
+- 60–75 s (com a tela final), 12–16 cenas, mesmo motor e estilo creme da série de construção (Remotion), voz pm_santa, legenda palavra a palavra,
+  avatar no canto e tela final igual. Etiqueta "OBRAS FAMOSAS · #N" e capa com "OBRAS FAMOSAS" + "#N".
+- Base para copiar: `src/Pisa.tsx` (torre, chão em corte com argila, câmera `at()/camTo`, `TStage`, `Q`, `Stamp`, `Pill`, `Dim`).
+  Desenhe a obra UMA vez como componente reaproveitável e mostre-a de vários jeitos (corte, zoom, construção andar a andar, antes/depois).
+- Roteiro para segurar 60–75 s: gancho no 1º segundo + promessa ("e o detalhe mais louco fica pro final") → história em blocos de ~15 s,
+  cada um terminando com uma mini-curiosidade ("mas não para por aí") → 1 número que choca (conferido) → a engenharia que salvou/fez a obra
+  → o detalhe prometido → pedido completo (curte, comenta, salva/manda, segue) → "Até o próximo!".
+- id: `famosas-NN-<slug>`. Fatos conferidos em fontes confiáveis (até 5 buscas); datas e números ditos com "cerca de", "uns", "quase".
+- Esses temas ficam RESERVADOS para esta série: a produção diária (30–40 s) não usa obras famosas do mundo.
+
 ## Como produzir um vídeo
 1. Ler `eng/temas.md` e `eng/fila.json`. Escolher um tema NÃO usado (preferir a lista de ideias). Pesquisar os fatos.
 2. `cd eng/motor && npm install` (≈30 s). Ferramentas Python já vêm em `tools/` (voz baixa o modelo pelo npm na 1ª vez).
