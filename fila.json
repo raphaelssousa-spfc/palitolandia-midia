@@ -61,12 +61,14 @@
     },
     {
       "id": "tubarao-arvore",
-      "status": "pendente",
+      "status": "postado",
       "video": "videos/tubarao-arvore.mp4",
       "capa": "videos/tubarao-arvore-capa.jpg",
       "legenda": "Parece mentira #9 🦈🌳\nUm desses chegou MUITO antes do outro... qual? 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#tubarao #arvores #natureza #curiosidades #vocesabia",
       "comentario": "Tubarão ou árvore: em quem você apostou? 👇",
-      "episodio": 9
+      "episodio": 9,
+      "postado_em": "2026-11-15 19:12",
+      "media_id": "17915914887283549"
     },
     {
       "id": "mamute-piramide",
