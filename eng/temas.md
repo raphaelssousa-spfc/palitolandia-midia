@@ -8,6 +8,7 @@
 - construção · ALVENARIA #05 · A trinca no canto da janela (verga e contraverga)
 - pavimentação · PAVIMENTAÇÃO #03 · Por que a estrada é mais alta no meio? (abaulamento ~2%, drenagem, aquaplanagem)
 - pavimentação · PAVIMENTAÇÃO #04 · Por que o asfalto velho fica cinza? (~95% pedra, ligante oxida com sol/ar, película gasta, lama asfáltica sela)
+- construção · FUNDAÇÕES #06 · Por que a Torre de Pisa não cai? (argila mole, fundação ~3 m, obra parada ~100 anos, fechada em 1990, retirada de solo do lado norte, ~40 cm)
 
 - DO ZERO (3D, "Se você...") · #01 · Como um buraco no quintal vira um subsolo? (agendado 12/11 07:10)
 - DO ZERO (3D, "Se você...") · #02 · pavimentação · Por que a estrada de concreto faz tum-tum? (rodovia de concreto: sub-base, junta serrada, barra de transferência, barra de ligação, selante, texturização; agendado 14/11 12:40)
@@ -17,7 +18,7 @@
 - Sapata, radier ou estaca: qual fundação usar?
 - Laje maciça x laje pré-moldada: qual é melhor?
 - Por que aparece mofo na parede? (umidade ascendente)
-- Por que a Torre de Pisa tortou e não cai?
+- ~~Por que a Torre de Pisa tortou e não cai?~~ (usado: FUNDAÇÕES #06)
 - Como o Burj Khalifa não afunda na areia?
 - Por que o Japão não desaba nos terremotos? (isolamento sísmico)
 - Por que não se pode tirar uma parede qualquer? (alvenaria estrutural)
