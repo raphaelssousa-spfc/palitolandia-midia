@@ -161,3 +161,57 @@ export const mammoth = (p, t = 0, scarf = false, ice = true) => { const g = p.g;
 
 export const pyrIcon = (p) => { const g = p.g; g.save(); g.lineWidth = 12; g.strokeStyle = K; g.fillStyle = '#d9b77a'; g.beginPath(); g.moveTo(300, 330); g.lineTo(520, 720); g.lineTo(80, 720); g.closePath(); g.fill(); g.stroke();
   g.lineWidth = 6; for (const y of [460, 590]) { const w = (y - 330) / 390 * 220; g.beginPath(); g.moveTo(300 - w, y); g.lineTo(300 + w, y); g.stroke(); } g.restore(); };
+// tiranossauro de desenho (de lado, virado para a direita); t = balanço (bracinhos/boca); glasses = óculos de leitura
+export const trex = (p, t = 0, glasses = false) => { const g = p.g; g.save(); g.translate(285, 580); g.scale(0.88, 0.88); g.lineJoin = 'round'; g.lineCap = 'round'; g.strokeStyle = K; g.lineWidth = 12;
+  const B = '#5aa848', B2 = '#3f8f3c', bob = 6 * Math.sin(t);
+  // cauda
+  g.fillStyle = B; g.beginPath(); g.moveTo(-60, -60); g.quadraticCurveTo(-200, -40, -285, 40 + bob); g.quadraticCurveTo(-190, 40, -60, 70); g.closePath(); g.fill(); g.stroke();
+  // perna de trás (escura)
+  g.fillStyle = B2; g.beginPath(); g.roundRect(-70, 40, 64, 190, 26); g.fill(); g.stroke(); g.beginPath(); g.ellipse(-20, 232, 56, 20, 0, 0, 7); g.fill(); g.stroke();
+  // corpo
+  g.fillStyle = B; g.beginPath(); g.ellipse(-10, 0, 150, 115, -0.35, 0, 7); g.fill(); g.stroke();
+  g.fillStyle = '#c7e89a'; g.beginPath(); g.ellipse(40, 30, 70, 70, -0.35, 0, 7); g.fill();
+  // perna da frente
+  g.fillStyle = B; g.beginPath(); g.roundRect(0, 50, 70, 180, 26); g.fill(); g.stroke(); g.beginPath(); g.ellipse(55, 232, 60, 20, 0, 0, 7); g.fill(); g.stroke();
+  // pescoço + cabeça
+  g.fillStyle = B; g.beginPath(); g.moveTo(60, -90); g.lineTo(150, -190); g.lineTo(170, -80); g.lineTo(100, -10); g.closePath(); g.fill();
+  g.save(); g.translate(170, -200 + bob * 0.5);
+  g.beginPath(); g.roundRect(-70, -70, 210, 110, 44); g.fill(); g.stroke();
+  // mandíbula
+  g.beginPath(); g.roundRect(-40, 30, 160, 46, 20); g.fill(); g.stroke();
+  g.fillStyle = '#fff'; g.lineWidth = 5; for (let k = 0; k < 5; k++) { const x = -20 + k * 30; g.beginPath(); g.moveTo(x, 36); g.lineTo(x + 10, 54); g.lineTo(x + 20, 36); g.closePath(); g.fill(); g.stroke(); }
+  g.lineWidth = 8; g.fillStyle = '#fff'; g.beginPath(); g.arc(30, -20, 22, 0, 7); g.fill(); g.stroke(); g.fillStyle = K; g.beginPath(); g.arc(36, -18, 10, 0, 7); g.fill();
+  g.beginPath(); g.moveTo(5, -52); g.lineTo(55, -46); g.stroke(); // sobrancelha
+  g.fillStyle = K; g.beginPath(); g.arc(120, -40, 6, 0, 7); g.fill(); // narina
+  if (glasses) { g.lineWidth = 7; g.fillStyle = 'rgba(200,230,255,0.5)'; g.beginPath(); g.arc(30, -20, 32, 0, 7); g.fill(); g.stroke(); g.beginPath(); g.moveTo(-2, -24); g.lineTo(-40, -36); g.stroke(); }
+  g.restore();
+  // bracinhos (balançam)
+  g.strokeStyle = K; g.lineWidth = 26; const a = 0.4 * Math.sin(t * 2);
+  for (const dx of [0, 24]) { g.beginPath(); g.moveTo(95 + dx, -20); g.lineTo(140 + dx + 20 * Math.cos(a), 10 + 20 * Math.sin(a)); g.stroke(); }
+  g.strokeStyle = B; g.lineWidth = 12; for (const dx of [0, 24]) { g.beginPath(); g.moveTo(95 + dx, -20); g.lineTo(140 + dx + 20 * Math.cos(a), 10 + 20 * Math.sin(a)); g.stroke(); }
+  g.restore(); };
+// estegossauro de desenho (de lado, virado para a direita); fossil = esqueleto cor de osso em pedestal de museu
+export const stego = (p, t = 0, fossil = false) => { const g = p.g; g.save(); g.translate(300, 600); g.lineJoin = 'round'; g.lineCap = 'round'; g.strokeStyle = K; g.lineWidth = 12;
+  const B = fossil ? '#efe6cf' : '#7fb0d8', B2 = fossil ? '#d8cba8' : '#5b8fbf', PLc = fossil ? '#e2d6b6' : '#f08a3c';
+  if (fossil) { g.fillStyle = '#b89a72'; g.beginPath(); g.roundRect(-280, 200, 560, 70, 16); g.fill(); g.stroke(); }
+  const bob = 4 * Math.sin(t);
+  // placas nas costas
+  g.fillStyle = PLc; const pts = [[-170, -40], [-110, -95], [-40, -120], [30, -115], [95, -85]];
+  for (const [x, y] of pts) { g.beginPath(); g.moveTo(x - 34, y + 40); g.lineTo(x, y - 60); g.lineTo(x + 34, y + 40); g.closePath(); g.fill(); g.stroke(); }
+  // cauda com espinhos
+  g.fillStyle = B; g.beginPath(); g.moveTo(-150, -20); g.quadraticCurveTo(-240, -10, -290, -60 + bob); g.quadraticCurveTo(-230, 40, -150, 60); g.closePath(); g.fill(); g.stroke();
+  g.fillStyle = '#fff8e8'; for (const [x, y, r] of [[-270, -60, -0.9], [-250, -50, -0.4]]) { g.save(); g.translate(x, y + bob); g.rotate(r); g.beginPath(); g.moveTo(-10, 0); g.lineTo(0, -60); g.lineTo(10, 0); g.closePath(); g.fill(); g.stroke(); g.restore(); }
+  // pernas
+  g.fillStyle = B2; for (const x of [-130, 70]) { g.beginPath(); g.roundRect(x - 30, 40, 60, 160, 22); g.fill(); g.stroke(); }
+  // corpo
+  g.fillStyle = B; g.beginPath(); g.ellipse(-30, 10, 175, 105, 0, 0, 7); g.fill(); g.stroke();
+  if (fossil) { g.lineWidth = 7; for (let k = 0; k < 6; k++) { const x = -150 + k * 50; g.beginPath(); g.moveTo(x, -50); g.quadraticCurveTo(x + 18, 20, x, 80); g.stroke(); } g.lineWidth = 12; }
+  g.fillStyle = B2; for (const x of [-90, 120]) { g.beginPath(); g.roundRect(x - 30, 50, 60, 150, 22); g.fill(); g.stroke(); }
+  // cabeça pequena, baixa
+  g.fillStyle = B; g.beginPath(); g.moveTo(120, -10); g.quadraticCurveTo(190, 0, 210, 50); g.lineTo(150, 60); g.closePath(); g.fill();
+  g.beginPath(); g.ellipse(225, 55 + bob, 62, 40, 0.15, 0, 7); g.fill(); g.stroke();
+  g.lineWidth = 8;
+  if (fossil) { g.fillStyle = K; g.beginPath(); g.arc(230, 42 + bob, 14, 0, 7); g.fill(); }
+  else { g.fillStyle = '#fff'; g.beginPath(); g.arc(232, 40 + bob, 15, 0, 7); g.fill(); g.stroke(); g.fillStyle = K; g.beginPath(); g.arc(236, 41 + bob, 7, 0, 7); g.fill();
+    g.beginPath(); g.moveTo(240, 70 + bob); g.quadraticCurveTo(260, 80, 278, 66 + bob); g.stroke(); }
+  g.restore(); };

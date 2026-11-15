@@ -11,3 +11,4 @@
 - gps-da-novela · O GPS da novela (sátira: novela x Nordeste moderno) · avulso 13/11 17:00
 - O tubarão é mais velho que as árvores (≈450 x ≈385 milhões de anos; antes só musgo rasteiro) — Parece Mentira #9, 15/11
 - Os mamutes viram as pirâmides prontas (Grande Pirâmide ~2560 a.C. x últimos mamutes ~2000 a.C., numa ilha do Ártico) — Parece Mentira #10, 15/11
+- O tiranossauro viveu mais perto de nós do que do estegossauro (~150 x ~66 milhões de anos; 84 mi de diferença; T. rex de óculos no museu) — Parece Mentira #11, 15/11
