@@ -30,7 +30,9 @@ Motivo: o tempo médio assistido caiu de 14–21 s para 8–9 s com o formato an
 - Duração 20–25 s no total (voz ~18–22 s + ~2,5 s de logo/acorde/fade).
 - Quadro 1 = a cena MAIS ESTRANHA/ENGRAÇADA do vídeo (não os dois bonecos parados), com a pergunta falada e escrita grande (até 8 palavras, já com as duas coisas fora de ordem).
 - NADA de "Comenta!", segunda pergunta ou placa de escolha no começo. Selo "PARECE MENTIRA #N" só pequeno no canto (overlay), sem tomar tempo.
-- Uma imagem ou piada nova a cada 2–3 s. As duas datas → a conta → piada visual → a RESPOSTA só no fim (virada).
+- Uma imagem ou piada nova a cada 2–3 s.
+- RESPOSTA SÓ NO FIM (regra do dono, 16/11): NENHUMA data, número ou dica clara da ordem antes da virada. Antes dela só vêm PISTAS que puxam para a resposta ERRADA (ex.: "Parece óbvio: a maçã caiu na cabeça do Newton faz muito tempo...") e suspense ("A resposta é..."). A virada fica depois de ~60% do vídeo e traz tudo junto: quem veio primeiro + as duas datas + a conta (numa placa só). Depois vem só a piada visual e o pedido final.
+- Estrutura: pergunta (0–3 s) → 2 pistas enganosas (3–10 s) → "A resposta é..." (suspense, 1–2 s) → virada com datas + conta → piada → pedido final → logo em loop.
 - Final com UM pedido só, numa frase (~3 s): "Manda pra quem vai duvidar e segue a Palitolândia ponto i a." (placas: "MANDA PRA QUEM VAI DUVIDAR" + "@PALITOLANDIA.IA").
 - Sem "No próximo" falado no vídeo: o teaser do próximo vai na LEGENDA DO POST ("Amanhã: ..."). proximo.md continua valendo para escolher o tema.
 - Loop: a cena do logo final é a mesma cena do quadro 1 (mesmo cenário/câmera), para emendar no replay.
