@@ -2,6 +2,23 @@
 
 Histórico dos últimos 14 dias (mais novo no topo). Não repetir perfil 3 dias seguidos nem repetir comentário.
 
+## 2026-11-16
+
+1. [@0bras](https://www.instagram.com/0bras/) – obras grandes e infraestrutura
+   - Se for de rodovia/ponte: "Obra grande assim depende de terraplenagem e base bem executadas. Se a base falha, o acabamento mais caro do mundo não salva."
+   - Se for de outra obra: "Impressiona o que se vê, mas o mérito é do que ficou enterrado: sondagem, fundação e controle de qualidade."
+2. [@fundacoessemcomplicacoes](https://www.instagram.com/fundacoessemcomplicacoes/) – fundações e solo explicados
+   - Se for de solo/fundação: "Solo mole é o vilão de qualquer obra. Na estrada a gente troca ou estabiliza o material antes de pavimentar, por isso é bom conhecer o terreno."
+   - Se for de outra obra: "Claro e direto. Entender o solo antes de projetar economiza muito dinheiro lá na frente."
+3. [@eng.civiladrianovanjura](https://www.instagram.com/eng.civiladrianovanjura/) – dicas de obra e engenharia
+   - Se for de concreto: "Slump e cura também decidem a durabilidade. Concreto bom mal curado vira concreto fraco."
+   - Se for de outra obra: "Boa lembrança. Fiscalizar a execução vale tanto quanto fazer um bom projeto."
+4. [@engcivilcamilasoares](https://www.instagram.com/engcivilcamilasoares/) – engenharia civil no dia a dia
+   - "Muito bom. Quem está no canteiro sabe: o detalhe que parece pequeno costuma ser o que gera mais retrabalho."
+5. [@eduardomikail](https://www.instagram.com/eduardomikail/) – construção e dicas de engenharia
+   - Se for de acabamento/reforma: "Concordo. Pressa na etapa de base e preparo aparece depois no acabamento, igual no asfalto."
+   - Se for de outra obra: "Boa explicação. Compatibilizar projetos antes da obra evita muito custo de demolir e refazer."
+
 ## 2026-11-15
 
 1. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico (2º dia seguido: pular amanhã)
