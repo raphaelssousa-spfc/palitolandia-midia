@@ -1,6 +1,6 @@
 """Legendas estilo Shorts (ASS): 2-3 palavras por vez, MAIÚSCULAS, palavra falada em amarelo, números/palavras-chave em destaque."""
 import re
-SEGS = [(0.13, 3.12, 'O que veio primeiro: Harvard ou a gravidade de Newton?'), (3.44, 6.11, 'Harvard abriu em 1636.'), (6.37, 10.45, 'A lei da gravidade de Newton só saiu em 1687.'), (10.71, 12.49, '51 anos depois!'), (12.75, 15.32, 'Meio século de aula sem a lei da gravidade!'), (15.60, 18.37, 'Harvard é mais velha que a gravidade de Newton!'), (18.62, 21.84, 'Manda pra quem vai duvidar e segue @palitolandia.ia')]
+SEGS = [(0.13, 3.12, 'O que veio primeiro: Harvard ou a gravidade de Newton?'), (3.44, 4.27, 'Parece fácil:'), (4.40, 6.83, 'a maçã caiu na cabeça do Newton faz muito tempo.'), (7.23, 9.47, 'E Harvard tá aí até hoje, cheia de aluno.'), (9.73, 10.79, 'A resposta é...'), (11.05, 11.71, 'Harvard!'), (11.97, 14.92, 'Abriu 51 anos antes da lei da gravidade!'), (15.18, 17.75, 'Meio século de aula sem a lei da gravidade!'), (18.04, 21.25, 'Manda pra quem vai duvidar e segue @palitolandia.ia')]
 KEY = {'harvard', 'newton', 'gravidade', '1636', '1687', '51', 'velha', 'duvidar', '@palitolandia.ia', 'século'}
 def ts(t): h = int(t // 3600); m = int(t % 3600 // 60); s = t % 60; return f"{h}:{m:02d}:{s:05.2f}"
 words = []  # (t0, t1, palavra)

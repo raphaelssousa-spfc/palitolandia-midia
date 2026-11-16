@@ -1,15 +1,15 @@
 // Parece Mentira #13 — Harvard x gravidade de Newton. FORMATO NOVO: voz 22,2 s + final até 25 s (750 quadros); fim = mesma cena do quadro 1 (loop).
 import { M as E, camFromKeys, idle, blinkAt, q, clamp, lerp, ramp } from './motion.js';
-export const FPS = 30, TOTAL = 750, DECK = 0;
+export const FPS = 30, TOTAL = 735, DECK = 0;
 export const SHOTS = [
   { id: 'hook', a: 0, b: 100, light: 'dia' },
-  { id: 'harvard', a: 101, b: 188, light: 'dia' },
-  { id: 'newton', a: 189, b: 318, light: 'dia' },
-  { id: 'conta', a: 319, b: 380, light: 'dia' },
-  { id: 'piada', a: 381, b: 465, light: 'dia' },
-  { id: 'virada', a: 466, b: 556, light: 'dia' },
-  { id: 'cta', a: 557, b: 657, light: 'dia' },
-  { id: 'fim', a: 658, b: 749, light: 'dourada' },
+  { id: 'newton', a: 101, b: 213, light: 'dia' },
+  { id: 'harvard', a: 214, b: 288, light: 'dia' },
+  { id: 'susp', a: 289, b: 328, light: 'dia' },
+  { id: 'virada', a: 329, b: 452, light: 'dia' },
+  { id: 'piada', a: 453, b: 538, light: 'dia' },
+  { id: 'cta', a: 539, b: 644, light: 'dia' },
+  { id: 'fim', a: 645, b: 734, light: 'dourada' },
 ];
 export const shotAt = (f) => SHOTS.find((s) => f >= s.a && f <= s.b) || SHOTS[SHOTS.length - 1];
 const BASE = { fogNear: 120, fogFar: 1000, shadowExt: 9 };
@@ -25,13 +25,13 @@ const FLY = { pos: [0.05, 1.8, 5.6], look: [0.05, 2.6, -6], fov: 46 }, FLY2 = { 
 const CL = { pos: [0.05, 1.45, 4.4], look: [0.05, 1.95, 0], fov: 40 }, CL2 = { pos: [0.05, 1.5, 3.8], look: [0.05, 2.0, 0], fov: 40 };
 const CAMS = {
   hook: [{ f: 0, ...FLY }, { f: 100, ...FLY2 }],
-  harvard: [{ f: 101, pos: [0.2, 1.4, 6.5], look: [0, 4.0, -14], fov: 46 }, { f: 188, pos: [0.1, 1.4, 5.4], look: [0, 3.6, -14], fov: 44 }],
-  newton: [{ f: 189, ...CL }, { f: 318, ...CL2 }],
-  conta: [{ f: 319, ...CL }, { f: 380, ...CL2 }],
-  piada: [{ f: 381, ...FLY }, { f: 465, ...FLY2 }],
-  virada: [{ f: 466, ...CL }, { f: 556, ...CL2 }],
-  cta: [{ f: 557, ...CL }, { f: 657, ...CL2 }],
-  fim: [{ f: 658, ...FLY2 }, { f: 749, ...FLY }],
+  newton: [{ f: 101, ...CL }, { f: 213, ...CL2 }],
+  harvard: [{ f: 214, pos: [0.2, 1.4, 6.5], look: [0, 4.0, -14], fov: 46 }, { f: 288, pos: [0.1, 1.4, 5.4], look: [0, 3.6, -14], fov: 44 }],
+  susp: [{ f: 289, ...CL2 }, { f: 328, pos: [0.05, 1.55, 3.2], look: [0.05, 2.0, 0], fov: 40 }],
+  virada: [{ f: 329, ...CL }, { f: 452, ...CL2 }],
+  piada: [{ f: 453, ...FLY }, { f: 538, ...FLY2 }],
+  cta: [{ f: 539, ...CL }, { f: 644, ...CL2 }],
+  fim: [{ f: 645, ...FLY2 }, { f: 734, ...FLY }],
 };
 export const camAt = (f) => {
   const S = shotAt(f), c = camFromKeys(CAMS[S.id], f, { kicks: [] });
@@ -56,12 +56,12 @@ export const actorsAt = (f, T) => {
     P('aluno2', 72, { expr: 'shock', look: -0.2, L: 'up', R: 'wave', wv }, [0.55, fly(f, 1), -0.1]); P('aluno3', 73, { expr: laugh ? 'grin' : 'shock', look: 0, L: 'wave', R: 'up', wv }, [0.02, fly(f, 2) + 0.35, -0.8]); };
   switch (S.id) {
     case 'hook': floaters(false); break;
+    case 'newton': { const hit = f >= 172; P('newton', 81, { expr: hit ? 'shock' : 'smile', look: hit ? 0 : 0.3, L: 'hang', R: hit ? 'up' : 'hip' }, [0.25, 0, 0.1]); break; }
     case 'harvard': P('aluno', 71, { expr: 'grin', look: 0.1, L: 'hang', R: 'wave', wv }, [-0.5, 0, 0]); P('aluno2', 72, { expr: 'smile', look: -0.1, L: 'hip', R: 'hip' }, [0.5, 0, -0.2]); break;
-    case 'newton': { const hit = f >= 252; P('newton', 81, { expr: hit ? 'shock' : 'smile', look: hit ? 0 : 0.3, L: 'hang', R: hit ? 'up' : 'hip' }, [0.25, 0, 0.1]); break; }
-    case 'conta': P('aluno', 71, { expr: f > 344 ? 'shock' : 'smile', look: 0.4, L: 'hang', R: 'point' }, L1); P('newton', 81, { expr: f > 344 ? 'laugh' : 'grin', look: -0.4, L: 'hip', R: 'hip' }, R1); break;
-    case 'piada': floaters(true); break;
+    case 'susp': P('aluno', 71, { expr: 'nervous', look: 0.5, L: 'hang', R: 'hip' }, L1); P('newton', 81, { expr: 'nervous', look: -0.5, L: 'hip', R: 'hang' }, R1); break;
     case 'virada': P('aluno', 71, { expr: 'laugh', look: 0.3, L: 'up', R: 'up' }, L1); P('newton', 81, { expr: 'shock', look: -0.3, L: 'hang', R: 'hang' }, R1); break;
-    case 'cta': { const point = f >= 557 && f < 608;
+    case 'piada': floaters(true); break;
+    case 'cta': { const point = f >= 539 && f < 595;
       P('aluno', 71, { expr: 'laugh', look: 0, L: 'hang', R: point ? 'point' : 'wave', wv }, L1); P('newton', 81, { expr: 'grin', look: 0, L: point ? 'point' : 'wave', R: 'hip', wv }, R1); break; }
     case 'fim': floaters(true); break;
   }
@@ -79,22 +79,22 @@ export const fxAt = (f, T) => {
       out.push(FX('bk' + k + y + r, (p) => { p.g.save(); p.g.translate(300, 500); p.g.rotate(r); p.g.translate(-300, -500); PL.book(p); p.g.restore(); }, [-0.9 + k * 0.9, y + (k === 1 ? 0.25 : 0), -0.4], 0.4)); } };
   switch (S.id) {
     case 'hook': books(); st('q', -12, [0.03, 2.75, -0.6], 0.9, [['HARVARD', '#ffd23f'], ['OU A GRAVIDADE', '#fff'], ['DE NEWTON?', '#ffd23f']], '#2f6fb2', '#fff', [76, 52, 64]); break;
-    case 'harvard': st('1636', 106, [0.03, 2.9, 0.4], 0.62, ['HARVARD', '1636'], '#a8323a', '#fff', [64, 110], -0.04); break;
     case 'newton': { out.push(FX('tree', (p) => PL.treeC(p), [-0.55, 0.0, -0.6], 1.3, { order: 2 }));
-      const ay = f < 228 ? 2.75 : f < 252 ? q(2.75 - 0.95 * ((f - 228) / 24) ** 2, 2) : q(2.0 - 0.6 * ramp(f, 252, 270), 2), ax = f < 252 ? 0.25 : q(0.25 + 0.5 * ramp(f, 252, 270), 2);
+      const ay = f < 148 ? 2.75 : f < 172 ? q(2.75 - 0.95 * ((f - 148) / 24) ** 2, 2) : q(2.0 - 0.6 * ramp(f, 172, 190), 2), ax = f < 172 ? 0.25 : q(0.25 + 0.5 * ramp(f, 172, 190), 2);
       out.push(FX('apl' + ay + ax, (p) => PL.apple(p), [ax, ay, 0.3], 0.26));
-      st('1687', 262, [-0.2, 2.35, 0.5], 0.5, ['NEWTON', '1687', 'LEI DA GRAVIDADE'], '#2f9a58', '#fff', [56, 100, 40], 0.04); break; }
-    case 'conta': { const stage = f < 322 ? 0 : f < 332 ? 1 : f < 344 ? 2 : 3; if (stage) {
-      const lines = [['1687', '#2f9a58'], ['− 1636', '#a8323a'], ['= 51 ANOS', '#2f6fb2']].slice(0, stage), sizes = [110, 110, 80].slice(0, stage);
-      out.push(FX('conta' + stage, (p) => plate(p, lines, '#fff', K, sizes, 0), [0.03, 2.25 - 0.15 * stage, -0.6], 0.8 * pop(f, 322, 10))); } break; }
-    case 'piada': books(); st('sem', 386, [0.03, 2.75, -0.6], 0.9, ['MEIO SÉCULO', ['SEM LEI DA', '#ffd23f'], ['GRAVIDADE!', '#ffd23f']], '#e0453a', '#fff', [56, 70, 76]); break;
-    case 'virada': st('vir', 470, [0.03, 2.25, -0.6], 0.9, ['HARVARD É', ['MAIS VELHA', '#ffd23f'], 'QUE A GRAVIDADE', 'DE NEWTON!'], '#a8323a', '#fff', [60, 76, 50, 60], -0.03);
+      st('nw', 110, [-0.2, 2.45, 0.5], 0.42, ['NEWTON', ['E A MAÇÃ', '#ffd23f']], '#2f9a58', '#fff', [64, 60], 0.04); break; }
+    case 'harvard': st('hv', 220, [0.03, 2.9, 0.4], 0.62, ['HARVARD', ['ATÉ HOJE', '#ffd23f']], '#a8323a', '#fff', [70, 64], -0.04); break;
+    case 'susp': { const n = Math.floor((f - 289) / 8) % 3; out.push(FX('qm' + n, (p) => PL.qm(p, n), [0.03, 1.75, 0.3], 0.5));
+      st('resp', 291, [0.03, 2.4, -0.6], 0.85, ['A RESPOSTA', 'É...'], '#1a1030', '#ffd23f', [62, 62]); break; }
+    case 'virada': if (f < 359) st('hv2', 331, [0.03, 2.35, -0.6], 0.95, [['HARVARD!', '#ffd23f']], '#a8323a', '#fff', [86]);
+      else st('datas', 359, [0.03, 2.2, -0.6], 0.9, [['HARVARD 1636', '#a8323a'], ['NEWTON 1687', '#2f9a58'], ['51 ANOS ANTES!', '#2f6fb2']], '#fff', K, [54, 54, 52]);
       out.push(FX('ap2', (p) => PL.apple(p), [0.62, 1.95, 0.3], 0.14)); break;
+    case 'piada': books(); st('sem', 457, [0.03, 2.75, -0.6], 0.9, ['MEIO SÉCULO', ['SEM LEI DA', '#ffd23f'], ['GRAVIDADE!', '#ffd23f']], '#e0453a', '#fff', [56, 70, 76]); break;
     case 'cta':
-      if (f < 608) st('c2', 560, [0.03, 2.25, -0.6], 0.9, ['MANDA PRA QUEM', 'VAI DUVIDAR!'], '#e0453a', '#fff', [50, 66]);
-      else st('c3', 610, [0.03, 2.25, -0.6], 0.9, ['SEGUE', '@PALITOLANDIA.IA'], '#2f6fb2', '#fff', [90, 50]); break;
-    case 'fim': books(); st('logo', 662, [0.03, 2.6, -0.6], 1.1, ['PALITOLÂNDIA.IA', 'curiosidades animadas'], '#ffd23f', K, [54, 36]);
-      if (f >= 666) { const t = q(((f - 666) / 40) % 1, 2); out.push(FX('fst' + t, (p) => T.fxStars(p, t), [0, 3.1, -0.4], 1.8)); } break;
+      if (f < 595) st('c2', 542, [0.03, 2.25, -0.6], 0.9, ['MANDA PRA QUEM', 'VAI DUVIDAR!'], '#e0453a', '#fff', [50, 66]);
+      else st('c3', 597, [0.03, 2.25, -0.6], 0.9, ['SEGUE', '@PALITOLANDIA.IA'], '#2f6fb2', '#fff', [90, 50]); break;
+    case 'fim': books(); st('logo', 649, [0.03, 2.6, -0.6], 1.1, ['PALITOLÂNDIA.IA', 'curiosidades animadas'], '#ffd23f', K, [54, 36]);
+      if (f >= 653) { const t = q(((f - 653) / 40) % 1, 2); out.push(FX('fst' + t, (p) => T.fxStars(p, t), [0, 3.1, -0.4], 1.8)); } break;
   }
   return out;
 };

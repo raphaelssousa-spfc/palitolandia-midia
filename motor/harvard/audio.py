@@ -1,7 +1,7 @@
 """Stems for "O cheiro do pão": music.wav + sfx.wav (no mixing here; mix.py does the level lock)."""
 import numpy as np, subprocess, wave
 SR = 48000
-DUR = 750 / 30
+DUR = 735 / 30
 N = int(DUR * SR)
 rng = np.random.default_rng(7)
 def load_voice():
@@ -60,7 +60,7 @@ music = np.zeros(N, np.float32)
 BPM = 116; beat = 60 / BPM
 prog = [(48, [60, 64, 67]), (53, [57, 60, 65]), (55, [59, 62, 67]), (48, [60, 64, 67])]  # C F G C
 mel = [72, 74, 76, 72, 77, 76, 74, 71, 72, 76, 79, 77, 76, 74, 72, 67]
-MUSIC_END = 21.95
+MUSIC_END = 21.5
 bar = 0; tt = 0.0; k = 0
 while tt < MUSIC_END:
     root, ch = prog[bar % 4]
@@ -180,16 +180,16 @@ def tick(d):
 def bell():
     n = int(1.6 * SR); t = np.arange(n) / SR
     return (sum(np.sin(2*np.pi*f*t) * np.exp(-t*k) for f, k in [(880,2.5),(1320,3),(2200,5)]) * 0.35).astype(np.float32)
-for f in (101, 189, 319, 381, 466, 557, 658): place(sfx, whoosh(0.4), F(f), 0.45)
+for f in (101, 214, 289, 329, 453, 539, 645): place(sfx, whoosh(0.4), F(f), 0.45)
 place(sfx, ting(), F(2), 0.4)
-place(sfx, ting(), F(106), 0.5)
-place(sfx, whoosh(0.6), F(228), 0.35); place(sfx, thunk(90, 0.4), F(252), 0.6); place(sfx, ting(), F(262), 0.5)
-for f in (322, 332, 344): place(sfx, ting(), F(f), 0.45)
-place(sfx, sting(), F(386), 0.4); place(sfx, laugh(1.0), F(400), 0.2)
-place(sfx, ting(), F(470), 0.5)
-for f in (560, 610): place(sfx, ting(), F(f), 0.5)
-place(sfx, whoosh(0.5), F(662), 0.4)
-for k, f in enumerate((666, 674, 682, 690)): place(sfx, clink(1500 + 300 * k), F(f), 0.5)
+place(sfx, ting(), F(110), 0.45); place(sfx, whoosh(0.6), F(148), 0.35); place(sfx, thunk(90, 0.4), F(172), 0.6)
+place(sfx, ting(), F(220), 0.45)
+place(sfx, ting(), F(291), 0.4)
+place(sfx, sting(), F(331), 0.5); place(sfx, ting(), F(359), 0.5)
+place(sfx, laugh(1.0), F(470), 0.2); place(sfx, ting(), F(457), 0.45)
+for f in (542, 597): place(sfx, ting(), F(f), 0.5)
+place(sfx, whoosh(0.5), F(649), 0.4)
+for k, f in enumerate((653, 661, 669, 677)): place(sfx, clink(1500 + 300 * k), F(f), 0.5)
 def wav(name, x):
     pcm = (np.clip(x, -1, 1) * 32767).astype(np.int16)
     with wave.open(name, "wb") as w: w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes(pcm.tobytes())
