@@ -40,6 +40,7 @@ Roupa nova = 1 linha em OUTFITS (+ bloco de desenho se tiver acessório novo). S
 | `PL.mammoth(p, t, cachecol, gelo)` / `PL.pyrIcon(p)` | mamute de lado (tromba balança; cachecol opcional; bloco de gelo) / ícone de pirâmide |
 | `PL.trex(p, t, oculos)` / `PL.stego(p, t, fossil)` | tiranossauro de lado (bracinhos balançam; óculos opcional) / estegossauro de lado (fossil = esqueleto cor de osso em pedestal de museu) — projeto `motor/dino` |
 | `PL.hanafuda(p, t)` / `PL.biplane(p, t)` | leque de 3 cartas de baralho japonês / avião antigo de 1903 de lado (t = giro da hélice) — projeto `motor/nintendo` |
+| `PL.apple(p)` / `PL.book(p)` | maçã de desenho / livro aberto (para flutuar) — projeto `motor/harvard` (formato novo; roupa nova `newton` = peruca branca) |
 | `PL.gapCard(p, folga)` / `PL.snowCard(p, f)` | diagrama de folga entre peças / neve caindo |
 Texturas pintadas (web/paint.js): linha do tempo (`timeline`), placa (`plaque`), lousa, areia, arenito, Lua, Terra, bandeira, grama, xadrez, madeira, pedra, telhas etc.
 

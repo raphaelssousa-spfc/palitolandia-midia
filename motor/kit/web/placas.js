@@ -257,3 +257,17 @@ export const biplane = (p, t = 0) => { const g = p.g; g.save(); g.translate(300,
   // hélice girando (atrás das asas)
   const s = Math.cos(t * 3); g.fillStyle = '#8a5a34'; g.lineWidth = 6; g.beginPath(); g.ellipse(270, -20, 14, 70 * Math.abs(s) + 6, 0, 0, 7); g.fill(); g.stroke();
   g.restore(); };
+
+// maçã vermelha de desenho (com folhinha) — projeto motor/harvard
+export const apple = (p) => { const g = p.g; g.save(); g.translate(300, 520); g.lineWidth = 14; g.strokeStyle = K;
+  g.fillStyle = '#e0453a'; g.beginPath(); g.moveTo(0, -120); g.bezierCurveTo(120, -200, 230, -60, 140, 110); g.bezierCurveTo(90, 200, 20, 170, 0, 150); g.bezierCurveTo(-20, 170, -90, 200, -140, 110); g.bezierCurveTo(-230, -60, -120, -200, 0, -120); g.closePath(); g.fill(); g.stroke();
+  g.fillStyle = 'rgba(255,255,255,0.45)'; g.beginPath(); g.ellipse(-70, -50, 22, 45, 0.4, 0, 7); g.fill();
+  g.lineWidth = 12; g.beginPath(); g.moveTo(0, -120); g.lineTo(10, -190); g.stroke();
+  g.fillStyle = '#5aa848'; g.lineWidth = 10; g.beginPath(); g.ellipse(55, -175, 50, 22, -0.4, 0, 7); g.fill(); g.stroke(); g.restore(); };
+// livro aberto de desenho (para flutuar) — projeto motor/harvard
+export const book = (p) => { const g = p.g; g.save(); g.translate(300, 500); g.lineWidth = 12; g.strokeStyle = K; g.lineJoin = 'round';
+  g.fillStyle = '#2f6fb2'; g.beginPath(); g.moveTo(-200, -90); g.lineTo(0, -60); g.lineTo(200, -90); g.lineTo(200, 110); g.lineTo(0, 140); g.lineTo(-200, 110); g.closePath(); g.fill(); g.stroke();
+  g.fillStyle = '#fbf5e6'; g.beginPath(); g.moveTo(-180, -100); g.lineTo(0, -72); g.lineTo(180, -100); g.lineTo(180, 90); g.lineTo(0, 120); g.lineTo(-180, 90); g.closePath(); g.fill(); g.stroke();
+  g.beginPath(); g.moveTo(0, -72); g.lineTo(0, 120); g.stroke();
+  g.lineWidth = 6; for (const sd of [-1, 1]) for (let k = 0; k < 4; k++) { g.beginPath(); g.moveTo(sd * 30, -30 + k * 35); g.lineTo(sd * 150, -45 + k * 35); g.stroke(); }
+  g.restore(); };

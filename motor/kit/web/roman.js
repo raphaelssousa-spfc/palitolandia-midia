@@ -28,6 +28,7 @@ export const OUTFITS = {
   inventor: { tunic: "#6b4a2e", skin: "#f3c8a2", hair: "#b8642e", tophat: true, stache: "#b8642e" },
   soldado: { tunic: "#2f4a8a", skin: "#eab58e", cap: "#b8282b", moustache: "#3a2414" },
   amigo: { tunic: "#3f5f8f", skin: "#d9a07a", hair: "#2a1d16", bowler: true },
+  newton: { tunic: "#4a6b3f", skin: "#f3d6bb", hair: "#ece6da", wig: "#ece6da", brows: "#cfc8ba" },
   aluno: { tunic: "#26262f", skin: "#f5c9a0", hair: "#6a4a30", mortar: true },
   aluno2: { tunic: "#26262f", skin: "#c99067", hair: "#1e1714", mortar: true },
   aluno3: { tunic: "#26262f", skin: "#f3d6bb", hair: "#c9862f", mortar: true },
