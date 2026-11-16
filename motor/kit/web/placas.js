@@ -215,3 +215,45 @@ export const stego = (p, t = 0, fossil = false) => { const g = p.g; g.save(); g.
   else { g.fillStyle = '#fff'; g.beginPath(); g.arc(232, 40 + bob, 15, 0, 7); g.fill(); g.stroke(); g.fillStyle = K; g.beginPath(); g.arc(236, 41 + bob, 7, 0, 7); g.fill();
     g.beginPath(); g.moveTo(240, 70 + bob); g.quadraticCurveTo(260, 80, 278, 66 + bob); g.stroke(); }
   g.restore(); };
+
+// cartas de baralho japonês (hanafuda) em leque — t = balanço; projeto motor/nintendo
+export const hanafuda = (p, t = 0) => { const g = p.g; g.save(); g.translate(300, 640); g.lineJoin = 'round'; g.strokeStyle = K; g.lineWidth = 10;
+  const card = (rot, kind) => { g.save(); g.rotate(rot + 0.03 * Math.sin(t + rot * 3)); g.translate(0, -230);
+    g.fillStyle = '#fbf5e6'; g.beginPath(); g.roundRect(-85, -130, 170, 260, 18); g.fill(); g.stroke();
+    if (kind === 0) { // lua cheia sobre morro
+      g.fillStyle = '#e0453a'; g.beginPath(); g.roundRect(-70, -115, 140, 120, 8); g.fill();
+      g.fillStyle = '#fff6d0'; g.beginPath(); g.arc(0, -55, 40, 0, 7); g.fill(); g.lineWidth = 6; g.stroke();
+      g.fillStyle = '#1a1030'; g.beginPath(); g.moveTo(-70, 115); g.quadraticCurveTo(0, -10, 70, 115); g.closePath(); g.fill(); }
+    else if (kind === 1) { // flor de cerejeira
+      g.fillStyle = '#e0453a'; for (let k = 0; k < 5; k++) { const a = k * 1.2566; g.beginPath(); g.arc(30 * Math.cos(a), -20 + 30 * Math.sin(a), 24, 0, 7); g.fill(); }
+      g.fillStyle = '#ffd23f'; g.beginPath(); g.arc(0, -20, 14, 0, 7); g.fill();
+      g.strokeStyle = '#1a1030'; g.lineWidth = 9; g.beginPath(); g.moveTo(-60, 110); g.quadraticCurveTo(-20, 40, 0, 10); g.stroke(); }
+    else { // grou vermelho/sol
+      g.fillStyle = '#ffd23f'; g.beginPath(); g.arc(25, -60, 42, 0, 7); g.fill();
+      g.fillStyle = '#e0453a'; g.beginPath(); g.ellipse(-10, 30, 50, 26, -0.4, 0, 7); g.fill();
+      g.fillStyle = '#1a1030'; g.beginPath(); g.moveTo(10, 15); g.lineTo(50, -25); g.lineTo(58, -18); g.lineTo(22, 22); g.closePath(); g.fill(); g.fillRect(-30, 50, 8, 60); g.fillRect(-12, 50, 8, 60); }
+    g.restore(); };
+  card(-0.42, 0); card(0, 1); card(0.42, 2);
+  g.restore(); };
+
+// avião antigo de 1903 (biplano de madeira e pano, de lado) — t = giro da hélice
+export const biplane = (p, t = 0) => { const g = p.g; g.save(); g.translate(300, 500); g.lineJoin = 'round'; g.lineCap = 'round'; g.strokeStyle = K; g.lineWidth = 10;
+  const W = '#f3e6c4', Wd = '#d9c48f';
+  // asas (de lado: duas tábuas compridas)
+  g.fillStyle = Wd; g.beginPath(); g.roundRect(-250, 40, 500, 44, 16); g.fill(); g.stroke();
+  g.fillStyle = W; g.beginPath(); g.roundRect(-250, -120, 500, 44, 16); g.fill(); g.stroke();
+  // montantes
+  g.lineWidth = 8; for (const x of [-220, -120, -20, 80, 180]) { g.beginPath(); g.moveTo(x, -76); g.lineTo(x, 40); g.stroke(); }
+  g.lineWidth = 3; for (const x of [-220, -120, -20, 80]) { g.beginPath(); g.moveTo(x, -76); g.lineTo(x + 100, 40); g.stroke(); }
+  // leme da frente e cauda
+  g.lineWidth = 8; g.beginPath(); g.moveTo(-250, -20); g.lineTo(-330, -20); g.stroke(); g.beginPath(); g.moveTo(250, -20); g.lineTo(330, -20); g.stroke();
+  g.fillStyle = W; g.lineWidth = 8; g.beginPath(); g.roundRect(-380, -36, 60, 30, 8); g.fill(); g.stroke();
+  g.beginPath(); g.roundRect(320, -90, 26, 120, 8); g.fill(); g.stroke();
+  // piloto deitado na asa de baixo (palitinho)
+  g.fillStyle = '#1a1030'; g.beginPath(); g.arc(-40, 22, 16, 0, 7); g.fill(); g.lineWidth = 9; g.beginPath(); g.moveTo(-25, 30); g.lineTo(60, 32); g.stroke();
+  g.fillStyle = '#6b4a2b'; g.beginPath(); g.ellipse(-44, 12, 18, 9, 0, 0, 7); g.fill();
+  // trilho de lançamento + rodinhas
+  g.fillStyle = '#8a5a34'; g.lineWidth = 8; for (const x of [-120, 120]) { g.beginPath(); g.moveTo(x, 84); g.lineTo(x, 120); g.stroke(); g.beginPath(); g.arc(x, 130, 16, 0, 7); g.fill(); g.stroke(); }
+  // hélice girando (atrás das asas)
+  const s = Math.cos(t * 3); g.fillStyle = '#8a5a34'; g.lineWidth = 6; g.beginPath(); g.ellipse(270, -20, 14, 70 * Math.abs(s) + 6, 0, 0, 7); g.fill(); g.stroke();
+  g.restore(); };

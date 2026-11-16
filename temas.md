@@ -12,3 +12,4 @@
 - O tubarão é mais velho que as árvores (≈450 x ≈385 milhões de anos; antes só musgo rasteiro) — Parece Mentira #9, 15/11
 - Os mamutes viram as pirâmides prontas (Grande Pirâmide ~2560 a.C. x últimos mamutes ~2000 a.C., numa ilha do Ártico) — Parece Mentira #10, 15/11
 - O tiranossauro viveu mais perto de nós do que do estegossauro (~150 x ~66 milhões de anos; 84 mi de diferença; T. rex de óculos no museu) — Parece Mentira #11, 15/11
+- A Nintendo é mais velha que o avião (1889 x 1903 / 14-Bis 1906; cartas hanafuda; biplano novo no kit: PL.hanafuda, PL.biplane) — Parece Mentira #12, 16/11
