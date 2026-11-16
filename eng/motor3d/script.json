@@ -1,95 +1,67 @@
 [
  {
-  "say": "Se você jogar concreto na terra, você tem uma estrada de concreto.",
-  "show": "Se você jogar concreto na terra, você tem uma estrada de concreto."
+  "say": "Se você põe uma tábua no rio, você tem uma ponte.",
+  "show": "Se você põe uma tábua no rio, você tem uma ponte."
  },
  {
-  "say": "Mas o caminhão passa, a terra afunda, e o concreto quebra.",
-  "show": "Mas o caminhão passa, a terra afunda, e o concreto quebra."
+  "say": "Mas o rio é largo, e a tábua quebra no meio.",
+  "show": "Mas o rio é largo, e a tábua quebra no meio."
  },
  {
-  "say": "Então você compacta o chão e põe uma camada firme por baixo.",
-  "show": "Então você compacta o chão e põe uma camada firme por baixo."
+  "say": "Então você crava estacas no rio e ergue pilares.",
+  "show": "Então você crava estacas no rio e ergue pilares."
  },
  {
-  "say": "Isso é a sub-base.",
-  "show": "Isso é a sub-base."
+  "say": "Mas o barco não passa.",
+  "show": "Mas o barco não passa."
  },
  {
-  "say": "Mas o concreto encolhe quando seca, e racha onde quiser.",
-  "show": "Mas o concreto encolhe quando seca, e racha onde quiser."
+  "say": "Então você ergue uma torre gigante na margem.",
+  "show": "Então você ergue uma torre gigante na margem."
  },
  {
-  "say": "Então, horas depois, você serra ele em placas.",
-  "show": "Então, horas depois, você serra ele em placas."
+  "say": "Isso é o mastro.",
+  "show": "Isso é o mastro."
  },
  {
-  "say": "Isso é uma junta serrada.",
-  "show": "Isso é uma junta serrada."
+  "say": "Mas a pista não tem apoio.",
+  "show": "Mas a pista não tem apoio."
  },
  {
-  "say": "Mas cada placa afunda de um jeito, e vira um degrau.",
-  "show": "Mas cada placa afunda de um jeito, e vira um degrau."
+  "say": "Então você pendura a pista com cabos de aço. Isso é um estai.",
+  "show": "Então você pendura a pista com cabos de aço. Isso é um estai."
  },
  {
-  "say": "Então você põe barras de aço lisas entre uma placa e outra.",
-  "show": "Então você põe barras de aço lisas entre uma placa e outra."
+  "say": "Mas não dá pra concretar tudo no ar.",
+  "show": "Mas não dá pra concretar tudo no ar."
  },
  {
-  "say": "Isso é uma barra de transferência.",
-  "show": "Isso é uma barra de transferência."
+  "say": "Então você faz pedaço por pedaço, e pendura cada um. Isso é uma aduela.",
+  "show": "Então você faz pedaço por pedaço, e pendura cada um. Isso é uma aduela."
  },
  {
-  "say": "Mas as faixas se afastam.",
-  "show": "Mas as faixas se afastam."
+  "say": "Mas se crescer só de um lado, a torre tomba.",
+  "show": "Mas se crescer só de um lado, a torre tomba."
  },
  {
-  "say": "Então você costura uma na outra com aço.",
-  "show": "Então você costura uma na outra com aço."
+  "say": "Então você cresce os dois lados juntos. Isso é o balanço sucessivo.",
+  "show": "Então você cresce os dois lados juntos. Isso é o balanço sucessivo."
  },
  {
-  "say": "Isso é uma barra de ligação.",
-  "show": "Isso é uma barra de ligação."
+  "say": "O mastro da ponte de São Paulo tem cento e trinta e oito metros: mais que um prédio de quarenta andares.",
+  "show": "O mastro da ponte de São Paulo tem 138 metros: mais que um prédio de 40 andares."
  },
  {
-  "say": "Mas a chuva entra na junta e lava a terra de baixo.",
-  "show": "Mas a chuva entra na junta e lava a terra de baixo."
+  "say": "E o segredo: a pista não fica apoiada. Fica pendurada.",
+  "show": "E o segredo: a pista não fica apoiada. Fica pendurada."
  },
  {
-  "say": "Então você fecha cada junta com borracha. Isso é o selante.",
-  "show": "Então você fecha cada junta com borracha. Isso é o selante."
+  "say": "Parabéns. Você construiu uma ponte estaiada.",
+  "show": "Parabéns. Você construiu uma ponte estaiada."
  },
  {
-  "say": "Mas concreto liso molhado vira sabão.",
-  "show": "Mas concreto liso molhado vira sabão."
- },
- {
-  "say": "Então você risca ele com um pente de aço. Isso é a texturização.",
-  "show": "Então você risca ele com um pente de aço. Isso é a texturização."
- },
- {
-  "say": "Cada placa pesa umas dez toneladas, e é feita pra durar vinte anos ou mais.",
-  "show": "Cada placa pesa umas 10 toneladas, e é feita pra durar 20 anos ou mais."
- },
- {
-  "say": "E aquele tum, tum, tum na estrada de concreto não é defeito.",
-  "show": "E aquele tum, tum, tum na estrada de concreto não é defeito."
- },
- {
-  "say": "É o pneu passando nas juntas, a cada uns cinco metros.",
-  "show": "É o pneu passando nas juntas, a cada uns 5 metros."
- },
- {
-  "say": "Pinta as faixas, põe as placas e um radar atrás da árvore.",
-  "show": "Pinta as faixas, põe as placas e um radar atrás da árvore."
- },
- {
-  "say": "Parabéns. Você construiu uma rodovia de concreto.",
-  "show": "Parabéns. Você construiu uma rodovia de concreto."
- },
- {
-  "say": "Curte, salva e manda pra quem vive na estrada. Comenta o que quer ver construído.",
-  "show": "Curte, salva e manda pra quem vive na estrada. Comenta o que quer ver construído."
+  "say": "Curte, salva e manda pra quem vai construir. Comenta o que você quer ver construído.",
+  "show": "Curte, salva e manda pra quem vai construir. Comenta o que você quer ver construído."
  },
  {
   "say": "Segue o éngi ponto Rafael Serra pra mais. Até o próximo!",

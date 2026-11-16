@@ -26,3 +26,9 @@ Regras de conteúdo e erros a evitar: ver eng/PRODUCAO.md (seções "DO ZERO", "
 - `cam.setViewOffset(W, H, 0, 260, W, H)` no renderFrame sobe o centro do quadro 260 px: o assunto fica acima da legenda sem mexer em cada câmera.
 - Objeto com `visible=false` numa tomada precisa voltar a `true` no "estado base" do world(t), senão some nas tomadas seguintes.
 - Render em paralelo (3 processos): ver `work/run.sh` gerado no #02 (`xargs -P3` sobre a lista de trechos) e rodar com `setsid nohup`.
+
+## Dicas do #03 (ponte estaiada)
+- Abertura só com imagem + som: `LEAD=0.9 TAIL=1.9 VEL=1.15 python3 tts.py` (LEAD = silêncio antes da 1ª frase; TAIL = tela final após a última). No story.js, shotOf devolve -1 antes de S(0) (giro da obra pronta + selo DO ZERO #N).
+- Retrato é estreito: para mostrar a obra inteira, câmera em diagonal (ex.: V(17, 8, 28) olhando o centro) em vez de recuar de frente.
+- `KIT.nuvem` devolve {g, update}: posicione com `.g.position`.
+- Com 2 CPUs, 4 renders em paralelo ficam ~0,8 s/quadro no total (~22 min para 55 s). Comando longo: rodar com setsid nohup e conferir o log.

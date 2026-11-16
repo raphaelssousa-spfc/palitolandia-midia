@@ -122,6 +122,17 @@
    "capa": "videos/pavimentacao-05-couro-jacare-capa.jpg",
    "legenda": "Esse desenho no asfalto é perigoso? 🐊\nA rua da sua cidade tem isso?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #buraco #estradas #rodovias #infraestrutura #manutencao",
    "comentario": "Tem jacaré no asfalto da sua rua? Comenta a cidade 👇"
+  },
+  {
+   "id": "dozero-03-ponte-estaiada",
+   "status": "agendado",
+   "agendado_para": "2026-11-17T12:40:00-03:00",
+   "obs": "Postagem avulsa da série DO ZERO #03 (postada pela tarefa 'Robô – resgate diário' às 12:40). NÃO entra na fila diária.",
+   "video": "videos/dozero-03-ponte-estaiada.mp4",
+   "capa": "videos/dozero-03-ponte-estaiada-capa.jpg",
+   "legenda": "Como uma ponte fica de pé sem pilar no meio do rio? 🌉\nVocê já passou numa ponte estaiada?\nComenta aqui 👇\n\n#engenhariacivil #ponteestaiada #ponte #obra #construcao #infraestrutura #saopaulo #engenharia",
+   "comentario": "Qual obra você quer ver construída do zero no próximo? 👇",
+   "postado_em": null
   }
  ],
  "frequencia": "todos os dias, 2 postagens"

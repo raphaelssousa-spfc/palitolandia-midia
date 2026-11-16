@@ -9,7 +9,7 @@ exec(src)  # MODEL, br()
 k = Kokoro(MODEL, os.path.join(HERE, "vozes_ptbr.npz")); SR = 24000
 VOICE, SPEED = "pm_santa", float(os.environ.get("VEL", "1.08"))
 S = json.load(open(os.path.join(HERE, "script.json")))
-NUM = {"15": 3, "10": 2, "20": 2, "5": 2, "@eng.raphaelserra": 9}
+NUM = {"138": 7, "40": 3, "15": 3, "10": 2, "20": 2, "5": 2, "@eng.raphaelserra": 9}
 def syl(w):
     if w in NUM: return NUM[w]
     return max(1, len(re.findall(r"[aeiouáéíóúâêôãõà]+", w.lower())))
@@ -26,7 +26,8 @@ def pauses(y, thr=0.012, mind=0.11):
             i = j
         else: i += 1
     return out
-parts = [np.zeros(int(SR * 0.08), np.float32)]; t = 0.08
+LEAD = float(os.environ.get("LEAD", "0.08"))  # silêncio no início (abertura só com imagem + som)
+parts = [np.zeros(int(SR * LEAD), np.float32)]; t = LEAD
 phr, words = [], []
 for idx, p in enumerate(S):
     y, _ = k.create(br(k.tokenizer.phonemize(p["say"], "pt-br")), voice=VOICE, speed=SPEED, is_phonemes=True)
@@ -55,7 +56,7 @@ for idx, p in enumerate(S):
             dd = (b - a) * syl(w) / W
             words.append({"w": w, "s": round(t + tt, 3), "e": round(t + tt + dd, 3), "p": idx}); tt += dd
     phr.append({"i": idx, "text": p["show"], "s": round(t, 3), "e": round(t + d, 3)})
-    gap = 2.6 if idx == len(S) - 1 else (0.22 if p["say"].rstrip()[-1] in ".!?" else 0.12)
+    gap = float(os.environ.get("TAIL", "2.6")) if idx == len(S) - 1 else (0.22 if p["say"].rstrip()[-1] in ".!?" else 0.12)
     parts += [y, np.zeros(int(SR * gap), np.float32)]; t += d + gap
 y = np.concatenate(parts); sf.write(os.path.join(HERE, "voice.wav"), y, SR)
 D = len(y) / SR

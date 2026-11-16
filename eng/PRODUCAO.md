@@ -51,6 +51,15 @@ A série DO ZERO sai 2 vezes por semana (tarefa de segunda e quinta 20:37, posta
 - Uma PIADA VISUAL no meio (algo cai, desaba, o operário leva susto, placa "NÃO!"), rápida (≤ 1,5 s) e sem palavra sensível.
 - "DO ZERO #N" grande no começo e na capa (N = número do episódio).
 - Cenário MONTADO com as peças do KIT (`motor3d/KIT.md`): só modelar peça nova se o tema exigir; se servir para outros temas, acrescentar ao `kit.js`.
+MUDANÇA (dono, 16/11/2026) — DO ZERO vira a série principal de construção e GRANDES OBRAS (a série creme foi pausada):
+- Motivo: o 3D é o que mais funciona no perfil (concreto "tum-tum" foi o Reel mais visto) e viraliza lá fora (@civilengineeringdiscoveries:
+  810 mil views com ponte estaiada, 369 mil com balanço sucessivo, 555 mil com compactação de estrada).
+- Agenda: a tarefa roda domingo, terça e quinta à noite; o episódio vai ao ar sozinho às 12:40 do dia seguinte (seg/qua/sex), Instagram e TikTok,
+  postado pela tarefa "Robô – resgate diário" (12:40, posta os itens "agendado"). Não criar tarefa agendada nova.
+- Mistura: de cada 3 episódios, 2 de GRANDE OBRA "como se constrói" (ponte estaiada, balanço sucessivo, viaduto, túnel, barragem, prédio alto sobre
+  estacas, metrô, porto, pista de aeroporto, torre/edifício famoso do Brasil) e 1 de PAVIMENTAÇÃO/estrada. Sem temas parecidos em sequência.
+- 1º segundo = obra PRONTA em movimento (giro de câmera) já com som; nada de tela parada.
+- Movimento contínuo: a obra cresce na frente do espectador, etapa por etapa, com máquinas trabalhando.
 Fórmula DO ZERO: "Se você [faz do jeito mais simples], você tem um [coisa]" → "Mas…" (problema) → "Então você…" (solução) → "Isso é um [nome técnico]" (6–8 vezes) → revelação ("aquilo que você vê… não é defeito") → 3 itens finais com piada → "Parabéns. Você construiu um ___." → tela final.
 Palavras sensíveis: evitar "morte", "morreu", "tragédia" etc. (usar "casos fatais", "vítimas"). Episódios numerados por série.
 Produção: 2 vídeos por dia (tarefa diária 02:47), parando quando houver 4 ou mais pendentes na fila.
