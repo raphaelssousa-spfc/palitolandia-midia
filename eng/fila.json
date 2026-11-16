@@ -1,139 +1,141 @@
 {
- "perfil": "eng.raphaelserra",
- "conta_windsor": "17841404396456793",
- "horarios": [
-  "13:10",
-  "19:10"
- ],
- "fuso": "America/Fortaleza",
- "itens": [
-  {
-   "id": "pavimentacao-01-buracos",
-   "status": "postado",
-   "video": "videos/pavimentacao-01-buracos.mp4",
-   "capa": "videos/pavimentacao-01-buracos-capa.jpg",
-   "legenda": "Por que o asfalto do Brasil tem tanto buraco? 🕳️\nComo está a pista na sua cidade?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #buraco #estradas #rodovias #infraestrutura #engenhariadetransportes",
-   "comentario": "Qual rua ou estrada da sua cidade tem o pior buraco? 👇",
-   "postado_em": "postado manualmente pelo dono",
-   "tiktok_post_id": "6af8d7fbe5a113497aad9b43",
-   "tiktok_postado_em": "2026-11-14 18:51"
-  },
-  {
-   "id": "construcao-04-cura-concreto",
-   "status": "postado",
-   "video": "videos/construcao-04-cura-concreto.mp4",
-   "capa": "videos/construcao-04-cura-concreto-capa.jpg",
-   "legenda": "Por que o pedreiro molha o concreto depois de pronto? 💧\nVocê já viu isso numa obra?\nComenta aqui 👇\n\n#engenhariacivil #concreto #construcaocivil #obra #curadoconcreto #laje #reforma #dicasdeobra",
-   "comentario": "Na sua obra molharam a laje quantos dias? 👇",
-   "postado_em": "2026-11-11 19:12",
-   "media_id": "18197476795400711",
-   "tiktok_post_id": "6af9f5fee5a113497a0541a2",
-   "tiktok_postado_em": "2026-11-15 15:12"
-  },
-  {
-   "id": "dozero-01-subsolo",
-   "status": "postado",
-   "agendado_para": "2026-11-12 07:10",
-   "obs": "Postagem avulsa por tarefa agendada única (série DO ZERO). NÃO entra na fila das 13:10/19:10.",
-   "video": "videos/dozero-01-subsolo.mp4",
-   "capa": "videos/dozero-01-subsolo-capa.jpg",
-   "legenda": "Como um buraco no quintal vira um subsolo? 🕳️🏠\nVocê teria um subsolo na sua casa?\nComenta aqui 👇\n\n#engenhariacivil #construcaocivil #subsolo #obra #fundacao #impermeabilizacao #concretoarmado #engenharia",
-   "comentario": "Qual dessas etapas você não sabia que existia? 👇",
-   "postado_em": "2026-11-12 07:14",
-   "media_id": "18121643419767908"
-  },
-  {
-   "id": "pavimentacao-02-tapa-buraco",
-   "status": "postado",
-   "video": "videos/pavimentacao-02-tapa-buraco.mp4",
-   "capa": "videos/pavimentacao-02-tapa-buraco-capa.jpg",
-   "legenda": "Por que o tapa-buraco não dura? 🕳️🚧\nNa sua rua ele dura quanto tempo?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #tapaburaco #buraco #estradas #infraestrutura #obra",
-   "comentario": "Quanto tempo durou o último tapa-buraco da sua rua? 👇",
-   "postado_em": "2026-11-12 13:15",
-   "media_id": "18647362705036801"
-  },
-  {
-   "id": "construcao-05-verga",
-   "status": "postado",
-   "video": "videos/construcao-05-verga.mp4",
-   "capa": "videos/construcao-05-verga-capa.jpg",
-   "legenda": "Por que aparece trinca no canto da janela? 🪟\nTem uma assim na sua casa?\nComenta aqui 👇\n\n#engenhariacivil #construcaocivil #obra #trinca #rachadura #alvenaria #reforma #dicasdeobra",
-   "comentario": "Já viu essa trinca torta no canto da janela? 👇",
-   "postado_em": "2026-11-12 19:12",
-   "media_id": "18139547194635944"
-  },
-  {
-   "id": "pavimentacao-03-abaulamento",
-   "status": "postado",
-   "video": "videos/pavimentacao-03-abaulamento.mp4",
-   "capa": "videos/pavimentacao-03-abaulamento-capa.jpg",
-   "legenda": "Por que a estrada é mais alta no meio? 🛣️\nVocê já tinha reparado nisso?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #estradas #rodovia #drenagem #infraestrutura #obra",
-   "comentario": "Na sua cidade a água fica parada na pista quando chove? 👇",
-   "postado_em": "2026-11-13 12:26",
-   "media_id": "18078468713594339"
-  },
-  {
-   "id": "dozero-02-rodovia-concreto",
-   "status": "postado",
-   "agendado_para": "2026-11-14 12:40",
-   "obs": "Postagem avulsa por tarefa agendada única (série DO ZERO #02). NÃO entra na fila diária (Reel 21:10 de sábado).",
-   "video": "videos/dozero-02-rodovia-concreto.mp4",
-   "capa": "videos/dozero-02-rodovia-concreto-capa.jpg",
-   "legenda": "Por que a estrada de concreto faz \"tum, tum, tum\"? 🛣️\nVocê já passou numa estrada assim?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #concreto #rodovia #estradas #pavimentorigido #infraestrutura #obra",
-   "comentario": "Em qual estrada de concreto você já ouviu esse tum-tum? 👇",
-   "postado_em": "2026-11-14 12:42",
-   "media_id": "18137966944560694"
-  },
-  {
-   "id": "pavimentacao-04-asfalto-cinza",
-   "status": "postado",
-   "video": "videos/pavimentacao-04-asfalto-cinza.mp4",
-   "capa": "videos/pavimentacao-04-asfalto-cinza-capa.jpg",
-   "legenda": "Por que o asfalto velho fica cinza? 🛣️\nE o da sua rua, tá preto ou cinza?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #buraco #estradas #rodovias #infraestrutura #manutencao",
-   "comentario": "O asfalto da sua rua tá preto ou cinza? Comenta a cidade 👇",
-   "postado_em": "2026-11-14T21:13:10-03:00",
-   "media_id": "18117265622275208",
-   "tiktok_post_id": "6af8f90676c23bf1c74b1a48"
-  },
-  {
-   "id": "construcao-06-torre-pisa",
-   "status": "descartado",
-   "video": "videos/construcao-06-torre-pisa.mp4",
-   "capa": "videos/construcao-06-torre-pisa-capa.jpg",
-   "legenda": "Por que a Torre de Pisa não cai? 🏛️\nVocê sabe qual fundação tem a sua casa?\nComenta aqui 👇\n\n#engenhariacivil #fundacao #torredepisa #construcaocivil #obra #engenharia #solo #curiosidades",
-   "comentario": "Você já sabia por que ela não cai? Comenta aqui 👇",
-   "obs": "Descartado pelo dono em 15/11: trocado pela versão completa construcao-07-torre-pisa-completa."
-  },
-  {
-   "id": "construcao-07-torre-pisa-completa",
-   "status": "postado",
-   "video": "videos/construcao-07-torre-pisa-completa.mp4",
-   "capa": "videos/construcao-07-torre-pisa-completa-capa.jpg",
-   "legenda": "Por que a Torre de Pisa não cai? 🏛️\nVocê sabia desse detalhe do final?\nComenta aqui 👇\n\n#engenhariacivil #torredepisa #fundacao #obrasfamosas #construcaocivil #engenharia #historia #curiosidades",
-   "comentario": "Qual obra famosa você quer ver aqui? 👇",
-   "postado_em": "2026-11-15T19:44:14-03:00",
-   "media_id": "17941558443403451",
-   "tiktok_post_id": "6afa35aea869c35e5b9f6145"
-  },
-  {
-   "id": "pavimentacao-05-couro-jacare",
-   "status": "pendente",
-   "video": "videos/pavimentacao-05-couro-jacare.mp4",
-   "capa": "videos/pavimentacao-05-couro-jacare-capa.jpg",
-   "legenda": "Esse desenho no asfalto é perigoso? 🐊\nA rua da sua cidade tem isso?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #buraco #estradas #rodovias #infraestrutura #manutencao",
-   "comentario": "Tem jacaré no asfalto da sua rua? Comenta a cidade 👇"
-  },
-  {
-   "id": "dozero-03-ponte-estaiada",
-   "status": "agendado",
-   "agendado_para": "2026-11-17T12:40:00-03:00",
-   "obs": "Postagem avulsa da série DO ZERO #03 (postada pela tarefa 'Robô – resgate diário' às 12:40). NÃO entra na fila diária.",
-   "video": "videos/dozero-03-ponte-estaiada.mp4",
-   "capa": "videos/dozero-03-ponte-estaiada-capa.jpg",
-   "legenda": "Como uma ponte fica de pé sem pilar no meio do rio? 🌉\nVocê já passou numa ponte estaiada?\nComenta aqui 👇\n\n#engenhariacivil #ponteestaiada #ponte #obra #construcao #infraestrutura #saopaulo #engenharia",
-   "comentario": "Qual obra você quer ver construída do zero no próximo? 👇",
-   "postado_em": null
-  }
- ],
- "frequencia": "todos os dias, 2 postagens"
+  "perfil": "eng.raphaelserra",
+  "conta_windsor": "17841404396456793",
+  "horarios": [
+    "13:10",
+    "19:10"
+  ],
+  "fuso": "America/Fortaleza",
+  "itens": [
+    {
+      "id": "pavimentacao-01-buracos",
+      "status": "postado",
+      "video": "videos/pavimentacao-01-buracos.mp4",
+      "capa": "videos/pavimentacao-01-buracos-capa.jpg",
+      "legenda": "Por que o asfalto do Brasil tem tanto buraco? 🕳️\nComo está a pista na sua cidade?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #buraco #estradas #rodovias #infraestrutura #engenhariadetransportes",
+      "comentario": "Qual rua ou estrada da sua cidade tem o pior buraco? 👇",
+      "postado_em": "postado manualmente pelo dono",
+      "tiktok_post_id": "6af8d7fbe5a113497aad9b43",
+      "tiktok_postado_em": "2026-11-14 18:51"
+    },
+    {
+      "id": "construcao-04-cura-concreto",
+      "status": "postado",
+      "video": "videos/construcao-04-cura-concreto.mp4",
+      "capa": "videos/construcao-04-cura-concreto-capa.jpg",
+      "legenda": "Por que o pedreiro molha o concreto depois de pronto? 💧\nVocê já viu isso numa obra?\nComenta aqui 👇\n\n#engenhariacivil #concreto #construcaocivil #obra #curadoconcreto #laje #reforma #dicasdeobra",
+      "comentario": "Na sua obra molharam a laje quantos dias? 👇",
+      "postado_em": "2026-11-11 19:12",
+      "media_id": "18197476795400711",
+      "tiktok_post_id": "6af9f5fee5a113497a0541a2",
+      "tiktok_postado_em": "2026-11-15 15:12"
+    },
+    {
+      "id": "dozero-01-subsolo",
+      "status": "postado",
+      "agendado_para": "2026-11-12 07:10",
+      "obs": "Postagem avulsa por tarefa agendada única (série DO ZERO). NÃO entra na fila das 13:10/19:10.",
+      "video": "videos/dozero-01-subsolo.mp4",
+      "capa": "videos/dozero-01-subsolo-capa.jpg",
+      "legenda": "Como um buraco no quintal vira um subsolo? 🕳️🏠\nVocê teria um subsolo na sua casa?\nComenta aqui 👇\n\n#engenhariacivil #construcaocivil #subsolo #obra #fundacao #impermeabilizacao #concretoarmado #engenharia",
+      "comentario": "Qual dessas etapas você não sabia que existia? 👇",
+      "postado_em": "2026-11-12 07:14",
+      "media_id": "18121643419767908",
+      "tiktok_post_id": "6afb476cca12ef5afd668b60",
+      "tiktok_postado_em": "2026-11-16 15:12"
+    },
+    {
+      "id": "pavimentacao-02-tapa-buraco",
+      "status": "postado",
+      "video": "videos/pavimentacao-02-tapa-buraco.mp4",
+      "capa": "videos/pavimentacao-02-tapa-buraco-capa.jpg",
+      "legenda": "Por que o tapa-buraco não dura? 🕳️🚧\nNa sua rua ele dura quanto tempo?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #tapaburaco #buraco #estradas #infraestrutura #obra",
+      "comentario": "Quanto tempo durou o último tapa-buraco da sua rua? 👇",
+      "postado_em": "2026-11-12 13:15",
+      "media_id": "18647362705036801"
+    },
+    {
+      "id": "construcao-05-verga",
+      "status": "postado",
+      "video": "videos/construcao-05-verga.mp4",
+      "capa": "videos/construcao-05-verga-capa.jpg",
+      "legenda": "Por que aparece trinca no canto da janela? 🪟\nTem uma assim na sua casa?\nComenta aqui 👇\n\n#engenhariacivil #construcaocivil #obra #trinca #rachadura #alvenaria #reforma #dicasdeobra",
+      "comentario": "Já viu essa trinca torta no canto da janela? 👇",
+      "postado_em": "2026-11-12 19:12",
+      "media_id": "18139547194635944"
+    },
+    {
+      "id": "pavimentacao-03-abaulamento",
+      "status": "postado",
+      "video": "videos/pavimentacao-03-abaulamento.mp4",
+      "capa": "videos/pavimentacao-03-abaulamento-capa.jpg",
+      "legenda": "Por que a estrada é mais alta no meio? 🛣️\nVocê já tinha reparado nisso?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #estradas #rodovia #drenagem #infraestrutura #obra",
+      "comentario": "Na sua cidade a água fica parada na pista quando chove? 👇",
+      "postado_em": "2026-11-13 12:26",
+      "media_id": "18078468713594339"
+    },
+    {
+      "id": "dozero-02-rodovia-concreto",
+      "status": "postado",
+      "agendado_para": "2026-11-14 12:40",
+      "obs": "Postagem avulsa por tarefa agendada única (série DO ZERO #02). NÃO entra na fila diária (Reel 21:10 de sábado).",
+      "video": "videos/dozero-02-rodovia-concreto.mp4",
+      "capa": "videos/dozero-02-rodovia-concreto-capa.jpg",
+      "legenda": "Por que a estrada de concreto faz \"tum, tum, tum\"? 🛣️\nVocê já passou numa estrada assim?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #concreto #rodovia #estradas #pavimentorigido #infraestrutura #obra",
+      "comentario": "Em qual estrada de concreto você já ouviu esse tum-tum? 👇",
+      "postado_em": "2026-11-14 12:42",
+      "media_id": "18137966944560694"
+    },
+    {
+      "id": "pavimentacao-04-asfalto-cinza",
+      "status": "postado",
+      "video": "videos/pavimentacao-04-asfalto-cinza.mp4",
+      "capa": "videos/pavimentacao-04-asfalto-cinza-capa.jpg",
+      "legenda": "Por que o asfalto velho fica cinza? 🛣️\nE o da sua rua, tá preto ou cinza?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #buraco #estradas #rodovias #infraestrutura #manutencao",
+      "comentario": "O asfalto da sua rua tá preto ou cinza? Comenta a cidade 👇",
+      "postado_em": "2026-11-14T21:13:10-03:00",
+      "media_id": "18117265622275208",
+      "tiktok_post_id": "6af8f90676c23bf1c74b1a48"
+    },
+    {
+      "id": "construcao-06-torre-pisa",
+      "status": "descartado",
+      "video": "videos/construcao-06-torre-pisa.mp4",
+      "capa": "videos/construcao-06-torre-pisa-capa.jpg",
+      "legenda": "Por que a Torre de Pisa não cai? 🏛️\nVocê sabe qual fundação tem a sua casa?\nComenta aqui 👇\n\n#engenhariacivil #fundacao #torredepisa #construcaocivil #obra #engenharia #solo #curiosidades",
+      "comentario": "Você já sabia por que ela não cai? Comenta aqui 👇",
+      "obs": "Descartado pelo dono em 15/11: trocado pela versão completa construcao-07-torre-pisa-completa."
+    },
+    {
+      "id": "construcao-07-torre-pisa-completa",
+      "status": "postado",
+      "video": "videos/construcao-07-torre-pisa-completa.mp4",
+      "capa": "videos/construcao-07-torre-pisa-completa-capa.jpg",
+      "legenda": "Por que a Torre de Pisa não cai? 🏛️\nVocê sabia desse detalhe do final?\nComenta aqui 👇\n\n#engenhariacivil #torredepisa #fundacao #obrasfamosas #construcaocivil #engenharia #historia #curiosidades",
+      "comentario": "Qual obra famosa você quer ver aqui? 👇",
+      "postado_em": "2026-11-15T19:44:14-03:00",
+      "media_id": "17941558443403451",
+      "tiktok_post_id": "6afa35aea869c35e5b9f6145"
+    },
+    {
+      "id": "pavimentacao-05-couro-jacare",
+      "status": "pendente",
+      "video": "videos/pavimentacao-05-couro-jacare.mp4",
+      "capa": "videos/pavimentacao-05-couro-jacare-capa.jpg",
+      "legenda": "Esse desenho no asfalto é perigoso? 🐊\nA rua da sua cidade tem isso?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #buraco #estradas #rodovias #infraestrutura #manutencao",
+      "comentario": "Tem jacaré no asfalto da sua rua? Comenta a cidade 👇"
+    },
+    {
+      "id": "dozero-03-ponte-estaiada",
+      "status": "agendado",
+      "agendado_para": "2026-11-17T12:40:00-03:00",
+      "obs": "Postagem avulsa da série DO ZERO #03 (postada pela tarefa 'Robô – resgate diário' às 12:40). NÃO entra na fila diária.",
+      "video": "videos/dozero-03-ponte-estaiada.mp4",
+      "capa": "videos/dozero-03-ponte-estaiada-capa.jpg",
+      "legenda": "Como uma ponte fica de pé sem pilar no meio do rio? 🌉\nVocê já passou numa ponte estaiada?\nComenta aqui 👇\n\n#engenhariacivil #ponteestaiada #ponte #obra #construcao #infraestrutura #saopaulo #engenharia",
+      "comentario": "Qual obra você quer ver construída do zero no próximo? 👇",
+      "postado_em": null
+    }
+  ],
+  "frequencia": "todos os dias, 2 postagens"
 }
