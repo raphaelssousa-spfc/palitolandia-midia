@@ -25,6 +25,18 @@ Vale para QUALQUER fluxo que baixe arquivo no notebook dele (ex.: cenas do TAAFT
 - Nunca salvar arquivo do robô sem esse prefixo: a limpeza semanal (domingo 21:23) só apaga `robo-ia_*` com 7+ dias cujo item já está "postado".
   Arquivo sem o prefixo fica para sempre no notebook.
 
+## FORMATO NOVO (16/11 — o dono pediu; VALE MAIS que as regras 2, 4, 8, 11, 12 e 13 onde elas conflitarem)
+Motivo: o tempo médio assistido caiu de 14–21 s para 8–9 s com o formato antigo (pausa no começo + final longo). Relatório: https://claude.ai/artifact/PYFxtuM1xAfiCJiGBoFhKT
+- Duração 20–25 s no total (voz ~18–22 s + ~2,5 s de logo/acorde/fade).
+- Quadro 1 = a cena MAIS ESTRANHA/ENGRAÇADA do vídeo (não os dois bonecos parados), com a pergunta falada e escrita grande (até 8 palavras, já com as duas coisas fora de ordem).
+- NADA de "Comenta!", segunda pergunta ou placa de escolha no começo. Selo "PARECE MENTIRA #N" só pequeno no canto (overlay), sem tomar tempo.
+- Uma imagem ou piada nova a cada 2–3 s. As duas datas → a conta → piada visual → a RESPOSTA só no fim (virada).
+- Final com UM pedido só, numa frase (~3 s): "Manda pra quem vai duvidar e segue a Palitolândia ponto i a." (placas: "MANDA PRA QUEM VAI DUVIDAR" + "@PALITOLANDIA.IA").
+- Sem "No próximo" falado no vídeo: o teaser do próximo vai na LEGENDA DO POST ("Amanhã: ..."). proximo.md continua valendo para escolher o tema.
+- Loop: a cena do logo final é a mesma cena do quadro 1 (mesmo cenário/câmera), para emendar no replay.
+- O pedido de escolha fica no comentário fixado (campo comentario), ex.: "Harvard ou Newton: quem veio primeiro? 👇".
+- Meta: tempo médio assistido > 12 s e 5+ compartilhamentos por Reel.
+
 ## Regras de crescimento (12/11 — o dono pediu)
 11. **Série numerada "PARECE MENTIRA #N".** N = número do episódio (o próximo número está em `proximo.md`). Aparece no começo do vídeo (placa pequena no canto nos primeiros 3 s), na capa (faixa acima do título) e na legenda do post ("Parece mentira #N").
     Episódios: #1 Cleópatra, #2 Chocolate/micro-ondas, #3 Sol, #4 Torre Eiffel, #5 Oxford, #6 lata x abridor, #7 isqueiro x fósforo (estes dois feitos antes da regra). O fax (refazer) será o #8.
