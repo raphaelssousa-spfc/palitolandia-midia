@@ -72,12 +72,14 @@
     },
     {
       "id": "mamute-piramide",
-      "status": "pendente",
+      "status": "postado",
       "video": "videos/mamute-piramide.mp4",
       "capa": "videos/mamute-piramide-capa.jpg",
       "legenda": "Parece mentira #10 🦣🔺\nIsso parece fora de ordem... mas é real 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#mamute #piramides #egito #curiosidades #vocesabia",
       "comentario": "Viram ou não viram? Qual é o seu palpite? 👇",
-      "episodio": 10
+      "episodio": 10,
+      "postado_em": "2026-11-16 19:13",
+      "media_id": "18127486369902753"
     },
     {
       "id": "trex-estego",
