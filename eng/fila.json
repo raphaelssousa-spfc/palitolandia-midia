@@ -119,11 +119,14 @@
     },
     {
       "id": "pavimentacao-05-couro-jacare",
-      "status": "pendente",
+      "status": "postado",
       "video": "videos/pavimentacao-05-couro-jacare.mp4",
       "capa": "videos/pavimentacao-05-couro-jacare-capa.jpg",
       "legenda": "Esse desenho no asfalto é perigoso? 🐊\nA rua da sua cidade tem isso?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #buraco #estradas #rodovias #infraestrutura #manutencao",
-      "comentario": "Tem jacaré no asfalto da sua rua? Comenta a cidade 👇"
+      "comentario": "Tem jacaré no asfalto da sua rua? Comenta a cidade 👇",
+      "postado_em": "2026-11-16T19:42:00-03:00",
+      "media_id": "18138450292659603",
+      "tiktok_post_id": "6afb86eb797935b975c54eaa"
     },
     {
       "id": "dozero-03-ponte-estaiada",
