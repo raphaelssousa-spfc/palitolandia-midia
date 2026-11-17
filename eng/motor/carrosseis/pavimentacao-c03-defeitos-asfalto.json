@@ -1,0 +1,18 @@
+{
+  "serie": "pavimentacao",
+  "categoria": "PAVIMENTAÇÃO",
+  "episodio": "CARROSSEL #03",
+  "capa_estilo": "padrao",
+  "cores": {"bg": "#14232E", "card": "#1F3442", "acc": "#2EC4B6", "ring": "#2EC4B6", "pill": "#2EC4B6", "pillText": "#0B1A22"},
+  "referencia": "https://setcesp.org.br/?p=28337",
+  "slides": [
+    {"tipo": "capa", "titulo": "5 defeitos do asfalto e o que cada um avisa", "destaque": "avisa", "subtitulo": "A rua dá sinais antes de virar buraco. Saiba ler.", "ilustracao": "buraco"},
+    {"tipo": "item", "numero": 1, "titulo": "Couro de jacaré", "texto": "Trincas ligadas, parecidas com pele de jacaré. A base não aguenta mais o peso e cede.", "icone": "rachadura", "alerta": "perigo"},
+    {"tipo": "item", "numero": 2, "titulo": "Panela (o buraco)", "texto": "Pedaço do asfalto sai e abre cratera. Quase sempre começou como trinca com água entrando.", "icone": "buraco", "alerta": "perigo"},
+    {"tipo": "item", "numero": 3, "titulo": "Afundamento na trilha da roda", "texto": "Dois sulcos onde os pneus passam. Efeito de muito peso repetido e massa que amolece.", "icone": "caminhao", "alerta": "atencao"},
+    {"tipo": "item", "numero": 4, "titulo": "Asfalto \"suando\" piche", "texto": "Excesso de ligante sobe à superfície no calor. A pista fica lisa e escorrega mais.", "icone": "sol", "alerta": "atencao"},
+    {"tipo": "item", "numero": 5, "titulo": "Desgaste e pedra solta", "texto": "A superfície perde o ligante com o tempo e as pedrinhas soltam. É a rua pedindo nova capa.", "icone": "lupa", "alerta": "atencao"},
+    {"tipo": "resumo", "titulo": "O que quase todos têm em comum", "pontos": ["Água entrando na estrutura", "Base fraca ou mal compactada", "Falta de manutenção a tempo", "Trinca tapada cedo sai barato"]},
+    {"tipo": "final", "pergunta": "Qual tem na sua rua? Curte, salva, manda pra alguém e segue!"}
+  ]
+}

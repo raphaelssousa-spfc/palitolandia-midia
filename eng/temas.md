@@ -46,6 +46,7 @@
 # Carrosséis já usados (não repetir)
 - construção · UMIDADE · CARROSSEL #01 · 6 sinais de infiltração na sua casa (checklist)
 - pavimentação · PAVIMENTAÇÃO · CARROSSEL #02 · Como a sua rua ganha asfalto (passo a passo) · ref.: https://materiais.britagemvogelsanger.com.br/infografico-todos-os-passos-para-uma-pavimentacao-asfaltica-perfeita
+- pavimentação · PAVIMENTAÇÃO · CARROSSEL #03 · 5 defeitos do asfalto e o que cada um avisa (checklist) · ref.: https://setcesp.org.br/?p=28337
 
 ## Sugestões de temas DO ZERO (só ideias; o dono deixou a escolha livre — escolher o que tiver mais chance de viralizar)
 1. Poço artesiano — gancho: "Se você cavar até achar água, você tem um poço." Revelação: em muito poço artesiano a água sobe sozinha (pressão do aquífero confinado). Conferir fatos.
