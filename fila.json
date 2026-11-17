@@ -83,12 +83,14 @@
     },
     {
       "id": "trex-estego",
-      "status": "pendente",
+      "status": "postado",
       "video": "videos/trex-estego.mp4",
       "capa": "videos/trex-estego-capa.jpg",
       "legenda": "Parece mentira #11 🦖🦕\nIsso parece fora de ordem... mas é real 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#dinossauros #tiranossauro #curiosidades #vocesabia #ciencia",
       "comentario": "Conheceu ou não conheceu? Qual é o seu palpite? 👇",
-      "episodio": 11
+      "episodio": 11,
+      "postado_em": "2026-11-17 19:11",
+      "media_id": "18155860177553977"
     },
     {
       "id": "nintendo-aviao",
