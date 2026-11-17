@@ -6,6 +6,18 @@ Tudo do perfil de engenharia fica na pasta `eng/` (não mexer nos arquivos da Pa
 Instagram: @eng.raphaelserra (Windsor.ai, conector `instagram`, conta id `17841404396456793`).
 ATENÇÃO: a conta `17841460341094597` é a da Palitolândia; nunca postar engenharia nela.
 
+## FORMATO NOVO (16/11) — vale mais que o resto deste manual onde conflitar
+Análise do perfil: os 2 únicos Reels acima de 1 mil views foram os com mais movimento (concreto "tum-tum" 3D e asfalto velho cinza);
+os que parecem "slide de aula" (card parado, série creme) ficaram em 100–300 views. Lá fora viraliza o PROCESSO ACONTECENDO
+(@civilengineeringdiscoveries: compactação 555 mil, ponte estaiada 810 mil). Por isso:
+- SÉRIE CREME PAUSADA (inclusive OBRAS FAMOSAS). Construção/grandes obras vão para a DO ZERO (3D). A tarefa diária faz SÓ PAVIMENTAÇÃO (Pave.tsx).
+- Temas "como é feito / como funciona" com processo e máquinas: compactação, fresagem, imprimação/pintura de ligação, CBUQ com vibroacabadora,
+  reciclagem, tapa-buraco certo x errado, sinalização horizontal, pavimento de concreto, drenagem, viga Benkelman... Variar; nada parecido em sequência.
+- 1º SEGUNDO = AÇÃO (rolo passando, camada caindo, máquina chegando, pista rachando) já com o gancho falado. Nunca abrir com card de título parado.
+- MOVIMENTO O TEMPO TODO: a cada frase algo se move. Pouco texto na tela (palavras-chave grandes); legenda palavra por palavra continua.
+- CAPA: a cena de ação mais forte + pergunta curta. Não pode parecer slide de carrossel.
+- Duração 30–45 s.
+
 ## Regras do dono (obrigatórias)
 1. Perfil: engenheiro civil explicando obras, construção e pavimentação para leigos. Tom simples, direto e confiável.
 2. Narração SEMPRE com a voz `pm_santa`, ritmo dinâmico (`--vel 1.12` e pausas cortadas: o `tools/narracao.py` já faz isso).
@@ -44,7 +56,7 @@ Vale para QUALQUER fluxo que baixe arquivo no notebook dele (ex.: cenas do TAAFT
 | DO ZERO ("Se você...", inspirada no You Made It) | 3D low-poly em corte (three.js), 45–55 s, voz pm_santa 1.15, legenda palavra a palavra, avatar no canto e tela final | `motor3d/`: cenário MONTADO com o KIT (`motor3d/KIT.md`) + story.js do subsolo como modelo |
 Proporção dos Reels animados (regra do dono, 13/11 — ele é pós-graduado em pavimentação): de cada 3 vídeos, 2 são de PAVIMENTAÇÃO
 e 1 de construção (creme). Ver as últimas linhas de `temas.md` para decidir. Nunca 2 de construção seguidos.
-Série creme: fica COMO ESTÁ (regra do dono, 13/11 — o creme diferencia da série escura: dois assuntos diferentes). Só capriche no gancho.
+Série creme: PAUSADA desde 16/11 (ver FORMATO NOVO). Antes: ficava COMO ESTÁ (regra do dono, 13/11 — o creme diferencia da série escura: dois assuntos diferentes). Só capriche no gancho.
 A série DO ZERO sai 2 vezes por semana (tarefa de segunda e quinta 20:37, posta no dia seguinte, avulsa). Regras novas (dono, 13/11):
 - 45–55 s no total (com a tela final). Frases curtas; se passar de 55 s, cortar.
 - No 1º segundo, ANTES do "Se você...": a obra PRONTA num giro rápido de câmera (≈1 s) com o selo grande "DO ZERO #N" — dá vontade de ver como chega lá.
@@ -64,7 +76,7 @@ Fórmula DO ZERO: "Se você [faz do jeito mais simples], você tem um [coisa]" �
 Palavras sensíveis: evitar "morte", "morreu", "tragédia" etc. (usar "casos fatais", "vítimas"). Episódios numerados por série.
 Produção: 2 vídeos por dia (tarefa diária 02:47), parando quando houver 4 ou mais pendentes na fila.
 
-## OBRAS FAMOSAS dentro da série creme (dono, 15/11 — NÃO é série/tarefa separada)
+## OBRAS FAMOSAS dentro da série creme (dono, 15/11) — PAUSADA desde 16/11 junto com a série creme
 Os vídeos de construção (creme) ALTERNAM: um creme normal (30–40 s) → o próximo creme é uma OBRA FAMOSA (60–75 s) → normal → famosa...
 Para saber a vez: olhe o último vídeo de construção em `temas.md` (linhas "construção"); se ele foi normal, o próximo creme é obra famosa, e vice-versa.
 A proporção continua: de cada 3 vídeos, 2 de pavimentação e 1 de construção (creme), nunca 2 de construção seguidos.

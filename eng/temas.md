@@ -10,6 +10,7 @@
 - pavimentação · PAVIMENTAÇÃO #04 · Por que o asfalto velho fica cinza? (~95% pedra, ligante oxida com sol/ar, película gasta, lama asfáltica sela)
 - construção · OBRAS FAMOSAS #01 · Torre de Pisa: a história completa (74 s; argila mole, fundação ~3 m, ~15 mil t, pausa ~100 anos, andares curvados, ~200 anos de obra, 1990 fechada, chumbo, retirada de solo, ~40 cm, torta de propósito). Substituiu o curto FUNDAÇÕES #06 (descartado). Próximo creme = NORMAL.
 - pavimentação · PAVIMENTAÇÃO #05 · Esse desenho no asfalto é perigoso? (trinca couro de jacaré = fadiga, DNIT 005/2003; água amolece a base → buraco; afundamento na trilha de roda → aquaplanagem; cortar e refazer base)
+- pavimentação · PAVIMENTAÇÃO #06 · Por que o rolo passa e volta tantas vezes no asfalto novo? (formato novo 16/11: ação no 1º s; CBUQ chega ~150 °C, acabadora espalha fofa com ar, rolo de pneus fecha poros, rolo liso dá acabamento, sobra 3–5% de vazios, esfriou não compacta → buraco cedo)
 
 - DO ZERO (3D, "Se você...") · #01 · Como um buraco no quintal vira um subsolo? (agendado 12/11 07:10)
 - DO ZERO (3D, "Se você...") · #02 · pavimentação · Por que a estrada de concreto faz tum-tum? (rodovia de concreto: sub-base, junta serrada, barra de transferência, barra de ligação, selante, texturização; agendado 14/11 12:40)
