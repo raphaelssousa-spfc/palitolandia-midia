@@ -2,6 +2,22 @@
 
 Histórico dos últimos 14 dias (mais novo no topo). Não repetir perfil 3 dias seguidos nem repetir comentário.
 
+## 2026-11-17
+
+1. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico
+   - Se for de asfalto: "Vale lembrar da pintura de ligação entre camadas. Sem ela o revestimento desliza da base e abre trinca em meia lua, mesmo com massa boa."
+   - Se for de outra obra: "Boa. Em pavimento ou em prédio, ensaio no começo custa pouco e evita refazer tudo no fim."
+2. [@infra_urbana](https://www.instagram.com/infra_urbana/) – infraestrutura urbana e saneamento
+   - Se for de rua/asfalto: "Sarjeta e meio-fio bem nivelados mandam a água embora. Se a água fica parada na borda, o asfalto desagrega ali primeiro."
+   - Se for de outra obra: "Rede enterrada é investimento invisível. Quando funciona ninguém lembra, quando falha a cidade inteira sente."
+3. [@matheusleoni_eng](https://www.instagram.com/matheusleoni_eng/) – dicas de obra e carreira
+   - "Verdade. Engenheiro que vai ao campo cedo aprende em semanas o que o livro leva anos pra mostrar. Conversar com o mestre de obras ajuda demais."
+4. [@leilabrito_eng](https://www.instagram.com/leilabrito_eng/) – patologias e manutenção predial
+   - Se for de fissura/trinca: "Dá pra medir a evolução colando um fissurômetro. Se a trinca se mexe, o problema é estrutural ou de fundação, não só de acabamento."
+   - Se for de outra obra: "Laudo antes da reforma poupa muita dor de cabeça. Tratar o sintoma sem achar a causa é gastar duas vezes."
+5. [@danilolorenceto](https://www.instagram.com/danilolorenceto/) – reforma e obra residencial
+   - "Bom lembrete. Cuidar do que vai por baixo, como impermeabilização e instalações, antes do revestimento é o que define se a reforma dura."
+
 ## 2026-11-16
 
 1. [@0bras](https://www.instagram.com/0bras/) – obras grandes e infraestrutura
