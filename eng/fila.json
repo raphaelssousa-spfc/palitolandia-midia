@@ -130,14 +130,16 @@
     },
     {
       "id": "dozero-03-ponte-estaiada",
-      "status": "agendado",
+      "status": "postado",
       "agendado_para": "2026-11-17T12:40:00-03:00",
       "obs": "Postagem avulsa da série DO ZERO #03 (postada pela tarefa 'Robô – resgate diário' às 12:40). NÃO entra na fila diária.",
       "video": "videos/dozero-03-ponte-estaiada.mp4",
       "capa": "videos/dozero-03-ponte-estaiada-capa.jpg",
       "legenda": "Como uma ponte fica de pé sem pilar no meio do rio? 🌉\nVocê já passou numa ponte estaiada?\nComenta aqui 👇\n\n#engenhariacivil #ponteestaiada #ponte #obra #construcao #infraestrutura #saopaulo #engenharia",
       "comentario": "Qual obra você quer ver construída do zero no próximo? 👇",
-      "postado_em": null
+      "postado_em": "2026-11-17T12:42:00-03:00",
+      "media_id": "17961272889272120",
+      "tiktok_post_id": "6afc75e10ec7d2b0822ad02c"
     },
     {
       "id": "pavimentacao-06-compactacao",
