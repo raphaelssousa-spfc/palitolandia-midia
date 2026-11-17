@@ -145,11 +145,14 @@
     },
     {
       "id": "pavimentacao-06-compactacao",
-      "status": "pendente",
+      "status": "postado",
       "video": "videos/pavimentacao-06-compactacao.mp4",
       "capa": "videos/pavimentacao-06-compactacao-capa.jpg",
       "legenda": "Por que o rolo passa e volta tantas vezes no asfalto novo? 🚧\nVocê já parou pra ver uma obra dessas?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #compactacao #rolocompactador #estradas #rodovias #obra",
-      "comentario": "Na sua cidade o asfalto novo dura quanto tempo? 👇"
+      "comentario": "Na sua cidade o asfalto novo dura quanto tempo? 👇",
+      "postado_em": "2026-11-17T19:42:00-03:00",
+      "media_id": "18141756829722399",
+      "tiktok_post_id": "6afcd83997117502d4a6b05d"
     }
   ],
   "frequencia": "todos os dias, 2 postagens"
