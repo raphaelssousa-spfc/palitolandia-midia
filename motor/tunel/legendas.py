@@ -1,7 +1,7 @@
 """Legendas estilo Shorts (ASS): 2-3 palavras por vez, MAIÚSCULAS, palavra falada em amarelo, números/palavras-chave em destaque."""
 import re
-SEGS = [(0.16, 2.78, 'Ladrões cavaram um túnel até um banco no Brasil.'), (3.02, 4.3, 'Verdade ou mito?'), (4.54, 6.11, 'Parece filme de Hollywood.'), (6.35, 8.99, 'Mas do lado do banco abriu uma loja de grama...'), (9.23, 10.44, 'E a resposta é...'), (10.97, 11.79, 'Verdade!'), (12.03, 13.76, 'Fortaleza, 2005:'), (14.0, 15.17, 'quase 80 metros de túnel'), (15.41, 16.39, 'até o cofre.'), (16.63, 19.2, 'Sumiram mais de 160 milhões.'), (19.44, 21.36, 'E mais de 100 foram condenados.'), (21.6, 23.46, 'Comenta se achou que era mentira!'), (23.7, 26.4, 'Manda pra quem cava na praia pra chegar no Japão.'), (26.64, 28.48, 'E segue @palitolandia.ia')]
-KEY = {'túnel','banco','verdade','mito?','verdade!','fortaleza,','2005:','80','cofre.','160','100','mentira!','japão.','@palitolandia.ia','hollywood.'}
+SEGS = [(0.13, 2.75, 'Ladrões cavaram um túnel até um banco no Brasil.'), (3.04, 4.32, 'Verdade ou mito?'), (4.58, 7.47, 'Dizem que abriram uma loja de grama do lado do banco.'), (7.73, 10.25, 'E cavaram quase 80 metros até o cofre.'), (10.51, 13.04, 'Levando mais de 160 milhões.'), (13.29, 14.41, 'Parece filme, né?'), (14.68, 15.89, 'E a resposta é...'), (16.14, 16.96, 'Verdade!'), (17.22, 18.68, 'Fortaleza, 2005.'), (19.13, 21.05, 'E mais de 100 foram condenados.'), (21.32, 23.18, 'Comenta se achou que era mentira!'), (23.46, 26.22, 'Marca o amigo sumido que parece que mora num túnel.'), (26.5, 28.35, 'E segue @palitolandia.ia')]
+KEY = {'túnel','banco','verdade','mito?','verdade!','fortaleza,','2005.','80','cofre.','160','100','mentira!','sumido','túnel.','@palitolandia.ia','grama','filme,'}
 def ts(t): h = int(t // 3600); m = int(t % 3600 // 60); s = t % 60; return f"{h}:{m:02d}:{s:05.2f}"
 words = []  # (t0, t1, palavra)
 for a, b, txt in SEGS:

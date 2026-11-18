@@ -41,7 +41,7 @@ Roupa nova = 1 linha em OUTFITS (+ bloco de desenho se tiver acessório novo). S
 | `PL.trex(p, t, oculos)` / `PL.stego(p, t, fossil)` | tiranossauro de lado (bracinhos balançam; óculos opcional) / estegossauro de lado (fossil = esqueleto cor de osso em pedestal de museu) — projeto `motor/dino` |
 | `PL.hanafuda(p, t)` / `PL.biplane(p, t)` | leque de 3 cartas de baralho japonês / avião antigo de 1903 de lado (t = giro da hélice) — projeto `motor/nintendo` |
 | `PL.apple(p)` / `PL.book(p)` | maçã de desenho / livro aberto (para flutuar) — projeto `motor/harvard` (formato novo; roupa nova `newton` = peruca branca) |
-| `PL.tunnel(p, t, dig)` / `PL.shop(p, t)` / `PL.stamp(p, ok)` / `PL.money(p, t)` / `PL.beach(p, t)` | corte do chão loja→túnel→cofre do banco (t = avanço, dig = pá) / fachada "GRAMA SINTÉTICA" / CARIMBO FINAL da série B: VERDADE ✓ (ok=true) ou MITO ✗ (ok=false) / dinheiro caindo e empilhando / buraco na praia rumo ao Japão — projeto `motor/tunel` (série B; câmeras CA/CB enquadram cartão grande + placa) |
+| `PL.tunnel(p, t, dig)` / `PL.shop(p, t)` / `PL.stamp(p, ok)` / `PL.money(p, t)` / `PL.beach(p, t)` | corte do chão loja→túnel→cofre do banco (t = avanço, dig = pá) / fachada "GRAMA SINTÉTICA" / CARIMBO FINAL da série B: VERDADE ✓ (ok=true) ou MITO ✗ (ok=false) / dinheiro caindo e empilhando / buraco na praia rumo ao Japão; `PL.peek(p, t)` = amigo sumido espiando de um buraco ("OI, SUMI!") — projeto `motor/tunel` (série B; câmeras CA/CB enquadram cartão grande + placa) |
 | `PL.gapCard(p, folga)` / `PL.snowCard(p, f)` | diagrama de folga entre peças / neve caindo |
 Texturas pintadas (web/paint.js): linha do tempo (`timeline`), placa (`plaque`), lousa, areia, arenito, Lua, Terra, bandeira, grama, xadrez, madeira, pedra, telhas etc.
 

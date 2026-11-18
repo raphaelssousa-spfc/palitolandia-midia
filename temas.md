@@ -31,6 +31,6 @@
 Comentário:
 - "Comenta se achou que era mentira!" (VoM #1)
 Manda pra alguém:
-- "Manda pra quem cava na praia pra chegar no Japão." (VoM #1)
+- "Marca o amigo sumido que parece que mora num túnel." (VoM #1 — refeito 18/11; a 1ª versão "Manda pra quem cava na praia pra chegar no Japão" foi recusada pelo dono)
 Legendas/comentários fixados de posts já usados (variar):
 - VoM #1 legenda: "Isso parece roteiro de filme... 🎬" + "Verdade ou mito? Crava a sua antes de ver o final 👇" / comentário fixado: "Verdade ou mito? Crava aqui antes de ver o final 👇"

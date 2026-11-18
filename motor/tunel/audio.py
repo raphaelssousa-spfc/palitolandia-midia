@@ -60,7 +60,7 @@ music = np.zeros(N, np.float32)
 BPM = 116; beat = 60 / BPM
 prog = [(48, [60, 64, 67]), (53, [57, 60, 65]), (55, [59, 62, 67]), (48, [60, 64, 67])]  # C F G C
 mel = [72, 74, 76, 72, 77, 76, 74, 71, 72, 76, 79, 77, 76, 74, 72, 67]
-MUSIC_END = 28.6
+MUSIC_END = 28.5
 bar = 0; tt = 0.0; k = 0
 while tt < MUSIC_END:
     root, ch = prog[bar % 4]
@@ -180,16 +180,16 @@ def tick(d):
 def bell():
     n = int(1.6 * SR); t = np.arange(n) / SR
     return (sum(np.sin(2*np.pi*f*t) * np.exp(-t*k) for f, k in [(880,2.5),(1320,3),(2200,5)]) * 0.35).astype(np.float32)
-for f in (133, 188, 275, 359, 496, 576, 641, 708, 796, 859): place(sfx, whoosh(0.4), F(f), 0.45)
+for f in (134, 229, 313, 396, 437, 514, 571, 637, 701, 793, 859): place(sfx, whoosh(0.4), F(f), 0.45)
 place(sfx, ting(), F(2), 0.4); place(sfx, ting(), F(90), 0.45)
 for f in range(10, 125, 18): place(sfx, crunch(0.2), F(f), 0.25)
-place(sfx, laugh(1.0), F(140), 0.2); place(sfx, ting(), F(196), 0.4)
-place(sfx, ting(), F(277), 0.4)
-place(sfx, sting(), F(327), 0.55); place(sfx, thunk(90, 0.4), F(327), 0.5); place(sfx, ting(), F(361), 0.5)
-for f in range(415, 480, 14): place(sfx, crunch(0.2), F(f), 0.3)
-for k, f in enumerate(range(500, 560, 6)): place(sfx, clink(1800 + 120 * (k % 5)), F(f), 0.25)
-place(sfx, thunk(70, 0.4), F(582), 0.6); place(sfx, ting(), F(580), 0.4)
-place(sfx, ting(), F(644), 0.5); place(sfx, laugh(1.0), F(650), 0.2); place(sfx, ting(), F(712), 0.45); place(sfx, ting(), F(798), 0.5)
+place(sfx, ting(), F(142), 0.4)
+for f in range(236, 300, 14): place(sfx, crunch(0.2), F(f), 0.3)
+for k, f in enumerate(range(317, 380, 6)): place(sfx, clink(1800 + 120 * (k % 5)), F(f), 0.25)
+place(sfx, laugh(1.0), F(400), 0.2); place(sfx, ting(), F(439), 0.4)
+place(sfx, sting(), F(483), 0.55); place(sfx, thunk(90, 0.4), F(483), 0.5); place(sfx, ting(), F(516), 0.5)
+place(sfx, thunk(70, 0.4), F(577), 0.6); place(sfx, ting(), F(575), 0.4)
+place(sfx, ting(), F(640), 0.5); place(sfx, laugh(1.0), F(646), 0.2); place(sfx, ting(), F(705), 0.45); place(sfx, ting(), F(795), 0.5)
 place(sfx, whoosh(0.5), F(862), 0.4)
 for k, f in enumerate((866, 874, 882, 890)): place(sfx, clink(1500 + 300 * k), F(f), 0.5)
 def wav(name, x):

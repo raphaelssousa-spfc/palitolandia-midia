@@ -338,3 +338,18 @@ export const beach = (p, t = 0) => { const g = p.g; g.save(); g.lineWidth = 10; 
   g.beginPath(); g.ellipse(478, 662 + 10 * Math.sin(t), 26, 36, -0.4, 0, 7); g.fill(); g.stroke();
   txt(g, 'JAPÃO →', 300, 470, 40, K);
   g.restore(); };
+// amigo sumido espiando de um buraco no chão; t = 0..6.28 (sobe/desce)
+export const peek = (p, t = 0) => { const g = p.g; g.save(); g.lineWidth = 10; g.strokeStyle = K; g.lineJoin = 'round';
+  g.fillStyle = '#bfe6ff'; g.beginPath(); g.roundRect(20, 200, 560, 380, [40, 40, 0, 0]); g.fill();
+  g.fillStyle = '#9a6a3c'; g.beginPath(); g.roundRect(20, 570, 560, 230, [0, 0, 40, 40]); g.fill(); g.fillStyle = '#5fae46'; g.fillRect(20, 560, 560, 22);
+  g.beginPath(); g.roundRect(20, 200, 560, 600, 40); g.stroke();
+  const hy = 520 - Math.max(0, Math.sin(t)) * 70;
+  g.save(); g.beginPath(); g.rect(0, 0, 600, 580); g.clip();
+  g.fillStyle = '#f5c9a0'; g.beginPath(); g.arc(300, hy, 62, 0, 7); g.fill(); g.stroke();
+  g.fillStyle = '#3b2a20'; g.beginPath(); g.arc(300, hy - 20, 64, Math.PI * 1.05, Math.PI * 1.95); g.fill();
+  g.fillStyle = K; g.beginPath(); g.arc(278, hy, 8, 0, 7); g.arc(322, hy, 8, 0, 7); g.fill();
+  g.lineWidth = 7; g.beginPath(); g.arc(300, hy + 22, 16, 0.2, Math.PI - 0.2); g.stroke(); g.restore();
+  g.lineWidth = 10; g.fillStyle = '#3a2614'; g.beginPath(); g.ellipse(300, 586, 120, 30, 0, 0, 7); g.fill(); g.stroke();
+  g.fillStyle = '#fff'; g.beginPath(); g.roundRect(330, 250, 220, 100, 30); g.fill(); g.stroke(); g.beginPath(); g.moveTo(370, 345); g.lineTo(350, 395); g.lineTo(410, 348); g.fill();
+  txt(g, 'OI, SUMI!', 440, 300, 38, K);
+  g.restore(); };

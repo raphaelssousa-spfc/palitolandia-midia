@@ -13,6 +13,7 @@ Instagram: @palitolandia.ia (conectado via Windsor.ai, conector `instagram`, con
 - Temas: lista em `temas.md` (usar na ordem; depois dos 10, criar novos no mesmo estilo, alternando verdade e mito sem padrão óbvio). Marcar "feito" ao produzir.
 - Quadro 1 = a cena mais absurda + a afirmação falada e escrita grande, selo "VERDADE OU MITO? #N" (overlay no canto, cor neutra roxa — nunca verde/vermelho, para não dar dica), ação desde o 1º segundo.
 - História em frases curtas, pistas que puxam para os DOIS lados; algo novo se mexendo a cada frase → "E a resposta é..." → SÓ NO FINAL o carimbo grande VERDADE ✓ ou MITO ✗ (`PL.stamp(p, true/false)`) + explicação em 1–2 frases → piada visual → fechamento → logo/acorde/fade (loop com o quadro 1).
+- ORDEM (correção do dono, 18/11): primeiro a história TODA (todos os detalhes: onde, como, quanto), contada como "dizem que..." e terminando com uma pista do lado contrário; só DEPOIS "E a resposta é..." + carimbo + 1–2 frases (data/lugar, desfecho). Nada de dar só a afirmação e já responder.
 - Nunca dar a resposta antes: nem na fala, nem em placas, nem na capa, nem na legenda do post.
 - FECHAMENTO (nesta ordem, falado e na legenda queimada):
   a) pedido de comentário que combine com a resposta, frase NOVA a cada vídeo (VERDADE → "quem achou que era mentira comenta"; MITO → "quem acreditava que era verdade comenta");
