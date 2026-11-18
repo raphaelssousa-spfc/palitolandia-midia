@@ -2,6 +2,23 @@
 
 Histórico dos últimos 14 dias (mais novo no topo). Não repetir perfil 3 dias seguidos nem repetir comentário.
 
+## 2026-11-18
+
+1. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico
+   - Se for de asfalto: "Outro ponto que pesa: a junta entre faixas. Se ela não é bem compactada, vira o primeiro lugar por onde a água entra e o buraco nasce."
+   - Se for de outra obra: "Concordo. Antes de pensar no acabamento, vale conferir se a base está na umidade e na compactação certas."
+2. [@infra_urbana](https://www.instagram.com/infra_urbana/) – infraestrutura urbana e saneamento
+   - Se for de rua/asfalto: "Rua que alaga todo ano quase sempre tem galeria subdimensionada ou assoreada. Recapear sem resolver a drenagem é jogar dinheiro fora."
+   - Se for de outra obra: "Boa. Obra de saneamento é a que mais salva vida e menos aparece, e o projeto bem feito faz toda a diferença."
+3. [@0bras](https://www.instagram.com/0bras/) – obras grandes e infraestrutura
+   - Se for de rodovia/ponte: "Nessas obras o cronograma depende muito do clima. Terraplenagem e pavimentação na chuva perdem qualidade, então planejar a época certa já é meio caminho."
+   - Se for de outra obra: "Impressionante a escala. Por trás disso tem uma equipe enorme de topografia e controle de qualidade que quase nunca aparece."
+4. [@eng.civiladrianovanjura](https://www.instagram.com/eng.civiladrianovanjura/) – dicas de obra e engenharia
+   - Se for de estrutura/concreto: "Cobrimento da armadura também é essencial. Ferro encostado na forma enferruja e solta o concreto anos depois."
+   - Se for de outra obra: "Muito bom. Registrar com foto cada etapa antes de fechar parede ou laje ajuda demais em qualquer problema futuro."
+5. [@engcivilcamilasoares](https://www.instagram.com/engcivilcamilasoares/) – engenharia civil no dia a dia
+   - "Verdade. No campo, conversar com o time antes de executar evita muito erro que só se vê quando já está pronto."
+
 ## 2026-11-17
 
 1. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico
