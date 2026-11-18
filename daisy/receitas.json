@@ -1,0 +1,383 @@
+[
+ {
+  "n": 1,
+  "title": "Sheet-Pan Chicken & Potatoes",
+  "rule": "Cook Once, Eat Twice",
+  "meta": "Serves 4, plus leftovers · 10 min prep · 40 min oven · About $9",
+  "ing": [
+   "8 bone-in chicken thighs (about 3 lb)",
+   "2 lb potatoes, cut in chunks",
+   "1 bag frozen green beans (12 oz)",
+   "2 tbsp oil, 1 tsp garlic powder, 1 tsp paprika, salt, pepper"
+  ]
+ },
+ {
+  "n": 2,
+  "title": "Shredded Chicken Tacos",
+  "rule": "The Head Start Rule",
+  "meta": "Serves 4 · 15 min · About $6",
+  "ing": [
+   "Leftover chicken from Day 1 (about 3 cups)",
+   "12 small tortillas",
+   "1 can black beans, drained",
+   "1 cup shredded cheddar, 1 cup salsa",
+   "2 cups shredded cabbage"
+  ]
+ },
+ {
+  "n": 3,
+  "title": "Big Pot of Chili",
+  "rule": "The Double Batch Rule",
+  "meta": "Makes 3 dinners · 15 min prep · 40 min simmer · About $14 total",
+  "ing": [
+   "1 lb ground beef + 1 onion, chopped",
+   "4 cans beans (2 kidney, 2 pinto), drained",
+   "2 cans diced tomatoes + 1 can tomato sauce",
+   "3 tbsp chili powder, 2 tsp cumin, 1 tsp garlic powder, 1 tsp salt",
+   "Cheddar and saltines to serve"
+  ]
+ },
+ {
+  "n": 4,
+  "title": "Potato & Egg Hash",
+  "rule": "The Eggs Count Rule",
+  "meta": "Serves 4 · 25 min · About $6",
+  "ing": [
+   "1.5 lb potatoes, diced small",
+   "1 onion + 1 bell pepper, diced",
+   "8 eggs",
+   "1/2 cup shredded cheddar",
+   "2 tbsp oil, salt, pepper"
+  ]
+ },
+ {
+  "n": 5,
+  "title": "Chili Baked Potatoes",
+  "rule": "Leftovers Get a New Outfit",
+  "meta": "Serves 4 · 5 min prep · 15 to 60 min cook · About $5",
+  "ing": [
+   "4 big potatoes",
+   "Chili from Day 3 (about 3 cups)",
+   "1 cup shredded cheddar",
+   "Sour cream",
+   "Green onions (optional)"
+  ]
+ },
+ {
+  "n": 6,
+  "title": "Make-Your-Own Pizza Night",
+  "rule": "Kids Build It, Kids Eat It",
+  "meta": "Serves 4 · 20 min · About $9",
+  "ing": [
+   "4 naan or flatbreads",
+   "1 cup pasta or pizza sauce",
+   "2 cups shredded mozzarella",
+   "Pepperoni, plus any leftover pepper or onion"
+  ]
+ },
+ {
+  "n": 7,
+  "title": "Saturday Sweep Fried Rice",
+  "rule": "The Saturday Sweep",
+  "meta": "Serves 4 · 25 min · About $5",
+  "ing": [
+   "4 cups cooked rice, cold (cook 1.5 cups dry rice in the morning)",
+   "4 eggs",
+   "2 cups frozen peas & carrots",
+   "Any leftover veggies, chopped",
+   "3 tbsp soy sauce, 2 tbsp oil, 1 tsp garlic powder"
+  ]
+ },
+ {
+  "n": 8,
+  "title": "One-Pot Chicken & Rice",
+  "rule": "One Pan, One Sink",
+  "meta": "Serves 4 · 10 min prep · 30 min cook · About $9",
+  "ing": [
+   "1.5 lb boneless chicken thighs, in bite-size pieces",
+   "1.5 cups long-grain rice",
+   "1 can diced tomatoes with green chiles + 1 can black beans, drained",
+   "2 cups water + 2 bouillon cubes, 1 cup frozen corn",
+   "1 tbsp chili powder, 1 tsp cumin, 1 tbsp oil, salt"
+  ]
+ },
+ {
+  "n": 9,
+  "title": "Sausage, Peppers & Potatoes",
+  "rule": "The Big Pan Rule",
+  "meta": "Serves 4 · 10 min prep · 35 min oven · About $11",
+  "ing": [
+   "1 pack smoked sausage, sliced",
+   "2 lb potatoes (from last week's bag), cubed",
+   "2 bell peppers + 1 onion, sliced",
+   "2 tbsp oil, 1 tsp Italian seasoning, salt, pepper"
+  ]
+ },
+ {
+  "n": 10,
+  "title": "One-Pot Spaghetti",
+  "rule": "No Draining Allowed",
+  "meta": "Serves 4 · 25 min · About $8",
+  "ing": [
+   "1 lb ground turkey",
+   "1 jar pasta sauce (24 oz) + 3 cups water",
+   "12 oz spaghetti, broken in half",
+   "1 tsp Italian seasoning, 1/2 tsp garlic powder"
+  ]
+ },
+ {
+  "n": 11,
+  "title": "Black Bean Quesadillas",
+  "rule": "The Meatless Night Rule",
+  "meta": "Serves 4 · 20 min · About $6",
+  "ing": [
+   "8 large flour tortillas",
+   "1 can black beans, drained and lightly mashed",
+   "1 cup frozen corn",
+   "2 cups shredded cheddar, 1 tsp cumin",
+   "Salsa and sour cream to serve"
+  ]
+ },
+ {
+  "n": 12,
+  "title": "Egg Roll in a Bowl",
+  "rule": "The Bag of Slaw Rule",
+  "meta": "Serves 4 · 25 min · About $9",
+  "ing": [
+   "1 lb ground pork",
+   "1 bag coleslaw mix",
+   "3 tbsp soy sauce, 1 tsp garlic powder",
+   "1.5 cups dry rice",
+   "Green onions"
+  ]
+ },
+ {
+  "n": 13,
+  "title": "Sheet-Pan Nachos",
+  "rule": "Fun Food Friday",
+  "meta": "Serves 4 · 20 min · About $9",
+  "ing": [
+   "1 big bag tortilla chips",
+   "1 can refried beans",
+   "2 cups shredded cheddar",
+   "Salsa, sour cream, 1 tomato, diced",
+   "Any leftover corn or beans"
+  ]
+ },
+ {
+  "n": 14,
+  "title": "Chicken Noodle Soup",
+  "rule": "The Big Pot Rule",
+  "meta": "Serves 6 · 15 min prep · 35 min cook · About $9",
+  "ing": [
+   "1.5 lb boneless chicken thighs, whole",
+   "1 onion, 3 carrots, 3 celery stalks, chopped",
+   "8 cups water + 4 bouillon cubes",
+   "8 oz egg noodles",
+   "1 tsp Italian seasoning, 1 tbsp oil, salt, pepper"
+  ]
+ },
+ {
+  "n": 15,
+  "title": "Oven Pulled Pork Sandwiches",
+  "rule": "Big Meat, Three Nights",
+  "meta": "Feeds 3 dinners · 15 min prep · 4 hours oven · About $17 total",
+  "ing": [
+   "Boneless pork shoulder, about 4 lb",
+   "2 tbsp brown sugar, 1 tbsp paprika, 1 tsp garlic powder, 2 tsp salt",
+   "1 onion, sliced + 1 cup water",
+   "1 cup BBQ sauce, 8 buns",
+   "Slaw: 1/2 bag coleslaw mix, 1/3 cup mayo, 1 tsp sugar"
+  ]
+ },
+ {
+  "n": 16,
+  "title": "Pulled Pork Rice Bowls",
+  "rule": "The Bowl Rule",
+  "meta": "Serves 4 · 25 min · About $5",
+  "ing": [
+   "1 box of pulled pork (about 3 cups)",
+   "1.5 cups dry rice",
+   "1 can black beans + 1 cup frozen corn",
+   "1 tsp cumin",
+   "Salsa and shredded cheese"
+  ]
+ },
+ {
+  "n": 17,
+  "title": "Pulled Pork Mac & Cheese",
+  "rule": "Box Mac Gets a Promotion",
+  "meta": "Serves 4 · 20 min · About $6",
+  "ing": [
+   "2 boxes mac & cheese (plus the butter and milk they ask for)",
+   "The last box of pulled pork",
+   "1 bag frozen broccoli",
+   "1/2 cup shredded cheddar"
+  ]
+ },
+ {
+  "n": 18,
+  "title": "Lentil Sloppy Joes",
+  "rule": "Lentils Are Budget Heroes",
+  "meta": "Serves 4 · 40 min · About $6",
+  "ing": [
+   "1 cup dry lentils, rinsed + 2.5 cups water",
+   "1 onion + 1 bell pepper, diced",
+   "1 can tomato sauce (15 oz)",
+   "2 tbsp brown sugar, 1 tbsp mustard, 1 tbsp chili powder, 1 tsp garlic powder",
+   "Burger buns"
+  ]
+ },
+ {
+  "n": 19,
+  "title": "Tuna Melts & Tomato Soup",
+  "rule": "Canned Is Not Cheating",
+  "meta": "Serves 4 · 15 min · About $8",
+  "ing": [
+   "3 cans tuna, drained",
+   "1/3 cup mayo, 1 tsp mustard",
+   "8 slices bread + 8 slices cheese",
+   "Butter",
+   "2 cans tomato soup"
+  ]
+ },
+ {
+  "n": 20,
+  "title": "Fake-Out Takeout Burgers",
+  "rule": "Fake-Out Takeout",
+  "meta": "Serves 4 · 10 min prep · 35 min cook · About $12",
+  "ing": [
+   "1 lb ground beef, salt, pepper",
+   "4 burger buns + 4 slices cheese",
+   "1 bag frozen fries",
+   "Lettuce, tomato, ketchup, mustard"
+  ]
+ },
+ {
+  "n": 21,
+  "title": "The Fridge Buffet",
+  "rule": "The Fridge Says What's for Dinner",
+  "meta": "Serves everyone · 15 min · About $0 to $3",
+  "ing": [
+   "Every leftover in your fridge",
+   "Anything half used: rice, beans, cheese, veggies",
+   "A bag of frozen veggies if it looks thin",
+   "Bread or tortillas"
+  ]
+ },
+ {
+  "n": 22,
+  "title": "Turkey Meatballs & Spaghetti",
+  "rule": "Feed Future You",
+  "meta": "Serves 4 + 1 more dinner · 20 min prep · 20 min oven · About $11",
+  "ing": [
+   "2 lb ground turkey + 2 eggs",
+   "1 cup breadcrumbs (or 4 slices stale bread, crumbled)",
+   "2 tsp Italian seasoning, 1 tsp garlic powder, 1 tsp salt",
+   "1 jar pasta sauce",
+   "1 lb spaghetti"
+  ]
+ },
+ {
+  "n": 23,
+  "title": "Breakfast Burritos (Make 12)",
+  "rule": "The Assembly Line Rule",
+  "meta": "Serves 4 + 8 frozen · 40 min · About $11",
+  "ing": [
+   "12 large flour tortillas",
+   "12 eggs",
+   "1 lb breakfast sausage",
+   "3 cups frozen hash browns",
+   "2 cups shredded cheddar, salsa"
+  ]
+ },
+ {
+  "n": 24,
+  "title": "Sheet-Pan Chicken Fajitas",
+  "rule": "Double the Chicken",
+  "meta": "Serves 4 + extra chicken · 10 min prep · 25 min oven · About $11",
+  "ing": [
+   "2.5 lb boneless chicken thighs, sliced thin",
+   "3 bell peppers + 1 onion, sliced",
+   "3 tbsp oil, 1 tbsp chili powder, 1 tsp each cumin, garlic powder, paprika, salt",
+   "8 large flour tortillas",
+   "Sour cream and salsa"
+  ]
+ },
+ {
+  "n": 25,
+  "title": "Cheesy Chicken & Broccoli Rice Bake",
+  "rule": "The Casserole Catch-All",
+  "meta": "Serves 4 · 15 min prep · 25 min oven · About $7",
+  "ing": [
+   "2 cups chicken from Day 24, chopped",
+   "1.5 cups dry rice",
+   "1 bag frozen broccoli, thawed",
+   "1 can cream of chicken soup + 1/2 cup milk",
+   "1.5 cups shredded cheddar, salt, pepper"
+  ]
+ },
+ {
+  "n": 26,
+  "title": "Meatball Subs",
+  "rule": "The Night-Before Rule",
+  "meta": "Serves 4 · 20 min · About $7",
+  "ing": [
+   "Frozen meatballs from Day 22, thawed in the fridge",
+   "1 jar pasta sauce",
+   "4 hoagie rolls",
+   "1.5 cups shredded mozzarella",
+   "Bagged salad"
+  ]
+ },
+ {
+  "n": 27,
+  "title": "Freezer Burrito Night",
+  "rule": "The Freezer Is Your Friday Friend",
+  "meta": "Serves 4 · 10 min · About $3 for sides",
+  "ing": [
+   "4 frozen burritos from Day 23",
+   "Salsa and sour cream",
+   "Bagged salad or fruit",
+   "Tortilla chips, if any are left"
+  ]
+ },
+ {
+  "n": 28,
+  "title": "Chili Mac",
+  "rule": "Past You Did Dinner",
+  "meta": "Serves 4 · 20 min · About $3",
+  "ing": [
+   "Frozen chili from Day 3, thawed",
+   "8 oz elbow macaroni",
+   "1 cup shredded cheddar",
+   "1/2 cup water"
+  ]
+ },
+ {
+  "n": 29,
+  "title": "Everything Soup",
+  "rule": "Nothing Wasted, Nothing Bought",
+  "meta": "Serves 4 · 35 min · About $0 to $3",
+  "ing": [
+   "1 onion, if you have one",
+   "3 to 4 cups of any veggies, fresh or frozen",
+   "1 can beans or tomatoes from the pantry",
+   "6 cups water + 3 bouillon cubes, 1 tsp Italian seasoning",
+   "1 cup small pasta or 1/2 cup rice, any leftover meat or pepperoni"
+  ]
+ },
+ {
+  "n": 30,
+  "title": "Victory Pancake Night",
+  "rule": "The Victory Lap",
+  "meta": "Serves 4 · 25 min · About $3",
+  "ing": [
+   "2 cups flour, 2 tbsp sugar, 2 tsp baking powder, 1/2 tsp salt",
+   "2 eggs + 1.5 cups milk",
+   "3 tbsp melted butter",
+   "Syrup",
+   "Eggs or fruit on the side"
+  ]
+ }
+]
