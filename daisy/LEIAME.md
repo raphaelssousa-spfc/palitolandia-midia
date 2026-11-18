@@ -6,7 +6,7 @@ Tudo em inglês americano. Instagram @daisydinners (link na bio).
 
 ## Arquivos
 - assets/rosto-daisy.jpg — rosto aprovado. SEMPRE a imagem de referência no TAAFT.
-- assets/Perfil-A.png — logo (tela final do assemble.py e avental da Daisy). assets/fonts/ — legenda.
+- assets/Perfil-A.png — logo com nome (só tela final do assemble.py). assets/logo-avental.png — símbolo sem letras (avental). assets/fonts/ — legenda.
 - assemble.py — `python3 assemble.py saida.mp4 c1.mp4 "fala 1" c2.mp4 "fala 2" ...`
   Normaliza 1080x1920, legenda palavra por palavra (3 palavras, atual em amarelo), tela final 2,5 s.
 - receitas.json — as 30 jantas do e-book (título, regra, custo, ingredientes). Fonte dos temas.
@@ -28,7 +28,7 @@ Cada fala: 14–20 palavras no máximo (cabe em 8 s em ritmo natural). Preço se
 Números escritos por extenso na fala ("nine dollars").
 
 ## Visual da Daisy (a partir do vídeo 03)
-- Sempre avental de cozinha branco com a logo Daisy Dinners (assets/Perfil-A.png) no peito + chapéu de cozinheira branco. Igual em todo vídeo.
+- Sempre avental de cozinha branco com o símbolo da marca (assets/logo-avental.png: prato com margarida, garfo e faca, SEM LETRAS) num patch redondo verde-sálvia no peito + chapéu de cozinheira branco. Nada escrito no avental nem no chapéu. Igual em todo vídeo.
 - A ÚNICA coisa que muda de um vídeo pro outro é a roupa por baixo do avental. Rodízio (use a próxima depois da última em fila.json, campo "roupa"):
   1. sage green t-shirt  2. navy blue long-sleeve top  3. mustard yellow t-shirt  4. light gray hoodie  5. coral pink t-shirt  6. white and blue striped shirt  7. denim chambray shirt  8. burgundy sweater
 - Mesma roupa nos 4 clipes do mesmo vídeo.
@@ -36,19 +36,19 @@ Números escritos por extenso na fala ("nine dollars").
 ## Imagens de referência no TAAFT (nesta ordem)
 1. assets/rosto-daisy.jpg (rosto) — sempre.
 2. Foto REAL do prato do dia (Unsplash, licença free; buscar em unsplash.com no navegador do PC e subir de images.unsplash.com/photo-...?w=1080&fm=jpg). Escolher foto caseira, molho/comida misturada, nada de prato de restaurante.
-3. assets/Perfil-A.png (logo do avental) — a partir do vídeo 03.
+3. assets/logo-avental.png (símbolo do avental, sem letras) — a partir do vídeo 03.
 Tirar as imagens antigas (Remove image) e subir de novo quando a ordem mudar. Imagens públicas: dá pra dar fetch direto do raw.githubusercontent.com no navegador (não precisa base64).
 
 ## Prompt do TAAFT (mesmo modelo nos 4 clipes; troque só ROUPA, ACTION e FALA)
 ```
-<Image 1> is the reference image for the woman. <Image 2> is the reference for how the food looks. <Image 3> is the logo printed on her apron. Vertical 9:16 realistic smartphone UGC video, filmed handheld by a friend, one continuous shot, no cuts, 8 seconds. The woman must exactly match <Image 1> in every frame: same face, same light freckles, same blue-gray eyes, same light brown hair in a loose messy bun. Do not alter or stylize her face. OUTFIT: a {ROUPA} under a clean white cooking apron with the round Daisy Dinners logo from <Image 3> printed on the chest, and a white chef hat; the same outfit in every frame. SETTING: the same bright cozy home kitchen as <Image 1>: white cabinets, wooden counter, window with soft natural daylight, evening. ACTION: {ACTION} FOOD: real home-cooked food like a normal phone video of a family dinner: natural textures, matte, slightly messy, not glossy, not styled, not plastic, looking like the food in <Image 2>. She is framed from the waist up, centered, looking into the camera most of the time, friendly and relaxed, natural hand gestures. AUDIO: she speaks directly to the camera in a warm, natural, upbeat American English voice, a 34-year-old mom from Ohio, at a natural fast pace, clearly saying exactly: "{FALA}" Quiet kitchen ambience only. No music, no subtitles, no captions, no text on screen other than the apron logo.
+<Image 1> is the reference image for the woman. <Image 2> is the reference for how the food looks. <Image 3> is the symbol on her apron. Vertical 9:16 realistic smartphone UGC video, filmed handheld by a friend, one continuous shot, no cuts, 8 seconds. The woman must exactly match <Image 1> in every frame: same face, same light freckles, same blue-gray eyes, same light brown hair in a loose messy bun. Do not alter or stylize her face. OUTFIT: a {ROUPA} under a clean white cooking apron with a small round sage-green patch on the chest showing only the symbol from <Image 3> (white plate with a yellow daisy, fork and knife), with no letters and no words anywhere on the apron or hat, and a white chef hat; the same outfit in every frame. SETTING: the same bright cozy home kitchen as <Image 1>: white cabinets, wooden counter, window with soft natural daylight, evening. ACTION: {ACTION} FOOD: real home-cooked food like a normal phone video of a family dinner: natural textures, matte, slightly messy, not glossy, not styled, not plastic, looking like the food in <Image 2>. She is framed from the waist up, centered, looking into the camera most of the time, friendly and relaxed, natural hand gestures. AUDIO: she speaks directly to the camera in a warm, natural, upbeat American English voice, a 34-year-old mom from Ohio, at a natural fast pace, clearly saying exactly: "{FALA}" Quiet kitchen ambience only. No music, no subtitles, no captions, no text on screen, no letters or words on clothing.
 ```
 Dicas de ACTION/comida (aprendido nos vídeos 01–02):
 - NUNCA "food magazine photo"/"appetizing": a IA faz comida brilhante e de plástico. Peça comida caseira, fosca, um pouco bagunçada, igual a <Image 2>.
 - Uma ação simples e lenta por clipe: segurar a panela parada, mexer devagar, mostrar o prato perto da câmera. Nada de enrolar macarrão no garfo, morder ou despejar líquido (a IA erra).
 - No clipe 4 ela NÃO come: segura o prato e aponta, pra fala final sair clara.
 - Frango desfiado: "tender, juicy, pale white shredded chicken breast meat with no skin".
-- Se o logo do avental sair torto/ilegível, aceite se o resto estiver bom (é pequeno); se ficar feio, refaça.
+- Se aparecer letra/palavra no avental ou o símbolo sair muito deformado, refaça o clipe.
 
 ## TAAFT (navegador embutido do PC do Raphael)
 - Página: https://theresanaiforthat.com/@taaft/video-generator/ (ele já está logado; 100 vídeos/dia).
