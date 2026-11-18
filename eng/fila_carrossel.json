@@ -47,7 +47,7 @@
     },
     {
       "id": "pavimentacao-c03-defeitos-asfalto",
-      "status": "pendente",
+      "status": "postado",
       "pasta": "carrosseis/pavimentacao-c03-defeitos-asfalto",
       "imagens": [
         "carrosseis/pavimentacao-c03-defeitos-asfalto/01.jpg",
@@ -60,7 +60,9 @@
         "carrosseis/pavimentacao-c03-defeitos-asfalto/08.jpg"
       ],
       "legenda": "5 defeitos do asfalto e o que cada um avisa 🛣️\nA rua dá sinais antes de virar buraco.\nQual desses tem na sua rua? Comenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #buraco #obra #infraestrutura #construcaocivil #engenharia",
-      "comentario": "Salva e manda pra quem reclama do buraco da rua 🔖"
+      "comentario": "Salva e manda pra quem reclama do buraco da rua 🔖",
+      "postado_em": "2026-11-18 12:13",
+      "media_id": "18088622324514691"
     }
   ]
 }
