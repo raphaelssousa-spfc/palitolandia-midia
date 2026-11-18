@@ -271,3 +271,70 @@ export const book = (p) => { const g = p.g; g.save(); g.translate(300, 500); g.l
   g.beginPath(); g.moveTo(0, -72); g.lineTo(0, 120); g.stroke();
   g.lineWidth = 6; for (const sd of [-1, 1]) for (let k = 0; k < 4; k++) { g.beginPath(); g.moveTo(sd * 30, -30 + k * 35); g.lineTo(sd * 150, -45 + k * 35); g.stroke(); }
   g.restore(); };
+// ---- Série B "Verdade ou mito?" (18/11) — projeto motor/tunel ----
+const txt = (g, s, x, y, sz, col = K, al = 'center') => { g.fillStyle = col; g.font = `bold ${sz}px DejaVu Sans, sans-serif`; g.textAlign = al; g.textBaseline = 'middle'; g.fillText(s, x, y); };
+// corte do chão: loja (esq.) — túnel tracejado — banco com cofre (dir.). t = 0..1 avanço do túnel; dig = balanço da pá.
+export const tunnel = (p, t = 1, dig = 0, cash = true) => { const g = p.g; g.save(); g.lineJoin = 'round'; g.lineWidth = 10; g.strokeStyle = K;
+  g.fillStyle = '#bfe6ff'; g.beginPath(); g.roundRect(10, 150, 580, 300, [40, 40, 0, 0]); g.fill();
+  g.fillStyle = '#9a6a3c'; g.beginPath(); g.roundRect(10, 440, 580, 380, [0, 0, 40, 40]); g.fill();
+  g.fillStyle = '#7d532c'; for (let i = 0; i < 26; i++) { const x = 30 + (i * 97) % 540, y = 480 + (i * 53) % 320; g.beginPath(); g.ellipse(x, y, 10, 6, 0, 0, 7); g.fill(); }
+  g.fillStyle = '#5fae46'; g.fillRect(10, 432, 580, 18);
+  g.beginPath(); g.roundRect(10, 150, 580, 670, 40); g.stroke();
+  // loja de grama
+  g.fillStyle = '#7fc35a'; g.fillRect(50, 330, 150, 105); g.strokeRect(50, 330, 150, 105); g.fillStyle = '#e0453a'; g.fillRect(40, 300, 170, 36); g.strokeRect(40, 300, 170, 36);
+  txt(g, 'GRAMA', 125, 318, 26, '#fff'); g.fillStyle = '#5a3a24'; g.fillRect(105, 375, 40, 60); g.strokeRect(105, 375, 40, 60);
+  // banco
+  g.fillStyle = '#d9dde4'; g.fillRect(370, 250, 200, 185); g.strokeRect(370, 250, 200, 185); g.fillStyle = '#9aa3b0'; g.beginPath(); g.moveTo(360, 252); g.lineTo(470, 195); g.lineTo(580, 252); g.closePath(); g.fill(); g.stroke();
+  for (const x of [395, 435, 505, 545]) { g.fillStyle = '#fff'; g.fillRect(x - 9, 300, 18, 120); g.strokeRect(x - 9, 300, 18, 120); }
+  txt(g, 'BANCO', 470, 233, 28);
+  // cofre
+  g.fillStyle = '#6f7884'; g.fillRect(390, 600, 170, 150); g.strokeRect(390, 600, 170, 150); g.fillStyle = '#c9ced6'; g.beginPath(); g.arc(475, 675, 48, 0, 7); g.fill(); g.stroke();
+  g.lineWidth = 7; for (let k = 0; k < 4; k++) { const a = k * Math.PI / 2 + dig * 0.3; g.beginPath(); g.moveTo(475, 675); g.lineTo(475 + Math.cos(a) * 40, 675 + Math.sin(a) * 40); g.stroke(); } g.lineWidth = 10;
+  if (cash) { g.fillStyle = '#5fbf5a'; for (let k = 0; k < 3; k++) { g.fillRect(404 + k * 50, 760 - 10, 40, 22); g.strokeRect(404 + k * 50, 760 - 10, 40, 22); } }
+  // poço + túnel
+  g.fillStyle = '#3a2614'; g.fillRect(110, 440, 40, 230); const x1 = 150 + (390 - 150) * t;
+  g.beginPath(); g.moveTo(110, 640); g.lineTo(x1, 640); g.lineTo(x1, 700); g.lineTo(110, 700); g.closePath(); g.fill();
+  g.setLineDash([18, 12]); g.strokeStyle = '#ffd23f'; g.lineWidth = 7; g.beginPath(); g.moveTo(130, 670); g.lineTo(x1 - 4, 670); g.stroke(); g.setLineDash([]); g.strokeStyle = K; g.lineWidth = 10;
+  // escavador (boneco de palito com capacete e pá)
+  const hx = Math.min(x1 - 30, 360), hy = 668; g.lineWidth = 8;
+  g.beginPath(); g.arc(hx, hy - 20, 13, 0, 7); g.fillStyle = '#f5c9a0'; g.fill(); g.stroke(); g.fillStyle = '#ffd23f'; g.beginPath(); g.arc(hx, hy - 24, 14, Math.PI, 0); g.fill(); g.stroke();
+  g.beginPath(); g.moveTo(hx, hy - 7); g.lineTo(hx - 6, hy + 18); g.moveTo(hx - 3, hy + 2); g.lineTo(hx + 18 + 6 * Math.sin(dig), hy - 4); g.stroke();
+  g.strokeStyle = '#8a5a34'; g.beginPath(); g.moveTo(hx + 6, hy + 4); g.lineTo(hx + 30 + 8 * Math.sin(dig), hy - 10); g.stroke(); g.fillStyle = '#9aa3b0'; g.strokeStyle = K; g.lineWidth = 5;
+  g.beginPath(); g.ellipse(hx + 34 + 8 * Math.sin(dig), hy - 12, 9, 6, -0.5, 0, 7); g.fill(); g.stroke();
+  g.fillStyle = '#c4935a'; for (let k = 0; k < 4; k++) { const u = ((dig * 0.4 + k * 0.25) % 1); g.beginPath(); g.arc(hx + 20 - u * 40, hy - 30 - 30 * Math.sin(u * Math.PI), 6, 0, 7); g.fill(); }
+  g.restore(); };
+// fachada de loja "GRAMA SINTÉTICA" com rolo de grama; t = balanço da placa
+export const shop = (p, t = 0) => { const g = p.g; g.save(); g.lineJoin = 'round'; g.lineWidth = 11; g.strokeStyle = K;
+  g.fillStyle = '#f3e3c2'; g.fillRect(60, 300, 480, 470); g.strokeRect(60, 300, 480, 470);
+  g.save(); g.translate(300, 250); g.rotate(0.05 * Math.sin(t)); g.fillStyle = '#2f9a58'; g.beginPath(); g.roundRect(-250, -70, 500, 140, 24); g.fill(); g.stroke();
+  txt(g, 'GRAMA', 0, -26, 56, '#fff'); txt(g, 'SINTÉTICA', 0, 34, 50, '#ffd23f'); g.restore();
+  for (let k = 0; k < 6; k++) { g.fillStyle = k % 2 ? '#e0453a' : '#fff'; g.beginPath(); g.moveTo(60 + k * 80, 330); g.lineTo(140 + k * 80, 330); g.lineTo(140 + k * 80, 380); g.quadraticCurveTo(100 + k * 80, 410, 60 + k * 80, 380); g.closePath(); g.fill(); g.stroke(); }
+  g.fillStyle = '#bfe6ff'; g.fillRect(100, 430, 200, 190); g.strokeRect(100, 430, 200, 190); g.fillStyle = '#5a3a24'; g.fillRect(370, 450, 120, 320); g.strokeRect(370, 450, 120, 320);
+  g.fillStyle = '#ffd23f'; g.beginPath(); g.arc(470, 610, 10, 0, 7); g.fill(); g.stroke();
+  g.fillStyle = '#5fae46'; g.beginPath(); g.ellipse(200, 600, 80, 34, 0, 0, 7); g.fill(); g.stroke(); g.fillStyle = '#4c9a38'; g.beginPath(); g.ellipse(270, 600, 26, 34, 0, 0, 7); g.fill(); g.stroke();
+  g.fillStyle = '#fff'; g.save(); g.translate(200, 520); g.rotate(-0.1); g.fillRect(-80, -30, 160, 54); g.strokeRect(-80, -30, 160, 54); txt(g, 'FECHADO', 0, -2, 30, '#e0453a'); g.restore();
+  g.restore(); };
+// carimbo final: ok = true → VERDADE (verde, ✓) / false → MITO (vermelho, ✗)
+export const stamp = (p, ok = true) => { const g = p.g; g.save(); g.translate(300, 500); g.rotate(-0.08); const col = ok ? '#1f9d55' : '#d8322f';
+  g.fillStyle = 'rgba(0,0,0,0.35)'; g.beginPath(); g.roundRect(-242, -122, 500, 260, 36); g.fill();
+  g.fillStyle = '#fff'; g.strokeStyle = col; g.lineWidth = 22; g.beginPath(); g.roundRect(-250, -136, 500, 260, 36); g.fill(); g.stroke();
+  txt(g, ok ? 'VERDADE' : 'MITO', 62, -6, ok ? 64 : 100, col);
+  g.lineCap = 'round'; g.lineWidth = 26; g.strokeStyle = col; g.beginPath();
+  if (ok) { g.moveTo(-220, 0); g.lineTo(-194, 36); g.lineTo(-150, -36); } else { g.moveTo(-216, -36); g.lineTo(-150, 34); g.moveTo(-150, -36); g.lineTo(-216, 34); }
+  g.stroke(); g.restore(); };
+// pilha de dinheiro (notas verdes) caindo; t = 0..1
+export const money = (p, t = 1) => { const g = p.g; g.save(); g.lineWidth = 8; g.strokeStyle = K; g.lineJoin = 'round';
+  const n = Math.round(14 * t); for (let k = 0; k < n; k++) { const x = 140 + (k % 4) * 95 + (k % 2) * 20, y = 780 - Math.floor(k / 4) * 60;
+    g.fillStyle = '#6cc25a'; g.fillRect(x - 60, y - 22, 120, 44); g.strokeRect(x - 60, y - 22, 120, 44); g.fillStyle = '#4a9a3c'; g.beginPath(); g.arc(x, y, 14, 0, 7); g.fill(); g.stroke(); }
+  for (let k = 0; k < 4; k++) { const u = (t * 3 + k * 0.27) % 1, x = 150 + k * 100 + 30 * Math.sin(u * 9 + k), y = 160 + u * 420;
+    g.save(); g.translate(x, y); g.rotate(Math.sin(u * 10 + k) * 0.6); g.fillStyle = '#7fd06a'; g.fillRect(-50, -18, 100, 36); g.strokeRect(-50, -18, 100, 36); g.restore(); }
+  g.restore(); };
+// praia: buraco na areia com bandeira do Japão no fundo; t = balanço
+export const beach = (p, t = 0) => { const g = p.g; g.save(); g.lineWidth = 10; g.strokeStyle = K; g.lineJoin = 'round';
+  g.fillStyle = '#e9cf8f'; g.beginPath(); g.roundRect(20, 360, 560, 440, 40); g.fill(); g.stroke(); g.fillStyle = '#4fa6c8'; g.beginPath(); g.roundRect(20, 300, 560, 90, [40, 40, 0, 0]); g.fill(); g.stroke();
+  g.fillStyle = '#5a3a1c'; g.beginPath(); g.ellipse(300, 560, 150, 60, 0, 0, 7); g.fill(); g.stroke();
+  g.fillStyle = '#fff'; g.fillRect(250, 520, 100, 64); g.strokeRect(250, 520, 100, 64); g.fillStyle = '#d8322f'; g.beginPath(); g.arc(300, 552, 20, 0, 7); g.fill();
+  g.strokeStyle = '#8a5a34'; g.lineWidth = 12; g.beginPath(); g.moveTo(470, 640 + 10 * Math.sin(t)); g.lineTo(400, 470); g.stroke(); g.fillStyle = '#e0453a'; g.strokeStyle = K; g.lineWidth = 8;
+  g.beginPath(); g.ellipse(478, 662 + 10 * Math.sin(t), 26, 36, -0.4, 0, 7); g.fill(); g.stroke();
+  txt(g, 'JAPÃO →', 300, 470, 40, K);
+  g.restore(); };

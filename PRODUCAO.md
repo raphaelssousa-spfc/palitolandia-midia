@@ -3,6 +3,25 @@
 Este repositório guarda a fila de postagem (`fila.json`), os vídeos prontos (`videos/`) e o motor de animação (`motor/`).
 Instagram: @palitolandia.ia (conectado via Windsor.ai, conector `instagram`, conta id `17841460341094597`).
 
+## DUAS SÉRIES, ALTERNADAS (18/11 — pedido do dono)
+- Série A "PARECE MENTIRA #N": formato de sempre (duas datas/fatos que parecem fora de ordem); tema e número em `proximo.md`.
+- Série B "VERDADE OU MITO? #N" (começa no #1).
+- Alternância: olhe o último item de `fila.json` (postado ou pendente). Se for da A, faça um da B; se for da B, faça um da A. Se fizer 2 no dia, um de cada. Campo `serie` ("A"/"B") em cada item da fila.
+
+## SÉRIE B — VERDADE OU MITO? (18/11)
+- Uma afirmação extraordinária que pode ser VERDADE (coisa inacreditável que é real) ou MITO (coisa que todo mundo acha verdade e não é). Conta a história toda e SÓ NO FINAL revela.
+- Temas: lista em `temas.md` (usar na ordem; depois dos 10, criar novos no mesmo estilo, alternando verdade e mito sem padrão óbvio). Marcar "feito" ao produzir.
+- Quadro 1 = a cena mais absurda + a afirmação falada e escrita grande, selo "VERDADE OU MITO? #N" (overlay no canto, cor neutra roxa — nunca verde/vermelho, para não dar dica), ação desde o 1º segundo.
+- História em frases curtas, pistas que puxam para os DOIS lados; algo novo se mexendo a cada frase → "E a resposta é..." → SÓ NO FINAL o carimbo grande VERDADE ✓ ou MITO ✗ (`PL.stamp(p, true/false)`) + explicação em 1–2 frases → piada visual → fechamento → logo/acorde/fade (loop com o quadro 1).
+- Nunca dar a resposta antes: nem na fala, nem em placas, nem na capa, nem na legenda do post.
+- FECHAMENTO (nesta ordem, falado e na legenda queimada):
+  a) pedido de comentário que combine com a resposta, frase NOVA a cada vídeo (VERDADE → "quem achou que era mentira comenta"; MITO → "quem acreditava que era verdade comenta");
+  b) "Manda pra alguém que ..." ligado ao tema, com humor, novo a cada vídeo, sem ofender (pode variar o começo: "Marca aquele amigo que...");
+  c) "E segue a Palitolândia ponto i a."
+- Frases de comentário e de "manda pra alguém" já usadas ficam em `temas.md` (não repetir).
+- Duração 20–30 s. Legenda do post: mistério, sem a resposta, termina com chamada variada tipo "Verdade ou mito? Responde antes de ver o final 👇". Capa mostra a afirmação + "VERDADE OU MITO?".
+- Projeto modelo: `motor/tunel` (placas novas no kit: PL.tunnel, PL.shop, PL.stamp, PL.money, PL.beach; câmera CA/CB para cartões grandes).
+
 ## Regras do canal (do dono — obrigatórias)
 1. Narração SEMPRE com a voz `pm_santa` (`voz.py ... --voz pm_santa --vel 1.08`).
 2. O vídeo SEMPRE começa com uma PERGUNTA na primeira frase (ex.: "O que veio primeiro: o fax ou o telefone?"), e a pergunta já traz as duas datas ou fatos que parecem fora de ordem.

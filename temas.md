@@ -14,3 +14,23 @@
 - O tiranossauro viveu mais perto de nós do que do estegossauro (~150 x ~66 milhões de anos; 84 mi de diferença; T. rex de óculos no museu) — Parece Mentira #11, 15/11
 - A Nintendo é mais velha que o avião (1889 x 1903 / 14-Bis 1906; cartas hanafuda; biplano novo no kit: PL.hanafuda, PL.biplane) — Parece Mentira #12, 16/11
 - Harvard é mais velha que a gravidade de Newton (1636 x 1687, 51 anos; alunos flutuando 'sem lei da gravidade'; maçã) — Parece Mentira #13, 16/11 — PRIMEIRO no formato novo (25 s, loop)
+
+# SÉRIE B — VERDADE OU MITO? (temas aprovados pelo dono, 18/11 — usar nesta ordem)
+1. "Ladrões cavaram um túnel até dentro de um banco no Brasil." VERDADE (Banco Central de Fortaleza, 2005). — feito: Verdade ou Mito #1, 18/11 (id tunel-banco)
+2. "A Muralha da China dá pra ver do espaço a olho nu." MITO.
+3. "Tem formiga que planta a própria comida." VERDADE (formiga-cortadeira cultiva fungo).
+4. "Peixinho dourado só lembra das coisas por 3 segundos." MITO.
+5. "Existe um animal com 3 corações e sangue azul." VERDADE (polvo).
+6. "Raio nunca cai duas vezes no mesmo lugar." MITO (Empire State leva vários por ano).
+7. "Napoleão era baixinho." MITO.
+8. "Existe um bicho que fica jovem de novo quando envelhece." VERDADE (água-viva Turritopsis dohrnii).
+9. "Presos fugiram da prisão mais segura dos EUA usando cabeças falsas de papel." VERDADE (Alcatraz, 1962).
+10. "Avestruz enfia a cabeça na areia quando tem medo." MITO.
+
+## Frases de fechamento já usadas (não repetir)
+Comentário:
+- "Comenta se achou que era mentira!" (VoM #1)
+Manda pra alguém:
+- "Manda pra quem cava na praia pra chegar no Japão." (VoM #1)
+Legendas/comentários fixados de posts já usados (variar):
+- VoM #1 legenda: "Isso parece roteiro de filme... 🎬" + "Verdade ou mito? Crava a sua antes de ver o final 👇" / comentário fixado: "Verdade ou mito? Crava aqui antes de ver o final 👇"
