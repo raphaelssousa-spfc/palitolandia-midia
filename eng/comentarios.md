@@ -2,6 +2,23 @@
 
 Histórico dos últimos 14 dias (mais novo no topo). Não repetir perfil 3 dias seguidos nem repetir comentário.
 
+## 2026-11-19
+
+1. [@0bras](https://www.instagram.com/0bras/) – obras grandes e infraestrutura
+   - Se for de rodovia/ponte: "Quem já acompanhou obra de estrada sabe: o que decide a vida útil é a drenagem. Água parada na base derruba o pavimento bem antes do previsto."
+   - Se for de outra obra: "Obra assim só sai bem com planejamento de logística. Material chegando na hora certa pesa tanto quanto a técnica."
+2. [@fundacoessemcomplicacoes](https://www.instagram.com/fundacoessemcomplicacoes/) – fundações e solo explicados
+   - Se for de solo/fundação: "Na pavimentação a gente usa o CBR pra saber se o solo aguenta o tráfego. Mesma lógica: conhecer o terreno antes evita recalque e retrabalho."
+   - Se for de outra obra: "Boa. Sondagem custa pouco perto do prejuízo de descobrir o solo no meio da obra."
+3. [@matheusleoni_eng](https://www.instagram.com/matheusleoni_eng/) – dicas de obra e carreira
+   - "Concordo. Aprender a ler projeto e ir conferir no campo se foi feito igual é o que forma engenheiro de verdade."
+4. [@leilabrito_eng](https://www.instagram.com/leilabrito_eng/) – patologias e manutenção predial
+   - Se for de infiltração/trinca: "Trinca em mapa costuma indicar retração ou cura mal feita; trinca em diagonal já sugere recalque. Ler o desenho da fissura ajuda a achar a causa."
+   - Se for de outra obra: "Boa. Inspeção periódica é o que evita transformar um reparo pequeno numa obra grande."
+5. [@eduardomikail](https://www.instagram.com/eduardomikail/) – construção e dicas de engenharia
+   - Se for de acabamento/reforma: "Vale checar o prumo e o nível antes de assentar. Erro de base se espalha por todo o acabamento."
+   - Se for de outra obra: "Ótimo ponto. Cronograma realista com folga pra chuva evita muita correria e erro de execução."
+
 ## 2026-11-18
 
 1. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico
