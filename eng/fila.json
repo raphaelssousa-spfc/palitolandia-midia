@@ -175,11 +175,14 @@
     },
     {
       "id": "pavimentacao-07-fresagem",
-      "status": "pendente",
+      "status": "postado",
       "video": "videos/pavimentacao-07-fresagem.mp4",
       "capa": "videos/pavimentacao-07-fresagem-capa.jpg",
       "legenda": "Por que raspam o asfalto velho antes de botar o novo? 🚧\nJá viu essa máquina na sua rua?\nComenta aqui 👇\n\n#engenhariacivil #pavimentacao #asfalto #fresagem #fresadora #recape #estradas #obra",
-      "comentario": "Como tá o asfalto da sua rua? Já recaparam aí? 👇"
+      "comentario": "Como tá o asfalto da sua rua? Já recaparam aí? 👇",
+      "postado_em": "2026-11-19T19:42:40-03:00",
+      "media_id": "18109658855626902",
+      "tiktok_post_id": "6aff7b4f1a1724ac8f55fa04"
     }
   ],
   "frequencia": "todos os dias, 2 postagens"
