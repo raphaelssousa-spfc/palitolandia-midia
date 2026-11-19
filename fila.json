@@ -94,12 +94,14 @@
   },
   {
    "id": "nintendo-aviao",
-   "status": "pendente",
+   "status": "postado",
    "video": "videos/nintendo-aviao.mp4",
    "capa": "videos/nintendo-aviao-capa.jpg",
    "legenda": "Parece mentira #12 🎴✈️\nIsso parece fora de ordem... mas é real 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#nintendo #aviao #curiosidades #vocesabia #historia",
    "comentario": "Nintendo ou avião: em quem você apostou? 👇",
-   "episodio": 12
+   "episodio": 12,
+   "postado_em": "2026-11-19 19:12",
+   "media_id": "18420827857083671"
   },
   {
    "id": "harvard-newton",
