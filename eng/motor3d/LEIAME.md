@@ -32,3 +32,9 @@ Regras de conteúdo e erros a evitar: ver eng/PRODUCAO.md (seções "DO ZERO", "
 - Retrato é estreito: para mostrar a obra inteira, câmera em diagonal (ex.: V(17, 8, 28) olhando o centro) em vez de recuar de frente.
 - `KIT.nuvem` devolve {g, update}: posicione com `.g.position`.
 - Com 2 CPUs, 4 renders em paralelo ficam ~0,8 s/quadro no total (~22 min para 55 s). Comando longo: rodar com setsid nohup e conferir o log.
+
+## Dicas do #04 (túnel de metrô)
+- NÃO use nomes globais do base.js no scene.js: `R` (renderer), `chunks` (legenda), `back`, `pop`... (deu "Identifier already declared").
+- Âncoras de pill/cota usam a câmera: o renderFrame do #04 roda world(t) duas vezes (1ª só para posicionar a câmera) — sem isso a âncora fica 1 quadro atrasada e nas prévias aponta errado.
+- Não estique peças texturizadas com scale.x enorme (a textura vira listras): faça a geometria já no comprimento certo.
+- Retrato é estreito: para mostrar o túnel E a cidade, câmera a 20–26 de distância; closes a 8–11.

@@ -16,7 +16,11 @@ Vitrine (8 estações): `episodios/kit-demo/` (`python3 build.py kit-demo` + `no
 - Nunca dois planos no mesmo lugar (z-fighting = piscada). Nunca alternar `material.transparent` entre quadros.
 
 ## Peças
-| Grupo | Função | Principais parâmetros | Animação |
+| Grupo | Função | Principais parâmetros | Túnel em corte (eixo em x, corte em z = 0) | `KIT.soloTunel`, `KIT.frenteTunel` | R, comp, prof / R (frente = terra não escavada; mude `.position.x`) | mover a frente |
+| Aduelas (meio anel) | `KIT.anelMeio` | R, larg, esp, n peças | `.segs[i]` (peça por peça; `.userData.mid` = ângulo) |
+| Tatuzão (shield/TBM) | `KIT.tatuzao` | R, comp, cor, backup | `.set({giro, macaco, erector})`, `.back` (carretas) |
+| Extrusão ao longo de x | `KIT.extX(shape, comp)`, `KIT.setor(Ri, Ro, a, b)` | forma 2D com X = profundidade (z = -X) | — |
+| Animação |
 |---|---|---|---|
 | Material | `KIT.matOf(tipo)` | terra, argila, areia, brita, base, subbase, asfalto, asfaltoQ (quente), concreto, concretoF (fresco), rocha, grama, lama, tijolo, madeira | — |
 | Chão | `KIT.chao` | tipo, frente, buracos | — |
@@ -61,4 +65,5 @@ Vitrine (8 estações): `episodios/kit-demo/` (`python3 build.py kit-demo` + `no
 - **Estrada:** `chao` + `pavimento` + `acabadora` + `rolo` + `caminhao({tipoCarga:'asfaltoQ'})` + `cone`s.
 - **Poço artesiano:** `chao` + `corte` com 6–8 camadas (terra, argila, areia, rocha, rocha...) + `tubo({eixo:'y'})` + peça nova (sonda).
 - **Laje:** `forma` + `ferragem({camadas:2})` + `betoneira` + `concreto({fresco:true})` + `operario`s.
+- **Túnel/metrô:** `corte` em cima e embaixo + `soloTunel` + `frenteTunel` + `tatuzao` + `anelMeio` por anel (ver episodios/dozero-04-tunel-metro).
 - **Bueiro/galeria:** `vala` + `tubo` grande + `seta`s azuis (água) + `pavimento` por cima.

@@ -1,63 +1,51 @@
 [
  {
-  "say": "Se você põe uma tábua no rio, você tem uma ponte.",
-  "show": "Se você põe uma tábua no rio, você tem uma ponte."
+  "say": "Se você cava um buraco debaixo da cidade, você tem um túnel.",
+  "show": "Se você cava um buraco debaixo da cidade, você tem um túnel."
  },
  {
-  "say": "Mas o rio é largo, e a tábua quebra no meio.",
-  "show": "Mas o rio é largo, e a tábua quebra no meio."
+  "say": "Mas a terra desaba, e a rua lá em cima afunda.",
+  "show": "Mas a terra desaba, e a rua lá em cima afunda."
  },
  {
-  "say": "Então você crava estacas no rio e ergue pilares.",
-  "show": "Então você crava estacas no rio e ergue pilares."
+  "say": "Então você empurra um tubo de aço gigante enquanto cava. Isso é o tatuzão.",
+  "show": "Então você empurra um tubo de aço gigante enquanto cava. Isso é o tatuzão."
  },
  {
-  "say": "Mas o barco não passa.",
-  "show": "Mas o barco não passa."
+  "say": "Na frente, uma roda gira e rói a terra. Isso é a cabeça de corte.",
+  "show": "Na frente, uma roda gira e rói a terra. Isso é a cabeça de corte."
  },
  {
-  "say": "Então você ergue uma torre gigante na margem.",
-  "show": "Então você ergue uma torre gigante na margem."
+  "say": "Mas atrás do tubo, o buraco fica sem parede.",
+  "show": "Mas atrás do tubo, o buraco fica sem parede."
  },
  {
-  "say": "Isso é o mastro.",
-  "show": "Isso é o mastro."
+  "say": "Então um braço monta anéis de concreto, peça por peça. Isso são as aduelas.",
+  "show": "Então um braço monta anéis de concreto, peça por peça. Isso são as aduelas."
  },
  {
-  "say": "Mas a pista não tem apoio.",
-  "show": "Mas a pista não tem apoio."
+  "say": "E pra andar, ela empurra os próprios anéis. Isso são os macacos hidráulicos.",
+  "show": "E pra andar, ela empurra os próprios anéis. Isso são os macacos hidráulicos."
  },
  {
-  "say": "Então você pendura a pista com cabos de aço. Isso é um estai.",
-  "show": "Então você pendura a pista com cabos de aço. Isso é um estai."
+  "say": "Mas a terra que sai não tem pra onde ir.",
+  "show": "Mas a terra que sai não tem pra onde ir."
  },
  {
-  "say": "Mas não dá pra concretar tudo no ar.",
-  "show": "Mas não dá pra concretar tudo no ar."
+  "say": "Então uma esteira leva tudo lá pra fora. Isso é a correia transportadora.",
+  "show": "Então uma esteira leva tudo lá pra fora. Isso é a correia transportadora."
  },
  {
-  "say": "Então você faz pedaço por pedaço, e pendura cada um. Isso é uma aduela.",
-  "show": "Então você faz pedaço por pedaço, e pendura cada um. Isso é uma aduela."
+  "say": "Um tatuzão do metrô de São Paulo tem mais de dez metros de altura e pesa cerca de duas mil toneladas.",
+  "show": "Um tatuzão do metrô de São Paulo tem mais de 10 metros de altura e pesa cerca de 2 mil toneladas."
  },
  {
-  "say": "Mas se crescer só de um lado, a torre tomba.",
-  "show": "Mas se crescer só de um lado, a torre tomba."
+  "say": "E o segredo: lá em cima, a cidade nem para.",
+  "show": "E o segredo: lá em cima, a cidade nem para."
  },
  {
-  "say": "Então você cresce os dois lados juntos. Isso é o balanço sucessivo.",
-  "show": "Então você cresce os dois lados juntos. Isso é o balanço sucessivo."
- },
- {
-  "say": "O mastro da ponte de São Paulo tem cento e trinta e oito metros: mais que um prédio de quarenta andares.",
-  "show": "O mastro da ponte de São Paulo tem 138 metros: mais que um prédio de 40 andares."
- },
- {
-  "say": "E o segredo: a pista não fica apoiada. Fica pendurada.",
-  "show": "E o segredo: a pista não fica apoiada. Fica pendurada."
- },
- {
-  "say": "Parabéns. Você construiu uma ponte estaiada.",
-  "show": "Parabéns. Você construiu uma ponte estaiada."
+  "say": "Parabéns. Você construiu um túnel de metrô.",
+  "show": "Parabéns. Você construiu um túnel de metrô."
  },
  {
   "say": "Curte, salva e manda pra quem vai construir. Comenta o que você quer ver construído.",

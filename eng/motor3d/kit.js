@@ -306,6 +306,51 @@ const KIT = (() => {
     cyl(0.6 * k, 0.5 * k, 0.75 * k, 22, C(cor, { roughness: 0.5 }), g); cyl(0.66 * k, 0.66 * k, 0.1 * k, 22, C(cor, { roughness: 0.5 }), g, 0, 0.75 * k, 0);
     return g;
   }
+
+  // ---------- 9) TÚNEL EM CORTE (eixo ao longo de x; corte no plano z = 0; só a metade de trás, z ≤ 0, existe) ----------
+  // Forma 2D no plano (X, Y) com X = profundidade para trás (z = -X); extrudada ao longo de +x a partir de x = 0.
+  const extX = (shape, comp) => { const g = new THREE.ExtrudeGeometry(shape, { depth: comp, bevelEnabled: false, curveSegments: 28 }); g.rotateY(Math.PI / 2); return g; };
+  function setor(Ri, Ro, a, b) { const s = new THREE.Shape(); s.absarc(0, 0, Ro, a, b, false); s.lineTo(Ri * Math.cos(b), Ri * Math.sin(b)); s.absarc(0, 0, Ri, b, a, true); s.closePath(); return s; }
+  // solo em volta do túnel: bloco (y = eixo ± R, z de 0 a -prof) com furo semicircular de raio R. Use com KIT.corte em cima e embaixo.
+  function soloTunel({ R = 1.8, comp = 30, prof = 40, tipo = 'argila', x = 0, y = 0, parent = scene } = {}) {
+    const s = new THREE.Shape(); s.moveTo(0, R); s.lineTo(prof, R); s.lineTo(prof, -R); s.lineTo(0, -R); s.absarc(0, 0, R, -Math.PI / 2, Math.PI / 2, false);
+    const m = mesh(extX(s, comp), matOf(tipo), parent, x, y, 0, false); return m; }
+  // terra ainda não escavada dentro do túnel (meio-disco). Frente em x; comprimento via .scale.x (geometria de 1 unidade)
+  function frenteTunel({ R = 1.8, tipo = 'argila', x = 0, y = 0, parent = scene } = {}) {
+    const s = new THREE.Shape(); s.moveTo(0, -R); s.absarc(0, 0, R, -Math.PI / 2, Math.PI / 2, false); s.closePath();
+    return mesh(extX(s, 1), matOf(tipo), parent, x, y, 0, false); }
+  // meio anel de aduelas (n peças) de largura larg, começando em x. segs[i].userData.mid = ângulo do meio (para o braço montador)
+  function anelMeio({ R = 1.8, larg = 0.5, esp = 0.2, n = 3, folga = 0.025, cor = '#b9b5ad', x = 0, y = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, 0); const segs = []; const Ro = R - 0.04, Ri = Ro - esp; const m = matOf('concreto', cor === '#b9b5ad' ? {} : { color: cor });
+    for (let i = 0; i < n; i++) { const a = -Math.PI / 2 + i * Math.PI / n + folga, b = -Math.PI / 2 + (i + 1) * Math.PI / n - folga;
+      const sm2 = mesh(extX(setor(Ri, Ro, a, b), larg - 0.03), m, g, 0, 0, 0, false); sm2.userData.mid = (a + b) / 2; segs.push(sm2); }
+    return { g, segs }; }
+  // TATUZÃO (shield/TBM) em corte: origem no CENTRO da cabeça de corte; o corpo vai para -x. set({giro, macaco, erector, macacoAte})
+  function tatuzao({ R = 1.8, comp = 3.2, cor = '#f08a1c', backup = 6, x = 0, y = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, 0); const Y = C(cor, { metalness: 0.35, roughness: 0.45, side: THREE.DoubleSide }), K = KK(), Am = C('#f2c21b'), St = C('#c8ced3', { metalness: 0.6, roughness: 0.3 });
+    const casco = mesh(extX(setor(R - 0.17, R - 0.05, -Math.PI / 2, Math.PI / 2), comp), Y, g, -comp, 0, 0);
+    mesh(extX(setor(R - 0.2, R - 0.03, -Math.PI / 2, Math.PI / 2), 0.18), C('#26262a'), g, -comp, 0, 0, false);       // aro da cauda
+    const head = grp(g, 0.06, 0, 0);
+    mesh(new THREE.CylinderGeometry(R - 0.06, R - 0.06, 0.2, 40).rotateZ(Math.PI / 2), C('#d63b3b', { roughness: 0.5 }), head, 0, 0, 0);
+    for (let i = 0; i < 6; i++) { const sp = grp(head); sp.rotation.x = i * Math.PI / 3; box(0.14, R - 0.2, 0.3, Am, sp, 0.14, 0, 0);
+      for (let k = 0; k < 4; k++) mesh(new THREE.ConeGeometry(0.07, 0.2, 6).rotateZ(-Math.PI / 2), St, sp, 0.3, 0.35 + k * 0.33, 0); }
+    mesh(new THREE.ConeGeometry(0.28, 0.4, 10).rotateZ(-Math.PI / 2), Am, head, 0.3, 0, 0);
+    { const s = new THREE.Shape(); s.moveTo(0, -(R - 0.15)); s.absarc(0, 0, R - 0.15, -Math.PI / 2, Math.PI / 2, false); s.closePath(); mesh(extX(s, 0.12), C('#7d858c', { side: THREE.DoubleSide }), g, -0.75, 0, 0); } // antepara
+    { const a = V(-0.85, -R + 0.45, -0.6), b = V(-comp + 0.25, 0.85, -0.6); const L = a.distanceTo(b); const sc = mesh(new THREE.CylinderGeometry(0.17, 0.17, L, 14), C('#e8a21b'), g, 0, 0, 0);
+      sc.position.copy(a).add(b).multiplyScalar(0.5); sc.quaternion.setFromUnitVectors(V(0, 1, 0), b.clone().sub(a).normalize()); }                     // rosca (tira a terra)
+    const erector = grp(g, -comp + 0.35, 0, 0); box(0.22, R - 0.45, 0.22, Am, erector, 0, 0, 0); box(0.3, 0.12, 0.5, K, erector, 0, R - 0.47, 0);
+    const jacks = []; for (const f of [-Math.PI / 3, 0, Math.PI / 3]) { const r0 = R - 0.14, yy = r0 * Math.sin(f), zz = -r0 * Math.cos(f);
+      mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.9, 10).rotateZ(Math.PI / 2), C('#3a3f46'), g, -comp + 0.6, yy, zz);
+      const rod = mesh(new THREE.CylinderGeometry(0.045, 0.045, 1, 10).rotateZ(Math.PI / 2).translate(-0.5, 0, 0), St, g, -comp + 0.15, yy, zz, false); jacks.push(rod); }
+    const back = grp(g, -comp - 0.25, 0, 0);
+    for (let xx = 0; xx < backup; xx += 1.5) { for (const zz of [-1.15, -0.2]) box(0.1, 1.6, 0.1, Am, back, -xx, -1.0, zz); box(1.5, 0.08, 1.1, C('#7d858c'), back, -xx - 0.75, 0.55, -0.68);
+      box(0.1, 0.1, 1.05, Am, back, -xx, 0.5, -0.68); }
+    box(1.6, 0.9, 0.8, C('#e8e8e4'), back, -2.2, -0.3, -0.75); box(1.62, 0.25, 0.82, Y, back, -2.2, 0.25, -0.75);
+    mesh(new THREE.CylinderGeometry(0.3, 0.3, 1.4, 14).rotateZ(Math.PI / 2), C('#2f7fd6'), back, -4.2, -0.6, -0.8);
+    const set = ({ giro = 0, macaco = 0, erector: e = 0 } = {}) => { head.rotation.x = giro; erector.rotation.x = e - Math.PI / 2;
+      jacks.forEach(j => { j.visible = macaco > 0.02; j.scale.x = Math.max(0.02, macaco); }); };
+    set(); return { g, head, casco, erector, jacks, back, set };
+  }
   // ---------- 7) ANIMAÇÃO ----------
   const grow = (o, u, eixo = 'y') => { u = cl(u); o.visible = u > 0.001; o.scale[eixo] = Math.max(0.001, u); return o; };  // peça nasce do chão (origem na base)
   const drop = (o, u, h = 4, y0 = 0) => { o.visible = u > 0; o.position.y = y0 + h * (1 - eo(u)); return o; };          // cai do céu e assenta
@@ -313,5 +358,5 @@ const KIT = (() => {
   const popIn = (o, u) => { const k = back(u); o.visible = u > 0; o.scale.setScalar(Math.max(0.001, k)); return o; };
   return { matOf, SOIL, uvScale, box, cyl, grp, chao, corte, pavimento, vala, ferragem, armadura, forma, concreto, parede, tubo,
     escavadeira, caminhao, rolo, betoneira, acabadora, cone, barreira, placa, poste, arvore, casa, carro, operario, CAMISAS, nuvem, seta, grow, drop, slide, popIn,
-    motoniveladora, fresadora, caminhaoPipa, meioFio, faixa, viga, pilar, guardaCorpo, guindaste, galeria, bocaDeLobo, pocoDeVisita, sonda, escoramento, blocos, telhado, caixaDagua };
+    motoniveladora, fresadora, caminhaoPipa, meioFio, faixa, viga, pilar, guardaCorpo, guindaste, galeria, bocaDeLobo, pocoDeVisita, sonda, escoramento, blocos, telhado, caixaDagua, extX, setor, soloTunel, frenteTunel, anelMeio, tatuzao };
 })();

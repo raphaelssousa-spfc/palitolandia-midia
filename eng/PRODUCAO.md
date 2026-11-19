@@ -66,7 +66,7 @@ A série DO ZERO sai 2 vezes por semana (tarefa de segunda e quinta 20:37, posta
 MUDANÇA (dono, 16/11/2026) — DO ZERO vira a série principal de construção e GRANDES OBRAS (a série creme foi pausada):
 - Motivo: o 3D é o que mais funciona no perfil (concreto "tum-tum" foi o Reel mais visto) e viraliza lá fora (@civilengineeringdiscoveries:
   810 mil views com ponte estaiada, 369 mil com balanço sucessivo, 555 mil com compactação de estrada).
-- Agenda: a tarefa roda domingo, terça e quinta à noite; o episódio vai ao ar sozinho às 12:40 do dia seguinte (seg/qua/sex), Instagram e TikTok,
+- Agenda (atualizada): a tarefa roda domingo e quarta à noite; o episódio vai ao ar sozinho às 12:40 do dia seguinte (segunda e quinta), Instagram e TikTok,
   postado pela tarefa "Robô – resgate diário" (12:40, posta os itens "agendado"). Não criar tarefa agendada nova.
 - Mistura: de cada 3 episódios, 2 de GRANDE OBRA "como se constrói" (ponte estaiada, balanço sucessivo, viaduto, túnel, barragem, prédio alto sobre
   estacas, metrô, porto, pista de aeroporto, torre/edifício famoso do Brasil) e 1 de PAVIMENTAÇÃO/estrada. Sem temas parecidos em sequência.

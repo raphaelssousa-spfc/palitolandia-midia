@@ -15,6 +15,7 @@
 - DO ZERO (3D, "Se você...") · #01 · Como um buraco no quintal vira um subsolo? (agendado 12/11 07:10)
 - DO ZERO (3D, "Se você...") · #02 · pavimentação · Por que a estrada de concreto faz tum-tum? (rodovia de concreto: sub-base, junta serrada, barra de transferência, barra de ligação, selante, texturização; agendado 14/11 12:40)
 - DO ZERO (3D, "Se você...") · #03 · grande obra · Como se constrói uma ponte estaiada? (tábua quebra, estacas e pilares, barco não passa, mastro, estai, aduela, piada da torre tombando, balanço sucessivo, mastro da ponte Octávio Frias 138 m > prédio de 40 andares, pista pendurada; agendado 17/11 12:40)
+- DO ZERO (3D, "Se você...") · #04 · grande obra · Como se cava um túnel de metrô? (tatuzão: cava à mão desaba e rua afunda, escudo/tatuzão, cabeça de corte, sem parede atrás, aduelas montadas pelo braço, macacos hidráulicos empurram os anéis, piada do operário soterrado na terra, correia transportadora, tatuzão de SP >10 m de altura e ~2 mil t, a cidade nem para; agendado 19/11 12:40)
 
 # Ideias de temas (pegar daqui; riscar ao usar)
 ## Construção
