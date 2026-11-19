@@ -160,13 +160,16 @@
     },
     {
       "id": "dozero-04-tunel-metro",
-      "status": "agendado",
+      "status": "postado",
       "agendado_para": "2026-11-19T12:40:00-03:00",
       "obs": "Postagem avulsa da série DO ZERO #04 (postada pela tarefa 'Robô – resgate diário' às 12:40, Instagram e TikTok). NÃO entra na fila diária.",
       "video": "videos/dozero-04-tunel-metro.mp4",
       "capa": "videos/dozero-04-tunel-metro-capa.jpg",
       "legenda": "Como se cava um túnel de metrô debaixo da cidade sem a rua cair? 🚇\nTem metrô na sua cidade?\nComenta aqui 👇\n\n#engenhariacivil #metro #tunel #tatuzao #obra #construcao #infraestrutura #saopaulo #engenharia",
-      "comentario": "Qual obra você quer ver construída do zero no próximo? 👇"
+      "comentario": "Qual obra você quer ver construída do zero no próximo? 👇",
+      "postado_em": "2026-11-19T12:43:00-03:00",
+      "media_id": "18046924856827429",
+      "tiktok_post_id": "6aff1902e03d69424b6d006b"
     },
     {
       "id": "pavimentacao-07-fresagem",
