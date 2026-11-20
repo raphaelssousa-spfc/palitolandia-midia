@@ -353,3 +353,34 @@ export const peek = (p, t = 0) => { const g = p.g; g.save(); g.lineWidth = 10; g
   g.fillStyle = '#fff'; g.beginPath(); g.roundRect(330, 250, 220, 100, 30); g.fill(); g.stroke(); g.beginPath(); g.moveTo(370, 345); g.lineTo(350, 395); g.lineTo(410, 348); g.fill();
   txt(g, 'OI, SUMI!', 440, 300, 38, K);
   g.restore(); };
+// ---- Parece Mentira #14 (videogame x Lua) — projeto motor/videogame ----
+// osciloscópio de 1958 com o "Tennis for Two": tela verde redonda, chão + rede, bolinha quicando (t = 0..1 trajeto), botões
+export const scope = (p, t = 0) => { const g = p.g; g.save(); g.translate(300, 500); g.lineJoin = 'round'; g.lineWidth = 12; g.strokeStyle = K;
+  g.fillStyle = 'rgba(0,0,0,0.35)'; g.beginPath(); g.roundRect(-232, -172, 476, 372, 30); g.fill();
+  g.fillStyle = '#8a8f96'; g.beginPath(); g.roundRect(-240, -186, 476, 372, 30); g.fill(); g.stroke();
+  g.fillStyle = '#0d2a14'; g.beginPath(); g.arc(-50, 0, 140, 0, 7); g.fill(); g.stroke();
+  g.strokeStyle = '#6dff8a'; g.lineWidth = 7; g.beginPath(); g.moveTo(-160, 60); g.lineTo(60, 60); g.moveTo(-50, 60); g.lineTo(-50, 22); g.stroke();
+  const u = t % 1, side = Math.floor(t) % 2 ? -1 : 1, x = -50 + side * (-90 + 180 * u), y = 50 - 120 * 4 * u * (1 - u);
+  g.fillStyle = 'rgba(109,255,138,0.35)'; for (let k = 1; k < 4; k++) { const v = Math.max(0, u - k * 0.06), xx = -50 + side * (-90 + 180 * v), yy = 50 - 480 * v * (1 - v); g.beginPath(); g.arc(xx, yy, 10 - k * 2, 0, 7); g.fill(); }
+  g.fillStyle = '#c8ffd2'; g.beginPath(); g.arc(x, y, 12, 0, 7); g.fill();
+  g.strokeStyle = K; g.lineWidth = 8; for (const [bx, by, c] of [[160, -90, '#e0453a'], [160, 0, '#ffd23f'], [160, 90, '#2f6fb2']]) { g.fillStyle = c; g.beginPath(); g.arc(bx, by, 26, 0, 7); g.fill(); g.stroke(); }
+  g.restore(); };
+// TV antiga em preto e branco mostrando astronauta e bandeira
+export const tvBW = (p, t = 0) => { const g = p.g; g.save(); g.translate(300, 520); g.lineJoin = 'round'; g.lineWidth = 12; g.strokeStyle = K;
+  g.beginPath(); g.moveTo(-60, -200); g.lineTo(-120, -290); g.moveTo(60, -200); g.lineTo(120, -290); g.stroke();
+  g.fillStyle = '#7a5434'; g.beginPath(); g.roundRect(-250, -200, 500, 380, 34); g.fill(); g.stroke();
+  g.fillStyle = '#9a9a9a'; g.beginPath(); g.roundRect(-215, -165, 330, 300, 40); g.fill(); g.stroke();
+  g.fillStyle = '#5a5a5a'; g.beginPath(); g.ellipse(-50, 135, 200, 60, 0, Math.PI, 0); g.fill();
+  g.fillStyle = '#eee'; g.beginPath(); g.arc(-60, -20, 34, 0, 7); g.fill(); g.lineWidth = 8; g.stroke(); g.fillStyle = '#ddd'; g.beginPath(); g.roundRect(-92, 10, 64, 80, 16); g.fill(); g.stroke();
+  g.beginPath(); g.moveTo(40, 90); g.lineTo(40, -60); g.stroke(); g.fillStyle = '#ccc'; g.fillRect(40, -60, 60, 38); g.strokeRect(40, -60, 60, 38);
+  g.globalAlpha = 0.25; g.fillStyle = '#fff'; for (let k = 0; k < 6; k++) g.fillRect(-215, -165 + ((k * 53 + t * 300) % 300), 330, 5); g.globalAlpha = 1;
+  g.lineWidth = 8; for (const by of [-90, 10]) { g.fillStyle = '#d9a845'; g.beginPath(); g.arc(180, by, 26, 0, 7); g.fill(); g.stroke(); }
+  g.restore(); };
+// controle moderno (gamepad) de desenho
+export const pad = (p) => { const g = p.g; g.save(); g.translate(300, 520); g.lineJoin = 'round'; g.lineWidth = 12; g.strokeStyle = K;
+  g.fillStyle = '#2b2d3a'; g.beginPath(); g.moveTo(-200, -90); g.bezierCurveTo(-80, -120, 80, -120, 200, -90); g.bezierCurveTo(270, -60, 290, 150, 220, 160); g.bezierCurveTo(160, 170, 120, 70, 60, 60);
+  g.lineTo(-60, 60); g.bezierCurveTo(-120, 70, -160, 170, -220, 160); g.bezierCurveTo(-290, 150, -270, -60, -200, -90); g.closePath(); g.fill(); g.stroke();
+  g.fillStyle = '#d9dbe3'; g.fillRect(-170, -25, 90, 26); g.fillRect(-138, -57, 26, 90);
+  g.lineWidth = 6; for (const [bx, by, c] of [[140, -45, '#ffd23f'], [180, -5, '#e0453a'], [100, -5, '#2f6fb2'], [140, 35, '#2f9a58']]) { g.fillStyle = c; g.beginPath(); g.arc(bx, by, 20, 0, 7); g.fill(); g.stroke(); }
+  g.fillStyle = '#555a6e'; for (const sx of [-55, 55]) { g.beginPath(); g.arc(sx, 30, 30, 0, 7); g.fill(); g.stroke(); }
+  g.fillStyle = '#7b3fe4'; g.beginPath(); g.roundRect(-30, -70, 60, 26, 10); g.fill(); g.restore(); };

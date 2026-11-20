@@ -1,5 +1,5 @@
 # Próximo episódio
-numero: 14
-tema: O videogame é mais velho que o homem na Lua (Tennis for Two, um dos primeiros videogames, outubro de 1958 no laboratório de Brookhaven, EUA, num osciloscópio; Apollo 11 pousou em 20/07/1969 — 11 anos depois; dizer "um dos primeiros", pois há jogos ainda mais antigos como OXO de 1952; conferido: APS News "October 1958: Physicist Invents First Video Game")
-pergunta_inicial: "O que veio primeiro: o videogame ou o homem na Lua?"
-teaser_do_15: escolher ao produzir o #14 e anotar aqui (vai na legenda do post: "Amanhã: ...")
+numero: 15
+tema: A Coca-Cola é mais velha que a Torre Eiffel (Coca-Cola: primeiro copo vendido em 8/5/1886 na Jacobs' Pharmacy, Atlanta, EUA; Torre Eiffel inaugurada em 31/3/1889 — quase 3 anos depois; conferido: coca-colacompany.com/history e linha do tempo de 1889)
+pergunta_inicial: "O que veio primeiro: a Coca-Cola ou a Torre Eiffel?"
+teaser_do_16: escolher ao produzir o #15 e anotar aqui (vai na legenda do post: "Próximo: ...") — tema FAMOSO (ver AJUSTES 19/11 no PRODUCAO.md)

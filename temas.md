@@ -14,6 +14,7 @@
 - O tiranossauro viveu mais perto de nós do que do estegossauro (~150 x ~66 milhões de anos; 84 mi de diferença; T. rex de óculos no museu) — Parece Mentira #11, 15/11
 - A Nintendo é mais velha que o avião (1889 x 1903 / 14-Bis 1906; cartas hanafuda; biplano novo no kit: PL.hanafuda, PL.biplane) — Parece Mentira #12, 16/11
 - Harvard é mais velha que a gravidade de Newton (1636 x 1687, 51 anos; alunos flutuando 'sem lei da gravidade'; maçã) — Parece Mentira #13, 16/11 — PRIMEIRO no formato novo (25 s, loop)
+- O videogame é mais velho que o homem na Lua (Tennis for Two, out/1958, Brookhaven, osciloscópio x Apollo 11, jul/1969; 11 anos; "um dos primeiros") — Parece Mentira #14, 20/11 (id videogame-lua; cenário lunar do cleopatra; novas no kit: PL.scope, PL.tvBW, PL.pad, PROP.joy)
 
 # SÉRIE B — VERDADE OU MITO? (temas aprovados pelo dono, 18/11 — usar nesta ordem)
 1. "Ladrões cavaram um túnel até dentro de um banco no Brasil." VERDADE (Banco Central de Fortaleza, 2005). — feito: Verdade ou Mito #1, 18/11 (id tunel-banco)
@@ -30,7 +31,9 @@
 ## Frases de fechamento já usadas (não repetir)
 Comentário:
 - "Comenta se achou que era mentira!" (VoM #1)
-Manda pra alguém:
+Manda pra alguém (as duas séries):
+- "Manda pro amigo gamer que se acha das antigas." (PM #14)
 - "Marca o amigo sumido que parece que mora num túnel." (VoM #1 — refeito 18/11; a 1ª versão "Manda pra quem cava na praia pra chegar no Japão" foi recusada pelo dono)
 Legendas/comentários fixados de posts já usados (variar):
+- PM #14 legenda: "Um deles é bem mais velho do que parece... 🎮🌙" / comentário: "Videogame ou homem na Lua: em quem você apostou? 👇"
 - VoM #1 legenda: "Isso parece roteiro de filme... 🎬" + "Verdade ou mito? Crava a sua antes de ver o final 👇" / comentário fixado: "Verdade ou mito? Crava aqui antes de ver o final 👇"

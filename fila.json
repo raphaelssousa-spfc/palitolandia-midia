@@ -123,6 +123,17 @@
    "episodio": 1,
    "serie": "B",
    "formato": "serie B (18/11)"
+  },
+  {
+   "id": "videogame-lua",
+   "status": "pendente",
+   "video": "videos/videogame-lua.mp4",
+   "capa": "videos/videogame-lua-capa.jpg",
+   "legenda": "Parece mentira #14 🎮🌙\nUm deles é bem mais velho do que parece... 👀\nAssiste até o fim antes de cravar a resposta.\nPróximo: a Coca-Cola ou a Torre Eiffel?\nSegue @palitolandia.ia\n#videogame #lua #astronauta #curiosidades #vocesabia",
+   "comentario": "Videogame ou homem na Lua: em quem você apostou? 👇",
+   "episodio": 14,
+   "serie": "A",
+   "formato": "novo (16/11) + ajustes 19/11"
   }
  ]
 }

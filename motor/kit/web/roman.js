@@ -377,3 +377,8 @@ PROP.lamp = (p, hx, hy, u, o) => { const g = p.g; g.save(); g.translate(hx + (o.
   p.poly([[-46 * u, -24 * u], [46 * u, -24 * u], [46 * u, -8 * u], [-46 * u, -8 * u]], "#d9a845", 2.6 * u);
   p.band([[20 * u, -30 * u], [62 * u, -36 * u]], "#d9a845", 6 * u, 1.8 * u, "butt");
   p.poly([[-50 * u, 70 * u], [50 * u, 70 * u], [50 * u, 82 * u], [-50 * u, 82 * u]], "#7a4f2e", 2.6 * u); g.restore(); };
+// joystick de 1958 (caixinha com botão) — projeto motor/videogame
+PROP.joy = (p, hx, hy, u, o) => { const g = p.g; g.save(); g.translate(hx, hy + 4 * u); g.rotate(o.holdRot || 0);
+  p.poly([[-18 * u, -8 * u], [18 * u, -8 * u], [18 * u, 14 * u], [-18 * u, 14 * u]], "#5c5a57", 2.4 * u);
+  p.band([[0, -8 * u], [(o.joyX || 0) * 10 * u, -30 * u]], "#1a1030", 3.5 * u, 1 * u, "round");
+  p.ell((o.joyX || 0) * 10 * u, -32 * u, 6 * u, 6 * u, "#e0453a", 2 * u); p.ell(10 * u, 3 * u, 4 * u, 4 * u, "#ffd23f", 1.5 * u); g.restore(); };

@@ -8,6 +8,13 @@ Instagram: @palitolandia.ia (conectado via Windsor.ai, conector `instagram`, con
 - Série B "VERDADE OU MITO? #N" (começa no #1).
 - Alternância: olhe o último item de `fila.json` (postado ou pendente). Se for da A, faça um da B; se for da B, faça um da A. Se fizer 2 no dia, um de cada. Campo `serie` ("A"/"B") em cada item da fila.
 
+## AJUSTES 19/11 (análise dos números — valem para as duas séries e MAIS que o resto deste arquivo onde conflitarem)
+- TEMA FAMOSO: campeões = Cleópatra x Lua (1.933 views), lata x abridor (1.510), Torre Eiffel (1.192); temas pouco conhecidos caíram (Oxford x astecas 148, mamute x pirâmides 138). O assunto tem que ter nome/coisa que TODO MUNDO conhece (pessoa famosa, monumento, objeto de casa, bicho conhecido, comida). Se uma pessoa comum não conhece, troque. Vale também ao escolher o próximo em `proximo.md`.
+- MOTIVO PRA SEGUIR: falar "E segue a Palitolândia ponto i a pra ver o próximo." (legenda/placa "Segue @palitolandia.ia pra ver o próximo.").
+- COMPARTILHAR: o "manda pra alguém" é engraçado e específico do tema, NOVO a cada vídeo, nas duas séries (série A não usa mais o genérico "manda pra quem vai duvidar"). Frases usadas ficam em `temas.md`.
+- HUMOR BRASILEIRO: ~1 a cada 4 vídeos, tema ou piada com jeito do Nordeste/Brasil (o "GPS da novela em Fortaleza" teve o recorde de curtidas).
+- Série A, fechamento: "Manda pra/pro [alguém específico e engraçado]. E segue a Palitolândia ponto i a pra ver o próximo." Duração 20–30 s; virada depois de ~metade do vídeo.
+
 ## SÉRIE B — VERDADE OU MITO? (18/11)
 - Uma afirmação extraordinária que pode ser VERDADE (coisa inacreditável que é real) ou MITO (coisa que todo mundo acha verdade e não é). Conta a história toda e SÓ NO FINAL revela.
 - Temas: lista em `temas.md` (usar na ordem; depois dos 10, criar novos no mesmo estilo, alternando verdade e mito sem padrão óbvio). Marcar "feito" ao produzir.
@@ -18,7 +25,7 @@ Instagram: @palitolandia.ia (conectado via Windsor.ai, conector `instagram`, con
 - FECHAMENTO (nesta ordem, falado e na legenda queimada):
   a) pedido de comentário que combine com a resposta, frase NOVA a cada vídeo (VERDADE → "quem achou que era mentira comenta"; MITO → "quem acreditava que era verdade comenta");
   b) "Manda pra alguém que ..." ligado ao tema, com humor, novo a cada vídeo, sem ofender (pode variar o começo: "Marca aquele amigo que...");
-  c) "E segue a Palitolândia ponto i a."
+  c) "E segue a Palitolândia ponto i a pra ver o próximo."
 - Frases de comentário e de "manda pra alguém" já usadas ficam em `temas.md` (não repetir).
 - Duração 20–30 s. Legenda do post: mistério, sem a resposta, termina com chamada variada tipo "Verdade ou mito? Responde antes de ver o final 👇". Capa mostra a afirmação + "VERDADE OU MITO?".
 - Projeto modelo: `motor/tunel` (placas novas no kit: PL.tunnel, PL.shop, PL.stamp, PL.money, PL.beach; câmera CA/CB para cartões grandes).
