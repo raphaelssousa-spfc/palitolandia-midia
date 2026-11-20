@@ -2,6 +2,23 @@
 
 Histórico dos últimos 14 dias (mais novo no topo). Não repetir perfil 3 dias seguidos nem repetir comentário.
 
+## 2026-11-20
+
+1. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico
+   - Se for de asfalto: "Temperatura de compactação é detalhe que muita obra perde. Massa fria na rolagem não adensa direito e o pavimento já nasce com vazios demais."
+   - Se for de outra obra: "Concordo. Controle tecnológico em campo, com ensaio de grau de compactação, é o que separa obra durável de obra que só parece pronta."
+2. [@infra_urbana](https://www.instagram.com/infra_urbana/) – infraestrutura urbana e saneamento
+   - Se for de rua/asfalto: "Buraco que volta toda chuva quase sempre é problema de base saturada. Tapar em cima sem tratar embaixo é só adiar o defeito."
+   - Se for de outra obra: "Ótimo ponto. Cadastro correto das redes antes de abrir vala evita rompimento e retrabalho, e quase ninguém dá valor a isso."
+3. [@eng.civiladrianovanjura](https://www.instagram.com/eng.civiladrianovanjura/) – dicas de obra e engenharia
+   - Se for de estrutura/concreto: "Cura do concreto nos primeiros dias pesa tanto quanto o traço. Concreto que seca rápido demais perde resistência e fissura."
+   - Se for de outra obra: "Boa dica. Padronizar o checklist de conferência antes de concretar ou fechar parede evita erro caro."
+4. [@engcivilcamilasoares](https://www.instagram.com/engcivilcamilasoares/) – engenharia civil no dia a dia
+   - "Isso é real. Engenharia é metade cálculo e metade acompanhar a execução. Projeto bom mal executado vira problema do mesmo jeito."
+5. [@danilolorenceto](https://www.instagram.com/danilolorenceto/) – reforma e obra residencial
+   - Se for de reforma/acabamento: "Vale olhar o caimento do piso antes do porcelanato. Se a água não escoa pro ralo, o problema aparece só depois de pronto."
+   - Se for de outra obra: "Boa. Em reforma, abrir e conferir hidráulica e elétrica antigas antes de revestir poupa muita dor de cabeça."
+
 ## 2026-11-19
 
 1. [@0bras](https://www.instagram.com/0bras/) – obras grandes e infraestrutura
