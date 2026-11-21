@@ -1,7 +1,7 @@
 # Daisy Dinners — Reels diários (TAAFT)
 
 Daisy Parker, 34, mãe de 3 em Ohio. Jantas baratas pra família. Bordão: "Dinner's handled."
-Vende o e-book "The $75 Dinner Plan" (30 jantas, US$ 17): https://payhip.com/b/7QkKt
+Vende o e-book "The $75 Dinner Plan" (30 jantas, US$ 9,99): https://payhip.com/b/7QkKt
 Tudo em inglês americano. Instagram @daisydinners (link na bio).
 
 ## Arquivos
@@ -16,7 +16,7 @@ Tudo em inglês americano. Instagram @daisydinners (link na bio).
 ## Mix de conteúdo (por semana)
 - Maioria: Daisy cozinhando UMA receita do e-book (mostra os ingredientes, o preparo, o prato pronto).
 - 1–2 por semana: dica rápida (lista de compras de US$ 75, truque de sobra, congelar, criança enjoada).
-- 1 por semana: venda direta do plano (o que tem dentro, por que funciona, "link in my bio").
+- 1 por semana: venda direta do plano (o que tem dentro, por que funciona, "link in my bio"). Preço do e-book: US$ 9.99 (na fala: "under ten dollars").
 - Não repetir receita/tema já em fila.json.
 
 ## Roteiro (4 clipes de 8 s = ~34 s com a tela final)
