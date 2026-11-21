@@ -17,6 +17,16 @@ os que parecem "slide de aula" (card parado, série creme) ficaram em 100–300 
 - MOVIMENTO O TEMPO TODO: a cada frase algo se move. Pouco texto na tela (palavras-chave grandes); legenda palavra por palavra continua.
 - CAPA: a cena de ação mais forte + pergunta curta. Não pode parecer slide de carrossel.
 - Duração 30–45 s.
+### Ajustes 19/11 (análise dos números) — também valem mais que o resto do manual
+- FÓRMULA QUE ESTOUROU: os 2 Reels > 1 mil views (concreto "tum tum" 1.339; asfalto velho cinza 1.208; ~31% pulando nos 3 s, ~18 s assistidos)
+  são "Por que [coisa que todo mundo VÊ ou OUVE na rua]?". Preferir: algo da pista do dia a dia que a pessoa já reparou e nunca soube o motivo
+  (tacha/olho-de-gato, faixa amarela x branca, ranhura no concreto, asfalto mole no calor, formato da lombada, junta na ponte). Pode misturar com
+  "como é feito". Pelo menos 1 de cada 2 vídeos nesse formato.
+- 3 PRIMEIROS SEGUNDOS: nunca lista, número de itens ou texto longo (vídeos com lista perderam 50–77% nos 3 s). Mostrar a coisa reconhecível,
+  se mexendo, + a pergunta.
+- COMENTÁRIO: nada de "Comenta aqui 👇" genérico. Pergunta de resposta curta, de escolha (A ou B), ligada ao tema
+  (ex. que funcionou: "E o da sua rua, tá preto ou cinza?"). Vale para a fala final, a legenda e o campo comentario.
+- Mirar 30–40 s (no TikTok a média assistida é 6–11 s).
 
 ## Regras do dono (obrigatórias)
 1. Perfil: engenheiro civil explicando obras, construção e pavimentação para leigos. Tom simples, direto e confiável.
