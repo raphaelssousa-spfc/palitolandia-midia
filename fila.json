@@ -111,13 +111,15 @@
   },
   {
    "id": "harvard-newton",
-   "status": "pendente",
+   "status": "postado",
    "video": "videos/harvard-newton.mp4",
    "capa": "videos/harvard-newton-capa.jpg",
    "legenda": "Parece mentira #13 🎓🍎\nIsso parece fora de ordem... mas é real 👀\nAmanhã: o videogame ou o homem na Lua?\nSegue @palitolandia.ia\n#harvard #newton #historia #curiosidades #vocesabia",
    "comentario": "Harvard ou Newton: quem veio primeiro? 👇",
    "episodio": 13,
-   "formato": "novo (16/11)"
+   "formato": "novo (16/11)",
+   "postado_em": "2026-11-21 20:42",
+   "media_id": "18605210860069179"
   },
   {
    "id": "tunel-banco",
