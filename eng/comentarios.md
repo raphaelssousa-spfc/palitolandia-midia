@@ -2,6 +2,23 @@
 
 Histórico dos últimos 14 dias (mais novo no topo). Não repetir perfil 3 dias seguidos nem repetir comentário.
 
+## 2026-11-21
+
+1. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico
+   - Se for de asfalto: "Trecho com muito caminhão pesado pede massa com ligante modificado. Asfalto comum amolece no calor e forma trilha de roda bem cedo."
+   - Se for de outra obra: "Boa. Fresagem bem feita antes do recapeamento tira a camada ruim, senão o defeito antigo reaparece em cima da massa nova."
+2. [@infra_urbana](https://www.instagram.com/infra_urbana/) – infraestrutura urbana e saneamento
+   - Se for de rua/asfalto: "Lombada e rebaixo mal executados também quebram o pavimento. Onde o caminhão freia e arranca, a massa precisa ser mais resistente."
+   - Se for de outra obra: "Concordo. Rede de drenagem dimensionada pra chuva forte, e não pra chuva média, é o que evita o alagamento todo verão."
+3. [@0bras](https://www.instagram.com/0bras/) – obras grandes e infraestrutura
+   - Se for de rodovia/ponte: "Junta de dilatação é peça pequena que dá muito problema. Se falha, a água entra e ataca o apoio da estrutura por baixo."
+   - Se for de outra obra: "Legal ver o processo. Em obra grande, a fiscalização diária do que foi feito pesa mais que o projeto bonito no papel."
+4. [@matheusleoni_eng](https://www.instagram.com/matheusleoni_eng/) – dicas de obra e carreira
+   - "Verdade. Quem aprende a fazer orçamento e medir serviço em campo vira engenheiro que o dono de obra confia de olhos fechados."
+5. [@leilabrito_eng](https://www.instagram.com/leilabrito_eng/) – patologias e manutenção predial
+   - Se for de infiltração/trinca: "Bom lembrar que mofo no canto da parede muitas vezes é ponte térmica ou umidade subindo do solo, não só falta de ventilação."
+   - Se for de outra obra: "Concordo. Registrar fotos e datas das fissuras ajuda a provar se o problema parou ou continua evoluindo."
+
 ## 2026-11-20
 
 1. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico
