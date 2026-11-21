@@ -1,7 +1,7 @@
 # Daisy Dinners — Reels diários (TAAFT)
 
 Daisy Parker, 34, mãe de 3 em Ohio. Jantas baratas pra família. Bordão: "Dinner's handled."
-Vende o e-book "The $75 Dinner Plan" (30 jantas, US$ 9,99): https://payhip.com/b/7QkKt
+Vende o e-book "The $75 Dinner Plan" (30 jantas, EM PROMOÇÃO: US$ 9.99, era US$ 17): https://payhip.com/b/7QkKt
 Tudo em inglês americano. Instagram @daisydinners (link na bio).
 
 ## Arquivos
@@ -16,7 +16,7 @@ Tudo em inglês americano. Instagram @daisydinners (link na bio).
 ## Mix de conteúdo (por semana)
 - Maioria: Daisy cozinhando UMA receita do e-book (mostra os ingredientes, o preparo, o prato pronto).
 - 1–2 por semana: dica rápida (lista de compras de US$ 75, truque de sobra, congelar, criança enjoada).
-- 1 por semana: venda direta do plano (o que tem dentro, por que funciona, "link in my bio"). Preço do e-book: US$ 9.99 (na fala: "under ten dollars").
+- 1 por semana: venda direta do plano (o que tem dentro, por que funciona, "link in my bio"). Fale da promoção: "It's on sale right now, under ten dollars instead of seventeen."
 - Não repetir receita/tema já em fila.json.
 
 ## Roteiro (4 clipes de 8 s = ~34 s com a tela final)
@@ -24,8 +24,13 @@ Tudo em inglês americano. Instagram @daisydinners (link na bio).
 2. Ingredientes/preço ou primeiro passo.
 3. Passo principal / segredo da receita.
 4. Prato pronto + CTA: termina SEMPRE com algo como "...The whole plan is in my bio. Dinner's handled!"
+   Enquanto durar a promoção, cite no CTA: ex. "All thirty dinners are on sale in my bio. Dinner's handled!"
+   Sem urgência falsa ("só hoje", "últimas horas"): só "on sale" / "under ten dollars".
 Cada fala: 14–20 palavras no máximo (cabe em 8 s em ritmo natural). Preço sempre "about", família de 4–5.
 Números escritos por extenso na fala ("nine dollars").
+
+## Legenda (Instagram)
+Gancho curto + "Full 30-dinner plan in my bio, on sale for $9.99 (was $17)." + 5 hashtags.
 
 ## Visual da Daisy (a partir do vídeo 03)
 - Sempre avental de cozinha branco com o símbolo da marca (assets/logo-avental.png: prato com margarida, garfo e faca, SEM LETRAS) num patch redondo verde-sálvia no peito + chapéu de cozinheira branco. Nada escrito no avental nem no chapéu. Igual em todo vídeo.

@@ -45,7 +45,13 @@ f1 = ImageFont.truetype(FONT, 78); f2 = ImageFont.truetype(os.path.join(FONTS, "
 f3 = ImageFont.truetype(os.path.join(FONTS, "Caveat-Bold.ttf"), 84)
 d.text((W / 2, 1110), "30 dinners. $75 a week.", font=f1, fill="white", anchor="mm")
 d.text((W / 2, 1200), "The full plan is in my bio", font=f2, fill="#FFF3C4", anchor="mm")
-d.text((W / 2, 1330), "Dinner's handled.", font=f3, fill="#F2B705", anchor="mm")
+# selo da promoção (trocar/remover quando a promoção acabar)
+SALE = "ON SALE: $9.99 (was $17)"
+if SALE:
+    bw = d.textlength(SALE, font=f2) + 80
+    d.rounded_rectangle(((W - bw) / 2, 1265, (W + bw) / 2, 1355), radius=45, fill="#F2B705")
+    d.text((W / 2, 1310), SALE, font=f2, fill="#2F4A35", anchor="mm")
+d.text((W / 2, 1450 if SALE else 1330), "Dinner's handled.", font=f3, fill="#F2B705", anchor="mm")
 card.save(f"{TMP}/card.png")
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-loop", "1", "-t", "2.5", "-i", f"{TMP}/card.png",
                 "-f", "lavfi", "-t", "2.5", "-i", "anullsrc=r=48000:cl=stereo",
