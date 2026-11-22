@@ -197,11 +197,14 @@
     },
     {
       "id": "pavimentacao-09-asfalto-mole",
-      "status": "pendente",
+      "status": "postado",
       "video": "videos/pavimentacao-09-asfalto-mole.mp4",
       "capa": "videos/pavimentacao-09-asfalto-mole-capa.jpg",
       "legenda": "Por que o asfalto afunda no calor? 🔥\nNa sua cidade, o asfalto aguenta o calor ou afunda?\n\n#engenhariacivil #pavimentacao #asfalto #calor #estradas #rodovia #transito #obras",
-      "comentario": "E aí, na sua cidade o asfalto aguenta o calor ou afunda? A ou B? 👇"
+      "comentario": "E aí, na sua cidade o asfalto aguenta o calor ou afunda? A ou B? 👇",
+      "postado_em": "2026-11-22T19:43:00-03:00",
+      "media_id": "18099133565130399",
+      "tiktok_post_id": "6b036fcf846b0ee907c2f84b"
     }
   ],
   "frequencia": "todos os dias, 2 postagens"
