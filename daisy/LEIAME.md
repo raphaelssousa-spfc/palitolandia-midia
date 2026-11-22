@@ -1,5 +1,10 @@
 # Daisy Dinners — Reels diários (TAAFT)
 
+> ⚠️ ATUALIZAÇÃO 22/11 (pedido do Raphael): este manual vale MAIS que o texto da rotina agendada.
+> - 3 clipes (não 4). Foto real do prato = <Image 2> sempre.
+> - Montar com `assemble_v2.py roteiro.json` (NÃO o assemble.py do passo 6 da rotina).
+> - Legenda do post com pergunta no fim. Ver "Por que mudou" e "QUALIDADE DA COMIDA" abaixo.
+
 Daisy Parker, 34, mãe de 3 em Ohio. Jantas baratas pra família. Bordão: "Dinner's handled."
 Vende o e-book "The $75 Dinner Plan" (30 jantas, EM PROMOÇÃO: US$ 9.99, era US$ 17): https://payhip.com/b/7QkKt
 Tudo em inglês americano. Instagram @daisydinners (link na bio).
@@ -7,7 +12,8 @@ Tudo em inglês americano. Instagram @daisydinners (link na bio).
 ## Arquivos
 - assets/rosto-daisy.jpg — rosto aprovado. SEMPRE a imagem de referência no TAAFT.
 - assets/Perfil-A.png — logo com nome (só tela final do assemble.py). assets/logo-avental.png — símbolo sem letras (avental). assets/fonts/ — legenda.
-- assemble.py — `python3 assemble.py saida.mp4 c1.mp4 "fala 1" c2.mp4 "fala 2" ...`
+- assemble_v2.py — MONTAGEM ATUAL (desde 22/11): `python3 assemble_v2.py roteiro.json` (formato no topo do arquivo). Gancho em texto grande, foto real em tela cheia na abertura, legenda animada palavra por palavra, figurinhas (emoji), etiqueta "THE SECRET", "LINK IN BIO" + selo da promoção, barra de progresso, cortes de silêncio, tela final 1,3 s.
+- assemble.py — montagem antiga (não usar mais).
   Normaliza 1080x1920, legenda palavra por palavra (3 palavras, atual em amarelo), tela final 2,5 s.
 - receitas.json — as 30 jantas do e-book (título, regra, custo, ingredientes). Fonte dos temas.
 - fila.json — vídeos feitos (id, tema, tipo, roupa, falas, legenda, status).
@@ -19,7 +25,14 @@ Tudo em inglês americano. Instagram @daisydinners (link na bio).
 - 1 por semana: venda direta do plano (o que tem dentro, por que funciona, "link in my bio"). Fale da promoção: "It's on sale right now, under ten dollars instead of seventeen."
 - Não repetir receita/tema já em fila.json.
 
-## Roteiro (4 clipes de 8 s = ~34 s com a tela final)
+## Por que mudou (análise 22/11)
+Reels 03–05: ~65% pulavam nos 3 primeiros segundos, média assistida 3–5 s, zero interação, postados 4–5 h da manhã nos EUA, comida da IA estranha. Regras novas:
+- Abrir com COMIDA DE VERDADE (foto real Unsplash em tela cheia, ~1,2 s) + texto de gancho com preço. Nunca abrir só com a Daisy falando.
+- 3 clipes (gancho, segredo, prato+CTA) = ~20–25 s. 4 clipes só se o 2º for muito bom.
+- Close de comida = SEMPRE foto real (b-roll do assemble_v2), nunca a comida da IA em close.
+- Legenda do post termina com pergunta pra puxar comentário (ex. "What's your go-to $5 dinner?").
+
+## Roteiro (3 clipes de 8 s; antes eram 4)
 1. Gancho (curiosidade forte, número/preço): ex. "This whole dinner cost me nine dollars. Watch."
 2. Ingredientes/preço ou primeiro passo.
 3. Passo principal / segredo da receita.
@@ -40,7 +53,7 @@ Gancho curto + "Full 30-dinner plan in my bio, on sale for $9.99 (was $17)." + 5
 
 ## Imagens de referência no TAAFT (nesta ordem)
 1. assets/rosto-daisy.jpg (rosto) — sempre.
-2. Foto REAL do prato do dia (Unsplash, licença free; buscar em unsplash.com no navegador do PC e subir de images.unsplash.com/photo-...?w=1080&fm=jpg). Escolher foto caseira, molho/comida misturada, nada de prato de restaurante.
+2. Foto REAL do prato do dia — OBRIGATÓRIA em todo clipe que mostra comida (sem ela a IA inventa comida estranha). A MESMA foto vai no assemble_v2 como "broll" (abertura) e "dish_img" (círculo). Pegue o JPG pelo navegador (fetch → base64, 1 fatia; ?w=1080&q=80&fm=jpg) e salve no sandbox. (Unsplash, licença free; buscar em unsplash.com no navegador do PC e subir de images.unsplash.com/photo-...?w=1080&fm=jpg). Escolher foto caseira, molho/comida misturada, nada de prato de restaurante.
 3. assets/logo-avental.png (símbolo do avental, sem letras) — a partir do vídeo 03.
 Tirar as imagens antigas (Remove image) e subir de novo quando a ordem mudar. Imagens públicas: dá pra dar fetch direto do raw.githubusercontent.com no navegador (não precisa base64).
 
@@ -48,7 +61,9 @@ Tirar as imagens antigas (Remove image) e subir de novo quando a ordem mudar. Im
 ```
 <Image 1> is the reference image for the woman. <Image 2> is the reference for how the food looks. <Image 3> is the symbol on her apron. Vertical 9:16 realistic smartphone UGC video, filmed handheld by a friend, one continuous shot, no cuts, 8 seconds. The woman must exactly match <Image 1> in every frame: same face, same light freckles, same blue-gray eyes, same light brown hair in a loose messy bun. Do not alter or stylize her face. OUTFIT: a {ROUPA} under a clean white cooking apron with a small round sage-green patch on the chest showing only the symbol from <Image 3> (white plate with a yellow daisy, fork and knife), with no letters and no words anywhere on the apron or hat, and a white chef hat; the same outfit in every frame. SETTING: the same bright cozy home kitchen as <Image 1>: white cabinets, wooden counter, window with soft natural daylight, evening. ACTION: {ACTION} FOOD: real home-cooked food like a normal phone video of a family dinner: natural textures, matte, slightly messy, not glossy, not styled, not plastic, looking like the food in <Image 2>. She is framed from the waist up, centered, looking into the camera most of the time, friendly and relaxed, natural hand gestures. AUDIO: she speaks directly to the camera in a warm, natural, upbeat American English voice, a 34-year-old mom from Ohio, at a natural fast pace, clearly saying exactly: "{FALA}" Quiet kitchen ambience only. No music, no subtitles, no captions, no text on screen, no letters or words on clothing.
 ```
-Dicas de ACTION/comida (aprendido nos vídeos 01–02):
+Dicas de ACTION/comida (aprendido nos vídeos 01–06):
+- QUALIDADE DA COMIDA (22/11): a IA erra comida de perto. Na ACTION, a comida fica a meio metro da câmera, na altura da cintura (panela no fogão ou prato baixo), nunca "close to the camera". Escreva a comida igual à foto: "exactly the same dish as <Image 2>, same colors and textures". Prefira pratos que a IA acerta (arroz, macarrão com molho, sopa, assadeira de frango e batata, chili). Evite tacos, quesadillas, queijo derretido, ovos fritos, coisas recheadas.
+- Ao olhar os 4 quadros: comida com formato estranho, cor de plástico, pedaços derretidos/fundidos, garfo/mão deformada = REFAZ.
 - NUNCA "food magazine photo"/"appetizing": a IA faz comida brilhante e de plástico. Peça comida caseira, fosca, um pouco bagunçada, igual a <Image 2>.
 - Uma ação simples e lenta por clipe: segurar a panela parada, mexer devagar, mostrar o prato perto da câmera. Nada de enrolar macarrão no garfo, morder ou despejar líquido (a IA erra).
 - No clipe 4 ela NÃO come: segura o prato e aponta, pra fala final sair clara.

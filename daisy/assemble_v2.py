@@ -152,18 +152,25 @@ open(f"{TMP}/fx.ass", "w").write(head + "\n".join(ev) + "\n")
 
 # 4) figurinhas PNG (prato em círculo + emojis)
 ov = []  # (png, x, y, t0, t1)
-if spec.get("dish"):
-    ci, tt = spec["dish"]; o, s, L = segs[ci]
-    run(["ffmpeg", "-v", "error", "-y", "-ss", f"{max(0, tt - s):.2f}", "-i", o, "-frames:v", "1", f"{TMP}/dish.png"])
-    im = Image.open(f"{TMP}/dish.png").convert("RGB")
-    cx, cy, r = W // 2, int(H * 0.70), 320  # recorte central-baixo (onde fica o prato)
-    if spec.get("dish_box"): cx, cy, r = spec["dish_box"]
-    im = im.crop((cx - r, cy - r, cx + r, cy + r)).resize((400, 400), Image.LANCZOS)
+if spec.get("dish") or spec.get("dish_img"):
+    if spec.get("dish_img"):  # foto real (preferível)
+        im = Image.open(P(spec["dish_img"])).convert("RGB"); s_ = min(im.size)
+        im = im.crop(((im.width - s_) // 2, (im.height - s_) // 2, (im.width + s_) // 2, (im.height + s_) // 2))
+    else:
+        ci, tt = spec["dish"]; o, s, L = segs[ci]
+        run(["ffmpeg", "-v", "error", "-y", "-ss", f"{max(0, tt - s):.2f}", "-i", o, "-frames:v", "1", f"{TMP}/dish.png"])
+        im = Image.open(f"{TMP}/dish.png").convert("RGB")
+        cx, cy, r = W // 2, int(H * 0.70), 320  # recorte central-baixo (onde fica o prato)
+        if spec.get("dish_box"): cx, cy, r = spec["dish_box"]
+        im = im.crop((cx - r, cy - r, cx + r, cy + r))
+    im = im.resize((400, 400), Image.LANCZOS)
     D = 420; out = Image.new("RGBA", (D, D), (0, 0, 0, 0)); dd = ImageDraw.Draw(out)
     dd.ellipse((0, 0, D - 1, D - 1), fill="white")
     mk = Image.new("L", (400, 400), 0); ImageDraw.Draw(mk).ellipse((0, 0, 399, 399), fill=255)
     out.paste(im, (10, 10), mk); out.save(f"{TMP}/dish_c.png")
-    ov.append((f"{TMP}/dish_c.png", 630, 560, 0.25, HOOK_END))
+    b0 = [b for b in spec.get("broll", []) if b.get("clip", 0) == 0 and b.get("at", 0) < 0.3]
+    t_in = max(0.25, b0[0].get("len", 1.4) if b0 else 0)  # depois da foto cheia de abertura
+    ov.append((f"{TMP}/dish_c.png", 630, 560, t_in, max(t_in + 1.2, HOOK_END)))
 if spec.get("hook_emoji"):
     ov.append((emoji_png(spec["hook_emoji"], 150, f"{TMP}/e_hook.png"), 560, 520, 0.5, HOOK_END))
 off = 0.0
@@ -174,10 +181,30 @@ for i, ((o, s, L), c) in enumerate(zip(segs, clips)):
         ov.append((emoji_png("👆", 160, f"{TMP}/e_up.png"), 830, 60, off + max(0, L - 3.2), off + L))
     off += L
 
+# 4b) b-roll com FOTO REAL da comida (tela cheia, zoom lento) por cima do vídeo; a voz continua.
+#     "broll": [{"img": "prato.jpg", "clip": 0, "at": 0.0, "len": 1.4}, ...]
+br = []  # (mp4, t0, t1)
+offs = []; acc = 0.0
+for _, _, L in segs: offs.append(acc); acc += L
+for k, b in enumerate(spec.get("broll", [])):
+    a = offs[b.get("clip", 0)] + b.get("at", 0.0); ln = b.get("len", 1.4); nfr = int(ln * FPS) + 2
+    o = f"{TMP}/br{k}.mp4"
+    run(["ffmpeg", "-v", "error", "-y", "-loop", "1", "-i", P(b["img"]), "-t", f"{ln:.2f}", "-vf",
+         f"scale={W * 2}:{H * 2}:force_original_aspect_ratio=increase:flags=lanczos,crop={W * 2}:{H * 2},"
+         f"zoompan=z='1.0+0.10*on/{nfr}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={nfr}:s={W}x{H}:fps={FPS},"
+         "eq=saturation=1.05,format=yuv420p", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", o])
+    br.append((o, a, a + ln))
+
 inputs = ["-i", f"{TMP}/joined.mp4"]
+for o, *_ in br: inputs += ["-i", o]
 for p_, *_ in ov: inputs += ["-loop", "1", "-i", p_]
 fc = []; last = "[0:v]"
-for k, (p_, x, y, a, b) in enumerate(ov, start=1):
+for k, (o, a, b) in enumerate(br, start=1):
+    fc.append(f"[{k}:v]setpts=PTS-STARTPTS+{a:.3f}/TB[b{k}]")
+    fc.append(f"{last}[b{k}]overlay=0:0:eof_action=pass:enable='between(t,{a:.3f},{b:.3f})'[w{k}]")
+    last = f"[w{k}]"
+nb = len(br)
+for k, (p_, x, y, a, b) in enumerate(ov, start=1 + nb):
     # entra com "pop" (sobe 40 px nos 0,2 s) e some no fim
     fc.append(f"[{k}:v]format=rgba,fade=in:st={a:.2f}:d=0.15:alpha=1,fade=out:st={max(a, b - 0.15):.2f}:d=0.15:alpha=1[o{k}]")
     fc.append(f"{last}[o{k}]overlay=x={x}:y='{y}+40*max(0,1-(t-{a:.2f})/0.2)':enable='between(t,{a:.2f},{b:.2f})':shortest=1[v{k}]")
