@@ -2,6 +2,23 @@
 
 Histórico dos últimos 14 dias (mais novo no topo). Não repetir perfil 3 dias seguidos nem repetir comentário.
 
+## 2026-11-22
+
+1. [@0bras](https://www.instagram.com/0bras/) – obras grandes e infraestrutura
+   - Se for de rodovia/asfalto: "Acostamento e borda do pavimento são onde a água mais entra. Borda sem confinamento esfarela e o defeito anda pra dentro da pista."
+   - Se for de outra obra: "Em obra desse porte, o diário de obra bem preenchido é o que protege a equipe quando surge dúvida lá na frente."
+2. [@fundacoessemcomplicacoes](https://www.instagram.com/fundacoessemcomplicacoes/) – fundações e solo explicados
+   - Se for de solo/fundação: "Solo mole debaixo de aterro é clássico: sem tempo de adensamento, o recalque aparece depois da obra entregue, seja em prédio ou em estrada."
+   - Se for de outra obra: "Concordo. Laudo de sondagem lido com calma vale mais que pressa em começar a escavar."
+3. [@eng.civiladrianovanjura](https://www.instagram.com/eng.civiladrianovanjura/) – dicas de obra e engenharia
+   - Se for de estrutura/concreto: "Adensamento com vibrador faz muita diferença. Concreto com bicheira por falta de vibração perde resistência e deixa o ferro exposto."
+   - Se for de outra obra: "Boa. Conferir a locação com trena e esquadro antes de levantar parede economiza muito retrabalho."
+4. [@eduardomikail](https://www.instagram.com/eduardomikail/) – construção e dicas de engenharia
+   - Se for de acabamento/reforma: "Impermeabilização testada com lâmina d'água por 72 horas antes do piso evita a infiltração que só aparece no vizinho de baixo."
+   - Se for de outra obra: "Verdade. Obra bem organizada, com material estocado certo, perde menos e rende mais todo dia."
+5. [@engcivilcamilasoares](https://www.instagram.com/engcivilcamilasoares/) – engenharia civil no dia a dia
+   - "Concordo. Quem sai da teoria e vai ao canteiro cedo aprende a enxergar problema de execução antes de virar custo."
+
 ## 2026-11-21
 
 1. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico
