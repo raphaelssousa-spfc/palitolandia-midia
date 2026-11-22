@@ -1,147 +1,149 @@
 {
- "perfil": "palitolandia.ia",
- "horarios": [
-  "12:10",
-  "18:10"
- ],
- "fuso": "America/Fortaleza",
- "itens": [
-  {
-   "id": "oxford-asteca",
-   "status": "postado",
-   "video": "videos/oxford-asteca.mp4",
-   "capa": "videos/oxford-asteca-capa.jpg",
-   "legenda": "Isso parece fora de ordem... mas é real 🎓🦅\nAssiste até o fim e comenta se você sabia 👀\nSegue @palitolandia.ia\n#oxford #astecas #historia #curiosidades #vocesabia",
-   "comentario": "Você sabia dessa? Comenta aqui 👇",
-   "postado_em": "2026-11-11 17:32 (America/Fortaleza)",
-   "media_id": "18126811171917187",
-   "tiktok_post_id": "ja-estava",
-   "tiktok_obs": "já estava no TikTok"
-  },
-  {
-   "id": "fax-telefone",
-   "status": "postado",
-   "video": "videos/fax-telefone.mp4",
-   "capa": "videos/fax-telefone-capa.jpg",
-   "legenda": "Parece mentira #8 📠☎️\nUm desses chegou MUITO atrasado... qual? 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#fax #telefone #historia #curiosidades #vocesabia",
-   "comentario": "Fax ou telefone: em quem você apostou? 👇",
-   "postado_em": "2026-11-14 20:42 (America/Fortaleza)",
-   "media_id": "18138003347495421",
-   "episodio": 8
-  },
-  {
-   "id": "lata-abridor",
-   "status": "postado",
-   "video": "videos/lata-abridor.mp4",
-   "capa": "videos/lata-abridor-capa.jpg",
-   "legenda": "Tenta adivinhar antes do fim 🥫🔨\nAssiste até o fim e comenta se você sabia 👀\nSegue @palitolandia.ia\n#lata #invencoes #historia #curiosidades #vocesabia",
-   "comentario": "Você sabia dessa? Comenta aqui 👇",
-   "postado_em": "2026-11-12 12:15 (America/Fortaleza)",
-   "media_id": "18100174862541712",
-   "tiktok_post_id": "ja-estava",
-   "tiktok_obs": "já estava no TikTok"
-  },
-  {
-   "id": "isqueiro-fosforo",
-   "status": "postado",
-   "video": "videos/isqueiro-fosforo.mp4",
-   "capa": "videos/isqueiro-fosforo-capa.jpg",
-   "legenda": "Um desses chegou atrasado... e não é o que você pensa 🔥🧪\nAssiste até o fim e comenta se você sabia 👀\nSegue @palitolandia.ia\n#fosforo #isqueiro #historia #curiosidades #vocesabia",
-   "comentario": "Você sabia dessa? Comenta aqui 👇",
-   "postado_em": "2026-11-12T18:33:47-03:00",
-   "media_id": "17977439103172539",
-   "tiktok_post_id": "6b00e37bdd205ed779a87874"
-  },
-  {
-   "id": "gps-da-novela",
-   "status": "postado",
-   "postado_em": "2026-11-13 17:02",
-   "media_id": "18109295530967775",
-   "agendado_para": "2026-11-13 17:00",
-   "obs": "Postagem avulsa (tema do momento: novela x Nordeste) por tarefa agendada única às 17:00. NÃO é da fila das 18:10.",
-   "video": "videos/gps-da-novela.mp4",
-   "capa": "videos/gps-da-novela-capa.jpg",
-   "legenda": "O GPS da novela chegou em Fortaleza… e travou 🤯📍\nEle só queria achar UMA coisa.\nAté o fim tu entende 👀\nSegue @palitolandia.ia\n#novela #nordeste #fortaleza #humor #desenhoanimado #palitolandia",
-   "comentario": "O que a novela esqueceu de mostrar da tua cidade? Comenta aqui 👇"
-  },
-  {
-   "id": "tubarao-arvore",
-   "status": "postado",
-   "video": "videos/tubarao-arvore.mp4",
-   "capa": "videos/tubarao-arvore-capa.jpg",
-   "legenda": "Parece mentira #9 🦈🌳\nUm desses chegou MUITO antes do outro... qual? 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#tubarao #arvores #natureza #curiosidades #vocesabia",
-   "comentario": "Tubarão ou árvore: em quem você apostou? 👇",
-   "episodio": 9,
-   "postado_em": "2026-11-15 19:12",
-   "media_id": "17915914887283549"
-  },
-  {
-   "id": "mamute-piramide",
-   "status": "postado",
-   "video": "videos/mamute-piramide.mp4",
-   "capa": "videos/mamute-piramide-capa.jpg",
-   "legenda": "Parece mentira #10 🦣🔺\nIsso parece fora de ordem... mas é real 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#mamute #piramides #egito #curiosidades #vocesabia",
-   "comentario": "Viram ou não viram? Qual é o seu palpite? 👇",
-   "episodio": 10,
-   "postado_em": "2026-11-16 19:13",
-   "media_id": "18127486369902753"
-  },
-  {
-   "id": "trex-estego",
-   "status": "postado",
-   "video": "videos/trex-estego.mp4",
-   "capa": "videos/trex-estego-capa.jpg",
-   "legenda": "Parece mentira #11 🦖🦕\nIsso parece fora de ordem... mas é real 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#dinossauros #tiranossauro #curiosidades #vocesabia #ciencia",
-   "comentario": "Conheceu ou não conheceu? Qual é o seu palpite? 👇",
-   "episodio": 11,
-   "postado_em": "2026-11-17 19:11",
-   "media_id": "18155860177553977"
-  },
-  {
-   "id": "nintendo-aviao",
-   "status": "postado",
-   "video": "videos/nintendo-aviao.mp4",
-   "capa": "videos/nintendo-aviao-capa.jpg",
-   "legenda": "Parece mentira #12 🎴✈️\nIsso parece fora de ordem... mas é real 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#nintendo #aviao #curiosidades #vocesabia #historia",
-   "comentario": "Nintendo ou avião: em quem você apostou? 👇",
-   "episodio": 12,
-   "postado_em": "2026-11-19 19:12",
-   "media_id": "18420827857083671",
-   "tiktok_post_id": "6aff91fa4c1afd05dedae578"
-  },
-  {
-   "id": "harvard-newton",
-   "status": "postado",
-   "video": "videos/harvard-newton.mp4",
-   "capa": "videos/harvard-newton-capa.jpg",
-   "legenda": "Parece mentira #13 🎓🍎\nIsso parece fora de ordem... mas é real 👀\nAmanhã: o videogame ou o homem na Lua?\nSegue @palitolandia.ia\n#harvard #newton #historia #curiosidades #vocesabia",
-   "comentario": "Harvard ou Newton: quem veio primeiro? 👇",
-   "episodio": 13,
-   "formato": "novo (16/11)",
-   "postado_em": "2026-11-21 20:42",
-   "media_id": "18605210860069179"
-  },
-  {
-   "id": "tunel-banco",
-   "status": "pendente",
-   "video": "videos/tunel-banco.mp4",
-   "capa": "videos/tunel-banco-capa.jpg",
-   "legenda": "Verdade ou mito? #1 🕳️🏦\nIsso parece roteiro de filme... 🎬\nVerdade ou mito? Crava a sua antes de ver o final 👇\nSegue @palitolandia.ia\n#verdadeoumito #curiosidades #vocesabia #historia #brasil",
-   "comentario": "Verdade ou mito? Crava aqui antes de ver o final 👇",
-   "episodio": 1,
-   "serie": "B",
-   "formato": "serie B (18/11)"
-  },
-  {
-   "id": "videogame-lua",
-   "status": "pendente",
-   "video": "videos/videogame-lua.mp4",
-   "capa": "videos/videogame-lua-capa.jpg",
-   "legenda": "Parece mentira #14 🎮🌙\nUm deles é bem mais velho do que parece... 👀\nAssiste até o fim antes de cravar a resposta.\nPróximo: a Coca-Cola ou a Torre Eiffel?\nSegue @palitolandia.ia\n#videogame #lua #astronauta #curiosidades #vocesabia",
-   "comentario": "Videogame ou homem na Lua: em quem você apostou? 👇",
-   "episodio": 14,
-   "serie": "A",
-   "formato": "novo (16/11) + ajustes 19/11"
-  }
- ]
+  "perfil": "palitolandia.ia",
+  "horarios": [
+    "12:10",
+    "18:10"
+  ],
+  "fuso": "America/Fortaleza",
+  "itens": [
+    {
+      "id": "oxford-asteca",
+      "status": "postado",
+      "video": "videos/oxford-asteca.mp4",
+      "capa": "videos/oxford-asteca-capa.jpg",
+      "legenda": "Isso parece fora de ordem... mas é real 🎓🦅\nAssiste até o fim e comenta se você sabia 👀\nSegue @palitolandia.ia\n#oxford #astecas #historia #curiosidades #vocesabia",
+      "comentario": "Você sabia dessa? Comenta aqui 👇",
+      "postado_em": "2026-11-11 17:32 (America/Fortaleza)",
+      "media_id": "18126811171917187",
+      "tiktok_post_id": "ja-estava",
+      "tiktok_obs": "já estava no TikTok"
+    },
+    {
+      "id": "fax-telefone",
+      "status": "postado",
+      "video": "videos/fax-telefone.mp4",
+      "capa": "videos/fax-telefone-capa.jpg",
+      "legenda": "Parece mentira #8 📠☎️\nUm desses chegou MUITO atrasado... qual? 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#fax #telefone #historia #curiosidades #vocesabia",
+      "comentario": "Fax ou telefone: em quem você apostou? 👇",
+      "postado_em": "2026-11-14 20:42 (America/Fortaleza)",
+      "media_id": "18138003347495421",
+      "episodio": 8
+    },
+    {
+      "id": "lata-abridor",
+      "status": "postado",
+      "video": "videos/lata-abridor.mp4",
+      "capa": "videos/lata-abridor-capa.jpg",
+      "legenda": "Tenta adivinhar antes do fim 🥫🔨\nAssiste até o fim e comenta se você sabia 👀\nSegue @palitolandia.ia\n#lata #invencoes #historia #curiosidades #vocesabia",
+      "comentario": "Você sabia dessa? Comenta aqui 👇",
+      "postado_em": "2026-11-12 12:15 (America/Fortaleza)",
+      "media_id": "18100174862541712",
+      "tiktok_post_id": "ja-estava",
+      "tiktok_obs": "já estava no TikTok"
+    },
+    {
+      "id": "isqueiro-fosforo",
+      "status": "postado",
+      "video": "videos/isqueiro-fosforo.mp4",
+      "capa": "videos/isqueiro-fosforo-capa.jpg",
+      "legenda": "Um desses chegou atrasado... e não é o que você pensa 🔥🧪\nAssiste até o fim e comenta se você sabia 👀\nSegue @palitolandia.ia\n#fosforo #isqueiro #historia #curiosidades #vocesabia",
+      "comentario": "Você sabia dessa? Comenta aqui 👇",
+      "postado_em": "2026-11-12T18:33:47-03:00",
+      "media_id": "17977439103172539",
+      "tiktok_post_id": "6b00e37bdd205ed779a87874"
+    },
+    {
+      "id": "gps-da-novela",
+      "status": "postado",
+      "postado_em": "2026-11-13 17:02",
+      "media_id": "18109295530967775",
+      "agendado_para": "2026-11-13 17:00",
+      "obs": "Postagem avulsa (tema do momento: novela x Nordeste) por tarefa agendada única às 17:00. NÃO é da fila das 18:10.",
+      "video": "videos/gps-da-novela.mp4",
+      "capa": "videos/gps-da-novela-capa.jpg",
+      "legenda": "O GPS da novela chegou em Fortaleza… e travou 🤯📍\nEle só queria achar UMA coisa.\nAté o fim tu entende 👀\nSegue @palitolandia.ia\n#novela #nordeste #fortaleza #humor #desenhoanimado #palitolandia",
+      "comentario": "O que a novela esqueceu de mostrar da tua cidade? Comenta aqui 👇"
+    },
+    {
+      "id": "tubarao-arvore",
+      "status": "postado",
+      "video": "videos/tubarao-arvore.mp4",
+      "capa": "videos/tubarao-arvore-capa.jpg",
+      "legenda": "Parece mentira #9 🦈🌳\nUm desses chegou MUITO antes do outro... qual? 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#tubarao #arvores #natureza #curiosidades #vocesabia",
+      "comentario": "Tubarão ou árvore: em quem você apostou? 👇",
+      "episodio": 9,
+      "postado_em": "2026-11-15 19:12",
+      "media_id": "17915914887283549"
+    },
+    {
+      "id": "mamute-piramide",
+      "status": "postado",
+      "video": "videos/mamute-piramide.mp4",
+      "capa": "videos/mamute-piramide-capa.jpg",
+      "legenda": "Parece mentira #10 🦣🔺\nIsso parece fora de ordem... mas é real 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#mamute #piramides #egito #curiosidades #vocesabia",
+      "comentario": "Viram ou não viram? Qual é o seu palpite? 👇",
+      "episodio": 10,
+      "postado_em": "2026-11-16 19:13",
+      "media_id": "18127486369902753"
+    },
+    {
+      "id": "trex-estego",
+      "status": "postado",
+      "video": "videos/trex-estego.mp4",
+      "capa": "videos/trex-estego-capa.jpg",
+      "legenda": "Parece mentira #11 🦖🦕\nIsso parece fora de ordem... mas é real 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#dinossauros #tiranossauro #curiosidades #vocesabia #ciencia",
+      "comentario": "Conheceu ou não conheceu? Qual é o seu palpite? 👇",
+      "episodio": 11,
+      "postado_em": "2026-11-17 19:11",
+      "media_id": "18155860177553977"
+    },
+    {
+      "id": "nintendo-aviao",
+      "status": "postado",
+      "video": "videos/nintendo-aviao.mp4",
+      "capa": "videos/nintendo-aviao-capa.jpg",
+      "legenda": "Parece mentira #12 🎴✈️\nIsso parece fora de ordem... mas é real 👀\nComenta antes de ver o final!\nSegue @palitolandia.ia\n#nintendo #aviao #curiosidades #vocesabia #historia",
+      "comentario": "Nintendo ou avião: em quem você apostou? 👇",
+      "episodio": 12,
+      "postado_em": "2026-11-19 19:12",
+      "media_id": "18420827857083671",
+      "tiktok_post_id": "6aff91fa4c1afd05dedae578"
+    },
+    {
+      "id": "harvard-newton",
+      "status": "postado",
+      "video": "videos/harvard-newton.mp4",
+      "capa": "videos/harvard-newton-capa.jpg",
+      "legenda": "Parece mentira #13 🎓🍎\nIsso parece fora de ordem... mas é real 👀\nAmanhã: o videogame ou o homem na Lua?\nSegue @palitolandia.ia\n#harvard #newton #historia #curiosidades #vocesabia",
+      "comentario": "Harvard ou Newton: quem veio primeiro? 👇",
+      "episodio": 13,
+      "formato": "novo (16/11)",
+      "postado_em": "2026-11-21 20:42",
+      "media_id": "18605210860069179",
+      "tiktok_post_id": "6b0234e0cc364169c1160858",
+      "tiktok_postado_em": "2026-11-21 21:19 (America/Fortaleza)"
+    },
+    {
+      "id": "tunel-banco",
+      "status": "pendente",
+      "video": "videos/tunel-banco.mp4",
+      "capa": "videos/tunel-banco-capa.jpg",
+      "legenda": "Verdade ou mito? #1 🕳️🏦\nIsso parece roteiro de filme... 🎬\nVerdade ou mito? Crava a sua antes de ver o final 👇\nSegue @palitolandia.ia\n#verdadeoumito #curiosidades #vocesabia #historia #brasil",
+      "comentario": "Verdade ou mito? Crava aqui antes de ver o final 👇",
+      "episodio": 1,
+      "serie": "B",
+      "formato": "serie B (18/11)"
+    },
+    {
+      "id": "videogame-lua",
+      "status": "pendente",
+      "video": "videos/videogame-lua.mp4",
+      "capa": "videos/videogame-lua-capa.jpg",
+      "legenda": "Parece mentira #14 🎮🌙\nUm deles é bem mais velho do que parece... 👀\nAssiste até o fim antes de cravar a resposta.\nPróximo: a Coca-Cola ou a Torre Eiffel?\nSegue @palitolandia.ia\n#videogame #lua #astronauta #curiosidades #vocesabia",
+      "comentario": "Videogame ou homem na Lua: em quem você apostou? 👇",
+      "episodio": 14,
+      "serie": "A",
+      "formato": "novo (16/11) + ajustes 19/11"
+    }
+  ]
 }
