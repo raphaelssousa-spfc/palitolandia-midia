@@ -2,6 +2,23 @@
 
 Histórico dos últimos 14 dias (mais novo no topo). Não repetir perfil 3 dias seguidos nem repetir comentário.
 
+## 2026-11-23
+
+1. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico
+   - Se for de asfalto: "Teor de ligante certo é equilíbrio. Pouco, a massa trinca e desagrega. Demais, exsuda e forma trilha de roda no calor."
+   - Se for de outra obra: "Boa. Em qualquer pavimento, a regularização do subleito bem feita decide se a camada de cima vai durar ou não."
+2. [@infra_urbana](https://www.instagram.com/infra_urbana/) – infraestrutura urbana e saneamento
+   - Se for de rua/asfalto: "Tampa de poço de visita fora de nível é problema comum. Se ela afunda ou sobe em relação à pista, o asfalto em volta quebra com o tráfego."
+   - Se for de outra obra: "Concordo. Quem planeja a obra pensando em manutenção futura gasta menos ao longo dos anos."
+3. [@matheusleoni_eng](https://www.instagram.com/matheusleoni_eng/) – dicas de obra e carreira
+   - "Verdade. Saber ler uma planilha de quantitativos e comparar com o que foi gasto na obra é o que dá segurança pra qualquer engenheiro."
+4. [@leilabrito_eng](https://www.instagram.com/leilabrito_eng/) – patologias e manutenção predial
+   - Se for de infiltração/trinca: "Eflorescência, aquela mancha branca na parede, mostra que a água está passando e carregando sal. Se ela volta, a origem da umidade não foi resolvida."
+   - Se for de outra obra: "Boa. Um plano simples de manutenção anual já evita a maior parte das patologias que vemos por aí."
+5. [@danilolorenceto](https://www.instagram.com/danilolorenceto/) – reforma e obra residencial
+   - Se for de reforma/acabamento: "Teste de estanqueidade da tubulação antes de fechar a parede é barato e evita quebrar revestimento depois."
+   - Se for de outra obra: "Bom ponto. Em reforma, combinar o escopo por escrito antes de começar evita muita discussão com o cliente."
+
 ## 2026-11-22
 
 1. [@0bras](https://www.instagram.com/0bras/) – obras grandes e infraestrutura
