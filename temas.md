@@ -18,7 +18,7 @@
 
 # SÉRIE B — VERDADE OU MITO? (temas aprovados pelo dono, 18/11 — usar nesta ordem)
 1. "Ladrões cavaram um túnel até dentro de um banco no Brasil." VERDADE (Banco Central de Fortaleza, 2005). — feito: Verdade ou Mito #1, 18/11 (id tunel-banco)
-2. "A Muralha da China dá pra ver do espaço a olho nu." MITO.
+2. "A Muralha da China dá pra ver do espaço a olho nu." MITO. — feito: Verdade ou Mito #2, 23/11 (id muralha-espaco; 1º astronauta chinês, 2003, não viu; fina e da cor do chão)
 3. "Tem formiga que planta a própria comida." VERDADE (formiga-cortadeira cultiva fungo).
 4. "Peixinho dourado só lembra das coisas por 3 segundos." MITO.
 5. "Existe um animal com 3 corações e sangue azul." VERDADE (polvo).
@@ -31,9 +31,12 @@
 ## Frases de fechamento já usadas (não repetir)
 Comentário:
 - "Comenta se achou que era mentira!" (VoM #1)
+- "Quem caiu nessa, comenta aqui!" (VoM #2)
 Manda pra alguém (as duas séries):
 - "Manda pro amigo gamer que se acha das antigas." (PM #14)
 - "Marca o amigo sumido que parece que mora num túnel." (VoM #1 — refeito 18/11; a 1ª versão "Manda pra quem cava na praia pra chegar no Japão" foi recusada pelo dono)
+- "Marca o amigo que procura os óculos com eles na cara." (VoM #2)
 Legendas/comentários fixados de posts já usados (variar):
 - PM #14 legenda: "Um deles é bem mais velho do que parece... 🎮🌙" / comentário: "Videogame ou homem na Lua: em quem você apostou? 👇"
 - VoM #1 legenda: "Isso parece roteiro de filme... 🎬" + "Verdade ou mito? Crava a sua antes de ver o final 👇" / comentário fixado: "Verdade ou mito? Crava aqui antes de ver o final 👇"
+- VoM #2 legenda: "Lá de cima, dá pra ver ou não? 👀" + "Verdade ou mito? Responde antes de ver o final 👇" / comentário fixado: "Muralha da China vista do espaço: verdade ou mito? Vota aqui antes do final 👇"

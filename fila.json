@@ -147,6 +147,17 @@
       "episodio": 14,
       "serie": "A",
       "formato": "novo (16/11) + ajustes 19/11"
+    },
+    {
+      "id": "muralha-espaco",
+      "status": "pendente",
+      "video": "videos/muralha-espaco.mp4",
+      "capa": "videos/muralha-espaco-capa.jpg",
+      "legenda": "Verdade ou mito? #2 🧱🚀\nLá de cima, dá pra ver ou não? 👀\nVerdade ou mito? Responde antes de ver o final 👇\nSegue @palitolandia.ia\n#verdadeoumito #curiosidades #vocesabia #china #espaco",
+      "comentario": "Muralha da China vista do espaço: verdade ou mito? Vota aqui antes do final 👇",
+      "episodio": 2,
+      "serie": "B",
+      "formato": "serie B (18/11)"
     }
   ]
 }

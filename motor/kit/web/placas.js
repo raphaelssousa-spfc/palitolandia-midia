@@ -384,3 +384,79 @@ export const pad = (p) => { const g = p.g; g.save(); g.translate(300, 520); g.li
   g.lineWidth = 6; for (const [bx, by, c] of [[140, -45, '#ffd23f'], [180, -5, '#e0453a'], [100, -5, '#2f6fb2'], [140, 35, '#2f9a58']]) { g.fillStyle = c; g.beginPath(); g.arc(bx, by, 20, 0, 7); g.fill(); g.stroke(); }
   g.fillStyle = '#555a6e'; for (const sx of [-55, 55]) { g.beginPath(); g.arc(sx, 30, 30, 0, 7); g.fill(); g.stroke(); }
   g.fillStyle = '#7b3fe4'; g.beginPath(); g.roundRect(-30, -70, 60, 26, 10); g.fill(); g.restore(); };
+// ---- Verdade ou Mito #2 (Muralha da China vista do espaço) — projeto motor/muralha ----
+// Terra vista do espaço + astronauta flutuando com binóculo; t = balanço (0..6.28); line = risco amarelo exagerado na Terra ("dizem que dá pra ver")
+export const orbit = (p, t = 0, line = false) => { const g = p.g; g.save(); g.lineJoin = 'round'; g.lineCap = 'round'; g.strokeStyle = K; g.lineWidth = 12;
+  g.fillStyle = 'rgba(0,0,0,0.35)'; g.beginPath(); g.roundRect(28, 134, 560, 700, 40); g.fill();
+  g.fillStyle = '#16153a'; g.beginPath(); g.roundRect(16, 120, 560, 700, 40); g.fill(); g.stroke();
+  g.save(); g.beginPath(); g.roundRect(22, 126, 548, 688, 36); g.clip();
+  g.fillStyle = '#fff'; for (let k = 0; k < 26; k++) { const x = 40 + (k * 211) % 520, y = 150 + (k * 137) % 640, r = 3 + (k % 3) * 2 * (0.6 + 0.4 * Math.sin(t * 2 + k)); g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); }
+  g.fillStyle = '#2f7fd0'; g.beginPath(); g.arc(300, 930, 400, 0, 7); g.fill(); g.lineWidth = 12; g.stroke();
+  g.fillStyle = '#6cbf55'; g.lineWidth = 8;
+  for (const [x, y, rx, ry, a] of [[170, 620, 110, 50, -0.3], [420, 640, 140, 60, 0.2], [300, 740, 90, 40, 0.1]]) { g.beginPath(); g.ellipse(x, y, rx, ry, a, 0, 7); g.fill(); g.stroke(); }
+  g.fillStyle = '#d9b77a'; g.beginPath(); g.ellipse(440, 630, 70, 26, 0.2, 0, 7); g.fill();
+  if (line) { g.beginPath(); g.moveTo(300, 650); for (let k = 1; k <= 8; k++) g.lineTo(300 + k * 30, 650 + (k % 2 ? -22 : 10)); g.strokeStyle = K; g.lineWidth = 30; g.stroke(); g.strokeStyle = '#ffd23f'; g.lineWidth = 18; g.stroke(); }
+  g.fillStyle = 'rgba(255,255,255,0.18)'; g.beginPath(); g.arc(300, 930, 410, Math.PI * 1.1, Math.PI * 1.9); g.lineWidth = 18; g.strokeStyle = 'rgba(160,210,255,0.5)'; g.stroke();
+  // astronauta
+  const by = 320 + 18 * Math.sin(t), rot = 0.15 * Math.sin(t * 0.7); g.translate(300, by); g.rotate(rot); g.strokeStyle = K; g.lineWidth = 10;
+  g.fillStyle = '#d9dde4'; g.beginPath(); g.roundRect(-70, -10, 140, 150, 40); g.fill(); g.stroke();
+  g.fillStyle = '#f1f3f6'; g.beginPath(); g.roundRect(-120, 20, 60, 30, 14); g.fill(); g.stroke(); g.beginPath(); g.roundRect(60, 20, 60, 30, 14); g.fill(); g.stroke();
+  g.beginPath(); g.roundRect(-60, 130, 45, 70, 16); g.fill(); g.stroke(); g.beginPath(); g.roundRect(15, 130, 45, 70, 16); g.fill(); g.stroke();
+  g.fillStyle = '#f1f3f6'; g.beginPath(); g.arc(0, -70, 82, 0, 7); g.fill(); g.stroke();
+  g.fillStyle = '#f2bf96'; g.beginPath(); g.arc(0, -66, 58, 0, 7); g.fill(); g.lineWidth = 6; g.stroke();
+  // binóculo (de frente, sobre os olhos)
+  g.lineWidth = 8; g.fillStyle = '#2a2a36'; for (const x of [-26, 26]) { g.beginPath(); g.roundRect(x - 22, -96, 44, 52, 12); g.fill(); g.stroke(); }
+  g.fillStyle = '#7fd0ff'; for (const x of [-26, 26]) { g.beginPath(); g.arc(x, -70, 13, 0, 7); g.fill(); }
+  g.fillStyle = '#2a2a36'; g.fillRect(-6, -80, 12, 16);
+  g.strokeStyle = K; g.lineWidth = 7; g.beginPath(); g.arc(0, -30, 16, 0.2, Math.PI - 0.2); g.stroke();
+  g.fillStyle = 'rgba(255,255,255,0.45)'; g.beginPath(); g.ellipse(-44, -112, 16, 26, -0.6, 0, 7); g.fill();
+  g.restore(); g.restore(); };
+// Muralha serpenteando nos morros verdes; t = quanto já foi desenhado (0..1); car = carrinho andando em cima (largura de rua)
+export const wall = (p, t = 1, car = -1) => { const g = p.g; g.save(); g.lineJoin = 'round'; g.lineCap = 'round'; g.strokeStyle = K; g.lineWidth = 12;
+  g.fillStyle = 'rgba(0,0,0,0.35)'; g.beginPath(); g.roundRect(28, 134, 560, 700, 40); g.fill();
+  g.fillStyle = '#bfe6ff'; g.beginPath(); g.roundRect(16, 120, 560, 700, 40); g.fill(); g.stroke();
+  g.save(); g.beginPath(); g.roundRect(22, 126, 548, 688, 36); g.clip();
+  g.fillStyle = '#7fbf5a'; g.lineWidth = 9; g.beginPath(); g.moveTo(0, 520); g.quadraticCurveTo(120, 360, 240, 470); g.quadraticCurveTo(380, 340, 600, 450); g.lineTo(600, 900); g.lineTo(0, 900); g.closePath(); g.fill(); g.stroke();
+  g.fillStyle = '#5fa646'; g.beginPath(); g.moveTo(0, 680); g.quadraticCurveTo(200, 560, 340, 650); g.quadraticCurveTo(470, 580, 600, 640); g.lineTo(600, 900); g.lineTo(0, 900); g.closePath(); g.fill(); g.stroke();
+  const P = []; for (let k = 0; k <= 60; k++) { const u = k / 60; P.push([10 + 590 * u, 760 - 230 * u + 70 * Math.sin(u * 9)]); }
+  const n = Math.max(2, Math.round(P.length * t)), S = P.slice(0, n);
+  g.lineWidth = 46; g.strokeStyle = K; g.beginPath(); S.forEach(([x, y], i) => (i ? g.lineTo(x, y) : g.moveTo(x, y))); g.stroke();
+  g.lineWidth = 32; g.strokeStyle = '#c9a874'; g.stroke();
+  g.lineWidth = 8; g.strokeStyle = '#8a6a44'; g.stroke();
+  g.lineWidth = 8; g.strokeStyle = K; g.fillStyle = '#d9b884';
+  for (let k = 10; k < n; k += 15) { const [x, y] = P[k]; g.beginPath(); g.roundRect(x - 24, y - 52, 48, 52, 6); g.fill(); g.stroke(); g.fillStyle = '#a8323a'; g.beginPath(); g.moveTo(x - 30, y - 50); g.lineTo(x, y - 78); g.lineTo(x + 30, y - 50); g.closePath(); g.fill(); g.stroke(); g.fillStyle = '#d9b884'; }
+  if (car >= 0) { const i = Math.min(n - 1, Math.floor(car * (n - 1))), [x, y] = P[i], [x2, y2] = P[Math.min(P.length - 1, i + 1)], a = Math.atan2(y2 - y, x2 - x);
+    g.save(); g.translate(x, y - 26); g.rotate(a); g.scale(1.5, 1.5); g.fillStyle = '#e0453a'; g.lineWidth = 6; g.beginPath(); g.roundRect(-30, -18, 60, 24, 8); g.fill(); g.stroke();
+    g.fillStyle = '#bfe6ff'; g.beginPath(); g.roundRect(-16, -32, 30, 16, 6); g.fill(); g.stroke(); g.fillStyle = K; g.beginPath(); g.arc(-16, 8, 9, 0, 7); g.arc(16, 8, 9, 0, 7); g.fill(); g.restore(); }
+  g.restore(); g.restore(); };
+// lupa procurando a muralha fininha da cor do chão; t = 0..1 (lupa passeia)
+export const lens = (p, t = 0) => { const g = p.g; g.save(); g.lineJoin = 'round'; g.lineCap = 'round'; g.strokeStyle = K; g.lineWidth = 12;
+  g.fillStyle = 'rgba(0,0,0,0.35)'; g.beginPath(); g.roundRect(28, 134, 560, 700, 40); g.fill();
+  g.fillStyle = '#c9a874'; g.beginPath(); g.roundRect(16, 120, 560, 700, 40); g.fill(); g.stroke();
+  g.save(); g.beginPath(); g.roundRect(22, 126, 548, 688, 36); g.clip();
+  g.fillStyle = '#b8966a'; for (let k = 0; k < 9; k++) { g.beginPath(); g.ellipse(60 + (k * 173) % 520, 180 + (k * 251) % 600, 70, 26, 0.3, 0, 7); g.fill(); }
+  g.strokeStyle = '#bf9f6e'; g.lineWidth = 3; g.beginPath(); for (let k = 0; k <= 40; k++) { const u = k / 40, x = 30 + 540 * u, y = 520 + 90 * Math.sin(u * 7); k ? g.lineTo(x, y) : g.moveTo(x, y); } g.stroke();
+  const cx = 160 + 280 * t, cy = 470 + 60 * Math.sin(t * 6);
+  g.fillStyle = 'rgba(255,255,255,0.18)'; g.strokeStyle = K; g.lineWidth = 14; g.beginPath(); g.arc(cx, cy, 95, 0, 7); g.fill(); g.stroke();
+  g.lineWidth = 26; g.strokeStyle = '#8a5a34'; g.beginPath(); g.moveTo(cx + 70, cy + 70); g.lineTo(cx + 170, cy + 170); g.stroke();
+  g.restore();
+  g.fillStyle = '#fff'; g.strokeStyle = K; g.lineWidth = 10; g.beginPath(); g.roundRect(340, 680, 210, 100, 30); g.fill(); g.stroke(); txt(g, 'CADÊ?', 445, 730, 50, K);
+  g.restore(); };
+// amigo procurando os óculos com os óculos na testa; t = 0..6.28 (cabeça vira)
+export const specs = (p, t = 0) => { const g = p.g; g.save(); g.lineJoin = 'round'; g.lineCap = 'round'; g.strokeStyle = K; g.lineWidth = 12;
+  g.fillStyle = 'rgba(0,0,0,0.35)'; g.beginPath(); g.roundRect(28, 134, 560, 700, 40); g.fill();
+  g.fillStyle = '#ffe9c2'; g.beginPath(); g.roundRect(16, 120, 560, 700, 40); g.fill(); g.stroke();
+  const sx = 40 * Math.sin(t); g.translate(300 + sx * 0.3, 560);
+  g.fillStyle = '#2f6fb2'; g.lineWidth = 10; g.beginPath(); g.roundRect(-130, 120, 260, 200, [80, 80, 20, 20]); g.fill(); g.stroke();
+  g.fillStyle = '#f5c9a0'; g.beginPath(); g.arc(0, 0, 130, 0, 7); g.fill(); g.stroke();
+  g.fillStyle = '#3b2a20'; g.beginPath(); g.arc(0, -40, 132, Math.PI * 1.08, Math.PI * 1.92); g.fill();
+  // óculos na testa
+  g.lineWidth = 9; g.fillStyle = 'rgba(160,220,255,0.6)'; for (const x of [-46, 46]) { g.beginPath(); g.arc(x + sx * 0.5, -100, 32, 0, 7); g.fill(); g.stroke(); }
+  g.beginPath(); g.moveTo(-14 + sx * 0.5, -100); g.lineTo(14 + sx * 0.5, -100); g.stroke();
+  g.fillStyle = K; for (const x of [-40, 40]) { g.beginPath(); g.arc(x + sx, 6, 16, 0, 7); g.fill(); }
+  g.lineWidth = 8; g.beginPath(); g.arc(sx * 0.6, 70, 22, Math.PI + 0.3, -0.3); g.stroke();
+  g.restore(); g.save();
+  g.fillStyle = '#fff'; g.strokeStyle = K; g.lineWidth = 10; g.beginPath(); g.roundRect(40, 170, 520, 110, 30); g.fill(); g.stroke(); txt(g, 'CADÊ MEUS ÓCULOS?', 300, 226, 36, K);
+  g.font = 'bold 110px DejaVu Sans, sans-serif'; g.textAlign = 'center'; g.fillStyle = '#ffd23f'; g.lineWidth = 8;
+  for (const [x, y, k] of [[110, 420, 0], [500, 400, 1]]) { const yy = y + 12 * Math.sin(t * 2 + k * 2); g.strokeText('?', x, yy); g.fillText('?', x, yy); }
+  g.restore(); };
