@@ -352,11 +352,36 @@ const KIT = (() => {
     set(); return { g, head, casco, erector, jacks, back, set };
   }
   // ---------- 7) ANIMAÇÃO ----------
+  // avião comercial low-poly (nariz para +x, origem no chão sob o trem principal). set({ trem 0..1 (recolhido..baixado), roda, flap })
+  function aviao({ cor = '#f4f4f2', faixa = '#2f6fb3', comp = 10, x = 0, y = 0, z = 0, ry = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z); g.rotation.y = ry; const k = comp / 10, Wc = C(cor, { roughness: 0.5 }), Fc = C(faixa), K = C('#26262a');
+    const body = grp(g, 0, 1.25 * k, 0); const R0 = 0.6 * k;
+    mesh(new THREE.CylinderGeometry(R0, R0, 7 * k, 20).rotateZ(Math.PI / 2), Wc, body, 0.6 * k, 0, 0);
+    mesh(new THREE.SphereGeometry(R0, 20, 12, 0, Math.PI * 2, 0, Math.PI / 2).rotateZ(-Math.PI / 2).scale(1.7, 1, 1), Wc, body, 4.1 * k, 0, 0);
+    mesh(new THREE.CylinderGeometry(R0, 0.18 * k, 2.6 * k, 20).rotateZ(Math.PI / 2), Wc, body, -4.2 * k, 0.15 * k, 0);
+    box(7.2 * k, 0.16 * k, 0.02, Fc, body, 0.5 * k, -0.05 * k, R0 + 0.005).position.y = -0.1 * k; box(7.2 * k, 0.16 * k, 0.02, Fc, body, 0.5 * k, -0.1 * k, -R0 - 0.005);
+    for (let i = 0; i < 12; i++) for (const s of [-1, 1]) box(0.16 * k, 0.16 * k, 0.02, C('#2b3742'), body, -2.4 * k + i * 0.5 * k, 0.12 * k, s * (R0 - 0.02));
+    box(0.5 * k, 0.28 * k, 1.0 * k, glass(), body, 4.55 * k, 0.12 * k, 0);
+    const wingShape = new THREE.Shape([V2s(0, 0), V2s(1.8, 0), V2s(-0.6, 5.4), V2s(-1.4, 5.4)]);
+    for (const s of [-1, 1]) { const wg = new THREE.ExtrudeGeometry(wingShape, { depth: 0.12 * k, bevelEnabled: false }); wg.scale(k, k, 1); wg.rotateX(s * Math.PI / 2); wg.translate(0, 0.06 * k * -s, 0);
+      const wm = mesh(wg, Wc, body, 0.2 * k, -0.35 * k, 0); wm.rotation.x = s * 0.06;
+      const eng = mesh(new THREE.CylinderGeometry(0.32 * k, 0.28 * k, 1.3 * k, 16).rotateZ(Math.PI / 2), C('#c9ced3', { metalness: 0.3, roughness: 0.4 }), body, 1.0 * k, -0.75 * k, s * 1.9 * k);
+      mesh(new THREE.CircleGeometry(0.27 * k, 16).rotateY(Math.PI / 2), K, body, 1.66 * k, -0.75 * k, s * 1.9 * k);
+      const tg = new THREE.ExtrudeGeometry(new THREE.Shape([V2s(0, 0), V2s(0.9, 0), V2s(0.1, 1.8), V2s(-0.4, 1.8)]), { depth: 0.08 * k, bevelEnabled: false }); tg.scale(k, k, 1); tg.rotateX(s * Math.PI / 2);
+      mesh(tg, Wc, body, -5.0 * k, 0.2 * k, 0); }
+    const fin = new THREE.ExtrudeGeometry(new THREE.Shape([V2s(0, 0), V2s(1.5, 0), V2s(-0.2, 2.0), V2s(-0.9, 2.0)]), { depth: 0.1 * k, bevelEnabled: false }); fin.scale(k, k, 1); fin.translate(0, 0, -0.05 * k);
+    mesh(fin, Fc, body, -5.0 * k, 0.4 * k, 0);
+    const gear = grp(g, 0, 0, 0); const wheels = [];
+    for (const [gx, gz] of [[0, -0.75], [0, 0.75], [3.6, 0]]) { const st = box(0.08 * k, 0.75 * k, 0.08 * k, C('#9aa3ab'), gear, gx * k, 0.3 * k, gz * k);
+      const w = mesh(new THREE.CylinderGeometry(0.3 * k, 0.3 * k, 0.25 * k, 16).rotateX(Math.PI / 2), K, gear, gx * k, 0.3 * k, gz * k); wheels.push(w); }
+    const set = ({ trem = 1, roda = 0 } = {}) => { gear.visible = trem > 0.02; gear.scale.y = Math.max(0.02, trem); wheels.forEach(w => w.rotation.z = -roda); };
+    return { g, body, gear, wheels, set };
+  }
   const grow = (o, u, eixo = 'y') => { u = cl(u); o.visible = u > 0.001; o.scale[eixo] = Math.max(0.001, u); return o; };  // peça nasce do chão (origem na base)
   const drop = (o, u, h = 4, y0 = 0) => { o.visible = u > 0; o.position.y = y0 + h * (1 - eo(u)); return o; };          // cai do céu e assenta
   const slide = (o, u, from, to) => { o.position.copy(lv(from, to, sm(u))); return o; };
   const popIn = (o, u) => { const k = back(u); o.visible = u > 0; o.scale.setScalar(Math.max(0.001, k)); return o; };
   return { matOf, SOIL, uvScale, box, cyl, grp, chao, corte, pavimento, vala, ferragem, armadura, forma, concreto, parede, tubo,
     escavadeira, caminhao, rolo, betoneira, acabadora, cone, barreira, placa, poste, arvore, casa, carro, operario, CAMISAS, nuvem, seta, grow, drop, slide, popIn,
-    motoniveladora, fresadora, caminhaoPipa, meioFio, faixa, viga, pilar, guardaCorpo, guindaste, galeria, bocaDeLobo, pocoDeVisita, sonda, escoramento, blocos, telhado, caixaDagua, extX, setor, soloTunel, frenteTunel, anelMeio, tatuzao };
+    motoniveladora, fresadora, caminhaoPipa, meioFio, faixa, viga, pilar, guardaCorpo, guindaste, galeria, bocaDeLobo, pocoDeVisita, sonda, escoramento, blocos, telhado, caixaDagua, extX, setor, soloTunel, frenteTunel, anelMeio, tatuzao, aviao };
 })();

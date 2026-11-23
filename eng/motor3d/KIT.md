@@ -59,6 +59,7 @@ Vitrine (8 estações): `episodios/kit-demo/` (`python3 build.py kit-demo` + `no
 | Parede de blocos cerâmicos | `KIT.blocos` | w, h, d | `KIT.grow` |
 | Telhado de telha | `KIT.telhado` | w, d, alt, cor | `KIT.drop` |
 | Caixa d'água | `KIT.caixaDagua` | litros, cor | `KIT.drop` |
+| Avião comercial | `KIT.aviao` | comp, cor, faixa, ry (nariz em +x) | `.set({trem, roda})`, `.body.rotation` (arfagem/rolagem) |
 | Animação | `KIT.grow(o,u,eixo)`, `KIT.drop(o,u,h)`, `KIT.slide(o,u,de,para)`, `KIT.popIn(o,u)` | | |
 
 ## Exemplos de montagem
@@ -66,4 +67,5 @@ Vitrine (8 estações): `episodios/kit-demo/` (`python3 build.py kit-demo` + `no
 - **Poço artesiano:** `chao` + `corte` com 6–8 camadas (terra, argila, areia, rocha, rocha...) + `tubo({eixo:'y'})` + peça nova (sonda).
 - **Laje:** `forma` + `ferragem({camadas:2})` + `betoneira` + `concreto({fresco:true})` + `operario`s.
 - **Túnel/metrô:** `corte` em cima e embaixo + `soloTunel` + `frenteTunel` + `tatuzao` + `anelMeio` por anel (ver episodios/dozero-04-tunel-metro).
+- **Pista de aeroporto:** pista ao longo de z com corte em z = 0 + camadas que avançam do fundo até o corte (`layerTo` em episodios/dozero-05-pista-aeroporto) + `aviao` + canais em U + riscos de grooving.
 - **Bueiro/galeria:** `vala` + `tubo` grande + `seta`s azuis (água) + `pavimento` por cima.

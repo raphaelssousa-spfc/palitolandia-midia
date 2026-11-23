@@ -19,6 +19,7 @@
 - DO ZERO (3D, "Se você...") · #02 · pavimentação · Por que a estrada de concreto faz tum-tum? (rodovia de concreto: sub-base, junta serrada, barra de transferência, barra de ligação, selante, texturização; agendado 14/11 12:40)
 - DO ZERO (3D, "Se você...") · #03 · grande obra · Como se constrói uma ponte estaiada? (tábua quebra, estacas e pilares, barco não passa, mastro, estai, aduela, piada da torre tombando, balanço sucessivo, mastro da ponte Octávio Frias 138 m > prédio de 40 andares, pista pendurada; agendado 17/11 12:40)
 - DO ZERO (3D, "Se você...") · #04 · grande obra · Como se cava um túnel de metrô? (tatuzão: cava à mão desaba e rua afunda, escudo/tatuzão, cabeça de corte, sem parede atrás, aduelas montadas pelo braço, macacos hidráulicos empurram os anéis, piada do operário soterrado na terra, correia transportadora, tatuzão de SP >10 m de altura e ~2 mil t, a cidade nem para; agendado 19/11 12:40)
+- DO ZERO (3D, "Se você...") · #05 · pavimentação/grande obra · Como se faz uma pista de aeroporto? (asfalto na terra afunda com avião de +500 t, tira terra fofa e compacta = subleito, sub-base e base, revestimento grosso, chuva amolece → canais = drenagem, piada do avião aquaplanando + placa NÃO!, grooving (riscos pra água fugir), Galeão 4 km ≈ 40 campos, marcas pretas = borracha de pneu, tem que limpar; agendado 23/11 12:40)
 
 # Ideias de temas (pegar daqui; riscar ao usar)
 ## Construção
@@ -45,7 +46,7 @@
 - Bloquete, paralelepípedo ou asfalto: qual é melhor pra sua rua?
 - ~~Por que asfalto novo é preto e o velho fica cinza?~~ (usado: PAVIMENTAÇÃO #04)
 - ~~Os sinais de que a estrada vai afundar (couro de jacaré, trilha de roda)~~ (usado: PAVIMENTAÇÃO #05)
-- Como é feita uma pista de aeroporto que aguenta um avião de 500 toneladas?
+- ~~Como é feita uma pista de aeroporto que aguenta um avião de 500 toneladas?~~ (usado: DO ZERO #05)
 - Por que as pontes têm "fendas" no asfalto? (juntas de dilatação)
 
 # Carrosséis já usados (não repetir)

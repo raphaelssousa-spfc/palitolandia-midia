@@ -557,217 +557,274 @@ const KIT = (() => {
     set(); return { g, head, casco, erector, jacks, back, set };
   }
   // ---------- 7) ANIMAÇÃO ----------
+  // avião comercial low-poly (nariz para +x, origem no chão sob o trem principal). set({ trem 0..1 (recolhido..baixado), roda, flap })
+  function aviao({ cor = '#f4f4f2', faixa = '#2f6fb3', comp = 10, x = 0, y = 0, z = 0, ry = 0, parent = scene } = {}) {
+    const g = grp(parent, x, y, z); g.rotation.y = ry; const k = comp / 10, Wc = C(cor, { roughness: 0.5 }), Fc = C(faixa), K = C('#26262a');
+    const body = grp(g, 0, 1.25 * k, 0); const R0 = 0.6 * k;
+    mesh(new THREE.CylinderGeometry(R0, R0, 7 * k, 20).rotateZ(Math.PI / 2), Wc, body, 0.6 * k, 0, 0);
+    mesh(new THREE.SphereGeometry(R0, 20, 12, 0, Math.PI * 2, 0, Math.PI / 2).rotateZ(-Math.PI / 2).scale(1.7, 1, 1), Wc, body, 4.1 * k, 0, 0);
+    mesh(new THREE.CylinderGeometry(R0, 0.18 * k, 2.6 * k, 20).rotateZ(Math.PI / 2), Wc, body, -4.2 * k, 0.15 * k, 0);
+    box(7.2 * k, 0.16 * k, 0.02, Fc, body, 0.5 * k, -0.05 * k, R0 + 0.005).position.y = -0.1 * k; box(7.2 * k, 0.16 * k, 0.02, Fc, body, 0.5 * k, -0.1 * k, -R0 - 0.005);
+    for (let i = 0; i < 12; i++) for (const s of [-1, 1]) box(0.16 * k, 0.16 * k, 0.02, C('#2b3742'), body, -2.4 * k + i * 0.5 * k, 0.12 * k, s * (R0 - 0.02));
+    box(0.5 * k, 0.28 * k, 1.0 * k, glass(), body, 4.55 * k, 0.12 * k, 0);
+    const wingShape = new THREE.Shape([V2s(0, 0), V2s(1.8, 0), V2s(-0.6, 5.4), V2s(-1.4, 5.4)]);
+    for (const s of [-1, 1]) { const wg = new THREE.ExtrudeGeometry(wingShape, { depth: 0.12 * k, bevelEnabled: false }); wg.scale(k, k, 1); wg.rotateX(s * Math.PI / 2); wg.translate(0, 0.06 * k * -s, 0);
+      const wm = mesh(wg, Wc, body, 0.2 * k, -0.35 * k, 0); wm.rotation.x = s * 0.06;
+      const eng = mesh(new THREE.CylinderGeometry(0.32 * k, 0.28 * k, 1.3 * k, 16).rotateZ(Math.PI / 2), C('#c9ced3', { metalness: 0.3, roughness: 0.4 }), body, 1.0 * k, -0.75 * k, s * 1.9 * k);
+      mesh(new THREE.CircleGeometry(0.27 * k, 16).rotateY(Math.PI / 2), K, body, 1.66 * k, -0.75 * k, s * 1.9 * k);
+      const tg = new THREE.ExtrudeGeometry(new THREE.Shape([V2s(0, 0), V2s(0.9, 0), V2s(0.1, 1.8), V2s(-0.4, 1.8)]), { depth: 0.08 * k, bevelEnabled: false }); tg.scale(k, k, 1); tg.rotateX(s * Math.PI / 2);
+      mesh(tg, Wc, body, -5.0 * k, 0.2 * k, 0); }
+    const fin = new THREE.ExtrudeGeometry(new THREE.Shape([V2s(0, 0), V2s(1.5, 0), V2s(-0.2, 2.0), V2s(-0.9, 2.0)]), { depth: 0.1 * k, bevelEnabled: false }); fin.scale(k, k, 1); fin.translate(0, 0, -0.05 * k);
+    mesh(fin, Fc, body, -5.0 * k, 0.4 * k, 0);
+    const gear = grp(g, 0, 0, 0); const wheels = [];
+    for (const [gx, gz] of [[0, -0.75], [0, 0.75], [3.6, 0]]) { const st = box(0.08 * k, 0.75 * k, 0.08 * k, C('#9aa3ab'), gear, gx * k, 0.3 * k, gz * k);
+      const w = mesh(new THREE.CylinderGeometry(0.3 * k, 0.3 * k, 0.25 * k, 16).rotateX(Math.PI / 2), K, gear, gx * k, 0.3 * k, gz * k); wheels.push(w); }
+    const set = ({ trem = 1, roda = 0 } = {}) => { gear.visible = trem > 0.02; gear.scale.y = Math.max(0.02, trem); wheels.forEach(w => w.rotation.z = -roda); };
+    return { g, body, gear, wheels, set };
+  }
   const grow = (o, u, eixo = 'y') => { u = cl(u); o.visible = u > 0.001; o.scale[eixo] = Math.max(0.001, u); return o; };  // peça nasce do chão (origem na base)
   const drop = (o, u, h = 4, y0 = 0) => { o.visible = u > 0; o.position.y = y0 + h * (1 - eo(u)); return o; };          // cai do céu e assenta
   const slide = (o, u, from, to) => { o.position.copy(lv(from, to, sm(u))); return o; };
   const popIn = (o, u) => { const k = back(u); o.visible = u > 0; o.scale.setScalar(Math.max(0.001, k)); return o; };
   return { matOf, SOIL, uvScale, box, cyl, grp, chao, corte, pavimento, vala, ferragem, armadura, forma, concreto, parede, tubo,
     escavadeira, caminhao, rolo, betoneira, acabadora, cone, barreira, placa, poste, arvore, casa, carro, operario, CAMISAS, nuvem, seta, grow, drop, slide, popIn,
-    motoniveladora, fresadora, caminhaoPipa, meioFio, faixa, viga, pilar, guardaCorpo, guindaste, galeria, bocaDeLobo, pocoDeVisita, sonda, escoramento, blocos, telhado, caixaDagua, extX, setor, soloTunel, frenteTunel, anelMeio, tatuzao };
+    motoniveladora, fresadora, caminhaoPipa, meioFio, faixa, viga, pilar, guardaCorpo, guindaste, galeria, bocaDeLobo, pocoDeVisita, sonda, escoramento, blocos, telhado, caixaDagua, extX, setor, soloTunel, frenteTunel, anelMeio, tatuzao, aviao };
 })();
-// ================= TÚNEL DE METRÔ (tatuzão): cenário montado com o KIT =================
-// Túnel ao longo de x, eixo em y = TY, corte no plano z = 0 (vemos a metade de trás). 1 unidade ≈ 3 m. Poço de partida em x = XS.
-const RT = 1.8, TY = -7, XS = -14, SW = 1.7, XT0 = XS + SW, XE = 34, RW = 0.5, LS = 3.2;
-const NR = Math.floor((XE - XT0) / RW);
-scene.fog = new THREE.Fog('#d9e6ea', 45, 130);
-sun.shadow.camera.left = -30; sun.shadow.camera.right = 30; sun.shadow.camera.top = 30; sun.shadow.camera.bottom = -30; sun.shadow.camera.far = 90; sun.shadow.camera.updateProjectionMatrix();
-// chão com o buraco do poço
-KIT.chao({ x: 0, w: 400, frente: 0, buracos: [[XS, -1.6, 3.4, 3.2]] });
-// solo acima do túnel (dos dois lados do poço) e atrás do poço
-const TOPC = [['terra', 1.6], ['argila', 3.56]];
-KIT.corte({ w: 44.3, d: 40, x: -37.85, y: -0.04, z: -20, camadas: TOPC });
-KIT.corte({ w: 72.3, d: 40, x: 23.85, y: -0.04, z: -20, camadas: TOPC });
-KIT.corte({ w: 3.4, d: 36.8, x: XS, y: -0.04, z: -21.6, camadas: [['terra', 1.6], ['argila', 7.16]] });
-// faixa do túnel: à esquerda do poço é maciço; à direita, bloco com furo semicircular + terra ainda não escavada
-KIT.corte({ w: 44.3, d: 40, x: -37.85, y: TY + RT, z: -20, camadas: [['argila', 2 * RT]] });
-KIT.soloTunel({ R: RT, comp: 72.3, prof: 40, x: XT0, y: TY });
-const core = KIT.frenteTunel({ R: RT - 0.03, x: XT0, y: TY }); core.geometry.dispose(); core.geometry = KIT.extX((() => { const sh = new THREE.Shape(); sh.moveTo(0, -(RT - 0.03)); sh.absarc(0, 0, RT - 0.03, -Math.PI / 2, Math.PI / 2, false); sh.closePath(); return sh; })(), 75);
-// solo abaixo
-KIT.corte({ w: 120, d: 40, x: 0, y: TY - RT, z: -20, camadas: [['argila', 1.5], ['rocha', 9]] });
-// poço (paredes de concreto)
-{ const c = KIT.matOf('concreto');
-  KIT.box(0.15, -(TY - RT), 3.2, c, scene, XS - SW + 0.075, TY - RT, -1.6, false);
-  KIT.box(0.15, -(TY + RT), 3.2, c, scene, XS + SW - 0.075, TY + RT, -1.6, false);
-  KIT.box(3.1, -(TY - RT), 0.15, c, scene, XS, TY - RT, -3.125, false);
-  KIT.box(3.1, 0.14, 3.2, c, scene, XS, TY - RT, -1.6, false); }
-// cidade: avenida em cima do túnel, prédios e árvores
-const asf = KIT.matOf('asfalto');
-KIT.box(68, 0.05, 3.0, asf, scene, 26, 0, -2.3, false);
-const sink = KIT.box(3.0, 0.05, 3.0, asf, scene, -9.5, 0, -2.3, false);   // trecho que afunda
-KIT.faixa({ comp: 68, x: 26, y: 0.056, z: -2.3, tachao: false });
-[[-5, -7.5, 3, 4.5, '#d9e6ef'], [0, -8, 3.2, 7, '#efe6d8'], [5, -7, 2.6, 3, '#e3d7c4'], [10, -8.5, 3.4, 9, '#cfd8e3'], [16, -7.5, 3, 5, '#efe6d8'], [22, -8, 3.4, 8, '#d9e6ef'], [-9, -12, 3, 6, '#e3d7c4'], [8, -14, 4, 12, '#d6dde6'], [28, -12, 4, 10, '#efe6d8']]
-  .forEach(([x, z, w, h, c]) => { const g = KIT.grp(scene, x, 0, z); KIT.box(w, h, w, M(c), g); for (let y = 0.6; y < h - 0.3; y += 0.9) KIT.box(w + 0.04, 0.32, w + 0.04, M('#5d6f80'), g, 0, y, 0, false); });
-[[-7.5, -4.6], [-2.5, -4.6], [2.5, -4.6], [7.5, -4.6], [12.5, -4.6], [19, -4.6], [25, -4.6]].forEach(([x, z]) => KIT.arvore({ x, z, r: 0.8, h: 1.6 }));
-// canteiro do poço: guindaste, caminhão, cones
-const crane = KIT.guindaste({ alt: 8, lanca: 6, x: XS - 5, z: -1.6 });
-const bucket = KIT.box(0.9, 0.6, 0.9, M('#3a3f46'), crane.cabo, 0, 0, 0);
-const bucketDirt = KIT.box(0.8, 0.12, 0.8, KIT.matOf('terra'), bucket, 0, 0.6, 0, false);
-const truck = KIT.caminhao({ x: XS - 8, z: -5.2, ry: 0.3 }); truck.set({ carga: true, tipoCarga: 'terra' });
-[[XS - SW - 0.4, -0.4], [XS + SW + 0.4, -0.4], [XS - SW - 0.4, -3.6], [XS + SW + 0.4, -3.6], [XS, -3.7]].forEach(([x, z]) => KIT.cone({ x, z, s: 0.8 }));
-// tatuzão + anéis
-const tbm = KIT.tatuzao({ R: RT, comp: LS, backup: 6 });
-const rings = []; for (let i = 0; i < NR; i++) rings.push(KIT.anelMeio({ R: RT, larg: RW, x: XT0 + i * RW, y: TY }));
-// esteira (correia) e terra em cima dela
-const belt = KIT.box(1, 0.06, 0.6, M('#26262a'), scene, 0, TY + 0.92, -0.6, false);
-const blobs = []; for (let i = 0; i < 16; i++) blobs.push(KIT.box(0.32, 0.16, 0.36, KIT.matOf('terra'), scene, 0, TY + 0.98, -0.6, false));
-// laje do piso + trilhos + trem (meia seção)
-const floorS = KIT.grp(); KIT.box(XE - XT0, 0.45, 0.98, KIT.matOf('concreto'), floorS, (XE + XT0) / 2, TY - RT + 0.25, -0.51, false);
-for (const z of [-0.35, -0.75]) KIT.box(XE - XT0, 0.06, 0.06, M('#9aa3ab', { metalness: 0.5 }), floorS, (XE + XT0) / 2, TY - RT + 0.7, z, false);
-const train = KIT.grp();
-for (let c = 0; c < 3; c++) { const g = KIT.grp(train, -c * 6.15, 0, 0);
-  KIT.box(6, 1.6, 1.15, M('#f1f1ee'), g, -3, TY - 0.95, -0.63); KIT.box(6.02, 0.2, 0.02, M('#f07a1a'), g, -3, TY - 0.6, -0.02, false);
-  for (let w = 0; w < 5; w++) KIT.box(0.75, 0.5, 0.02, M('#2b3742'), g, -0.8 - w * 1.1, TY + 0.0, -0.02, false); }
-// carros na avenida
-const cars = ['#d63b3b', '#2f6fb3', '#f2c21b', '#f4f4f2', '#2aa35a', '#7a4fd6'].map(c => { const o = KIT.carro({ cor: c }); o.g.scale.setScalar(0.42); return o; });
-// operário (cava à mão / soterrado na piada)
-const worker = KIT.operario(0); worker.g.scale.setScalar(0.6);
-const shovel = KIT.grp(worker.handR); KIT.box(0.05, 0.9, 0.05, M('#8a5a30'), shovel, 0, -0.5, 0); KIT.box(0.25, 0.3, 0.04, M('#7d858c'), shovel, 0, -0.75, 0);
-// pedaços de terra que caem, monte de terra, poeira
-const pieces = []; for (let i = 0; i < 7; i++) pieces.push(KIT.box(0.35 + (i % 3) * 0.1, 0.25, 0.35, KIT.matOf('terra'), scene, 0, 0, 0, false));
-const pile = mesh(new THREE.ConeGeometry(1.2, 1.6, 18).translate(0, 0.8, 0), KIT.matOf('terra'), scene, 0, TY - RT + 0.15, -1.0, false);
-const dust = KIT.nuvem({ n: 14, cor: '#d9cbb5', raio: 0.9 });
+// ================= PISTA DE AEROPORTO: cenário montado com o KIT =================
+// Pista ao longo de z (de z = 0, o corte, até z = -LP). Seção transversal vista de frente em z = 0. Superfície em y = 0. 1 unidade ≈ 4,5 m.
+const RW = 5, CW = 0.9, LP = 120, ZC = -LP / 2;
+const YA = -0.3, YB = -0.7, YSB = -1.2, YSL = -1.9;           // topo de cada camada abaixo da capa
+scene.fog = new THREE.Fog('#d9e6ea', 50, 140);
+sun.shadow.camera.left = -25; sun.shadow.camera.right = 25; sun.shadow.camera.top = 25; sun.shadow.camera.bottom = -25; sun.shadow.camera.far = 90; sun.shadow.camera.updateProjectionMatrix();
+// chão com o buraco da pista + canais
+KIT.chao({ x: 0, w: 400, frente: 0, buracos: [[0, ZC, 2 * (RW + CW), LP]] });
+// acostamentos (debaixo da grama) e solo natural
+for (const s of [-1, 1]) KIT.corte({ w: 40, d: LP, x: s * (RW + CW + 20), y: -0.04, z: ZC, camadas: [['terra', 1.86], ['argila', 4.6]] });
+KIT.corte({ w: 2 * (RW + CW), d: LP, x: 0, y: YSL, z: ZC, camadas: [['argila', 4.6]] });
+// camadas da pista (cada uma um bloco: cresce na sua vez)
+const LAY = {};
+[['subleito', 'lama', YSB, YSL], ['subbase', 'brita', YB, YSB], ['base', 'base', YA, YB], ['capa', 'asfalto', 0, YA]].forEach(([k, m, top, bot]) => {
+  const g = KIT.grp(scene, 0, bot, -LP); KIT.box(2 * RW, top - bot, LP, KIT.matOf(m), g, 0, 0, LP / 2, false).receiveShadow = true; LAY[k] = g; });
+// frente da camada em z = zf (a máquina vem do fundo até o corte)
+function layerTo(k, zf) { const g = LAY[k]; const u = (zf + LP) / LP; g.visible = u > 0.002; g.scale.z = Math.max(0.002, Math.min(1, u)); }
+// terra fofa (1º jeito) + asfalto fininho por cima, em trechos (o trecho do avião afunda)
+const fofa = KIT.grp(scene, 0, YSL, ZC); KIT.box(2 * RW, -YSL, LP, KIT.matOf('terra'), fofa, 0, 0, 0, false);
+const NSEG = 60, SL = 2; const thin = [];
+for (let i = 0; i < NSEG; i++) { const g = KIT.grp(scene, 0, 0, -SL * (i + 0.5)); KIT.box(2 * RW - 0.02, 0.06, SL - 0.02, KIT.matOf('asfalto'), g, 0, 0, 0); thin.push(g); }
+// canais de drenagem dos dois lados (concreto em U) + terra que sai ao cavar
+const chan = [], chanFill = [], chanWater = [];
+for (const s of [-1, 1]) { const xc = s * (RW + CW / 2); const g = KIT.grp(scene, xc, -0.75, ZC); const c = KIT.matOf('concreto');
+  KIT.box(CW, 0.1, LP, c, g, 0, 0, 0, false); KIT.box(0.1, 0.75, LP, c, g, -CW / 2 + 0.05, 0, 0, false); KIT.box(0.1, 0.75, LP, c, g, CW / 2 - 0.05, 0, 0, false); chan.push(g);
+  const w = KIT.box(CW - 0.24, 0.22, LP, M('#3d8fd6', { transparent: true, opacity: 0.75, roughness: 0.2 }), scene, xc, -0.64, ZC, false); chanWater.push(w);
+  KIT.corte({ w: CW, d: LP, x: xc, y: -0.75, z: ZC, camadas: [['terra', -YSL - 0.75]] });
+  const f = KIT.grp(scene, xc, -0.75, ZC); KIT.box(CW, 0.75, LP, KIT.matOf('terra'), f, 0, 0, 0, false); chanFill.push(f); }
+// pista longa (para o plano aberto de 4 km): só a capa, além do bloco em corte
+const far = KIT.grp(); KIT.box(2 * RW, 0.06, 900, KIT.matOf('asfalto'), far, 0, -0.03, -LP - 450, false);
+// sinalização: faixa central tracejada, cabeceira (piano), número
+const marks = KIT.grp();
+for (let z = -4; z > -LP - 900; z -= 6) KIT.box(0.25, 0.04, 3, M('#f4f4f2', { roughness: 0.6 }), marks, 0, 0, z, false);
+for (let i = 0; i < 8; i++) for (const s of [-1, 1]) KIT.box(0.42, 0.04, 4, M('#f4f4f2', { roughness: 0.6 }), marks, s * (0.9 + i * 0.5), 0, -LP + 6, false);
+for (const s of [-1, 1]) KIT.box(0.15, 0.04, LP + 900, M('#f4f4f2', { roughness: 0.6 }), marks, s * (RW - 0.3), 0, -(LP + 900) / 2, false);
+// marcas de borracha na zona de toque (sempre transparentes; muda só a opacidade)
+const rubberMat = M('#0e0e10', { transparent: true, opacity: 0.7, roughness: 0.9, depthWrite: false });
+const rubber = KIT.grp(); const rubberPieces = [];
+for (let i = 0; i < 26; i++) { const s = i % 2 ? 1 : -1; const z = -14 - (i >> 1) * 1.3 - (i % 3) * 0.3;
+  const m = mesh(new THREE.PlaneGeometry(0.28 + (i % 3) * 0.06, 2.2 + (i % 4) * 0.6).rotateX(-Math.PI / 2), rubberMat.clone(), rubber, s * (1.7 + (i % 3) * 0.12), 0.05, z, false); rubberPieces.push(m); }
+// grooving: riscos transversais (aparecem atrás da máquina)
+const grooves = []; for (let z = -0.25; z > -LP; z -= 0.3) grooves.push(KIT.box(2 * RW - 0.7, 0.03, 0.04, M('#1a1a1d'), scene, 0, 0, z, false));
+// água: lâmina na pista (chuva) e "molhado" na face do corte
+const sheet = KIT.box(2 * RW, 0.03, LP, M('#5aa7e8', { transparent: true, opacity: 0, roughness: 0.1, depthWrite: false }), scene, 0, 0.045, ZC, false);
+const wet = mesh(new THREE.PlaneGeometry(2 * RW, -YSL + YA), M('#3a5f8a', { transparent: true, opacity: 0, depthWrite: false }), scene, 0, (YA + YSL) / 2, 0.04, false);
+// chuva: riscos finos caindo (movimento lento e suave)
+const rainMat = M('#cfe6ff', { transparent: true, opacity: 0, depthWrite: false, emissive: '#9fc7ff', emissiveIntensity: 0.3 });
+const rain = []; for (let i = 0; i < 160; i++) { const m = KIT.box(0.025, 0.7, 0.025, rainMat, scene, 0, 0, 0, false); m.userData = { x: ((i * 37) % 160) / 160 * 24 - 12, z: -((i * 71) % 160) / 160 * 40 + 2, o: (i * 13 % 100) / 100 }; rain.push(m); }
+// máquinas, avião, gente
+const plane = KIT.aviao({ comp: 11, ry: -Math.PI / 2 });
+const paver = KIT.acabadora({ ry: -Math.PI / 2 }); paver.g.scale.setScalar(1.2);
+const roller = KIT.rolo({ ry: -Math.PI / 2 }); roller.g.scale.setScalar(1.2);
+const exc = KIT.escavadeira({}); exc.g.scale.setScalar(1.1);
+const truck = KIT.caminhao({ ry: -Math.PI / 2 }); truck.g.scale.setScalar(1.2);
+const groover = KIT.fresadora({ cor: '#f2b51b', ry: -Math.PI / 2 });
+const pipa = KIT.caminhaoPipa({ ry: Math.PI / 2 });
+const worker = KIT.operario(0); const sign = KIT.placa({ texto: 'NÃO!', cor: '#e53030', parent: worker.handR }); sign.position.set(0, -1.7, 0.1); sign.scale.setScalar(1.3);
+const worker2 = KIT.operario(1);
+[[-9, -6], [-10, -18], [9.5, -9], [10.5, -24], [-11, -34], [12, -40]].forEach(([x, z]) => KIT.arvore({ x, z, r: 1.0, h: 2.0 }));
+// torre de controle e terminal ao fundo
+{ const g = KIT.grp(scene, 16, 0, -46); KIT.box(1.4, 9, 1.4, M('#e8e4dc'), g); mesh(new THREE.CylinderGeometry(1.6, 1.2, 1.4, 8), M('#5f7d92', { metalness: 0.3, roughness: 0.3 }), g, 0, 9.7, 0); KIT.box(3.4, 0.2, 3.4, M('#e8e4dc'), g, 0, 10.4, 0);
+  const t = KIT.grp(scene, 22, 0, -24); KIT.box(8, 3, 26, M('#dfe5ea'), t); KIT.box(8.1, 1.6, 26.1, M('#6f8ea6', { metalness: 0.3, roughness: 0.3 }), t, 0, 1.0, 0, false); }
+const smoke = KIT.nuvem({ n: 14, cor: '#e8e8e8', raio: 1.2 });
+const dust = KIT.nuvem({ n: 14, cor: '#d9cbb5', raio: 1.4 });
+const spray = KIT.nuvem({ n: 16, cor: '#bfe0ff', raio: 1.6 });
 // setas
-function arrow(color) { const g = new THREE.Group(); const m = M(color, { emissive: color, emissiveIntensity: 0.25 }); mesh(new THREE.CylinderGeometry(0.07, 0.07, 1, 10), m, g, 0, 0.5, 0, false); mesh(new THREE.ConeGeometry(0.18, 0.36, 14), m, g, 0, 1.12, 0, false); scene.add(g); return g; }
-function placeArrow(a, from, dir, len, vis = true) { a.visible = vis && len > 0.02; if (!a.visible) return; a.position.copy(from); a.quaternion.setFromUnitVectors(V(0, 1, 0), dir.clone().normalize()); a.scale.set(1, len, 1); a.children[1].scale.set(1, 1 / len, 1); a.children[1].position.y = 1 + 0.18 / len; }
-const dnArrows = []; for (let i = 0; i < 4; i++) dnArrows.push(arrow('#ff3a2a'));
-const fwArrows = []; for (let i = 0; i < 3; i++) fwArrows.push(arrow('#ff9a1f'));
-// ================= TÚNEL DE METRÔ: história =================
+function arrow(color) { const g = new THREE.Group(); const m = M(color, { emissive: color, emissiveIntensity: 0.3 }); mesh(new THREE.CylinderGeometry(0.08, 0.08, 1, 10), m, g, 0, 0.5, 0, false); mesh(new THREE.ConeGeometry(0.2, 0.4, 14), m, g, 0, 1.12, 0, false); scene.add(g); return g; }
+function placeArrow(a, from, dir, len, vis = true) { a.visible = vis && len > 0.02; if (!a.visible) return; a.position.copy(from); a.quaternion.setFromUnitVectors(V(0, 1, 0), dir.clone().normalize()); a.scale.set(1, len, 1); a.children[1].scale.set(1, 1 / len, 1); a.children[1].position.y = 1 + 0.2 / len; }
+const blueA = []; for (let i = 0; i < 8; i++) blueA.push(arrow('#2f8cff'));
+const redA = []; for (let i = 0; i < 3; i++) redA.push(arrow('#ff3a2a'));
+// ================= PISTA DE AEROPORTO: história =================
 const wt = (i, pre) => { const w = TM.words.find(w => w.p === i && w.w.toLowerCase().replace(/[^a-zà-ú0-9@]/g, '').startsWith(pre)); return w ? w.s : S(i); };
 const NP = TM.phrases.length;
 const shotOf = t => { if (t < S(0) - 0.1) return -1; let k = 0; for (let i = 1; i < NP; i++) if (t >= S(i) - 0.1) k = i; return k; };
 const TS = i => S(i) - 0.1;
 function V2(x, y) { return { x, y }; }
-truck.g.scale.setScalar(0.6);
 // ---------- estados ----------
-function setCore(xf) { core.visible = xf < XE + 60; core.position.x = xf; }
-function setRings(xEnd, nExtra = 0) { // anéis inteiros até xEnd; nExtra = anel seguinte com peças parciais (0..3)
-  let n = 0; rings.forEach((rg, i) => { const ok = XT0 + (i + 1) * RW <= xEnd + 1e-6; rg.g.visible = ok; rg.segs.forEach(s => { s.visible = true; s.position.set(0, 0, 0); }); if (ok) n = i + 1; });
-  return n; }
-function setTBM(xt, giro, o = {}) { tbm.g.visible = true; tbm.g.position.set(xt, o.y ?? TY, 0); tbm.back.visible = !!o.back; tbm.set({ giro, macaco: o.macaco || 0, erector: o.erector ?? 0.3 }); }
-function setBelt(x0, x1, t, on = true) { const L = x1 - x0; belt.visible = on && L > 0.1; belt.position.x = (x0 + x1) / 2; belt.scale.x = Math.max(0.01, L);
-  blobs.forEach((b, i) => { const u = ((i / blobs.length) + t * 0.22) % 1; b.visible = belt.visible; b.position.set(x1 - u * L, TY + 0.98, -0.6); }); }
-function driveCars(t, stop = false) { cars.forEach((c, i) => { const dir = i % 2 ? -1 : 1; const x = -7 + (((t * (stop ? 0 : 2.6) * dir + i * 6.3) % 36) + 36) % 36; c.g.visible = true;
-  c.g.position.set(x, 0.05, dir > 0 ? -1.55 : -3.05); c.g.rotation.set(0, dir > 0 ? 0 : Math.PI, 0); c.set({ roda: t * 6 }); }); }
+function hideMachines() { [plane, paver, roller, exc, truck, groover, pipa].forEach(m => m.g.visible = false); worker.g.visible = false; worker2.g.visible = false; }
 function base(t) {
-  tbm.g.visible = false; setCore(XT0); setRings(XT0 - 1); belt.visible = false; blobs.forEach(b => b.visible = false);
-  floorS.visible = false; train.visible = false; worker.g.visible = false; shovel.visible = false; pieces.forEach(c => c.visible = false); pile.visible = false; dust.update(0);
-  sink.position.y = 0; sink.rotation.set(0, 0, 0); [...dnArrows, ...fwArrows].forEach(a => a.visible = false);
-  crane.set({ giro: 0, desce: 6 }); bucket.position.y = -6.9; bucketDirt.visible = false; driveCars(t);
+  scene.fog.far = 140; scene.fog.near = 50;
+  fofa.visible = false; fofa.scale.y = 1; thin.forEach(g => { g.visible = false; g.position.y = 0; g.rotation.set(0, 0, 0); });
+  ['subleito', 'subbase', 'base', 'capa'].forEach(k => { layerTo(k, 0); LAY[k].position.y = LAY[k].userData.y0 ??= LAY[k].position.y; });
+  chan.forEach(c => { c.visible = true; c.scale.y = 1; }); chanFill.forEach(f => { f.visible = false; f.scale.y = 1; }); chanWater.forEach(w => { w.visible = true; w.scale.y = 1; });
+  marks.visible = true; rubber.visible = true; rubberPieces.forEach(m => m.material.opacity = 0.7); grooves.forEach(g => g.visible = true); far.visible = true;
+  sheet.material.opacity = 0; wet.material.opacity = 0; setRain(t, 0);
+  hideMachines(); smoke.update(0); dust.update(0); spray.update(0); [...blueA, ...redA].forEach(a => a.visible = false);
+  plane.g.rotation.set(0, -Math.PI / 2, 0); plane.body.rotation.set(0, 0, 0); plane.set({ trem: 1 });
 }
-function finished(x) { setCore(XE + 70); setRings(XE); floorS.visible = true; train.visible = true; train.position.x = x; }
-function hide(ws) { ws.g.visible = false; }
+function raw() { ['subleito', 'subbase', 'base', 'capa'].forEach(k => LAY[k].visible = false); chan.forEach(c => c.visible = false); chanWater.forEach(w => w.visible = false); chanFill.forEach(f => f.visible = true);
+  marks.visible = false; rubber.visible = false; grooves.forEach(g => g.visible = false); far.visible = false; }
+function noDrain() { chan.forEach(c => c.visible = false); chanWater.forEach(w => w.visible = false); chanFill.forEach(f => f.visible = true); }
+function setRain(t, o) { rainMat.opacity = o; rain.forEach(m => { m.visible = o > 0.01; if (!m.visible) return; const d = m.userData; m.position.set(d.x, 12 - ((t * 7 + d.o * 13) % 13), d.z); }); }
+// avião: posição do pé do trem (x, y, z), arfagem (nariz p/ cima +)
+function setPlane(x, y, z, pitch = 0, yaw = 0, roll = 0) { plane.g.visible = true; plane.g.position.set(x, y, z); plane.g.rotation.set(0, -Math.PI / 2 + yaw, 0); plane.body.rotation.set(roll, 0, pitch); }
+function landing(t, t0, z0, z1, dur) { // aproxima pelo fundo, toca e rola na direção da câmera (+z)
+  const u = r(t, t0, t0 + dur); const z = lerp(z0, z1, 1 - Math.pow(1 - u, 1.6)); const tTouch = 0.45;
+  const y = u < tTouch ? 6 * Math.pow(1 - u / tTouch, 2) : 0; const p = u < tTouch ? 0.12 : 0.12 * (1 - r(u, tTouch, tTouch + 0.15));
+  setPlane(0, y, z, p); plane.set({ roda: t * 8 }); return { z, touch: t0 + dur * tTouch };
+}
+function finishedPlane(t) { const z = -60 + ((t * 9) % 40); setPlane(0, 0, z, 0); plane.set({ roda: t * 8 }); }
 function world(t) {
   const sh = shotOf(t); const st = { cam: null, shake: 0, vig: 0.3, html: '' };
   base(t); let K;
-  if (sh === -1) { // ABERTURA: metrô pronto, giro rápido + selo
-    finished(2 + t * 4); const u = r(t, 0, S(0) - 0.1); const a = lerp(-0.8, 0.1, eo(u));
-    K = [0, V(-2 + Math.sin(a) * 24, -1 - u * 1.5, Math.cos(a) * 24), V(-2, -4.2, 0), 44];
+  if (sh === -1) { // ABERTURA: pista pronta, avião tocando + giro rápido + selo
+    const L = landing(t, -0.9, -70, -24, 2.2); smoke.g.position.set(0, 0.3, L.z - 0.5); smoke.update(r(t, L.touch, L.touch + 1.2));
+    const u = r(t, 0, S(0) - 0.1); const a = lerp(-0.9, -0.3, eo(u));
+    K = [0, V(Math.sin(a) * 26, 7 - u * 2, -18 + Math.cos(a) * 26), V(0, 0.5, -22), 44];
     st.html += selo(t);
-  } else if (sh === 0) { // cava à mão
-    const xf = XT0 + 2.8 * eo(r(t, TS(0) + 0.3, wt(0, 'túnel'))); setCore(xf);
-    worker.g.visible = true; shovel.visible = true; worker.g.position.set(xf - 0.55, TY - 1.72, -0.55); worker.g.rotation.set(0, Math.PI / 2, 0);
-    const sw = Math.sin(t * 2 * Math.PI * 1.6); pose(worker, { armR: [-1.0 + 0.35 * sw, -0.2], armL: [-0.8 + 0.3 * sw, 0.2], lean: 0.25 });
-    K = camKeys([[TS(0), V(-9, 2.0, 22), V(-9.5, -1.8, 0), 42], [wt(0, 'cidade') + 0.5, V(-9.3, 1.6, 21), V(-9.7, -2.0, 0), 42], [wt(0, 'túnel') - 0.1, V(-10, -3.5, 14), V(-10.3, -5.6, 0), 42], [S(1) - 0.2, V(-10.3, -4.3, 11.5), V(-10.5, -6.2, 0), 42]], t);
-    st.html += pill(t, wt(0, 'cidade') - 0.05, 'CIDADE', V2(780, 330), '', V(-6, 1.2, -4), wt(0, 'túnel') - 0.2);
-    st.html += pill(t, wt(0, 'túnel') - 0.05, 'TÚNEL?', V2(300, 1000), '', V(xf - 1.2, TY - 0.6, -0.6));
-  } else if (sh === 1) { // desaba + rua afunda
-    const xf = XT0 + 2.8; setCore(xf); const td = wt(1, 'desaba') - 0.25, tr = wt(1, 'rua') - 0.15;
-    worker.g.visible = true; worker.g.position.set(xf - 0.55 - 0.7 * eo(r(t, td + 0.2, td + 0.6)), TY - 1.72, -0.55); worker.g.rotation.set(0, Math.PI / 2, 0);
-    pose(worker, t > td + 0.15 ? { armL: [-2.6, 0.5], armR: [-2.6, -0.5], eyes: 1.7 } : {});
-    pieces.forEach((c, i) => { const t0 = td + i * 0.07; c.visible = t > t0; const u = r(t, t0, t0 + 0.45); c.position.set(xf - 0.4 - (i % 4) * 0.55, TY + RT - 0.3 - (2.9 - 0.12 * (i % 3)) * ei(u), -0.3 - (i % 3) * 0.45); c.rotation.set(i, u * 2, 0); });
-    dust.g.position.set(xf - 1.2, TY - RT + 0.2, -0.6); dust.update(r(t, td + 0.4, td + 1.6)); if (t > td + 0.4) st.shake = 0.5 * (1 - r(t, td + 0.5, td + 1.0));
-    const dd = 0.45 * eo(r(t, tr, tr + 0.5)); sink.position.y = -dd; sink.rotation.z = 0.05 * eo(r(t, tr, tr + 0.5));
-    driveCars(t, true); cars[0].g.position.set(-9.6, 0.05 - dd * 0.9, -1.55); cars[0].g.rotation.set(0, 0, 0.12 * eo(r(t, tr + 0.1, tr + 0.5)));
-    for (let i = 0; i < 3; i++) placeArrow(dnArrows[i], V(-10.6 + i * 1.0, 2.2, -2.0), V(0, -1, 0), 1.2 * eo(r(t, tr + i * 0.08, tr + 0.4)) + 0.01);
-    if (t > tr + 0.3) st.shake = Math.max(st.shake, 0.4 * (1 - r(t, tr + 0.35, tr + 0.8)));
-    K = camKeys([[TS(1), V(-10.3, -4.3, 11.5), V(-10.5, -6.2, 0), 42], [tr - 0.15, V(-10.3, -4.0, 12), V(-10.5, -5.9, 0), 42], [tr + 0.35, V(-10, 1.8, 20), V(-10, -2.8, 0), 42], [S(2) - 0.2, V(-10, 2.0, 21), V(-10, -2.8, 0), 42]], t);
-    st.html += pill(t, td + 0.1, 'DESABA!', V2(300, 1010), 'red', V(xf - 1.2, TY - 0.8, -0.4), tr - 0.1);
-    st.html += pill(t, tr + 0.1, 'A RUA AFUNDA!', V2(560, 340), 'red', V(-9.5, 0, -1.5));
-  } else if (sh === 2) { // tubo de aço: tatuzão desce no poço e começa a cavar
-    const tl = TS(2) + 0.1, td = tl + 1.1, ti = wt(2, 'isso') - 0.1;
-    const y = TY + 12 * (1 - eo(r(t, tl, td))); const xt = XS + LS / 2 + 2.6 * sm(r(t, td + 0.2, E(2)));
-    setTBM(xt, (t - td) * 1.4); tbm.g.position.y = y; setCore(Math.max(XT0, xt + 0.42));
-    crane.set({ giro: 0, desce: lerp(1, 6, r(t, tl, td)) }); bucket.position.y = -99;
-    dust.g.position.set(xt + 0.5, TY - RT + 0.3, -0.6); dust.update(r(t, td + 0.3, td + 1.6));
-    if (t > td - 0.05) st.shake = 0.4 * (1 - r(t, td, td + 0.5));
-    K = camKeys([[TS(2), V(-12, 0.5, 24), V(-12.5, -3.2, 0), 42], [td + 0.2, V(-11.5, -2.5, 19), V(-12, -5.0, 0), 42], [S(3) - 0.2, V(-10.5, -3.5, 15.5), V(-10.5, -6.0, 0), 42]], t);
-    st.html += pill(t, wt(2, 'tubo') - 0.05, 'TUBO DE AÇO', V2(760, 360), 'orange', V(xt - 1.6, y + 1.0, -0.6), ti - 0.2);
-    st.html += pill(t, ti + 0.15, 'TATUZÃO', V2(540, 380), 'green', V(xt - 1.6, TY + 1.2, -0.6));
-  } else if (sh === 3) { // cabeça de corte
-    const xt = lerp(-10.8, -5.6, r(t, TS(3), E(3) + 0.2)); setTBM(xt, (t - TS(3)) * 1.6); setCore(xt + 0.42);
-    dust.g.position.set(xt + 0.5, TY - RT + 0.3, 0.2); dust.update(r(t, TS(3) + 0.2, E(3) + 0.4));
-    K = camKeys([[TS(3), V(xt + 5.5, TY + 2.2, 9.5), V(xt - 0.4, TY, 0), 44], [S(4) - 0.2, V(xt + 4.6, TY + 1.6, 8.6), V(xt - 0.2, TY, 0), 44]], t);
-    st.html += pill(t, wt(3, 'roda') - 0.05, 'RODA GIRANDO', V2(700, 330), 'orange', V(xt + 0.2, TY + 1.2, 0.5), wt(3, 'isso') - 0.2);
-    st.html += pill(t, wt(3, 'cabeça') - 0.05, 'CABEÇA DE CORTE', V2(560, 340), 'green', V(xt + 0.2, TY + 1.0, 0.6));
-  } else if (sh === 4) { // atrás: sem parede
-    const xt = -5.4 + 0.3 * r(t, TS(4), E(4)); setTBM(xt, (t - TS(4)) * 1.6); setCore(xt + 0.42);
-    const tw = wt(4, 'parede') - 0.3;
-    pieces.forEach((c, i) => { const t0 = tw + (i % 4) * 0.12 + Math.floor(i / 4) * 0.5; c.visible = t > t0; const u = r(t, t0, t0 + 0.5); c.position.set(-11.6 + i * 0.5, TY + RT - 0.3 - 2.9 * ei(u), -0.4 - (i % 3) * 0.4); c.rotation.set(i, u * 2, 0); });
-    for (let i = 0; i < 3; i++) placeArrow(dnArrows[i], V(-11.2 + i * 1.1, TY + 0.7, -0.2), V(0, -1, 0), 1.0 * eo(r(t, tw + i * 0.08, tw + 0.4)) + 0.01);
-    K = camKeys([[TS(4), V(-8.0, TY + 2.5, 17), V(-8.2, TY + 0.3, 0), 42], [S(5) - 0.2, V(-8.8, TY + 2.0, 15), V(-8.8, TY + 0.2, 0), 42]], t);
-    st.html += pill(t, wt(4, 'tubo') - 0.05, 'ATRÁS DO TUBO', V2(540, 330), 'orange', V(-10.5, TY + RT - 0.2, -0.5), tw - 0.1);
-    st.html += pill(t, tw + 0.1, 'SEM PAREDE!', V2(540, 330), 'red', V(-10.5, TY + RT - 0.2, -0.5));
-  } else if (sh === 5) { // aduelas montadas peça por peça
-    const xt = -5.1; setTBM(xt, (t - TS(5)) * 1.6, { erector: 0 }); setCore(xt + 0.42);
-    const tail = xt - LS; const nFull = Math.floor((tail - XT0) / RW) - 1;      // último anel = o que o braço monta
-    const tq = r(t, TS(5) + 0.1, TS(5) + 1.4); const nShow = Math.floor(nFull * tq); setRings(XT0 + nShow * RW);
-    const tp = wt(5, 'peça') - 0.4, tI = wt(5, 'isso') - 0.1; const last = rings[nFull]; last.g.visible = t > tp;
-    let erA = -0.9;
-    last.segs.forEach((s, i) => { const t0 = tp + i * 0.45, u = eo(r(t, t0, t0 + 0.35)); s.visible = t > t0; const m = s.userData.mid; const d = (1 - u) * 0.7; s.position.set(0, -Math.sin(m) * d, Math.cos(m) * d); if (t > t0 - 0.15) erA = m; });
-    tbm.set({ giro: (t - TS(5)) * 1.6, erector: erA });
-    K = camKeys([[TS(5), V(-9.5, TY + 1.8, 15.5), V(-9.0, TY, 0), 42], [tp, V(-8.6, TY + 1.2, 10.5), V(-8.6, TY, 0), 42], [S(6) - 0.2, V(-8.8, TY + 1.1, 10), V(-8.8, TY, 0), 42]], t);
-    st.html += pill(t, wt(5, 'braço') - 0.05, 'BRAÇO', V2(820, 380), 'orange', V(tail + 0.35, TY + 0.6, -0.5), tI - 0.2);
-    st.html += pill(t, wt(5, 'anéis') - 0.05, 'ANÉIS DE CONCRETO', V2(420, 1010), 'orange', V(-10.5, TY - 1.2, -0.3), tI - 0.2);
-    st.html += pill(t, tI + 0.1, 'ADUELAS', V2(540, 360), 'green', V(XT0 + nFull * RW + 0.25, TY + 1.4, -0.4));
-  } else if (sh === 6) { // macacos empurram
-    const t0 = TS(6) + 0.3, t1 = wt(6, 'isso') - 0.2; const xt = -5.1 + 0.5 * sm(r(t, t0, t1));
-    const nR = setRings(-5.1 - LS + 0.01); const xr = XT0 + nR * RW;
-    setTBM(xt, (t - TS(6)) * 1.6, { macaco: (xt - LS + 0.15) - xr }); setCore(xt + 0.42);
-    for (let i = 0; i < 3; i++) placeArrow(fwArrows[i], V(xt - LS + 0.2, TY - 1.0 + i * 1.0, 0.3), V(1, 0, 0), 1.4 * eo(r(t, t0 + i * 0.08, t0 + 0.5)) + 0.01, t < E(6));
-    K = camKeys([[TS(6), V(-7.8, TY + 1.4, 11), V(-8.0, TY, 0), 42], [S(7) - 0.2, V(-7.2, TY + 1.2, 10), V(-7.6, TY - 0.1, 0), 42]], t);
-    st.html += pill(t, wt(6, 'empurra') - 0.05, 'EMPURRA!', V2(780, 360), 'orange', V(xt - LS + 0.9, TY + 1.0, 0.3), t1);
-    st.html += pill(t, wt(6, 'macacos') - 0.05, 'MACACOS HIDRÁULICOS', V2(540, 340), 'green', V(xt - LS - 0.2, TY + 1.4, -0.5));
-  } else if (sh === 7) { // PIADA: terra sem saída, operário soterrado
-    const xt = -4.6; setTBM(xt, (t - TS(7)) * 1.6); setCore(xt + 0.42); setRings(xt - LS + 0.01);
-    const tg = TS(7) + 0.2, tn = wt(7, 'ir') - 0.2; const u = eo(r(t, tg, tn));
-    pile.visible = true; pile.position.set(xt - LS - 1.5, TY - RT + 0.15, -1.0); pile.scale.set(0.3 + 0.7 * u, Math.max(0.05, u), 0.3 + 0.7 * u);
-    worker.g.visible = true; worker.g.position.set(xt - LS - 1.5, TY - 1.72, -0.35); worker.g.rotation.set(0, 0.5, 0);
-    pose(worker, t > tn ? { armL: [-2.8, 0.6], armR: [-2.8, -0.6], eyes: 1.8 } : { eyes: 1 + 0.6 * u });
-    dust.g.position.set(xt - LS - 1.0, TY - RT + 0.4, -0.7); dust.update(r(t, tg, tg + 1.4));
-    K = camKeys([[TS(7), V(-9.4, TY + 1.0, 10), V(-9.4, TY - 0.3, 0), 42], [S(8) - 0.2, V(-9.4, TY + 0.5, 8), V(-9.4, TY - 0.5, 0), 42]], t);
-    st.html += pill(t, wt(7, 'terra') - 0.05, 'E A TERRA?', V2(540, 330), 'orange', null, tn);
-    if (t > tn) st.html += `<div style="position:absolute;left:340px;top:330px;width:400px;text-align:center;font-weight:900;font-size:150px;color:#fff;background:#d32424;border:10px solid #fff;border-radius:30px;transform:rotate(-8deg) scale(${back(r(t, tn, tn + 0.3))});box-shadow:0 10px 30px rgba(0,0,0,.4)">NÃO!</div>`;
-  } else if (sh === 8) { // esteira leva pra fora
-    const xt = lerp(-4.6, -0.6, r(t, TS(8), E(8) + 0.2)); setTBM(xt, (t - TS(8)) * 1.6, { back: true }); setCore(xt + 0.42); setRings(xt - LS + 0.01);
-    const tb = wt(8, 'esteira') - 0.3, tf = wt(8, 'fora') - 0.3; const x1 = xt - LS + 0.25; setBelt(lerp(x1, XS - 0.8, eo(r(t, tb, tb + 0.6))), x1, t);
-    const ub = r(t, tf - 0.4, tf + 1.0); const dsc = lerp(15.6, 2.5, sm(ub)); crane.set({ giro: 0, desce: dsc }); bucket.position.y = -dsc - 0.85; bucketDirt.visible = true; crane.g.updateMatrixWorld(true);
-    K = camKeys([[TS(8), V(-8.5, TY + 1.8, 14), V(-7.5, TY + 0.3, 0), 42], [tf - 0.5, V(-12, -3.0, 22), V(-11.5, -4.2, 0), 42], [S(9) - 0.2, V(-13.5, 0.5, 26), V(-13, -2.0, 0), 42]], t);
-    st.html += pill(t, wt(8, 'esteira') - 0.05, 'ESTEIRA', V2(760, 360), 'orange', V(-7.5, TY + 1.0, -0.6), wt(8, 'isso') - 0.2);
-    st.html += pill(t, wt(8, 'correia') - 0.05, 'CORREIA TRANSPORTADORA', V2(540, 1010), 'green', V(-10, TY + 1.0, -0.6));
-    st.html += pill(t, tf + 0.1, 'PRA FORA', V2(320, 360), 'orange', bucket.getWorldPosition(V(0, 0, 0)), wt(8, 'correia') - 0.2);
-  } else if (sh === 9) { // números
-    const xt = 2.0 + 0.4 * r(t, TS(9), E(9)); setTBM(xt, (t - TS(9)) * 1.6, { back: true }); setCore(xt + 0.42); setRings(xt - LS + 0.01); setBelt(XS - 0.8, xt - LS + 0.25, t);
-    K = camKeys([[TS(9), V(0.5, TY + 1.5, 16), V(0, TY + 0.2, 0), 42], [S(10) - 0.2, V(-0.5, TY + 1.8, 18.5), V(-0.5, TY + 0.5, 0), 42]], t);
-    st.html += pill(t, wt(9, 'são') - 0.05, 'SÃO PAULO', V2(540, 330), 'orange', null, wt(9, 'pesa') - 0.2);
-    st.html += dim(t, wt(9, '10') - 0.25, V(xt - 1.0, TY - RT + 0.05, 0.3), V(xt - 1.0, TY + RT, 0.3), '+10 m', 1);
-    st.html += pill(t, wt(9, 'pesa') - 0.05, '≈ 2 MIL TONELADAS', V2(540, 330), 'green', V(xt - 2.5, TY + 0.6, -0.6));
-  } else if (sh === 10) { // a cidade nem para
-    const xt = 6 + 0.4 * r(t, TS(10), E(10)); setTBM(xt, (t - TS(10)) * 1.6, { back: true }); setCore(xt + 0.42); setRings(xt - LS + 0.01); setBelt(XS - 0.8, xt - LS + 0.25, t);
-    K = camKeys([[TS(10), V(4, 0.0, 25), V(3.5, -3.4, 0), 42], [S(11) - 0.2, V(5, 0.6, 27), V(4, -3.2, 0), 42]], t);
-    st.html += pill(t, wt(10, 'cima') - 0.05, 'A CIDADE NEM PARA', V2(540, 330), 'green', V(4, 0.6, -2.3));
-    st.html += pill(t, wt(10, 'segredo') - 0.05, 'TATUZÃO TRABALHANDO', V2(540, 1010), 'orange', V(xt - 1.6, TY, -0.6));
+  } else if (sh === 0) { // asfalto direto na terra
+    raw(); fofa.visible = true; const zp = lerp(-34, 1.5, sm(r(t, TS(0), wt(0, 'pista') + 0.2)));
+    thin.forEach((g, i) => g.visible = -SL * i - SL < zp - 2.2);
+    paver.g.visible = true; paver.g.position.set(0, 0, zp); dust.g.position.set(0, 0.3, zp - 2.6); dust.update(0.35 + 0.1 * Math.sin(t));
+    K = camKeys([[TS(0), V(10, 5.5, 8), V(0, -0.4, -8), 42], [S(1) - 0.2, V(8.5, 3.6, 9.5), V(0, -0.6, -4), 42]], t);
+    st.html += pill(t, wt(0, 'asfalto') - 0.05, 'ASFALTO', V2(760, 330), 'orange', V(-2, 0.06, -8), wt(0, 'pista') - 0.2);
+    st.html += pill(t, wt(0, 'terra') - 0.05, 'TERRA', V2(300, 1040), 'orange', V(-2.5, -1.0, 0), wt(0, 'pista') - 0.2);
+    st.html += pill(t, wt(0, 'pista') - 0.05, 'PISTA DE AVIÃO?', V2(540, 340), '', V(0, 0.1, -10));
+  } else if (sh === 1) { // avião pesado: afunda
+    raw(); fofa.visible = true; thin.forEach(g => g.visible = true);
+    const ta = wt(1, 'afunda') - 0.2; const L = landing(t, TS(1) - 0.4, -80, -19, ta - TS(1) + 0.4);
+    const ds = 0.7 * eo(r(t, ta, ta + 0.5));
+    thin.forEach((g, i) => { const zc = -SL * (i + 0.5); const d = Math.abs(zc - L.z); if (d < 7) { const k = 1 - d / 7; g.position.y = -ds * k; g.rotation.x = 0.08 * ds * Math.sign(zc - L.z) * (1 - k); } });
+    if (t > ta) { setPlane(0, -ds, L.z, -0.1 * ds / 0.7, 0, 0.05 * ds); }
+    smoke.g.position.set(0, 0.3, L.z - 0.5); smoke.update(r(t, L.touch, L.touch + 1.2));
+    dust.g.position.set(0, 0.0, L.z); dust.update(r(t, ta + 0.1, ta + 1.4)); if (t > ta) st.shake = 0.6 * (1 - r(t, ta + 0.1, ta + 0.8));
+    for (let i = 0; i < 3; i++) placeArrow(redA[i], V(-1.5 + i * 1.5, 4.2, L.z), V(0, -1, 0), 1.4 * eo(r(t, ta + i * 0.08, ta + 0.4)) + 0.01);
+    K = camKeys([[TS(1), V(9, 9, 4), V(0, 2, -34), 42], [wt(1, '500'), V(7, 6.5, 2), V(0, 0.8, -22), 42], [S(2) - 0.2, V(6, 5.5, 0), V(0, 0, -19), 42]], t);
+    st.html += pill(t, wt(1, '500') - 0.05, '+500 TONELADAS', V2(540, 340), 'orange', V(0, 1.6, L.z), ta - 0.2);
+    st.html += pill(t, ta + 0.1, 'A PISTA AFUNDA!', V2(540, 340), 'red', V(0, 0, L.z + 3));
+  } else if (sh === 2) { // tira a terra fofa, compacta: subleito
+    raw(); fofa.visible = true; const tc = wt(2, 'compacta') - 0.3;
+    KIT.grow(fofa, 1 - eo(r(t, TS(2) + 0.2, tc)));
+    exc.g.visible = true; exc.g.position.set(3.2, 0, -7); exc.g.rotation.y = Math.PI * 0.75 + 0.35 * Math.sin(t * 2.2); exc.set({ giro: 0, lanca: -0.6 + 0.2 * Math.sin(t * 2.2), braco: 2.2, cacamba: 0.9 });
+    dust.g.position.set(0.5, -1.2, -5); dust.update(r(t, TS(2) + 0.2, tc + 0.6));
+    const zf = lerp(-30, 0.01, sm(r(t, tc, wt(2, 'isso') + 0.2))); if (t > tc - 0.05) { layerTo('subleito', zf); roller.g.visible = true; roller.g.position.set(-1.5, YSB, Math.min(zf - 1.6, -1.6)); roller.set({ roda: t * 5 }); }
+    if (t > tc + 0.2) exc.g.visible = false;
+    K = camKeys([[TS(2), V(-6, 3.4, 11), V(0, -1.2, -3), 42], [S(3) - 0.2, V(-5, 2.2, 10), V(0, -1.4, -2), 42]], t);
+    st.html += pill(t, wt(2, 'terra') - 0.05, 'TERRA FOFA', V2(300, 1040), 'red', V(-2.5, -1.0, 0), tc - 0.1);
+    st.html += pill(t, wt(2, 'compacta') - 0.05, 'COMPACTA', V2(780, 340), 'orange', roller.g.visible ? V(-1.5, YSB + 1.2, Math.min(zf - 1.6, -1.6)) : null, wt(2, 'isso') - 0.2);
+    st.html += pill(t, wt(2, 'subleito') - 0.05, 'SUBLEITO', V2(300, 1040), 'green', V(-2.5, (YSB + YSL) / 2, 0));
+  } else if (sh === 3) { // sub-base e base
+    raw(); LAY.subleito.visible = true; layerTo('subleito', 0); const tf = wt(3, 'fina') - 0.2;
+    const z1 = lerp(-30, 0.01, sm(r(t, TS(3) + 0.1, tf))); layerTo('subbase', z1);
+    const z2 = lerp(-30, 0.01, sm(r(t, tf, wt(3, 'isso') + 0.3))); if (t > tf) layerTo('base', z2);
+    truck.g.visible = true; const zt = t < tf ? z1 : z2; truck.g.position.set(2.4, t < tf ? YB : YA, Math.min(zt + 2.6, -2.4)); truck.set({ basculha: 0.75, carga: true, tipoCarga: t < tf ? 'brita' : 'base', roda: t * 4 });
+    if (zt > -0.5) truck.g.visible = false;
+    K = camKeys([[TS(3), V(-6, 2.6, 10.5), V(0, -0.9, -2), 42], [S(4) - 0.2, V(-5, 1.6, 9.5), V(0, -0.9, -1), 42]], t);
+    st.html += pill(t, wt(3, 'grossa') - 0.05, 'PEDRA GROSSA', V2(780, 340), 'orange', V(-2.5, (YB + YSB) / 2, 0), tf);
+    st.html += pill(t, wt(3, 'fina') - 0.05, 'PEDRA FINA', V2(780, 340), 'orange', V(-2.5, (YA + YB) / 2, 0), wt(3, 'isso') - 0.2);
+    st.html += pill(t, wt(3, 'sub') - 0.05, 'SUB-BASE', V2(270, 1050), 'green', V(-3, (YB + YSB) / 2, 0));
+    st.html += pill(t, wt(3, 'base') - 0.05, 'BASE', V2(800, 340), 'green', V(-1, (YA + YB) / 2, 0));
+  } else if (sh === 4) { // revestimento: asfalto grosso
+    raw(); ['subleito', 'subbase', 'base'].forEach(k => { LAY[k].visible = true; layerTo(k, 0); });
+    const zf = lerp(-28, 0.01, sm(r(t, TS(4), wt(4, 'isso')))); layerTo('capa', zf);
+    paver.g.visible = true; paver.g.position.set(0.5, YA, Math.min(zf + 1.8, -2.2)); roller.g.visible = true; roller.g.position.set(-1.8, 0, Math.min(zf - 4, -2)); roller.set({ roda: t * 5 });
+    smoke.g.position.set(0, 0.2, zf - 0.5); smoke.update(0.3 + 0.05 * Math.sin(t * 1.3));
+    K = camKeys([[TS(4), V(-6, 2.8, 10.5), V(0, -0.5, -2), 42], [S(5) - 0.2, V(-4.5, 1.6, 9), V(0, -0.6, -1), 42]], t);
+    st.html += pill(t, wt(4, 'asfalto') - 0.05, 'ASFALTO BEM GROSSO', V2(540, 340), 'orange', V(-2.5, YA / 2, 0), wt(4, 'isso') - 0.2);
+    st.html += dim(t, wt(4, 'grosso') - 0.1, V(-RW + 0.2, YA, 0.1), V(-RW + 0.2, 0, 0.1), 'capa', 1);
+    st.html += pill(t, wt(4, 'revest') - 0.05, 'REVESTIMENTO', V2(540, 340), 'green', V(-2.5, YA / 2, 0));
+  } else if (sh === 5) { // chuva entra por baixo, amolece
+    noDrain(); marks.visible = false; rubber.visible = false; grooves.forEach(g => g.visible = false); far.visible = false;
+    setRain(t, 0.6 * r(t, TS(5), TS(5) + 0.4)); sheet.material.opacity = 0.35 * r(t, TS(5), TS(5) + 0.8);
+    const tb = wt(5, 'baixo') - 0.3, ta = wt(5, 'amolece') - 0.2; wet.material.opacity = 0.5 * r(t, tb, ta + 0.4);
+    for (let i = 0; i < 4; i++) placeArrow(blueA[i], V(-RW + 0.6 + (i % 2) * (2 * RW - 1.2), 0.9, 0.3), V(i < 2 ? 0.3 : -0.3, -1, 0), 1.6 * eo(r(t, tb + i * 0.1, tb + 0.6)) + 0.01);
+    const sag = 0.08 * eo(r(t, ta, ta + 0.6)); LAY.capa.position.y -= sag; LAY.base.position.y -= sag * 0.6;
+    K = camKeys([[TS(5), V(5.5, 2.0, 10), V(0, -0.7, -1), 42], [S(6) - 0.2, V(4, 0.8, 8.5), V(0, -0.9, 0), 42]], t);
+    st.html += pill(t, wt(5, 'água') - 0.05, 'ÁGUA DA CHUVA', V2(540, 340), 'orange', V(-RW + 0.8, 0.9, 0.3), ta - 0.2);
+    st.html += pill(t, ta + 0.05, 'AMOLECE!', V2(780, 1040), 'red', V(1.5, (YA + YSL) / 2, 0.1));
+  } else if (sh === 6) { // canais dos lados: drenagem
+    marks.visible = false; rubber.visible = false; grooves.forEach(g => g.visible = false); far.visible = false;
+    const tk = TS(6) + 0.1, tl = wt(6, 'lados') + 0.2;
+    chanFill.forEach(f => { f.visible = true; KIT.grow(f, 1 - eo(r(t, tk, tk + 0.7))); }); chan.forEach(c => KIT.grow(c, eo(r(t, tk + 0.5, tl)))); chanWater.forEach(w => { w.visible = t > tl; KIT.grow(w, r(t, tl, tl + 0.6)); });
+    setRain(t, 0.5); sheet.material.opacity = 0.3 * (1 - r(t, tl, tl + 1.2)); wet.material.opacity = 0.5 * (1 - r(t, tl, tl + 1.5));
+    for (let i = 0; i < 6; i++) { const s = i % 2 ? 1 : -1, j = i >> 1; placeArrow(blueA[i], V(s * (1.8 + j * 0.6), 0.35, -1.0 - j * 2.2), V(s, -0.12, 0), (RW - 1.2 - j * 0.6) * eo(r(t, tl - 0.2 + j * 0.1, tl + 0.5)) + 0.01); }
+    K = camKeys([[TS(6), V(9, 3.2, 9), V(4.6, -0.6, -1.5), 42], [S(7) - 0.2, V(8.5, 2.6, 8), V(4.8, -0.6, -1.2), 42]], t);
+    st.html += pill(t, wt(6, 'canais') - 0.05, 'CANAIS DOS LADOS', V2(540, 340), 'orange', V(RW + CW / 2, -0.3, 0), wt(6, 'isso') - 0.2);
+    st.html += pill(t, wt(6, 'drenagem') - 0.05, 'DRENAGEM', V2(540, 340), 'green', V(RW + CW / 2, -0.4, 0));
+  } else if (sh === 7) { // PIADA: avião aquaplanando + placa NÃO!
+    grooves.forEach(g => g.visible = false); setRain(t, 0.6); sheet.material.opacity = 0.45;
+    const tb = wt(7, 'boia') - 0.2, te = wt(7, 'escorrega') - 0.25;
+    const L = landing(t, TS(7) - 0.6, -80, -14, te - TS(7) + 1.4); const us = eo(r(t, te, te + 0.9));
+    setPlane(2.6 * us, 0, L.z, 0, 0.55 * us, -0.05 * us); plane.set({ roda: t * 8 });
+    spray.g.position.set(2.6 * us, 0.3, L.z - 1); spray.update(r(t, tb, tb + 1.8));
+    worker.g.visible = true; worker.g.position.set(8.5, 0, -11); worker.g.rotation.set(0, -0.9, 0);
+    pose(worker, t > te ? { armR: [-2.9, 0.1], armL: [-2.6, 0.5], eyes: 1.8 } : { armR: [-0.3, -0.1] });
+    if (t > te) st.shake = 0.35 * (1 - r(t, te + 0.2, te + 0.8));
+    K = camKeys([[TS(7), V(13, 6, 2), V(0, 0.8, -22), 42], [te, V(12, 4.2, -1), V(1, 0.6, -15), 42], [S(8) - 0.2, V(11.5, 3.8, -2), V(2, 0.6, -13), 42]], t);
+    st.html += pill(t, wt(7, 'pneu') - 0.05, 'O PNEU BOIA', V2(540, 340), 'orange', V(0, 0.4, L.z), te - 0.1);
+    if (t > te && t < E(7) + 0.4) st.html += `<div style="position:absolute;left:340px;top:330px;width:400px;text-align:center;font-weight:900;font-size:150px;color:#fff;background:#d32424;border:10px solid #fff;border-radius:30px;transform:rotate(-8deg) scale(${back(r(t, te, te + 0.3))});box-shadow:0 10px 30px rgba(0,0,0,.4)">NÃO!</div>`;
+  } else if (sh === 8) { // grooving
+    const tr = wt(8, 'riscos') - 0.4, ta = wt(8, 'água') - 0.2; const zg = lerp(-22, -1.2, sm(r(t, TS(8), wt(8, 'isso'))));
+    grooves.forEach(g => g.visible = g.position.z < zg - 1.0);
+    groover.g.visible = true; groover.g.scale.setScalar(0.8); groover.g.position.set(0, 0, zg); groover.set({ giro: t * 2 });
+    dust.g.position.set(0, 0.2, zg - 1.2); dust.update(0.35 + 0.05 * Math.sin(t));
+    sheet.material.opacity = 0.3 * r(t, ta - 0.2, ta + 0.4) * (1 - r(t, ta + 0.8, ta + 1.8)); setRain(t, 0.35 * r(t, ta - 0.3, ta + 0.2));
+    for (let i = 0; i < 6; i++) { const s = i % 2 ? 1 : -1, j = i >> 1; placeArrow(blueA[i], V(s * 0.6, 0.12, zg - 2.5 - j * 1.4), V(s, 0, 0), 3.4 * eo(r(t, ta + j * 0.1, ta + 0.6)) + 0.01); }
+    K = camKeys([[TS(8), V(7, 5, -4), V(0, 0, -16), 42], [ta, V(5.5, 4.0, 2), V(0, 0, -8), 42], [S(9) - 0.2, V(5, 3.6, 2.5), V(0, 0, -7), 42]], t);
+    st.html += pill(t, wt(8, 'riscos') - 0.05, 'RISCOS FINOS', V2(540, 340), 'orange', V(0, 0.05, zg - 2.5), ta - 0.2);
+    st.html += pill(t, ta + 0.05, 'A ÁGUA FOGE', V2(780, 1040), 'orange', V(2.5, 0.12, zg - 3), wt(8, 'isso') - 0.2);
+    st.html += pill(t, wt(8, 'grooving') - 0.05, 'GROOVING', V2(540, 340), 'green', V(0, 0.05, -4));
+  } else if (sh === 9) { // Galeão: 4 km
+    scene.fog.near = 300; scene.fog.far = 1100; finishedPlane(t);
+    K = camKeys([[TS(9), V(12, 8, 12), V(0, 0, -40), 42], [wt(9, '4') + 0.3, V(18, 42, 30), V(0, 0, -300), 44], [S(10) - 0.2, V(20, 50, 40), V(0, 0, -340), 44]], t);
+    st.html += pill(t, wt(9, 'galeão') - 0.05, 'GALEÃO · RIO', V2(540, 340), 'orange', null, wt(9, '4') - 0.2);
+    st.html += big(t, wt(9, '4') - 0.1, '4 km', 330, '#FFD21F', 170, wt(9, 'quase') - 0.15);
+    st.html += fields(t, wt(9, 'quase') - 0.05);
+  } else if (sh === 10) { // revelação: borracha de pneu + limpeza
+    const tb = wt(10, 'borracha') - 0.1, tl = wt(10, 'limpar') - 0.4;
+    const zp = lerp(-6, -34, sm(r(t, tl, E(10) + 0.2))); if (t > tl - 0.3) { pipa.g.visible = true; pipa.g.position.set(1.9, 0, zp); pipa.set({ roda: t * 5, agua: 0.5 + 0.05 * Math.sin(t * 2) }); }
+    rubberPieces.forEach(m => m.material.opacity = t > tl && m.position.z > zp + 1.2 ? 0.7 * (1 - r(m.position.z, zp + 1.2, zp + 3)) : 0.7);
+    const tp = wt(10, 'pouso') - 0.6; if (t > tp - 1.4 && t < tl - 0.3) { const L = landing(t, tp - 1.4, -90, -28, 2.0); smoke.g.position.set(0, 0.3, L.z - 0.5); smoke.update(r(t, L.touch, L.touch + 1.2)); }
+    K = camKeys([[TS(10), V(6, 4, -8), V(0, 0, -21), 42], [tl, V(6.5, 3.5, -7), V(0.5, 0, -19), 42], [S(11) - 0.2, V(8, 6, -7), V(1, 0, -26), 42]], t);
+    st.html += pill(t, wt(10, 'marcas') - 0.05, 'MARCAS PRETAS?', V2(540, 340), 'orange', V(-1.6, 0.05, -20), tb - 0.2);
+    st.html += pill(t, tb, 'BORRACHA DE PNEU', V2(540, 340), 'green', V(-1.6, 0.05, -20), tl - 0.2);
+    st.html += pill(t, tl + 0.1, 'LIMPEZA', V2(540, 340), 'green', V(1.9, 1.2, zp), wt(10, 'escorrega') - 0.2);
+    st.html += pill(t, wt(10, 'escorrega') - 0.05, 'SENÃO ESCORREGA', V2(540, 340), 'red', null);
   } else { // parabéns + CTA (+ tela final por cima)
-    finished(-4 + (t - TS(11)) * 3); const u = r(t, TS(11), END);
-    K = [0, V(-2 + Math.sin(-0.35 + u * 0.7) * 22, -1.2, Math.cos(-0.35 + u * 0.7) * 22), V(-2, -4.0, 0), 44];
-    if (sh === 11) { st.html += big(t, wt(11, 'parab') - 0.05, 'PARABÉNS!', 300, '#FFD21F', 120); st.html += big(t, wt(11, 'constr') - 0.05, 'VOCÊ CONSTRUIU UM<br>TÚNEL DE METRÔ', 450, '#fff', 74); st.html += confetti(t, wt(11, 'parab')); }
+    const tt = t - TS(11); const L = landing(t, TS(11) - 1.2, -80, -16, 3.4); smoke.g.position.set(0, 0.3, L.z - 0.5); smoke.update(r(t, L.touch, L.touch + 1.4));
+    const u = r(t, TS(11), END); const a = -0.5 + u * 0.9;
+    K = [0, V(Math.sin(a) * 26, 8, -20 + Math.cos(a) * 26), V(0, 0.5, -20), 44];
+    if (sh === 11) { st.html += big(t, wt(11, 'parab') - 0.05, 'PARABÉNS!', 300, '#FFD21F', 120); st.html += big(t, wt(11, 'constr') - 0.05, 'VOCÊ CONSTRUIU UMA<br>PISTA DE AEROPORTO', 450, '#fff', 74); st.html += confetti(t, wt(11, 'parab')); }
     if (sh >= 12) st.html += ctaCard(t);
   }
   st.cam = K; return st;
 }
+function fields(t, t0) { if (t < t0) return ''; const k = pop(t, t0, 0.4);
+  let h = `<div style="position:absolute;left:90px;right:90px;top:300px;padding:26px 20px 30px;background:rgba(20,23,29,.9);border:5px solid #3dd17a;border-radius:36px;transform:scale(${k});text-align:center">
+   <div style="font-weight:900;font-size:62px;color:#fff;margin-bottom:18px">QUASE <span style="color:#3dd17a">40</span> CAMPOS DE FUTEBOL</div><div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">`;
+  for (let i = 0; i < 40; i++) { const a = r(t, t0 + 0.2 + i * 0.03, t0 + 0.35 + i * 0.03);
+    h += `<div style="width:78px;height:50px;box-sizing:border-box;background:#2f9a4e;border:3px solid #fff;position:relative;opacity:${a};transform:scale(${0.4 + 0.6 * a})"><div style="position:absolute;left:36px;top:0;bottom:0;width:3px;background:#fff"></div><div style="position:absolute;left:28px;top:14px;width:16px;height:16px;border:3px solid #fff;border-radius:50%"></div></div>`; }
+  return h + '</div></div>'; }
 function selo(t) { const k = back(r(t, 0.05, 0.4)), o = 1 - r(t, S(0) - 0.3, S(0) - 0.05);
   return `<div style="position:absolute;left:0;right:0;top:330px;text-align:center;opacity:${o};transform:scale(${0.5 + 0.5 * k})">
    <div style="display:inline-block;background:#FFC20E;color:#111;font-family:InterD;font-weight:900;font-size:92px;letter-spacing:6px;padding:14px 50px;border-radius:70px;box-shadow:0 12px 40px rgba(0,0,0,.45)">DO ZERO</div>
-   <div style="font-family:InterD;font-weight:900;font-size:170px;color:#fff;line-height:1.1;text-shadow:0 8px 30px rgba(0,0,0,.6)">#04</div></div>`; }
+   <div style="font-family:InterD;font-weight:900;font-size:170px;color:#fff;line-height:1.1;text-shadow:0 8px 30px rgba(0,0,0,.6)">#05</div></div>`; }
 function ctaCard(t) { const t0 = TS(12); if (t < t0 || t > window.F_END / FPS + 0.2) return '';
   const items = [['curte', '#ff4d6d', '<path d="M50 84 L18 52 Q6 38 16 24 Q28 10 44 22 L50 28 L56 22 Q72 10 84 24 Q94 38 82 52 Z" fill="#ff4d6d"/>', 'CURTE'],
     ['salva', '#FFD21F', '<path d="M26 12 H74 V88 L50 70 L26 88 Z" fill="#FFD21F"/>', 'SALVA'],
@@ -789,12 +846,12 @@ function avatarCorner(f) {
 function camSet(K, t, st) { const p = K[1].clone(), q = K[2].clone();
   if (st.shake > 0) { const a = st.shake * 0.12; p.add(V(noise(t * 2.5) * a, noise(t * 2.8, 1.3) * a, 0)); }
   p.add(V(Math.sin(t * 0.7) * 0.05, Math.sin(t * 0.9) * 0.04, 0));
-  cam.position.copy(p); cam.fov = K[3]; cam.up.set(0, 1, 0); cam.setViewOffset(W, H, 0, 260, W, H);
+  cam.position.copy(p); cam.fov = K[3]; cam.far = 1200; cam.up.set(0, 1, 0); cam.setViewOffset(W, H, 0, 260, W, H);
   cam.lookAt(q); cam.updateProjectionMatrix(); cam.updateMatrixWorld(); }
 window.renderFrame = f => {
   const t = f / FPS; let st = world(t); let K = st.cam; camSet(K, t, st); st = world(t); K = st.cam;
   camSet(K, t, st);
-  sun.target.position.set(0, -3, 0); sun.position.set(8, 22, 16);   // luz FIXA
+  sun.target.position.set(0, -1, -12); sun.position.set(10, 24, 6);   // luz FIXA
   R.render(scene, cam);
   canvas.style.filter = 'none';
   fxd.innerHTML = `<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 50%, rgba(0,0,0,${st.vig}) 100%)"></div>`;
@@ -803,16 +860,16 @@ window.renderFrame = f => {
 };
 await document.fonts.load('900 40px InterD'); await document.fonts.load('800 40px InterD'); await document.fonts.load('800 40px P'); await document.fonts.load('900 40px P'); await document.fonts.load('700 40px P'); await document.fonts.load('600 40px P');
 
-window.renderCover = (cy = -5, dist = 13) => {
-  const t = 5; world(-1); base(t); const xt = -2; setTBM(xt, 0.4, { back: true }); setCore(xt + 0.42); setRings(xt - LS + 0.01); setBelt(XS - 0.8, xt - LS + 0.25, t);
-  dust.g.position.set(xt + 0.5, TY - RT + 0.3, 0.2); dust.update(0.45);
-  cam.clearViewOffset(); cam.position.set(xt + 3.5, cy + 1.2, dist); cam.fov = 44; cam.up.set(0, 1, 0); cam.lookAt(V(xt - 1.5, cy, 0)); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
-  sun.target.position.set(0, -3, 0); sun.position.set(8, 22, 16); R.render(scene, cam); canvas.style.filter = 'none';
+window.renderCover = (cy = 1, dist = 14) => {
+  const t = 5; world(-1); base(t); const L = landing(1.0, 0, -70, -18, 2.0); smoke.g.position.set(0, 0.3, L.z - 0.5); smoke.update(0.35);
+  groover.g.visible = false;
+  cam.clearViewOffset(); cam.position.set(14, cy + 5, L.z + dist); cam.fov = 44; cam.far = 1200; cam.up.set(0, 1, 0); cam.lookAt(V(0, cy - 0.5, L.z - 2)); cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+  sun.target.position.set(0, -1, -12); sun.position.set(10, 24, 6); R.render(scene, cam); canvas.style.filter = 'none';
   fxd.innerHTML = `<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,22,34,.92) 0%,rgba(14,22,34,.78) 30%,rgba(14,22,34,0) 46%,rgba(14,22,34,0) 74%,rgba(14,22,34,.9) 86%)"></div>`;
   const av = window.AV.svg(0, 0, 0);
   ov.innerHTML = `<div style="position:absolute;left:110px;top:270px;background:#FFC20E;color:#111;font-family:InterD;font-weight:900;font-size:64px;letter-spacing:6px;padding:14px 40px;border-radius:50px">DO ZERO</div>
-   <div style="position:absolute;right:110px;top:250px;color:#FFC20E;font-family:InterD;font-weight:900;font-size:120px;line-height:1">#04</div>
-   <div style="position:absolute;left:110px;right:80px;top:420px;font-family:InterD;font-weight:900;font-size:104px;line-height:1.0;letter-spacing:-4px;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.5)">Como se cava um <span style="display:inline-block;background:#FFC20E;color:#111;padding:0 18px 8px;border-radius:18px;transform:rotate(-2deg)">túnel de metrô</span>?</div>
+   <div style="position:absolute;right:110px;top:250px;color:#FFC20E;font-family:InterD;font-weight:900;font-size:120px;line-height:1">#05</div>
+   <div style="position:absolute;left:110px;right:80px;top:420px;font-family:InterD;font-weight:900;font-size:104px;line-height:1.0;letter-spacing:-4px;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.5)">Como se faz uma <span style="display:inline-block;background:#FFC20E;color:#111;padding:0 18px 8px;border-radius:18px;transform:rotate(-2deg)">pista de avião</span>?</div>
    <div style="position:absolute;left:110px;top:1560px;display:flex;align-items:center;gap:26px">
     <div style="width:150px;height:150px;box-sizing:border-box;border-radius:75px;overflow:hidden;background:#30343A;border:7px solid #FFC20E">${av}</div>
     <div><div style="font-family:InterD;font-weight:900;font-size:50px;color:#fff">@eng.raphaelserra</div><div style="font-family:InterD;font-weight:600;font-size:34px;color:#c9d2dc">Engenheiro civil explica</div></div></div>`;

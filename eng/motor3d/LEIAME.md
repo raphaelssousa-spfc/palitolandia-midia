@@ -38,3 +38,9 @@ Regras de conteúdo e erros a evitar: ver eng/PRODUCAO.md (seções "DO ZERO", "
 - Âncoras de pill/cota usam a câmera: o renderFrame do #04 roda world(t) duas vezes (1ª só para posicionar a câmera) — sem isso a âncora fica 1 quadro atrasada e nas prévias aponta errado.
 - Não estique peças texturizadas com scale.x enorme (a textura vira listras): faça a geometria já no comprimento certo.
 - Retrato é estreito: para mostrar o túnel E a cidade, câmera a 20–26 de distância; closes a 8–11.
+
+## Dicas do #05 (pista de aeroporto)
+- `node_modules/playwright` pode faltar: `ln -sfn "$(npm root -g)/playwright" node_modules/playwright`. O modelo de voz baixa com `get_model()` do voz.py.
+- Render em 4 processos (`work/run.sh`, trechos de 140 quadros) levou ~45 min para 55 s com 2 CPUs.
+- Máquinas que avançam até o corte: limite a posição (Math.min(..., -2)) senão a máquina sai flutuando na frente do corte.
+- qa_piscadas acusa movimento rápido de câmera (subida no plano aberto) e árvores no canto: olhe os quadros seguidos antes de mexer.
