@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<script src="assets/gsap.min.js"></script>
+<style>
+@font-face { font-family:'Anton'; src:url('assets/fonts/Anton-Regular.ttf'); }
+@font-face { font-family:'Fira Sans'; font-weight:900; src:url('assets/fonts/FiraSans-Black.ttf'); }
+@font-face { font-family:'Fira Sans'; font-weight:700; src:url('assets/fonts/FiraSans-Bold.ttf'); }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:1080px; height:1920px; overflow:hidden; background:#0c0d10; }
+#root { position:relative; width:1080px; height:1920px; overflow:hidden; color:#fff; font-family:'Fira Sans',sans-serif; }
+#bg { position:absolute; inset:0; background:url('assets/bg.jpg') center/cover; }
+#shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,14,.55) 0%, rgba(10,10,14,.25) 35%, rgba(10,10,14,.85) 100%); }
+.lane { position:absolute; left:0; width:1080px; height:14px; background:repeating-linear-gradient(90deg,#FFC81E 0 110px,transparent 110px 170px); opacity:.9; }
+#laneT { top:250px; } #laneB { top:1660px; }
+
+#q { position:absolute; left:120px; width:840px; top:330px; text-align:center; font-family:'Anton'; font-size:96px; line-height:1.02; text-transform:uppercase; letter-spacing:1px;
+  text-shadow:0 6px 24px rgba(0,0,0,.6); }
+#q em { font-style:normal; color:#FFC81E; }
+#qsub { position:absolute; left:120px; width:840px; top:560px; text-align:center; font-weight:700; font-size:44px; color:#e9e6df; }
+
+#ring { position:absolute; left:390px; top:680px; width:300px; height:300px; border-radius:50%;
+  background:conic-gradient(#FFC81E, #ffdf6b, #FFC81E, #e0a800, #FFC81E); padding:10px; box-shadow:0 0 60px rgba(255,200,30,.45); }
+#face { width:100%; height:100%; border-radius:50%; background:url('assets/face.jpg') center/cover; border:6px solid #0c0d10; }
+#name { position:absolute; left:120px; width:840px; top:1010px; text-align:center; font-weight:900; font-size:64px; }
+#role { position:absolute; left:120px; width:840px; top:1090px; text-align:center; font-weight:700; font-size:36px; color:#FFC81E; letter-spacing:3px; text-transform:uppercase; }
+
+#follow { position:absolute; left:290px; top:1170px; width:500px; height:120px; border-radius:60px; background:#FFC81E; color:#111;
+  font-weight:900; font-size:56px; text-align:center; line-height:120px; letter-spacing:2px; box-shadow:0 14px 40px rgba(255,200,30,.35); }
+
+#acts { position:absolute; left:150px; width:780px; top:1360px; height:220px; display:flex; justify-content:space-between; }
+.act { width:220px; height:220px; border-radius:36px; background:rgba(255,255,255,.08); border:2px solid rgba(255,255,255,.18);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; }
+.act svg { width:90px; height:90px; }
+.act span { font-weight:900; font-size:38px; text-transform:uppercase; letter-spacing:1px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="3.6" data-width="1080" data-height="1920">
+  <audio id="sfx" class="clip" src="assets/sfx.wav" data-start="0" data-duration="3.6" data-track-index="5" data-volume="1"></audio>
+  <div id="bg"></div><div id="shade"></div>
+  <div class="lane" id="laneT"></div><div class="lane" id="laneB"></div>
+
+  <div id="q">Qual etapa você<br><em>não conhecia?</em></div>
+  <div id="qsub">Comenta aqui embaixo</div>
+
+  <div id="ring"><div id="face"></div></div>
+  <div id="name">@eng.raphaelserra</div>
+  <div id="role">Engenheiro civil · Pavimentação</div>
+  <div id="follow">SEGUIR</div>
+
+  <div id="acts">
+    <div class="act" id="a1"><svg viewBox="0 0 24 24"><path fill="#FF4D6D" d="M12 21s-7.5-4.6-9.5-9.2C1.1 8.6 3 5 6.6 5c2 0 3.4 1.1 4.4 2.5C12 6.1 13.4 5 15.4 5 19 5 20.9 8.6 19.5 11.8 17.5 16.4 12 21 12 21z"/></svg><span>Curte</span></div>
+    <div class="act" id="a2"><svg viewBox="0 0 24 24"><path fill="#FFC81E" d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg><span>Salva</span></div>
+    <div class="act" id="a3"><svg viewBox="0 0 24 24"><path fill="#4DD2FF" d="M3 11.5 21 3l-6.5 18-3-7.5L3 11.5z"/></svg><span>Manda</span></div>
+  </div>
+</div>
+<script>
+const tl = gsap.timeline({ paused:true });
+gsap.set(["#q","#qsub","#ring","#name","#role","#follow","#a1","#a2","#a3"],{opacity:0});
+tl.fromTo("#bg",{scale:1.12},{scale:1,duration:3.6,ease:"power1.out"},0);
+tl.fromTo(["#laneT","#laneB"],{x:-170},{x:0,duration:3.6,ease:"none"},0);
+tl.fromTo("#q",{opacity:0,y:40,scale:1.08},{opacity:1,y:0,scale:1,duration:0.45,ease:"power3.out"},0.05);
+tl.fromTo("#qsub",{opacity:0},{opacity:1,duration:0.3},0.35);
+tl.fromTo("#ring",{opacity:0,scale:0.4,rotation:-90},{opacity:1,scale:1,rotation:0,duration:0.55,ease:"back.out(1.8)"},0.3);
+tl.fromTo("#name",{opacity:0,y:24},{opacity:1,y:0,duration:0.35,ease:"power2.out"},0.6);
+tl.fromTo("#role",{opacity:0},{opacity:1,duration:0.3},0.75);
+tl.fromTo("#follow",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.4,ease:"back.out(2.6)"},0.9);
+tl.to("#follow",{scale:1.07,duration:0.35,yoyo:true,repeat:3,ease:"sine.inOut"},1.4);
+["#a1","#a2","#a3"].forEach((s,i)=>tl.fromTo(s,{opacity:0,y:60,scale:0.7},{opacity:1,y:0,scale:1,duration:0.35,ease:"back.out(2.2)"},1.15+i*0.18));
+tl.to(["#a1 svg"],{scale:1.2,duration:0.18,yoyo:true,repeat:1},1.9);
+tl.to(["#a2 svg"],{scale:1.2,duration:0.18,yoyo:true,repeat:1},2.15);
+tl.to(["#a3 svg"],{scale:1.2,duration:0.18,yoyo:true,repeat:1},2.4);
+tl.to("#root",{opacity:1,duration:0.01},3.59);
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>
