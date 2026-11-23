@@ -208,7 +208,10 @@
   },
   {
    "id": "dozero-05-pista-aeroporto",
-   "status": "agendado",
+   "status": "postado",
+      "postado_em": "2026-11-23T12:44:00-03:00",
+      "media_id": "18101498207665036",
+      "tiktok_post_id": "6b045f6114d1cfb9e031106c",
    "agendado_para": "2026-11-23T12:40:00-03:00",
    "obs": "Postagem avulsa da série DO ZERO #05 (postada pela tarefa 'Robô – resgate diário' às 12:40, Instagram e TikTok). NÃO entra na fila diária.",
    "video": "videos/dozero-05-pista-aeroporto.mp4",
