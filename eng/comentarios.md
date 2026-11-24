@@ -2,6 +2,24 @@
 
 Histórico dos últimos 14 dias (mais novo no topo). Não repetir perfil 3 dias seguidos nem repetir comentário.
 
+## 2026-11-24
+
+1. [@0bras](https://www.instagram.com/0bras/) – obras grandes e infraestrutura
+   - Se for de rodovia/asfalto: "Camada de rolamento é só a parte que a gente vê. O que segura o tráfego é a base bem compactada e drenada embaixo dela."
+   - Se for de outra obra: "Boa. Em obra grande, o cronograma físico acompanhado toda semana evita descobrir atraso só quando já não dá pra recuperar."
+2. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico
+   - Se for de asfalto: "Pintura de ligação entre camadas parece detalhe, mas sem ela o capa escorrega sobre a camada de baixo e aparecem trincas em meia-lua."
+   - Se for de outra obra: "Concordo. Ensaio de Marshall no laboratório só vale se a massa que chega na pista tiver o mesmo traço."
+3. [@infra_urbana](https://www.instagram.com/infra_urbana/) – infraestrutura urbana e saneamento
+   - Se for de rua/asfalto: "Reparo de vala mal compactado vira afundamento em poucos meses. Reaterro em camadas finas é o que segura o asfalto por cima."
+   - Se for de outra obra: "Bom ponto. Boca de lobo limpa antes do período de chuva resolve metade dos alagamentos de rua."
+4. [@eng.civiladrianovanjura](https://www.instagram.com/eng.civiladrianovanjura/) – dicas de obra e engenharia
+   - Se for de estrutura/concreto: "Espaçador no ferro garante o cobrimento certo. Sem ele a armadura fica perto da superfície e enferruja antes da hora."
+   - Se for de outra obra: "Boa. Projeto compatibilizado antes de começar evita quebrar parede pronta pra passar tubulação."
+5. [@fundacoessemcomplicacoes](https://www.instagram.com/fundacoessemcomplicacoes/) – fundações e solo explicados
+   - Se for de solo/fundação: "Nível d'água alto muda tudo: reduz a capacidade do solo e pode exigir rebaixamento. Vale ver isso já na sondagem."
+   - Se for de outra obra: "Concordo. Fundação bem projetada custa pouco perto do que custa reforçar depois da obra pronta."
+
 ## 2026-11-23
 
 1. [@pavimentar.eng](https://www.instagram.com/pavimentar.eng/) – pavimentação e asfalto técnico
