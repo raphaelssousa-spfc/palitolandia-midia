@@ -131,14 +131,16 @@
     },
     {
       "id": "tunel-banco",
-      "status": "pendente",
+      "status": "postado",
       "video": "videos/tunel-banco.mp4",
       "capa": "videos/tunel-banco-capa.jpg",
       "legenda": "Verdade ou mito? #1 🕳️🏦\nIsso parece roteiro de filme... 🎬\nVerdade ou mito? Crava a sua antes de ver o final 👇\nSegue @palitolandia.ia\n#verdadeoumito #curiosidades #vocesabia #historia #brasil",
       "comentario": "Verdade ou mito? Crava aqui antes de ver o final 👇",
       "episodio": 1,
       "serie": "B",
-      "formato": "serie B (18/11)"
+      "formato": "serie B (18/11)",
+      "postado_em": "2026-11-24 19:12 (America/Fortaleza)",
+      "media_id": "18125545451283466"
     },
     {
       "id": "videogame-lua",
