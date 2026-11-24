@@ -1,0 +1,87 @@
+{
+ "serie": "construcao",
+ "categoria": "REFORMA",
+ "episodio": "CARROSSEL #04",
+ "referencia": "https://idec.org.br/consultas/dicas-e-direitos/vai-reformar-a-casa-conheca-os-seus-direitos (tema inspirado em buscas de 'erros que encarecem reforma'; texto 100% próprio)",
+ "cores": {
+  "bg": "#14213D",
+  "card": "#1F3158",
+  "text": "#FFFFFF",
+  "grey": "#B8C4DD",
+  "acc": "#FCA311",
+  "ring": "#FCA311",
+  "pill": "#FCA311",
+  "pillText": "#14213D"
+ },
+ "slides": [
+  {
+   "tipo": "capa",
+   "titulo": "5 erros que dobram o preço da reforma",
+   "destaque": "dobram",
+   "subtitulo": "O nº 4 pega muita gente de surpresa.",
+   "ilustracao": "dinheiro"
+  },
+  {
+   "tipo": "item",
+   "numero": 0,
+   "titulo": "Todos têm algo em comum",
+   "texto": "Decidir sem planejar. O nº 4 é o que mais assusta. Arraste →",
+   "icone": "alerta",
+   "alerta": "perigo"
+  },
+  {
+   "tipo": "item",
+   "numero": 1,
+   "titulo": "Começar sem projeto nem medição",
+   "texto": "Obra sem plano vira refazer parede, piso e ponto de luz.",
+   "icone": "regua",
+   "alerta": "perigo"
+  },
+  {
+   "tipo": "item",
+   "numero": 2,
+   "titulo": "Fechar parede sem testar o cano",
+   "texto": "Vazamento descoberto depois do revestimento = quebrar tudo de novo.",
+   "icone": "gota",
+   "alerta": "perigo"
+  },
+  {
+   "tipo": "item",
+   "numero": 3,
+   "titulo": "Derrubar parede sem saber se segura",
+   "texto": "Parede estrutural não se tira sem engenheiro. O risco é a casa toda.",
+   "icone": "tijolo",
+   "alerta": "perigo"
+  },
+  {
+   "tipo": "item",
+   "numero": 4,
+   "titulo": "Reaproveitar fiação velha",
+   "texto": "Fio fino com chuveiro e ar novos esquenta. Troque e use disjuntor certo.",
+   "icone": "alerta",
+   "alerta": "perigo"
+  },
+  {
+   "tipo": "item",
+   "numero": 5,
+   "titulo": "Pagar tudo adiantado, sem contrato",
+   "texto": "Combine por escrito: prazo, valor e etapas. Pague conforme a obra anda.",
+   "icone": "dinheiro",
+   "alerta": "atencao"
+  },
+  {
+   "tipo": "resumo",
+   "titulo": "PRINTA ISSO 📸",
+   "pontos": [
+    "🔴 Projeto e medida antes de tudo",
+    "🔴 Testar cano e fiação antes de fechar",
+    "🔴 Parede? Só com engenheiro",
+    "🟡 Contrato escrito e pagamento por etapa"
+   ]
+  },
+  {
+   "tipo": "final",
+   "pergunta": "Salva e manda pra quem vai reformar! Qual erro mais pega: A) sem projeto ou B) sem contrato? Orçamento no direct 📩"
+  }
+ ]
+}

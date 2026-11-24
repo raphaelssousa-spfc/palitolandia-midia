@@ -144,6 +144,9 @@ e a folha de prévia `eng/motor/out/<id>_previa.jpg` (OLHAR antes de publicar: t
   martelo, capacete, check, alerta, x, estrada, buraco, cone, caminhao, chuva, rolo, sol, lupa, camadas, bueiro, compactador, termometro. (Para um ícone novo, acrescente em `src/Carrossel.tsx`.)
 - Fatos conferidos com WebSearch, igual aos vídeos. Legenda do post curta: título + gancho + pergunta + "Comenta aqui 👇" + hashtags.
 - Fila: `eng/fila_carrossel.json` (campos: id, status, pasta, imagens [lista de caminhos relativos a eng/], legenda, comentario).
+### Regras 19/11 (carrosséis mais interessantes — valem mais que o resto)
+Carrossel cresce com SALVAMENTO e COMPARTILHAMENTO. Tema útil pra casa da pessoa (sinais de problema, o que conferir ao comprar/alugar, erros que encarecem reforma, golpes de obra, custos com fonte). Capa que para o dedo: foto/desenho forte + frase de choque ≤ 8 palavras (número, alerta ou contradição), nada de título de aula. Slide 2 segura (promete o que vem). 1 ideia por slide, letra grande, ícone/foto, 🟢🟡🔴. Penúltimo = resumo "PRINTA ISSO". Final: salva + manda pra quem vai reformar/comprar, pergunta A ou B, segue @eng.raphaelserra, orçamento no direct 📩. Legenda: 1 linha de curiosidade + pergunta A ou B + 3 a 5 hashtags; comentário fixado com a mesma pergunta.
+
 ### Como postar carrossel
 URLs: `https://raw.githubusercontent.com/raphaelssousa-spfc/palitolandia-midia/main/eng/<imagem>` (conferir 200 em todas).
 Windsor `execute_action`, conector `instagram`, conta `17841404396456793`, ação `create_carousel_post`, `image_urls` na ordem, `caption` = legenda.
