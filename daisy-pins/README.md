@@ -1,5 +1,8 @@
 # Pins da Daisy Parker (Pinterest @daisydinners)
 
+> PREÇO (pedido do Raphael, 24/11/2026): o e-book está EM PROMOÇÃO: US$ 9.99 (era US$ 17). Vale mais que o texto da tarefa agendada.
+> Se um pin ou descrição citar o preço, use "on sale for $9.99 (was $17)" ou "under $10". Nunca escreva só "$17". Sem urgência falsa ("só hoje", "últimas horas").
+
 - semanaN/: imagens 1000x1500 publicadas via Buffer (URL raw do GitHub).
 - scripts/make_pins_foto.py: gera pins com foto do Pexels. Rodar dentro de uma pasta com subpasta photos/<ID>.jpg.
   Edite a lista PINS (slug, kicker, head, sub, top) e o dicionario PH (prefixo do slug -> ID da foto Pexels).
