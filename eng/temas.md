@@ -14,6 +14,7 @@
 - pavimentação · PAVIMENTAÇÃO #07 · Por que raspam o asfalto antes de botar o novo? (fresagem: fresadora com rolo de dentes de aço, arranca ~5 cm da capa velha com as trincas, jato d'água esfria/segura poeira, esteira joga no caminhão; por cima sem fresar: rua sobe, meio-fio some, água empoça, trinca de reflexão; varre, pintura de ligação (emulsão), capa nova; fresado reciclado)
 - pavimentação · PAVIMENTAÇÃO #08 · Por que a faixa da estrada brilha no farol? (formato "Por que [coisa da rua]": tinta + microesferas de vidro jogadas na tinta molhada logo atrás do caminhão, do tamanho de grão de areia, meio enterradas; luz entra, bate no fundo e volta pro motorista (retrorrefletância); sem vidro espalha e some, chuva piora; amarela = sentidos opostos, branca = mesmo sentido; parou de brilhar = repintar)
 - pavimentação · PAVIMENTAÇÃO #09 · Por que o asfalto fica mole no calor e afunda? (formato "Por que [coisa da rua]": asfalto = pedra colada com piche/cola de petróleo; pista pode passar de 60 °C no verão; ligante amolece (chiclete), pedras soltas; caminhão pesado e devagar empurra a massa pro lado → afundamento na trilha de roda; chuva = poça e aquaplanagem; solução: asfalto com polímero, aguenta mais calor)
+- pavimentação · PAVIMENTAÇÃO #10 · Por que a ponte faz tec-tec? (formato "Por que [coisa da rua]": junta de dilatação = fenda de metal entre ponte e estrada (dente de pente); concreto estica no sol e encolhe no frio (~10⁻⁵/°C); ponte de 100 m muda uns 3 cm; sem junta a ponte empurra a pista, asfalto estufa e racha; com junta abre no frio e fecha no calor; tec-tec é bom sinal; junta quebrada/entupida trava a ponte e trinca)
 
 - DO ZERO (3D, "Se você...") · #01 · Como um buraco no quintal vira um subsolo? (agendado 12/11 07:10)
 - DO ZERO (3D, "Se você...") · #02 · pavimentação · Por que a estrada de concreto faz tum-tum? (rodovia de concreto: sub-base, junta serrada, barra de transferência, barra de ligação, selante, texturização; agendado 14/11 12:40)
@@ -47,7 +48,7 @@
 - ~~Por que asfalto novo é preto e o velho fica cinza?~~ (usado: PAVIMENTAÇÃO #04)
 - ~~Os sinais de que a estrada vai afundar (couro de jacaré, trilha de roda)~~ (usado: PAVIMENTAÇÃO #05)
 - ~~Como é feita uma pista de aeroporto que aguenta um avião de 500 toneladas?~~ (usado: DO ZERO #05)
-- Por que as pontes têm "fendas" no asfalto? (juntas de dilatação)
+- ~~Por que as pontes têm "fendas" no asfalto? (juntas de dilatação)~~ (usado: PAVIMENTAÇÃO #10)
 
 # Carrosséis já usados (não repetir)
 - construção · UMIDADE · CARROSSEL #01 · 6 sinais de infiltração na sua casa (checklist)

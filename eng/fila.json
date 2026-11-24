@@ -209,15 +209,23 @@
   {
    "id": "dozero-05-pista-aeroporto",
    "status": "postado",
-      "postado_em": "2026-11-23T12:44:00-03:00",
-      "media_id": "18101498207665036",
-      "tiktok_post_id": "6b045f6114d1cfb9e031106c",
+   "postado_em": "2026-11-23T12:44:00-03:00",
+   "media_id": "18101498207665036",
+   "tiktok_post_id": "6b045f6114d1cfb9e031106c",
    "agendado_para": "2026-11-23T12:40:00-03:00",
    "obs": "Postagem avulsa da série DO ZERO #05 (postada pela tarefa 'Robô – resgate diário' às 12:40, Instagram e TikTok). NÃO entra na fila diária.",
    "video": "videos/dozero-05-pista-aeroporto.mp4",
    "capa": "videos/dozero-05-pista-aeroporto-capa.jpg",
    "legenda": "Por que a pista do aeroporto não afunda com um avião de 500 toneladas? ✈️\nVocê já reparou nos riscos da pista: sim ou não?\nComenta aqui 👇\n\n#engenhariacivil #aeroporto #pistadepouso #pavimentacao #asfalto #obra #construcao #infraestrutura #engenharia",
    "comentario": "Você já tinha reparado nas marcas pretas da pista: sim ou não? E qual obra você quer ver construída do zero no próximo? 👇"
+  },
+  {
+   "id": "pavimentacao-10-junta-ponte",
+   "status": "pendente",
+   "video": "videos/pavimentacao-10-junta-ponte.mp4",
+   "capa": "videos/pavimentacao-10-junta-ponte-capa.jpg",
+   "legenda": "Por que a ponte faz tec-tec quando o carro passa? 🌉\nVocê já tinha reparado nesse barulho: sim ou não? 👇\n\n#engenhariacivil #ponte #pavimentacao #asfalto #juntadedilatacao #estrada #obra #infraestrutura #engenharia",
+   "comentario": "Você já tinha reparado no tec-tec da ponte: sim ou não? E qual barulho da estrada você quer que eu explique no próximo? 👇"
   }
  ],
  "frequencia": "todos os dias, 2 postagens"
