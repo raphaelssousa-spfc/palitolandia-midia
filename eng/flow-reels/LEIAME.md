@@ -19,6 +19,9 @@ a câmera sai dele e mostra a etapa (aerial pullback, speed ramp, rack focus, ó
 - Fotos de referência: ref/rosto.jpg (rosto), ref/capacete.jpg (capacete/óculos, braços cruzados), ref/corpo.jpg (corpo inteiro). Suba as 3 e anexe as 3.
 - Cada clipe leva ~2 min. Dá pra mandar vários seguidos (anexar a referência de novo em cada um).
 - Baixar: abra o clipe → ⋮ → Baixar mídia → **720p**. Abre janela "salvar" no PC: o dono salva em `C:\Users\Eng. Raphael Serra\Desktop\RAPHAEL SERRA\CANAL DARK\ENGENHARIA CIVIL\Eng.RaphaelSerra\VIDEO N` (uma pasta VIDEO + próximo número por vídeo/dia). Peça acesso a essa pasta (device_request_folder_access) e pegue de lá com device_stage_files. Sem ninguém no PC, o arquivo fica só como .tmp na Downloads e some.
+- Sempre **x1** (uma versão por clipe) — pedido do dono.
+- Conta nova do Flow pede "Direitos de uso desta imagem" → só o dono pode clicar Concordo.
+- Tela final: pergunta longa encavala no "Comenta aqui". Se a 2ª linha passar de ~17 letras, no index.html do endcard use `#q` com left:60px; width:960px; font-size:78px.
 - Identificar qual clipe é qual: abra o clipe e clique no (i) "Mostrar informações do recurso" → o prompt aparece (fala entre aspas).
 - Roupa: no prompt diga "vest worn over the shirt at all times", "clean dark gray work pants with reflective stripes", "Same outfit in every shot" (sem isso saiu clipe sem colete).
 - Roteiro: se o gancho pergunta "por quê?", os clipes 2–4 explicam o PORQUÊ (o erro), e só o 5 mostra a solução. Falar o nome do produto (ex.: "emulsão asfáltica, a cola").
