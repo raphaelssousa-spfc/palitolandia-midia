@@ -1,13 +1,42 @@
 # Daisy Dinners — Reels diários (TAAFT)
 
-> ⚠️ ATUALIZAÇÃO 22/11 (pedido do Raphael): este manual vale MAIS que o texto da rotina agendada.
-> - 3 clipes (não 4). Foto real do prato = <Image 2> sempre.
-> - Montar com `assemble_v2.py roteiro.json` (NÃO o assemble.py do passo 6 da rotina).
-> - Legenda do post com pergunta no fim. Ver "Por que mudou" e "QUALIDADE DA COMIDA" abaixo.
+> ⚠️ Este manual vale MAIS que o texto da rotina agendada. A seção "FORMATO 24/11" manda sobre o resto.
+> - 3 clipes. Foto real do prato = <Image 2> sempre. Montar com `assemble_v2.py roteiro.json`.
 
 Daisy Parker, 34, mãe de 3 em Ohio. Jantas baratas pra família. Bordão: "Dinner's handled."
 Vende o e-book "The $75 Dinner Plan" (30 jantas, EM PROMOÇÃO: US$ 9.99, era US$ 17): https://payhip.com/b/7QkKt
-Tudo em inglês americano. Instagram @daisydinners (link na bio).
+Tudo em inglês americano. Instagram @daisy.dinners (conta Windsor 17841417624005059; link na bio).
+
+## FORMATO 24/11 (pedido do Raphael: "mude tudo que der": mais humor, mais qualidade, menos rosto)
+Por quê: Reels 03–07 tiveram 79–141 views, 62–80% pulam nos 3 s, média assistida 3–5 s, 0 seguidor, 1 curtida.
+E eram postados às 3–4 h da manhã nos EUA. Quem cresce no nicho ("recession meals", mãe com orçamento) faz SÉRIE, humor de mãe real e mostra comida de verdade; IA que cresce é personagem com piada/história, não "prova" de comida.
+
+1. CURTO: alvo 14–18 s no total. Cada fala com 9–13 palavras (não 14–20). Sem enrolação, sem "Hi guys".
+2. MENOS ROSTO: a Daisy aparece no clipe 1 (setup da piada) e no fim do clipe 3 (CTA). No resto, FOTOS REAIS por cima com a voz dela continuando (campo "broll" do roteiro). Use 3 fotos reais por vídeo:
+   - foto A = prato pronto (abre o vídeo 1,0 s + <Image 2> + "dish_img");
+   - foto B = ingredientes/mercado ou panela no meio do preparo (cobre ~70% do clipe 2);
+   - foto C = prato servido/família/porção no prato (primeiros ~1,5 s do clipe 3).
+   Exemplo: "broll": [{"img":"a.jpg","clip":0,"at":0,"len":1.0},{"img":"b.jpg","clip":1,"at":0.3,"len":2.6},{"img":"c.jpg","clip":2,"at":0,"len":1.5}]
+3. HUMOR (toda fala 1 é piada de mãe real ou contraste de preço; nada de "This dinner cost..." seco). Bancos de gancho:
+   - "My kids asked what's for dinner eleven times. Here's my answer." / "POV: it's 5 PM and nobody planned dinner."
+   - Delivery x casa: "Pizza for five? Sixty-two dollars. This? About nine." (humor + número, o povo manda pros outros)
+   - "My husband said 'let's just order out.' I said, watch this."
+   - "Things that cost more than this dinner: one fancy coffee, a kids' meal…"
+   Texto do gancho na tela (hook) = a piada curta em 2 linhas, MAIÚSCULAS, com $ (ex.: "TAKEOUT: $62" / "MINE: $9 😏").
+4. SÉRIE: toda receita do e-book entra como "DAY N OF 30" (N = número em receitas.json). Ponha no "hook_sub" (ex.: "Day 14 of 30 · family of 5") e na 1ª linha da legenda. Cria hábito de voltar.
+5. RODÍZIO SEMANAL (dia da semana, America/Fortaleza):
+   - seg: delivery x casa (receita do e-book com preço de delivery comparável, "about")
+   - ter, qui, sáb: receita do e-book, série DAY N, gancho de humor
+   - qua: humor de mãe (POV 5 PM, criança enjoada, marido) + receita rápida do e-book
+   - sex: dica rápida (sobra vira outra janta, congelar, lista de US$ 75) com piada
+   - dom: venda direta do plano (promoção US$ 9.99, sem urgência falsa)
+6. LEGENDA: 1ª linha = gancho/piada curta (aparece antes do "mais"). Depois "Full 30-dinner plan in my bio, on sale for $9.99 (was $17)." Depois chamada de ENVIO: "Send this to the mom who hates 5 PM 😅" (varie, nunca repita a mesma da semana) + uma pergunta. 3–5 hashtags.
+7. COMENTÁRIO FIXO: logo depois de postar, create_comment no próprio Reel com uma pergunta divertida ligada ao tema (ex.: "Be honest: what's your 'I give up' dinner? 👇").
+8. HORA: a rotina agora roda 09:17 (Fortaleza) e posta perto de 10–11 h em Nova York. Não postar de madrugada.
+9. Selo de IA: o perfil PRECISA do selo oficial "AI-generated" do Instagram (desde 31/08/2026 perfil de IA sem selo perde recomendação). Raphael ativa no app; a rotina não consegue.
+
+### Achar fotos reais (Unsplash) pelo navegador
+Na aba do PC, abra https://unsplash.com/s/photos/<termo>?license=free, pegue os ids dos `figure img[src*="images.unsplash.com/photo-"]`, desenhe uma folha de contato num canvas (12 miniaturas 250x250 com número) e devolva `toDataURL('image/jpeg',0.6)`; o resultado vem salvo num .txt → extraia o base64 com Python e OLHE. Escolha foto caseira (panela, assadeira, prato simples), nada de restaurante/comida asiática se a receita é americana. Depois baixe a escolhida (`?w=1080&q=80&fm=jpg`, FileReader → base64) do mesmo jeito. O sandbox não acessa images.unsplash.com direto.
 
 ## Arquivos
 - assets/rosto-daisy.jpg — rosto aprovado. SEMPRE a imagem de referência no TAAFT.
@@ -39,11 +68,11 @@ Reels 03–05: ~65% pulavam nos 3 primeiros segundos, média assistida 3–5 s, 
 4. Prato pronto + CTA: termina SEMPRE com algo como "...The whole plan is in my bio. Dinner's handled!"
    Enquanto durar a promoção, cite no CTA: ex. "All thirty dinners are on sale in my bio. Dinner's handled!"
    Sem urgência falsa ("só hoje", "últimas horas"): só "on sale" / "under ten dollars".
-Cada fala: 14–20 palavras no máximo (cabe em 8 s em ritmo natural). Preço sempre "about", família de 4–5.
+Cada fala: 9–13 palavras (FORMATO 24/11). Preço sempre "about", família de 4–5.
 Números escritos por extenso na fala ("nine dollars").
 
 ## Legenda (Instagram)
-Gancho curto + "Full 30-dinner plan in my bio, on sale for $9.99 (was $17)." + 5 hashtags.
+Ver FORMATO 24/11, item 6.
 
 ## Visual da Daisy (a partir do vídeo 03)
 - Sempre avental de cozinha branco com o símbolo da marca (assets/logo-avental.png: prato com margarida, garfo e faca, SEM LETRAS) num patch redondo verde-sálvia no peito + chapéu de cozinheira branco. Nada escrito no avental nem no chapéu. Igual em todo vídeo.
