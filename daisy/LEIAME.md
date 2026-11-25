@@ -1,6 +1,7 @@
 # Daisy Dinners — Reels diários (TAAFT)
 
 > ⚠️ Este manual vale MAIS que o texto da rotina agendada. A seção "FORMATO 24/11" manda sobre o resto.
+> - NAVEGADOR (25/11, pedido do Raphael: "use o Chrome aqui sempre"): TAAFT e Unsplash SEMPRE pelo Google Chrome do PC (Claude in Chrome, ferramentas mcp__claude-in-chrome__*). NÃO usar o navegador embutido. Chrome precisa estar aberto e logado no TAAFT.
 > - 3 clipes. Foto real do prato = <Image 2> sempre. Montar com `assemble_v2.py roteiro.json`.
 
 Daisy Parker, 34, mãe de 3 em Ohio. Jantas baratas pra família. Bordão: "Dinner's handled."
@@ -99,7 +100,7 @@ Dicas de ACTION/comida (aprendido nos vídeos 01–06):
 - Frango desfiado: "tender, juicy, pale white shredded chicken breast meat with no skin".
 - Se aparecer letra/palavra no avental ou o símbolo sair muito deformado, refaça o clipe.
 
-## TAAFT (navegador embutido do PC do Raphael)
+## TAAFT (Google Chrome do PC do Raphael, via Claude in Chrome)
 - Página: https://theresanaiforthat.com/@taaft/video-generator/ (ele já está logado; 100 vídeos/dia).
 - Modelo "Quality", orientação Portrait (retrato), 1 imagem de referência = assets/rosto-daisy.jpg.
 - Só 1 geração por vez. Cada clipe leva ~15–25 min. Ocupado = texto da página tem "Generating Video" ou "Waiting in queue".
