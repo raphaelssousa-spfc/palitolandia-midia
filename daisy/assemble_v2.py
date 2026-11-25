@@ -12,7 +12,9 @@ roteiro.json:
     {"file": "c3.mp4", "fala": "...", "tag": "THE SECRET", "emoji": "🤫"},
     {"file": "c4.mp4", "fala": "...", "cta": true}
   ],
-  "sale": "$9.99 (was $17)"                      # selo no CTA (vazio = sem)
+  "sale": "$9.99 (was $17)",                     # selo no CTA (vazio = sem)
+  "music": "musica.wav",                         # fundo (make_music.py); opcional
+  "music_vol": 0.16                              # volume da música (abaixa sozinha quando ela fala)
 }
 """
 import sys, subprocess, re, json, os
@@ -30,15 +32,24 @@ def run(cmd): subprocess.run(cmd, check=True)
 def dur(f):
     return float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).strip())
 
-def speech_span(f, d):
+def speech_pieces(f, d, gap=0.45):
+    """Trechos com fala; corta silêncio do começo, do fim e pausas longas no meio (> gap)."""
     out = subprocess.run(["ffmpeg", "-i", f, "-af", "silencedetect=noise=-32dB:d=0.2", "-f", "null", "-"],
                          capture_output=True, text=True).stderr
     st = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", out)]
     en = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", out)]
-    s = en[0] if (st and en and st[0] < 0.05) else 0.0
-    e = d
-    if st and st[-1] > s + 1 and len(en) < len(st): e = st[-1]
-    return max(0, s - 0.12), min(d, e + 0.25)
+    if len(en) < len(st): en.append(d)
+    sil = list(zip(st, en)); pcs = []; t = 0.0
+    for a, b in sil:
+        if a > t: pcs.append([t, a])
+        t = b
+    if t < d - 0.05: pcs.append([t, d])
+    if not pcs: return [(0.0, d)]
+    m = [pcs[0]]
+    for a, b in pcs[1:]:
+        if a - m[-1][1] < gap: m[-1][1] = b
+        else: m.append([a, b])
+    return [(max(0, a - 0.1), min(d, b + 0.18)) for a, b in m]
 
 def emoji_png(ch, size, path):
     f = ImageFont.truetype(EMOJI_FONT, 109)
@@ -50,10 +61,16 @@ def emoji_png(ch, size, path):
 # 1) cortar silêncio, subir p/ 1080x1920 nítido, zoom lento alternado
 clips = spec["clips"]; segs = []
 for i, c in enumerate(clips):
-    f = P(c["file"]); d = dur(f); s, e = speech_span(f, d); L = e - s
+    f = P(c["file"]); d = dur(f); pcs = speech_pieces(f, d); s = pcs[0][0]
     z = "1.0+0.0016*on" if i % 2 == 0 else "1.08-0.0016*on"
-    o = f"{TMP}/s{i}.mp4"
-    run(["ffmpeg", "-v", "error", "-y", "-ss", f"{s:.3f}", "-t", f"{L:.3f}", "-i", f,
+    o = f"{TMP}/s{i}.mp4"; cut = f"{TMP}/cut{i}.mp4"
+    fc_ = "".join(f"[0:v]trim={a:.3f}:{b:.3f},setpts=PTS-STARTPTS[v{k}];[0:a]atrim={a:.3f}:{b:.3f},asetpts=PTS-STARTPTS[a{k}];"
+                  for k, (a, b) in enumerate(pcs))
+    fc_ += "".join(f"[v{k}][a{k}]" for k in range(len(pcs))) + f"concat=n={len(pcs)}:v=1:a=1[v][a]"
+    run(["ffmpeg", "-v", "error", "-y", "-i", f, "-filter_complex", fc_, "-map", "[v]", "-map", "[a]",
+         "-c:v", "libx264", "-preset", "veryfast", "-crf", "16", "-c:a", "aac", cut])
+    L = dur(cut)
+    run(["ffmpeg", "-v", "error", "-y", "-i", cut,
          "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,crop={W}:{H},fps={FPS},"
                 f"zoompan=z='{z}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s={W}x{H}:fps={FPS},"
                 "unsharp=5:5:0.8:5:5:0,eq=saturation=1.08:contrast=1.03,format=yuv420p",
@@ -215,4 +232,12 @@ fc.append(f"{last}drawbox=x=0:y=0:w='iw*min(1,t/{VID_END:.2f})':h=14:color=0xF2B
 run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(fc), "-map", "[vout]", "-map", "0:a",
      "-t", f"{TOTAL:.2f}", "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p",
      "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", P(spec["out"])])
+if spec.get("music"):  # música de fundo baixinha, abaixa quando ela fala (sidechain)
+    fin = P(spec["out"]); tmpm = f"{TMP}/with_music.mp4"; mv = spec.get("music_vol", 0.16)
+    run(["ffmpeg", "-v", "error", "-y", "-i", fin, "-stream_loop", "-1", "-i", P(spec["music"]), "-filter_complex",
+         f"[0:a]asplit=2[v][sc];[1:a]volume={mv},atrim=0:{TOTAL:.2f},afade=t=in:d=0.4,afade=t=out:st={max(0, TOTAL - 1.2):.2f}:d=1.2[m];"
+         "[m][sc]sidechaincompress=threshold=0.03:ratio=6:attack=20:release=350[md];"
+         "[v][md]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[a]",
+         "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", tmpm])
+    os.replace(tmpm, fin)
 print("ok", spec["out"], round(dur(P(spec["out"])), 1), "s")

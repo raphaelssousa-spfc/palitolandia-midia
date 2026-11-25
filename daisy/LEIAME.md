@@ -39,6 +39,11 @@ E eram postados às 3–4 h da manhã nos EUA. Quem cresce no nicho ("recession 
 ### Achar fotos reais (Unsplash) pelo navegador
 Na aba do PC, abra https://unsplash.com/s/photos/<termo>?license=free, pegue os ids dos `figure img[src*="images.unsplash.com/photo-"]`, desenhe uma folha de contato num canvas (12 miniaturas 250x250 com número) e devolva `toDataURL('image/jpeg',0.6)`; o resultado vem salvo num .txt → extraia o base64 com Python e OLHE. Escolha foto caseira (panela, assadeira, prato simples), nada de restaurante/comida asiática se a receita é americana. Depois baixe a escolhida (`?w=1080&q=80&fm=jpg`, FileReader → base64) do mesmo jeito. O sandbox não acessa images.unsplash.com direto.
 
+## MÚSICA DE FUNDO (25/11, pedido do Raphael: "sonzinho agradável que combine no fundo")
+- Todo vídeo leva música: `python3 make_music.py <pasta>/musica.wav 22 <N do vídeo>` (violão dedilhado alegre, feito no código = sem direito autoral; a semente troca acordes/andamento). No roteiro.json: "music": "musica.wav", "music_vol": 0.2. Ela abaixa sozinha quando a Daisy fala.
+- assemble_v2 agora corta pausas longas no meio da fala também (vídeo fica ~17–19 s).
+- Chrome: o progresso do TAAFT congela em aba de fundo; pra checar, abra a página numa aba nova e leia o 1º vídeo (taaft-videogen) / [role=progressbar]. O texto "Generating Video" fica escondido na página sempre: não use ele pra saber se acabou. Respostas grandes do Chrome são cortadas (~1000 letras): pra trazer foto/MP4 públicos, use o navegador do app (Claude_Browser) só como cano (fetch → base64 em fatias de 650000).
+
 ## Arquivos
 - assets/rosto-daisy.jpg — rosto aprovado. SEMPRE a imagem de referência no TAAFT.
 - assets/Perfil-A.png — logo com nome (só tela final do assemble.py). assets/logo-avental.png — símbolo sem letras (avental). assets/fonts/ — legenda.

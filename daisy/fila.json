@@ -1,122 +1,144 @@
 [
-  {
-    "id": "daisy-01",
-    "tipo": "receita",
-    "tema": "Sheet-Pan Chicken & Potatoes + tacos de sobra (Dia 1 e 2 do e-book)",
-    "falas": [
-      "I feed my whole family on about seventy-five dollars a week. Here's the trick nobody told me.",
-      "Eight chicken thighs, potatoes, frozen green beans. One pan, about nine dollars.",
-      "Here's the secret. I always cook extra, so tomorrow's tacos are already done. Cook once, eat twice.",
-      "I've got thirty dinners just like this. The whole plan is in my bio. Dinner's handled!"
-    ],
-    "video": "videos/daisy-01.mp4",
-    "legenda": "$75 a week for the whole family? Here's how 👇 Cook once, eat twice. Full 30-dinner plan in my bio. #budgetmeals #familydinner #mealprep #cheapdinners #dinnerideas",
-    "status": "pronto",
-    "feito_em": "2026-11-17"
-  },
-  {
-    "id": "daisy-02",
-    "tipo": "receita",
-    "tema": "One-Pot Spaghetti, sem escorrer (Dia 10 do e-book, ~$8)",
-    "falas": [
-      "One pot, no draining, about eight dollars, and my kids ask for this every single week. Watch this.",
-      "Ground turkey, a jar of pasta sauce, and spaghetti broken in half. That's it. About eight dollars total.",
-      "Here's the secret. Add three cups of water and cook the pasta right in the sauce. No draining!",
-      "Dinner's on the table in twenty-five minutes. Thirty dinners like this are in my bio. Dinner's handled!"
-    ],
-    "video": "videos/daisy-02.mp4",
-    "legenda": "One pot. No draining. About $8 for the whole family 🍝 Full 30-dinner plan in my bio. #budgetmeals #onepotmeals #familydinner #cheapdinners #easydinner",
-    "status": "pronto",
-    "feito_em": "2026-11-18",
-    "roupa": "sage green t-shirt",
-    "obs": "Refeito: clipes 1, 3, 4 com foto real do prato (Unsplash photo-1622973536968) como <Image 2> e comida caseira."
-  },
-  {
-    "id": "daisy-03",
-    "tipo": "receita",
-    "tema": "Black Bean Quesadillas, noite sem carne (Dia 11 do e-book, ~$6)",
-    "falas": [
-      "Six dollars feeds my whole family tonight, and nobody even notices there's no meat. Watch this.",
-      "Flour tortillas, a can of black beans, frozen corn, and cheddar. About six dollars for everything.",
-      "Here's the trick. Mash the beans a little with cumin so they stick, then cheese on top.",
-      "Crispy, cheesy, and done in twenty minutes. Thirty dinners like this are in my bio. Dinner's handled!"
-    ],
-    "video": "videos/daisy-03.mp4",
-    "legenda": "Meatless night, about $6 for the whole family, and nobody missed the meat 🧀 Full 30-dinner plan in my bio. #budgetmeals #meatlessmonday #quesadillas #cheapdinners #easydinner",
-    "status": "postado",
-    "feito_em": "2026-11-19",
-    "roupa": "navy blue long-sleeve top",
-    "obs": "3 imagens de referência: rosto, foto Unsplash photo-1719957770167-bb66133ba808, logo-avental.",
-    "media_id": "18159907855511094"
-  },
-  {
-    "id": "daisy-04",
-    "tipo": "receita",
-    "tema": "Egg Roll in a Bowl, sabor de delivery sem fritar (Dia 12 do e-book, ~$9)",
-    "falas": [
-      "Nine dollars, twenty-five minutes, and it tastes exactly like takeout egg rolls. Watch this.",
-      "One pound of ground pork, a bag of coleslaw mix, soy sauce, and rice. About nine dollars.",
-      "Here's the secret. The bag of slaw does all the chopping. Just toss it in with soy and garlic.",
-      "All the egg roll flavor, none of the frying. Thirty dinners like this are in my bio. Dinner's handled!"
-    ],
-    "video": "videos/daisy-04.mp4",
-    "legenda": "Tastes like takeout egg rolls, about $9 for the whole family, and the bag of slaw does all the chopping 🥢 Full 30-dinner plan in my bio. #budgetmeals #eggrollinabowl #cheapdinners #easydinner #familydinner",
-    "status": "postado",
-    "feito_em": "2026-11-20",
-    "roupa": "mustard yellow t-shirt",
-    "obs": "3 imagens de referência: rosto, foto Unsplash photo-1678684277767-dfc70d6c362e, logo-avental.",
-    "media_id": "18145361035737761"
-  },
-  {
-    "id": "daisy-05",
-    "tipo": "receita",
-    "tema": "Saturday Sweep Fried Rice, limpa a geladeira (Dia 7 do e-book, ~$5)",
-    "falas": [
-      "It's Saturday, and this whole dinner costs about five dollars. I'm cleaning out my fridge. Watch.",
-      "Cold rice, four eggs, frozen peas and carrots, and whatever leftover veggies are hiding in my fridge.",
-      "Here's the secret. Use rice you cooked this morning. Cold rice fries up crispy instead of mushy.",
-      "About five dollars, nothing wasted, and the kids ask for seconds. Thirty dinners are in my bio. Dinner's handled!"
-    ],
-    "video": "videos/daisy-05.mp4",
-    "legenda": "Saturday fridge clean-out = fried rice for about $5. Cold rice is the secret, it fries up crispy, not mushy 🍳 Full 30-dinner plan in my bio. #budgetmeals #friedrice #cheapdinners #leftovers #familydinner",
-    "status": "postado",
-    "feito_em": "2026-11-21",
-    "roupa": "light gray hoodie",
-    "obs": "3 imagens de referência: rosto, foto Unsplash photo-1603133872878-684f208fb84b, logo-avental.",
-    "media_id": "18068806697717131"
-  },
-  {
-    "id": "daisy-06",
-    "tipo": "venda",
-    "tema": "Venda direta do plano: 30 jantas, ~$75/semana, chili que vira 3 jantas (Dia 3, ~$14) + promoção $9.99",
-    "falas": [
-      "Thirty dinners, about seventy-five dollars a week, for my family of five. This is the plan I actually use.",
-      "Here's the secret. One big pot of chili, about fourteen dollars, turns into three different dinners.",
-      "It's on sale right now, under ten dollars instead of seventeen. All thirty dinners are in my bio. Dinner's handled!"
-    ],
-    "video": "videos/daisy-06.mp4",
-    "legenda": "30 dinners, about $75 a week, family of five 🌶️ One big pot of chili = three dinners. Full 30-dinner plan in my bio, on sale for $9.99 (was $17). What's your go-to cheap dinner? #budgetmeals #mealplan #cheapdinners #familydinner #chili",
-    "status": "postado",
-    "feito_em": "2026-11-23",
-    "roupa": "coral pink t-shirt",
-    "obs": "3 clipes, assemble_v2. Imagens: rosto, foto Unsplash photo-1790701909034-6c7b45c7b58a (chili), logo-avental.",
-    "media_id": "18154891882545766"
-  },
-  {
-    "id": "daisy-07",
-    "tipo": "receita",
-    "tema": "Chicken Noodle Soup, panelão pra 6 (Dia 14 do e-book, ~$9)",
-    "falas": [
-      "This giant pot of chicken noodle soup feeds six people, and it cost me about nine dollars.",
-      "Here's the secret. Drop the chicken in whole, let it simmer, then shred it right in the pot.",
-      "Toss in egg noodles and dinner's done. All thirty dinners are on sale in my bio. Dinner's handled!"
-    ],
-    "video": "videos/daisy-07.mp4",
-    "legenda": "One big pot of chicken noodle soup feeds six for about $9 🍲 Simmer the chicken whole, shred it right in the pot. Full 30-dinner plan in my bio, on sale for $9.99 (was $17). What's your favorite cozy soup? #budgetmeals #chickennoodlesoup #souprecipe #cheapdinners #familydinner",
-    "status": "postado",
-    "feito_em": "2026-11-24",
-    "roupa": "white and blue striped shirt",
-    "obs": "3 clipes, assemble_v2. Imagens: rosto, foto Unsplash photo-1627880872609-f7ddd76616c2 (panela de sopa), logo-avental.",
-    "media_id": "17999348832059333"
-  }
+ {
+  "id": "daisy-01",
+  "tipo": "receita",
+  "tema": "Sheet-Pan Chicken & Potatoes + tacos de sobra (Dia 1 e 2 do e-book)",
+  "falas": [
+   "I feed my whole family on about seventy-five dollars a week. Here's the trick nobody told me.",
+   "Eight chicken thighs, potatoes, frozen green beans. One pan, about nine dollars.",
+   "Here's the secret. I always cook extra, so tomorrow's tacos are already done. Cook once, eat twice.",
+   "I've got thirty dinners just like this. The whole plan is in my bio. Dinner's handled!"
+  ],
+  "video": "videos/daisy-01.mp4",
+  "legenda": "$75 a week for the whole family? Here's how 👇 Cook once, eat twice. Full 30-dinner plan in my bio. #budgetmeals #familydinner #mealprep #cheapdinners #dinnerideas",
+  "status": "pronto",
+  "feito_em": "2026-11-17"
+ },
+ {
+  "id": "daisy-02",
+  "tipo": "receita",
+  "tema": "One-Pot Spaghetti, sem escorrer (Dia 10 do e-book, ~$8)",
+  "falas": [
+   "One pot, no draining, about eight dollars, and my kids ask for this every single week. Watch this.",
+   "Ground turkey, a jar of pasta sauce, and spaghetti broken in half. That's it. About eight dollars total.",
+   "Here's the secret. Add three cups of water and cook the pasta right in the sauce. No draining!",
+   "Dinner's on the table in twenty-five minutes. Thirty dinners like this are in my bio. Dinner's handled!"
+  ],
+  "video": "videos/daisy-02.mp4",
+  "legenda": "One pot. No draining. About $8 for the whole family 🍝 Full 30-dinner plan in my bio. #budgetmeals #onepotmeals #familydinner #cheapdinners #easydinner",
+  "status": "pronto",
+  "feito_em": "2026-11-18",
+  "roupa": "sage green t-shirt",
+  "obs": "Refeito: clipes 1, 3, 4 com foto real do prato (Unsplash photo-1622973536968) como <Image 2> e comida caseira."
+ },
+ {
+  "id": "daisy-03",
+  "tipo": "receita",
+  "tema": "Black Bean Quesadillas, noite sem carne (Dia 11 do e-book, ~$6)",
+  "falas": [
+   "Six dollars feeds my whole family tonight, and nobody even notices there's no meat. Watch this.",
+   "Flour tortillas, a can of black beans, frozen corn, and cheddar. About six dollars for everything.",
+   "Here's the trick. Mash the beans a little with cumin so they stick, then cheese on top.",
+   "Crispy, cheesy, and done in twenty minutes. Thirty dinners like this are in my bio. Dinner's handled!"
+  ],
+  "video": "videos/daisy-03.mp4",
+  "legenda": "Meatless night, about $6 for the whole family, and nobody missed the meat 🧀 Full 30-dinner plan in my bio. #budgetmeals #meatlessmonday #quesadillas #cheapdinners #easydinner",
+  "status": "postado",
+  "feito_em": "2026-11-19",
+  "roupa": "navy blue long-sleeve top",
+  "obs": "3 imagens de referência: rosto, foto Unsplash photo-1719957770167-bb66133ba808, logo-avental.",
+  "media_id": "18159907855511094"
+ },
+ {
+  "id": "daisy-04",
+  "tipo": "receita",
+  "tema": "Egg Roll in a Bowl, sabor de delivery sem fritar (Dia 12 do e-book, ~$9)",
+  "falas": [
+   "Nine dollars, twenty-five minutes, and it tastes exactly like takeout egg rolls. Watch this.",
+   "One pound of ground pork, a bag of coleslaw mix, soy sauce, and rice. About nine dollars.",
+   "Here's the secret. The bag of slaw does all the chopping. Just toss it in with soy and garlic.",
+   "All the egg roll flavor, none of the frying. Thirty dinners like this are in my bio. Dinner's handled!"
+  ],
+  "video": "videos/daisy-04.mp4",
+  "legenda": "Tastes like takeout egg rolls, about $9 for the whole family, and the bag of slaw does all the chopping 🥢 Full 30-dinner plan in my bio. #budgetmeals #eggrollinabowl #cheapdinners #easydinner #familydinner",
+  "status": "postado",
+  "feito_em": "2026-11-20",
+  "roupa": "mustard yellow t-shirt",
+  "obs": "3 imagens de referência: rosto, foto Unsplash photo-1678684277767-dfc70d6c362e, logo-avental.",
+  "media_id": "18145361035737761"
+ },
+ {
+  "id": "daisy-05",
+  "tipo": "receita",
+  "tema": "Saturday Sweep Fried Rice, limpa a geladeira (Dia 7 do e-book, ~$5)",
+  "falas": [
+   "It's Saturday, and this whole dinner costs about five dollars. I'm cleaning out my fridge. Watch.",
+   "Cold rice, four eggs, frozen peas and carrots, and whatever leftover veggies are hiding in my fridge.",
+   "Here's the secret. Use rice you cooked this morning. Cold rice fries up crispy instead of mushy.",
+   "About five dollars, nothing wasted, and the kids ask for seconds. Thirty dinners are in my bio. Dinner's handled!"
+  ],
+  "video": "videos/daisy-05.mp4",
+  "legenda": "Saturday fridge clean-out = fried rice for about $5. Cold rice is the secret, it fries up crispy, not mushy 🍳 Full 30-dinner plan in my bio. #budgetmeals #friedrice #cheapdinners #leftovers #familydinner",
+  "status": "postado",
+  "feito_em": "2026-11-21",
+  "roupa": "light gray hoodie",
+  "obs": "3 imagens de referência: rosto, foto Unsplash photo-1603133872878-684f208fb84b, logo-avental.",
+  "media_id": "18068806697717131"
+ },
+ {
+  "id": "daisy-06",
+  "tipo": "venda",
+  "tema": "Venda direta do plano: 30 jantas, ~$75/semana, chili que vira 3 jantas (Dia 3, ~$14) + promoção $9.99",
+  "falas": [
+   "Thirty dinners, about seventy-five dollars a week, for my family of five. This is the plan I actually use.",
+   "Here's the secret. One big pot of chili, about fourteen dollars, turns into three different dinners.",
+   "It's on sale right now, under ten dollars instead of seventeen. All thirty dinners are in my bio. Dinner's handled!"
+  ],
+  "video": "videos/daisy-06.mp4",
+  "legenda": "30 dinners, about $75 a week, family of five 🌶️ One big pot of chili = three dinners. Full 30-dinner plan in my bio, on sale for $9.99 (was $17). What's your go-to cheap dinner? #budgetmeals #mealplan #cheapdinners #familydinner #chili",
+  "status": "postado",
+  "feito_em": "2026-11-23",
+  "roupa": "coral pink t-shirt",
+  "obs": "3 clipes, assemble_v2. Imagens: rosto, foto Unsplash photo-1790701909034-6c7b45c7b58a (chili), logo-avental.",
+  "media_id": "18154891882545766"
+ },
+ {
+  "id": "daisy-07",
+  "tipo": "receita",
+  "tema": "Chicken Noodle Soup, panelão pra 6 (Dia 14 do e-book, ~$9)",
+  "falas": [
+   "This giant pot of chicken noodle soup feeds six people, and it cost me about nine dollars.",
+   "Here's the secret. Drop the chicken in whole, let it simmer, then shred it right in the pot.",
+   "Toss in egg noodles and dinner's done. All thirty dinners are on sale in my bio. Dinner's handled!"
+  ],
+  "video": "videos/daisy-07.mp4",
+  "legenda": "One big pot of chicken noodle soup feeds six for about $9 🍲 Simmer the chicken whole, shred it right in the pot. Full 30-dinner plan in my bio, on sale for $9.99 (was $17). What's your favorite cozy soup? #budgetmeals #chickennoodlesoup #souprecipe #cheapdinners #familydinner",
+  "status": "postado",
+  "feito_em": "2026-11-24",
+  "roupa": "white and blue striped shirt",
+  "obs": "3 clipes, assemble_v2. Imagens: rosto, foto Unsplash photo-1627880872609-f7ddd76616c2 (panela de sopa), logo-avental.",
+  "media_id": "17999348832059333"
+ },
+ {
+  "id": "daisy-08",
+  "tipo": "receita",
+  "tema": "Humor de mãe: 5 PM sem plano + One-Pot Chicken & Rice (Dia 8 do e-book, ~$9)",
+  "roupa": "denim chambray shirt",
+  "falas": [
+   "It's five o'clock, three kids are starving, and I forgot dinner. Again.",
+   "The secret? Chicken, rice, and canned tomatoes, all in one pot.",
+   "About nine dollars, one pot. All thirty in my bio. Dinner's handled!"
+  ],
+  "fotos": [
+   "unsplash photo-1665332111329-dd9d7fa46c74 (A, frigideira de frango com arroz)",
+   "unsplash photo-1759493321741-883fbf9f433c (B, coxas cruas + tomate)",
+   "unsplash photo-1628394029816-1dc524670f60 (C, prato servido)"
+  ],
+  "video": "videos/daisy-08.mp4",
+  "legenda": "5 PM, no plan, three hungry kids. This one pot saved me 😅\nDay 8 of 30: chicken, rice, canned tomatoes, black beans and corn. One pot, about $9.\nFull 30-dinner plan in my bio, on sale for $9.99 (was $17).\nSend this to the mom who forgets dinner every Wednesday 😂\nWhat's your 5 PM panic dinner?\n#onepotmeals #budgetmeals #easydinner #momlife #cheapdinners",
+  "comentario": "Be honest: how many times did your kids ask \"what's for dinner\" today? 👇",
+  "status": "pronto",
+  "feito_em": "2026-11-25",
+  "obs": "3 clipes no TAAFT pelo Chrome; assemble_v2 com corte de pausas + música de fundo sintetizada (make_music.py, semente 8, volume 0.2)."
+ }
 ]
