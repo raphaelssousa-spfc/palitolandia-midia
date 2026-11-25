@@ -2,6 +2,22 @@
 
 Histórico dos últimos 14 dias (mais novo no topo). Não repetir perfil 3 dias seguidos nem repetir comentário.
 
+## 2026-11-25
+
+1. [@0bras](https://www.instagram.com/0bras/) – obras grandes e infraestrutura
+   - Se for de rodovia/asfalto: "Junta longitudinal mal compactada é por onde o pavimento começa a abrir. Rolar a borda com a faixa vizinha ainda quente faz toda a diferença."
+   - Se for de outra obra: "Boa. Em obra grande, reunião curta de início de turno com a meta do dia alinha equipe e evita serviço feito fora de ordem."
+2. [@fundacoessemcomplicacoes](https://www.instagram.com/fundacoessemcomplicacoes/) – fundações e solo explicados
+   - Se for de solo/estrada: "Subleito com CBR baixo não aguenta só espessura de asfalto. Muitas vezes é mais barato trocar ou estabilizar o solo do que engrossar o pavimento."
+   - Se for de outra obra: "Concordo. Sapata apoiada em solo mal escolhido recalca desigual e a trinca na parede aparece primeiro."
+3. [@eduardomikail](https://www.instagram.com/eduardomikail/) – construção e dicas de engenharia
+   - Se for de estrutura/concreto: "Cura do concreto nos primeiros dias, molhando ou cobrindo, evita fissura de retração e ganha resistência de verdade."
+   - Se for de outra obra: "Verdade. Conferir o prumo e o nível a cada fiada de alvenaria economiza muita massa de regularização depois."
+4. [@engcivilcamilasoares](https://www.instagram.com/engcivilcamilasoares/) – engenharia civil no dia a dia
+   - "Boa. Aprender a ler o projeto junto com a obra, não só no escritório, é o que faz o engenheiro achar o erro antes de concretar."
+5. [@matheusleoni_eng](https://www.instagram.com/matheusleoni_eng/) – dicas de obra e carreira
+   - "Concordo. Anotar tudo que muda na obra, com data e motivo, protege o engenheiro e facilita o aditivo quando o cliente questiona."
+
 ## 2026-11-24
 
 1. [@0bras](https://www.instagram.com/0bras/) – obras grandes e infraestrutura
